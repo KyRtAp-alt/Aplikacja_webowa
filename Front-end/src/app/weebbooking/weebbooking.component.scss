@@ -1,0 +1,24 @@
+.main_container {
+  margin-top: 60px;
+  background-color: #bbeefc;
+  height: 500px;
+}
+
+.main_title {
+  color: #00bfa8;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.title {
+  font-size: 20px;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+.img {
+  display: flex;
+  justify-content: flex-end;
+  width: 450px;
+  height: 450px;
+}
