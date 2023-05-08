@@ -9,6 +9,9 @@ import { WeebbookingComponent } from './weebbooking/weebbooking.component';
 import { BarComponent } from './bar/bar.component';
 import { SliderComponent } from './slider/slider.component';
 import { Bar2Component } from './bar2/bar2.component';
+import { Blog1Component } from './blog1/blog1.component';
+import { Blog2Component } from './blog2/blog2.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { Bar2Component } from './bar2/bar2.component';
     BarComponent,
     SliderComponent,
     Bar2Component,
+    Blog1Component,
+    Blog2Component,
+    FooterComponent,
   ],
   imports: [BrowserModule],
   providers: [],

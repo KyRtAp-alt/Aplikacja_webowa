@@ -1,0 +1,57 @@
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
+  height: 200px;
+  background-color: #01a3a4;
+}
+
+.left-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 2.5em;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 2.5em;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 130px;
+}
+
+.right-title {
+  font-size: 20px;
+  color: #244160;
+  margin-bottom: 15px;
+}
+
+.center-title {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.cookie {
+  margin-top: 40px;
+  font-size: 10px;
+}
+
+.time {
+  font-size: 14px;
+}
