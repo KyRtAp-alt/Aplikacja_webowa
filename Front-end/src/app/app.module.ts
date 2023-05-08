@@ -6,6 +6,9 @@ import { Navbar1Component } from './navbar1/navbar1.component';
 import { Navbar2Component } from './navbar2/navbar2.component';
 import { ImgNavbarComponent } from './img-navbar/img-navbar.component';
 import { WeebbookingComponent } from './weebbooking/weebbooking.component';
+import { BarComponent } from './bar/bar.component';
+import { SliderComponent } from './slider/slider.component';
+import { Bar2Component } from './bar2/bar2.component';
 
 @NgModule({
   declarations: [
@@ -13,12 +16,13 @@ import { WeebbookingComponent } from './weebbooking/weebbooking.component';
     Navbar1Component,
     Navbar2Component,
     ImgNavbarComponent,
-    WeebbookingComponent
+    WeebbookingComponent,
+    BarComponent,
+    SliderComponent,
+    Bar2Component,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
