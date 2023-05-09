@@ -16,7 +16,7 @@ export class SliderComponent implements OnInit {
       if (this.slidePosition < -2400) {
         this.slidePosition = 0;
       }
-    }, 1000);
+    }, 5000);
   }
 
   nextSlide() {

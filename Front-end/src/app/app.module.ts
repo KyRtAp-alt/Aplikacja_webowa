@@ -17,6 +17,8 @@ import { ImgNavbarOtherComponent } from './img-navbar-other/img-navbar-other.com
 import { Subpagemain1Component } from './subpagemain1/subpagemain1.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { Zakresuslug2Component } from './zakresuslug2/zakresuslug2.component';
+import { LekarzMedycynyRodzinnejComponent } from './lekarz-medycyny-rodzinnej/lekarz-medycyny-rodzinnej.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     Subpagemain1Component,
     HeaderComponent,
     NavbarComponent,
+    Zakresuslug2Component,
+    LekarzMedycynyRodzinnejComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
