@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-declare function licznik(): void;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
