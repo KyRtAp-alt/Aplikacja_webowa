@@ -13,13 +13,13 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { ImgNavbarOtherComponent } from './img-navbar-other/img-navbar-other.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LekarzMedycynyRodzinnejComponent } from './lekarz-medycyny-rodzinnej/lekarz-medycyny-rodzinnej.component';
 import { Blog3Component } from './blog3/blog3.component';
 import { SubpageBlog1Component } from './subpage-blog1/subpage-blog1.component';
 import { SubpageBlog2Component } from './subpage-blog2/subpage-blog2.component';
 import { SubpageBlog3Component } from './subpage-blog3/subpage-blog3.component';
 import { RangeOfServices1Component } from './range-of-services1/range-of-services1.component';
 import { RangeOfServices2Component } from './range-of-services2/range-of-services2.component';
+import { SubpageRof1Component } from './subpage-rof1/subpage-rof1.component';
 
 
 @NgModule({
@@ -35,13 +35,13 @@ import { RangeOfServices2Component } from './range-of-services2/range-of-service
     ImgNavbarOtherComponent,
     HeaderComponent,
     NavbarComponent,
-    LekarzMedycynyRodzinnejComponent,
     Blog3Component,
     SubpageBlog1Component,
     SubpageBlog2Component,
     SubpageBlog3Component,
     RangeOfServices1Component,
     RangeOfServices2Component,
+    SubpageRof1Component,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
