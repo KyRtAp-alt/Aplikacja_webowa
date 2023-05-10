@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Subpagemain1Component } from './subpagemain1.component';
+import { SubpageBlog1Component } from './subpage-blog1.component';
 
-describe('Subpagemain1Component', () => {
-  let component: Subpagemain1Component;
-  let fixture: ComponentFixture<Subpagemain1Component>;
+describe('SubpageBlog1Component', () => {
+  let component: SubpageBlog1Component;
+  let fixture: ComponentFixture<SubpageBlog1Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Subpagemain1Component ]
+      declarations: [ SubpageBlog1Component ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Subpagemain1Component);
+    fixture = TestBed.createComponent(SubpageBlog1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

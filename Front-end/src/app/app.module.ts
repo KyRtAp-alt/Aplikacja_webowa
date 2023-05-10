@@ -4,21 +4,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ImgNavbarComponent } from './img-navbar/img-navbar.component';
 import { WeebbookingComponent } from './weebbooking/weebbooking.component';
-import { BarComponent } from './bar/bar.component';
 import { SliderComponent } from './slider/slider.component';
-import { Bar2Component } from './bar2/bar2.component';
 import { Blog1Component } from './blog1/blog1.component';
 import { Blog2Component } from './blog2/blog2.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ZakresuslugComponent } from './zakresuslug/zakresuslug.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ImgNavbarOtherComponent } from './img-navbar-other/img-navbar-other.component';
-import { Subpagemain1Component } from './subpagemain1/subpagemain1.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { Zakresuslug2Component } from './zakresuslug2/zakresuslug2.component';
 import { LekarzMedycynyRodzinnejComponent } from './lekarz-medycyny-rodzinnej/lekarz-medycyny-rodzinnej.component';
+import { Blog3Component } from './blog3/blog3.component';
+import { SubpageBlog1Component } from './subpage-blog1/subpage-blog1.component';
+import { SubpageBlog2Component } from './subpage-blog2/subpage-blog2.component';
+import { SubpageBlog3Component } from './subpage-blog3/subpage-blog3.component';
+import { RangeOfServices1Component } from './range-of-services1/range-of-services1.component';
+import { RangeOfServices2Component } from './range-of-services2/range-of-services2.component';
 
 
 @NgModule({
@@ -26,20 +27,21 @@ import { LekarzMedycynyRodzinnejComponent } from './lekarz-medycyny-rodzinnej/le
     AppComponent,
     ImgNavbarComponent,
     WeebbookingComponent,
-    BarComponent,
     SliderComponent,
-    Bar2Component,
     Blog1Component,
     Blog2Component,
     FooterComponent,
-    ZakresuslugComponent,
     MainpageComponent,
     ImgNavbarOtherComponent,
-    Subpagemain1Component,
     HeaderComponent,
     NavbarComponent,
-    Zakresuslug2Component,
     LekarzMedycynyRodzinnejComponent,
+    Blog3Component,
+    SubpageBlog1Component,
+    SubpageBlog2Component,
+    SubpageBlog3Component,
+    RangeOfServices1Component,
+    RangeOfServices2Component,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

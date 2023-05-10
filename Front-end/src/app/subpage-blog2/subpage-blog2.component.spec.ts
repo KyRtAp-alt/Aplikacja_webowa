@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Bar2Component } from './bar2.component';
+import { SubpageBlog2Component } from './subpage-blog2.component';
 
-describe('Bar2Component', () => {
-  let component: Bar2Component;
-  let fixture: ComponentFixture<Bar2Component>;
+describe('SubpageBlog2Component', () => {
+  let component: SubpageBlog2Component;
+  let fixture: ComponentFixture<SubpageBlog2Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Bar2Component ]
+      declarations: [ SubpageBlog2Component ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Bar2Component);
+    fixture = TestBed.createComponent(SubpageBlog2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
