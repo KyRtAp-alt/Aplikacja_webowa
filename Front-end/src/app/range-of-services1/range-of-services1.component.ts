@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./range-of-services1.component.scss']
 })
 export class RangeOfServices1Component {
+onShowMore() {
+  this.showMore = true
+}
+showMore = false;
 
 }

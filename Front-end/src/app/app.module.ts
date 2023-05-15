@@ -18,8 +18,19 @@ import { SubpageBlog1Component } from './subpage-blog1/subpage-blog1.component';
 import { SubpageBlog2Component } from './subpage-blog2/subpage-blog2.component';
 import { SubpageBlog3Component } from './subpage-blog3/subpage-blog3.component';
 import { RangeOfServices1Component } from './range-of-services1/range-of-services1.component';
-import { RangeOfServices2Component } from './range-of-services2/range-of-services2.component';
 import { SubpageRof1Component } from './subpage-rof1/subpage-rof1.component';
+import { SubpageRof2Component } from './subpage-rof2/subpage-rof2.component';
+import { SubpageRof3Component } from './subpage-rof3/subpage-rof3.component';
+import { SubpageRof4Component } from './subpage-rof4/subpage-rof4.component';
+import { SubpageRof5Component } from './subpage-rof5/subpage-rof5.component';
+import { PagesZakresuslugComponent } from './Pages/pages-zakresuslug/pages-zakresuslug.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminHomepageComponent } from './admin-homepage/admin-homepage.component';
+import { HeaderAdminComponent } from './header-admin/header-admin.component';
+import { DoctorAddComponent } from './doctor-add/doctor-add.component';
+import { AdminBlogComponent } from './admin-blog/admin-blog.component';
+import { UmowWizyteComponent } from './umow-wizyte/umow-wizyte.component';
+
 
 
 @NgModule({
@@ -40,8 +51,19 @@ import { SubpageRof1Component } from './subpage-rof1/subpage-rof1.component';
     SubpageBlog2Component,
     SubpageBlog3Component,
     RangeOfServices1Component,
-    RangeOfServices2Component,
     SubpageRof1Component,
+    SubpageRof2Component,
+    SubpageRof3Component,
+    SubpageRof4Component,
+    SubpageRof5Component,
+    PagesZakresuslugComponent,
+    AdminLoginComponent,
+    AdminHomepageComponent,
+    HeaderAdminComponent,
+    DoctorAddComponent,
+    AdminBlogComponent,
+    UmowWizyteComponent,
+
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
