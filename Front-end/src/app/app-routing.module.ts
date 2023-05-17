@@ -1,6 +1,5 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { RangeOfServices1Component } from './range-of-services1/range-of-services1.component';
 import { SubpageBlog1Component } from './subpage-blog1/subpage-blog1.component';
@@ -16,6 +15,9 @@ import { AdminHomepageComponent } from './admin-homepage/admin-homepage.componen
 import { DoctorAddComponent } from './doctor-add/doctor-add.component';
 import { AdminBlogComponent } from './admin-blog/admin-blog.component';
 import { UmowWizyteComponent } from './umow-wizyte/umow-wizyte.component';
+import { PagesComponent } from './pages/pages.component';
+import { PriceListComponent } from './price-list/price-list.component';
+// import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -33,7 +35,9 @@ const routes: Routes = [
   { path:'admin-homepage', component:AdminHomepageComponent},
   { path:'add-doctor', component:DoctorAddComponent},
   { path: 'admin-blog', component:AdminBlogComponent},
-  { path: 'umow-wizyte', component:UmowWizyteComponent}
+  { path: 'umow-wizyte', component:UmowWizyteComponent},
+  { path: 'pages', component:PagesComponent},
+  { path: 'cennik', component:PriceListComponent}
 ];
 
 @NgModule({

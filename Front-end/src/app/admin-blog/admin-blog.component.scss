@@ -1,0 +1,41 @@
+/* blog.component.scss */
+.blog-container {
+  max-width: 800px;
+  margin: 0 auto;
+
+  h2 {
+    margin-top: 20px;
+  }
+
+  .input-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    label {
+      margin-bottom: 5px;
+    }
+    input,
+    textarea {
+      padding: 5px;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #eee;
+    cursor: pointer;
+  }
+
+  .post {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    img {
+      max-width: 100%;
+    }
+    button {
+      margin-top: 10px;
+    }
+  }
+}
