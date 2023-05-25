@@ -17,27 +17,40 @@ import { AdminBlogComponent } from './admin-blog/admin-blog.component';
 import { UmowWizyteComponent } from './umow-wizyte/umow-wizyte.component';
 import { PagesComponent } from './pages/pages.component';
 import { PriceListComponent } from './price-list/price-list.component';
-// import { AppComponent } from './app.component';
+import { AppComponent } from './app.component';
+import { OurTeamComponent } from './our-team/our-team.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
-  { path: 'mainpage', component: MainpageComponent},
-  { path: 'chrapanie–uciazliwy-problem-nie-tylko-dla-chorego', component: SubpageBlog1Component },
-  { path: 'dretwienia-rak–jakie-moga-byc-przyczyny', component: SubpageBlog2Component },
-  { path: 'czeste-krwawienia-z-nosa-gdzie-szukac-pomocy', component: SubpageBlog3Component },
+  { path: 'mainpage', component: MainpageComponent },
+  {
+    path: 'chrapanie–uciazliwy-problem-nie-tylko-dla-chorego',
+    component: SubpageBlog1Component,
+  },
+  {
+    path: 'dretwienia-rak–jakie-moga-byc-przyczyny',
+    component: SubpageBlog2Component,
+  },
+  {
+    path: 'czeste-krwawienia-z-nosa-gdzie-szukac-pomocy',
+    component: SubpageBlog3Component,
+  },
   { path: 'zakres-uslug', component: RangeOfServices1Component },
   { path: 'lekarz-medycyny-rodzinnej', component: SubpageRof1Component },
   { path: 'lekarz-pediatra', component: SubpageRof2Component },
   { path: 'medycyna-pracy', component: SubpageRof3Component },
-  { path:'kwalifikacje-prawa-jazdy', component: SubpageRof4Component },
-  { path:'lekarz-balneolog', component: SubpageRof5Component },
-  { path:'admin', component:AdminLoginComponent},
-  { path:'admin-homepage', component:AdminHomepageComponent},
-  { path:'add-doctor', component:DoctorAddComponent},
-  { path: 'admin-blog', component:AdminBlogComponent},
-  { path: 'umow-wizyte', component:UmowWizyteComponent},
-  { path: 'pages', component:PagesComponent},
-  { path: 'cennik', component:PriceListComponent}
+  { path: 'kwalifikacje-prawa-jazdy', component: SubpageRof4Component },
+  { path: 'lekarz-balneolog', component: SubpageRof5Component },
+  { path: 'admin', component: AdminLoginComponent },
+  { path: 'admin-homepage', component: AdminHomepageComponent },
+  { path: 'add-doctor', component: DoctorAddComponent },
+  { path: 'admin-blog', component: AdminBlogComponent },
+  { path: 'umow-wizyte', component: UmowWizyteComponent },
+  { path: 'pages', component: PagesComponent },
+  { path: 'cennik', component: PriceListComponent },
+  { path: 'nasz-zespol', component: OurTeamComponent },
+  { path: 'kontakt', component: ContactComponent },
 ];
 
 @NgModule({

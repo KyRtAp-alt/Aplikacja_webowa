@@ -31,6 +31,8 @@ import { UmowWizyteComponent } from './umow-wizyte/umow-wizyte.component';
 import { FormsModule } from '@angular/forms';
 import { PagesComponent } from './pages/pages.component';
 import { PriceListComponent } from './price-list/price-list.component';
+import { OurTeamComponent } from './our-team/our-team.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -66,6 +68,8 @@ import { PriceListComponent } from './price-list/price-list.component';
     UmowWizyteComponent,
     PagesComponent,
     PriceListComponent,
+    OurTeamComponent,
+    ContactComponent,
 
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],

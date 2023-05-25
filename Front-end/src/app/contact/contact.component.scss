@@ -1,0 +1,46 @@
+.main-container {
+  margin-top: 60px;
+  background-color: #bbeefc;
+  width: 100%;
+  height: 260px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.left-container,
+.right-container {
+  margin-top: 100px;
+}
+
+.main-title {
+  font-size: 30px;
+  color: #22a6b3;
+}
+
+.img {
+  width: auto;
+  height: 180px;
+}
+
+.text {
+  margin-top: 20px;
+  line-height: 30px;
+}
+
+h2 {
+  font-family: sans-serif;
+}
+
+.map {
+  // width: 1200px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bbeefc;
+}
+
+.img-2 {
+  width: 1200px;
+  height: 400px;
+}
