@@ -33,9 +33,7 @@ import { PagesComponent } from './pages/pages.component';
 import { PriceListComponent } from './price-list/price-list.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ContactComponent } from './contact/contact.component';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -70,9 +68,8 @@ import { ContactComponent } from './contact/contact.component';
     PriceListComponent,
     OurTeamComponent,
     ContactComponent,
-
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

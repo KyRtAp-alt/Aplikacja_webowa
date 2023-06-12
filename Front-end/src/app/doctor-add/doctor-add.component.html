@@ -25,8 +25,19 @@
                 <button class="button-border">Dodaj</button>
             </div>
         </div>
-        <!-- <div class="border-but">
-            <button class="button-border">Dodaj</button>
-        </div> -->
     </form>
+</div>
+<div class="main-column">
+    <div class="main-box">
+        <button (click)="getDoctors()">Pobierz lekarzy</button>
+        <div *ngIf="doctors.length > 0">
+            <div class="">
+                <h2>Lista lekarzy:</h2>
+                <ul>
+                    <li *ngFor="let doctor of doctors" class="red-text">{{ doctor.imie }} {{ doctor.nazwisko }}
+                        {{doctor.kategoria}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
