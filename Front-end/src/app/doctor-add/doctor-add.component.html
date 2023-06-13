@@ -13,10 +13,6 @@
                 <label class="name">Nazwisko</label>
                 <input class="border" name="lastname" [(ngModel)]="lastname">
             </div>
-            <!-- <div class="form-group">
-                <label class="name">Kategoria</label>
-                <input class="border" name="category" [(ngModel)]="category" placeholder="Lekarz / Specialista">
-            </div> -->
             <div class="form-group">
                 <label class="name">Kategoria</label>
                 <select class="border" name="category" [(ngModel)]="category">
@@ -24,9 +20,17 @@
                     <option value="Specialista">Specialista</option>
                 </select>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label class="name">Specjalizacja</label>
                 <input class="border" name="specialization" [(ngModel)]="specialization">
+            </div> -->
+            <div class="form-group">
+                <label class="name">Specjalizacja</label>
+                <select class="border" name="specialization" [(ngModel)]="specialization">
+                    <option value="Lekarz medycyny rodzinnej">Lekarz medycyny rodzinnej</option>
+                    <option value="Lekarz pediatra">Lekarz pediatra</option>
+                    <option value="Medycyna pracy">Medycyna pracy</option>
+                </select>
             </div>
             <div class="border-but">
                 <button class="button-border" (click)="addDoctor()">Dodaj</button>
@@ -34,19 +38,25 @@
         </div>
     </form>
 </div>
+<div class="bar"></div>
+<div class="title-column-border">
+    <h2 class="title-column">Lista lekarzy / Specialistów</h2>
+</div>
 <div class="main-column">
     <div class="main-box-list">
-        <button class="doctor-button-list" (click)="getDoctors()">Wyświetl liste lekarzy</button>
-        <div class="main-doctor-lisst" *ngIf="doctors.length > 0">
+        <button class="doctor-button-list" (click)="getDoctors()">Wyświetl listę</button>
+        <div class="main-doctor-list" *ngIf="doctors.length > 0">
             <div class="">
                 <h2 class="doctor-list">Lista lekarzy:</h2>
                 <ul>
                     <li *ngFor="let doctor of doctors" class="list">
-                        <span class="">{{doctor.imie}}</span>
-                        <span class="">{{doctor.nazwisko}}</span>
-                        <span class="">{{doctor.kategoria}}</span>
-                        <span class="">{{doctor.specializacja}}</span>
+                        <span>{{doctor.imie}}</span>
+                        <span>{{doctor.nazwisko}}</span>
+                        <span>{{doctor.kategoria}}</span>
+                        <span>{{doctor.specializacja}}</span>
                         <button (click)="deleteDoctor(doctor._id)">Usuń</button>
+                        <button (click)="editDoctor(doctor)">Edytuj</button>
+                        <button *ngIf="selectedDoctorId === doctor._id" (click)="updateDoctor()">Zapisz</button>
                     </li>
                 </ul>
             </div>

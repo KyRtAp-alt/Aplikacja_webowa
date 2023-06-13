@@ -22,7 +22,7 @@ export class DoctorService {
     return this.http.delete(`http://localhost:3000/doctor/${id}`);
   }
 
-  // updateDoctor(id: string, doctor: any) {
-  //   return this.http.put(`${this.apiUrl}/api/doctor/${id}`, doctor);
-  // }
+  updateDoctor(id: string, doctor: any) {
+    return this.http.put(`http://localhost:3000/doctor/${id}`, doctor);
+  }
 }

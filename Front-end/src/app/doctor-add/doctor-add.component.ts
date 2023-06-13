@@ -12,8 +12,13 @@ export class DoctorAddComponent {
   lastname: string = '';
   category: string = '';
   specialization: string = '';
+  selectedDoctorId: string = '';
 
   constructor(private doctorService: DoctorService) {}
+
+  ngOnInit() {
+    this.getDoctors();
+  }
 
   getDoctors() {
     this.doctorService.getDoctors().subscribe(
@@ -55,5 +60,43 @@ export class DoctorAddComponent {
         console.error(error);
       }
     );
+  }
+
+  editDoctor(doctor: any) {
+    this.selectedDoctorId = doctor._id;
+    this.firstname = doctor.imie;
+    this.lastname = doctor.nazwisko;
+    this.category = doctor.kategoria;
+    this.specialization = doctor.specializacja;
+  }
+
+  updateDoctor() {
+    const updatedDoctor = {
+      imie: this.firstname,
+      nazwisko: this.lastname,
+      kategoria: this.category,
+      specializacja: this.specialization,
+    };
+
+    this.doctorService
+      .updateDoctor(this.selectedDoctorId, updatedDoctor)
+      .subscribe(
+        () => {
+          console.log('Zaktualizowano lekarza');
+          this.getDoctors();
+          this.clearForm();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
+
+  clearForm() {
+    this.selectedDoctorId = '';
+    this.firstname = '';
+    this.lastname = '';
+    this.category = '';
+    this.specialization = '';
   }
 }
