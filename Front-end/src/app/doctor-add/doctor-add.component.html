@@ -7,35 +7,39 @@
         <div class="group-box">
             <div class="form-group">
                 <label class="name">Imię</label>
-                <input class="border">
+                <input class="border" name="firstname" [(ngModel)]="firstname">
             </div>
             <div class="form-group">
                 <label class="name">Nazwisko</label>
-                <input class="border">
+                <input class="border" name="lastname" [(ngModel)]="lastname">
             </div>
             <div class="form-group">
                 <label class="name">Kategoria</label>
-                <input class="border" placeholder="Lekarz / Specialista">
+                <input class="border" name="category" [(ngModel)]="category" placeholder="Lekarz / Specialista">
             </div>
             <div class="form-group">
                 <label class="name">Specjalizacja</label>
-                <input class="border">
+                <input class="border" name="specialization" [(ngModel)]="specialization">
             </div>
             <div class="border-but">
-                <button class="button-border">Dodaj</button>
+                <button class="button-border" (click)="addDoctor()">Dodaj</button>
             </div>
         </div>
     </form>
 </div>
 <div class="main-column">
-    <div class="main-box">
-        <button (click)="getDoctors()">Pobierz lekarzy</button>
-        <div *ngIf="doctors.length > 0">
+    <div class="main-box-list">
+        <button class="doctor-button-list" (click)="getDoctors()">Wyświetl liste lekarzy</button>
+        <div class="main-doctor-lisst" *ngIf="doctors.length > 0">
             <div class="">
-                <h2>Lista lekarzy:</h2>
+                <h2 class="doctor-list">Lista lekarzy:</h2>
                 <ul>
-                    <li *ngFor="let doctor of doctors" class="red-text">{{ doctor.imie }} {{ doctor.nazwisko }}
-                        {{doctor.kategoria}}</li>
+                    <li *ngFor="let doctor of doctors" class="list">
+                        <span class="">{{doctor.imie}}</span>
+                        <span class="">{{doctor.nazwisko}}</span>
+                        <span class="">{{doctor.kategoria}}</span>
+                        <span class="">{{doctor.specializacja}}</span>
+                    </li>
                 </ul>
             </div>
         </div>
