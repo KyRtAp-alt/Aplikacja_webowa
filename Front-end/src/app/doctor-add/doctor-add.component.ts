@@ -44,4 +44,16 @@ export class DoctorAddComponent {
       }
     );
   }
+
+  deleteDoctor(id: string) {
+    this.doctorService.deleteDoctor(id).subscribe(
+      () => {
+        console.log('Usunięto lekarza');
+        this.getDoctors();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 }

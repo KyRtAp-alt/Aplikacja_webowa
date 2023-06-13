@@ -19,7 +19,7 @@ export class DoctorService {
   }
 
   deleteDoctor(id: string) {
-    return this.http.delete(`${this.apiUrl}/api/doctor/${id}`);
+    return this.http.delete(`http://localhost:3000/doctor/${id}`);
   }
 
   // updateDoctor(id: string, doctor: any) {

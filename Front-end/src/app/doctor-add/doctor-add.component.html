@@ -13,9 +13,16 @@
                 <label class="name">Nazwisko</label>
                 <input class="border" name="lastname" [(ngModel)]="lastname">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label class="name">Kategoria</label>
                 <input class="border" name="category" [(ngModel)]="category" placeholder="Lekarz / Specialista">
+            </div> -->
+            <div class="form-group">
+                <label class="name">Kategoria</label>
+                <select class="border" name="category" [(ngModel)]="category">
+                    <option value="Lekarz">Lekarz</option>
+                    <option value="Specialista">Specialista</option>
+                </select>
             </div>
             <div class="form-group">
                 <label class="name">Specjalizacja</label>
@@ -39,6 +46,7 @@
                         <span class="">{{doctor.nazwisko}}</span>
                         <span class="">{{doctor.kategoria}}</span>
                         <span class="">{{doctor.specializacja}}</span>
+                        <button (click)="deleteDoctor(doctor._id)">Usuń</button>
                     </li>
                 </ul>
             </div>
