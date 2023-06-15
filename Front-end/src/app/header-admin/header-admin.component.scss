@@ -1,72 +1,80 @@
-.nav-bar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
 }
 
 .container-left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-  
-  .container-right {
-    font-size: 18px;
-    color: #244160;
-    display: flex;
-    align-items: center;
-  }
-  
 
-.top-box, .botton-box{
-    height: 40px;
-    background-color: #22a6b3;
+.container-right {
+  font-size: 18px;
+  color: #244160;
+  display: flex;
+  align-items: center;
+}
+
+.top-box,
+.botton-box {
+  height: 40px;
+  background-color: #22a6b3;
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    margin-left: 10px;
-    margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 .main-name {
-    font-size: 32px;
-    color: #22a6b3;
-    border: 1px;
-    border-radius: 0px;
-    background-color: white;
-    font-family: sans-serif;
+  font-size: 32px;
+  color: #22a6b3;
+  border: 1px;
+  border-radius: 0px;
+  background-color: white;
+  font-family: sans-serif;
 }
 
-.zu {
-    font-size: 20px;
-    margin-right: 20px;
-    border: 1px;
-    border-radius: 0px;
-    background-color: white;
-  }
-  
-  .ce {
-    font-size: 20px;
-    margin-right: 20px;
-    border: 1px;
-    border-radius: 0px;
-    background-color: white;
-  }
-  
-  .nz {
-    font-size: 20px;
-    margin-right: 20px;
-    border: 1px;
-    border-radius: 0px;
-    background-color: white;
-  }
-  
-  .k {
-    font-size: 20px;
-    margin-right: 20px;
-    border: 1px;
-    border-radius: 0px;
-    background-color: white;
-  }
+.zu,
+.ce {
+  font-size: 20px;
+  margin-right: 20px;
+  border: 1px;
+  border-radius: 0px;
+  background-color: white;
+  transform: scale(1);
+  transition: transform 0.3s;
+}
+
+.zu:hover,
+.ce:hover {
+  transform: scale(1.2);
+}
+
+// .ce {
+//   font-size: 20px;
+//   margin-right: 20px;
+//   border: 1px;
+//   border-radius: 0px;
+//   background-color: white;
+// }
+
+// .nz {
+//   font-size: 20px;
+//   margin-right: 20px;
+//   border: 1px;
+//   border-radius: 0px;
+//   background-color: white;
+// }
+
+// .k {
+//   font-size: 20px;
+//   margin-right: 20px;
+//   border: 1px;
+//   border-radius: 0px;
+//   background-color: white;
+// }
