@@ -2,7 +2,7 @@
 <div class="main-box">
     <form>
         <div class="title-box">
-            <h2 class="add-doctor">Dodawanie Lekarza</h2>
+            <h2 class="add-doctor">{{ editingDoctor ? 'Edycja Lekarza' : 'Dodawanie Lekarza' }}</h2>
         </div>
         <div class="group-box">
             <div class="form-group">
@@ -20,10 +20,6 @@
                     <option value="Specialista">Specialista</option>
                 </select>
             </div>
-            <!-- <div class="form-group">
-                <label class="name">Specjalizacja</label>
-                <input class="border" name="specialization" [(ngModel)]="specialization">
-            </div> -->
             <div class="form-group">
                 <label class="name">Specjalizacja</label>
                 <select class="border" name="specialization" [(ngModel)]="specialization">
@@ -33,33 +29,41 @@
                 </select>
             </div>
             <div class="border-but">
-                <button class="button-border" (click)="addDoctor()">Dodaj</button>
+                <button class="button-border"
+                    (click)="(!isEmptyFields()) && (editingDoctor ? updateDoctor() : addDoctor())">
+                    {{ editingDoctor ? 'Zapisz' : 'Dodaj' }}
+                </button>
             </div>
         </div>
     </form>
 </div>
-<div class="bar"></div>
+<!-- End 1 -->
+<!-- <div class="bar"></div> -->
+<!-- 2 -->
 <div class="title-column-border">
-    <h2 class="title-column">Lista lekarzy / Specialistów</h2>
+    <h2 class="title-column">Lista Lekarzy / Specialistów</h2>
 </div>
+
 <div class="main-column">
     <div class="main-box-list">
-        <button class="doctor-button-list" (click)="getDoctors()">Wyświetl listę</button>
+        <button class="doctor-button-list" (click)="getDoctors()">
+            <p class="title-doctor-button-list">Odśwież listę</p>
+        </button>
         <div class="main-doctor-list" *ngIf="doctors.length > 0">
-            <div class="">
-                <h2 class="doctor-list">Lista lekarzy:</h2>
-                <ul>
+            <div class="main-list ">
+                <!-- <h2 class="doctor-list">Lista lekarzy:</h2> -->
+                <ul class="q">
                     <li *ngFor="let doctor of doctors" class="list">
-                        <span>{{doctor.imie}}</span>
-                        <span>{{doctor.nazwisko}}</span>
-                        <span>{{doctor.kategoria}}</span>
-                        <span>{{doctor.specializacja}}</span>
-                        <button (click)="deleteDoctor(doctor._id)">Usuń</button>
-                        <button (click)="editDoctor(doctor)">Edytuj</button>
-                        <button *ngIf="selectedDoctorId === doctor._id" (click)="updateDoctor()">Zapisz</button>
+                        <span class="firstname">{{doctor.imie}}</span>
+                        <span class="lastname">{{doctor.nazwisko}}</span>
+                        <span class="category">{{doctor.kategoria}}</span>
+                        <span class="specialization">{{doctor.specializacja}}</span>
+                        <button class="docotr-delate" (click)="deleteDoctor(doctor._id)">Usuń</button>
+                        <button class="doctor-edit" (click)="editDoctor(doctor)">Edytuj</button>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
+<!-- End 2 -->

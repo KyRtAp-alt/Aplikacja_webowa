@@ -1,5 +1,5 @@
 .title-box {
-  margin-top: 80px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,9 +75,10 @@
   font-family: sans-serif;
   background-color: #3a5470;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: background-color 0.3s ease;
-  &.active {
-    background-color: #ccc;
+  transition: transform 0.2s;
+
+  &:active {
+    transform: scale(0.95);
   }
 }
 
@@ -86,7 +87,7 @@
   width: 100%;
   height: 30px;
   background-color: #22a6b3;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 //////////////////////////////////////////////////////////
 
@@ -97,14 +98,14 @@
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 350px;
+  width: 400px;
   background-color: #01a3a4;
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .title-column-border {
-  margin-top: 80px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,9 +127,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
+  width: auto;
   height: 50px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #3a5470;
+  background-color: #3a5470;
   margin-bottom: 30px;
+  transition: transform 0.2s;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.title-doctor-button-list {
+  color: white;
+  font-size: 20px;
 }
 
 .doctor-list {
@@ -156,4 +171,39 @@
   height: auto;
   border-radius: 20px;
   box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.25);
+  margin-bottom: 60px;
+}
+
+.firstname,
+.lastname,
+.category,
+.specialization {
+  // display: flex;
+  // align-items: center;
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.main-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.q {
+  display: grid;
+}
+
+.docotr-delate,
+.doctor-edit {
+  background-color: #3a5470;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid #3a5470;
+  font-size: 16px;
+  transition: transform 0.2s;
+
+  &:active {
+    transform: scale(0.95);
+  }
 }

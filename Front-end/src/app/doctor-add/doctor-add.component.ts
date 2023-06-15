@@ -13,6 +13,7 @@ export class DoctorAddComponent {
   category: string = '';
   specialization: string = '';
   selectedDoctorId: string = '';
+  editingDoctor: boolean = false;
 
   constructor(private doctorService: DoctorService) {}
 
@@ -43,6 +44,7 @@ export class DoctorAddComponent {
     this.doctorService.addDoctor(newDoctor).subscribe(
       () => {
         console.log('Dodano lekarza');
+        this.clearForm();
       },
       (error) => {
         console.error(error);
@@ -68,6 +70,7 @@ export class DoctorAddComponent {
     this.lastname = doctor.nazwisko;
     this.category = doctor.kategoria;
     this.specialization = doctor.specializacja;
+    this.editingDoctor = true;
   }
 
   updateDoctor() {
@@ -85,6 +88,7 @@ export class DoctorAddComponent {
           console.log('Zaktualizowano lekarza');
           this.getDoctors();
           this.clearForm();
+          this.editingDoctor = false;
         },
         (error) => {
           console.error(error);
@@ -98,5 +102,14 @@ export class DoctorAddComponent {
     this.lastname = '';
     this.category = '';
     this.specialization = '';
+  }
+
+  isEmptyFields(): boolean {
+    return (
+      !this.firstname ||
+      !this.lastname ||
+      !this.category ||
+      !this.specialization
+    );
   }
 }
