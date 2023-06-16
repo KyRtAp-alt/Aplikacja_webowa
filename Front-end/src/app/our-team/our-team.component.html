@@ -2,11 +2,30 @@
 <app-navbar></app-navbar>
 <app-img-navbar-other></app-img-navbar-other>
 <div class="main-box">
-    <div class="box-1">
-
-    </div>
-    <div class="box-1">
-
+    <div class="box-1" *ngFor="let doctor of doctors">
+        <div class="main-container">
+            <div class="left-container">
+                <img class="img" src="../../assets/doctor-g2cd220903_1920.png">
+            </div>
+            <div *ngIf="doctors.length > 0" class="right-container">
+                <span class="firstname">{{doctor.imie}}</span>
+                <span class="lastname">{{doctor.nazwisko}}</span>
+            </div>
+        </div>
+        <div class="content-container">
+            <span class="content">{{doctor.opis}}</span>
+        </div>
     </div>
 </div>
+
 <app-footer></app-footer>
+
+
+
+<!-- <div class="box-1">
+        <div *ngIf="doctors.length >0" class="list">
+            <span class="firstname">{{doctors[1].imie}}</span>
+            <span class="lastname">{{doctors[1].nazwisko}}</span>
+            <span class="content">{{doctors[1].opis}}</span>
+        </div>
+    </div> -->

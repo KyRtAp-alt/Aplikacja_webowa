@@ -28,6 +28,10 @@
                     <option value="Medycyna pracy">Medycyna pracy</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label class="name">Opis</label>
+                <textarea class="name" name="content" placeholder="Enter content" [(ngModel)]="content"></textarea>
+            </div>
             <div class="border-but">
                 <button class="button-border"
                     (click)="(!isEmptyFields()) && (editingDoctor ? updateDoctor() : addDoctor())">
@@ -58,6 +62,7 @@
                         <span class="lastname">{{doctor.nazwisko}}</span>
                         <span class="category">{{doctor.kategoria}}</span>
                         <span class="specialization">{{doctor.specializacja}}</span>
+                        <span class="content">{{doctor.opis}}</span>
                         <button class="docotr-delate" (click)="deleteDoctor(doctor._id)">Usuń</button>
                         <button class="doctor-edit" (click)="editDoctor(doctor)">Edytuj</button>
                     </li>
