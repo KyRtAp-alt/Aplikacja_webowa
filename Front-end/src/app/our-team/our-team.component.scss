@@ -14,13 +14,8 @@
 }
 
 .category {
-  font-size: 18px;
-  color: black;
-}
-
-.category-box {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  color: white;
 }
 
 .img {
@@ -48,7 +43,9 @@
 }
 
 .third-container {
+  margin-top: 15px;
   margin-left: 30px;
+  margin-right: 30px;
 }
 
 .main-title {
@@ -72,4 +69,8 @@ span {
 
 .content {
   font-family: sans-serif;
+}
+
+p {
+  margin-bottom: 1px;
 }
