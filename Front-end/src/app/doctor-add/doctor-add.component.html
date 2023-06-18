@@ -32,8 +32,11 @@
                     </div>
                     <div class="form-group">
                         <label class="name">Opis</label>
-                        <textarea class="name-2" name="content" placeholder="Dodaj opis"
-                            [(ngModel)]="content"></textarea>
+                        <textarea class="name-2" name="content" placeholder="Dodaj opis" [(ngModel)]="content"
+                            maxlength="800"></textarea>
+                        <div class="character-count">
+                            Pozostało znaków: {{ 800 - content.length }}
+                        </div>
                     </div>
                     <div class="border-but">
                         <button class="button-border"
@@ -45,31 +48,34 @@
             </form>
         </div>
     </div>
-    <div class="right-container">
-        <!-- <div class="title-column-border">
-            <h2 class="title-column">Lista Lekarzy / Specialistów</h2>
-        </div> -->
-        <div class="main-column">
-            <div class="main-box-list">
-                <button class="doctor-button-list" (click)="getDoctors()">
-                    <p class="title-doctor-button-list">Odśwież listę</p>
-                </button>
-                <div class="main-doctor-list" *ngIf="doctors.length > 0">
-                    <div class="main-list">
-                        <ul class="q">
-                            <li *ngFor="let doctor of doctors" class="list">
-                                <span class="firstname">{{doctor.imie}}</span>
-                                <span class="lastname">{{doctor.nazwisko}}</span>
-                                <span class="category">{{doctor.kategoria}}</span>
-                                <span class="specialization">{{doctor.specializacja}}</span>
-                                <span class="content">{{doctor.opis}}</span>
-                                <button class="doctor-delete" (click)="deleteDoctor(doctor._id)">Usuń</button>
-                                <button class="doctor-edit" (click)="editDoctor(doctor)">Edytuj</button>
-                            </li>
-                        </ul>
-                    </div>
+</div>
+<div class="right-container">
+    <div class="title-column-border">
+        <h2 class="title-column">Lista Lekarzy / Specialistów</h2>
+    </div>
+    <div class="main-column">
+        <div class="main-box-list">
+            <button class="doctor-button-list" (click)="getDoctors()">
+                <p class="title-doctor-button-list">Odśwież listę</p>
+            </button>
+            <div class="main-doctor-list" *ngIf="doctors.length > 0">
+                <div class="main-list">
+                    <ul class="q">
+                        <li *ngFor="let doctor of doctors" class="list">
+                            <span class="firstname">{{doctor.imie}}</span>
+                            <span class="lastname">{{doctor.nazwisko}}</span>
+                            <span class="category">{{doctor.kategoria}}</span>
+                            <span class="specialization">{{doctor.specializacja}}</span>
+                            <span class="content">{{doctor.opis}}</span>
+                            <button class="doctor-edit" (click)="editDoctor(doctor)">Edytuj</button>
+                            <button class="doctor-delete" (click)="confirmDelete(doctor._id)">Usuń</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="scroll-to-top" (click)="scrollToTop()">
+    <i class="fas fa-chevron-up">&#8593; </i>
 </div>

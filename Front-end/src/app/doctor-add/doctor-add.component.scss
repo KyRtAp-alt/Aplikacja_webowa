@@ -76,8 +76,8 @@
   font-family: sans-serif;
   background-color: #3a5470;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s;
   margin-bottom: 15px;
+  transition: transform 0.2s;
 
   &:active {
     transform: scale(0.95);
@@ -86,7 +86,7 @@
 
 .name-2 {
   width: 300px;
-  height: 100px;
+  height: 300px;
   border-radius: 10px;
   border: 0px;
 }
@@ -101,33 +101,57 @@
 //////////////////////////////////////////////////////////
 
 .right-container {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  // height: 100vh;
 }
 
 .title-column-border {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 60px;
 }
 
 .title-column {
   font-size: 24px;
   margin: 0;
+  color: white;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 350px;
+  background-color: #01a3a4;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .main-box-list {
-  margin-top: 20px;
+  background-color: #bbeefc;
+  width: 1400px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 30px;
 }
 
 .doctor-button-list {
-  background-color: #007bff;
+  background-color: #01a3a4;
   color: #fff;
   border: none;
   padding: 10px 20px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
   cursor: pointer;
+  border-radius: 20px;
+  transition: transform 0.2s;
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .title-doctor-button-list {
@@ -135,7 +159,6 @@
 }
 
 .main-doctor-list {
-  border: 1px solid #ccc;
   padding: 10px;
 }
 
@@ -147,9 +170,9 @@
 
 .list {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 3px solid #3a5470;
   padding: 10px 0;
 }
 
@@ -161,16 +184,57 @@
   margin-right: 10px;
 }
 
-.doctor-delate,
-.doctor-edit {
-  background-color: #dc3545;
+.content {
+  height: 300px;
+  width: 400px;
+}
+
+.doctor-edit,
+.doctor-delete {
   color: #fff;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  justify-content: center;
+  transition: transform 0.2s;
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 .doctor-edit {
-  background-color: #ffc107;
+  background-color: #3a5470;
   margin-right: 5px;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.doctor-delete {
+  background-color: red;
+  margin-right: 5px;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: #01a3a4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.scroll-to-top i {
+  color: #fff;
+  font-size: 20px;
 }

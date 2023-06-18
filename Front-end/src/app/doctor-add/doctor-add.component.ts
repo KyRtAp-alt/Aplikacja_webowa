@@ -54,6 +54,16 @@ export class DoctorAddComponent {
     );
   }
 
+  confirmDelete(doctorId: string) {
+    const confirmation = confirm(
+      'Czy na pewno chcesz usunąć tego lekarza, specialistę?'
+    );
+    if (confirmation) {
+      this.deleteDoctor(doctorId);
+      alert('Usunięto lekarza, specialistę');
+    }
+  }
+
   deleteDoctor(id: string) {
     this.doctorService.deleteDoctor(id).subscribe(
       () => {
@@ -117,5 +127,9 @@ export class DoctorAddComponent {
       !this.specialization ||
       !this.content
     );
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
