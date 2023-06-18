@@ -1,31 +1,25 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 <app-img-navbar-other></app-img-navbar-other>
+<div class="main-title">
+    <h2 class="title">Nasz zespół</h2>
+</div>
 <div class="main-box">
-    <div class="box-1" *ngFor="let doctor of doctors">
-        <div class="main-container">
-            <div class="left-container">
-                <img class="img" src="../../assets/doctor-g2cd220903_1920.png">
-            </div>
-            <div *ngIf="doctors.length > 0" class="right-container">
-                <span class="firstname">{{doctor.imie}}</span>
-                <span class="lastname">{{doctor.nazwisko}}</span>
+    <div class="box" *ngFor="let doctor of doctors">
+        <div class="first-container">
+            <img class="img" src="../../assets/img-doctorr/LEKARZ.jpg">
+        </div>
+        <div class="second-container">
+            <span class="firstname">{{doctor.imie}}</span>
+            <span class="lastname">{{doctor.nazwisko}}</span>
+            <div class="category-box">
+                <span class="category">Kategoria</span>
+                <span class="category">{{doctor.kategoria}}</span>
             </div>
         </div>
-        <div class="content-container">
-            <span class="content">{{doctor.opis}}</span>
+        <div class="third-container">
+            <p class="content">{{doctor.opis}}</p>
         </div>
     </div>
 </div>
-
 <app-footer></app-footer>
-
-
-
-<!-- <div class="box-1">
-        <div *ngIf="doctors.length >0" class="list">
-            <span class="firstname">{{doctors[1].imie}}</span>
-            <span class="lastname">{{doctors[1].nazwisko}}</span>
-            <span class="content">{{doctors[1].opis}}</span>
-        </div>
-    </div> -->

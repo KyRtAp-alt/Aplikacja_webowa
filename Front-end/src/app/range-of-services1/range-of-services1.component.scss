@@ -1,84 +1,85 @@
-.bar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 60px;
-    height: 50px;
-    background-color: #bbeefc;
-    color: #22a6b3;
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  height: 50px;
+  background-color: #bbeefc;
+  color: #22a6b3;
 }
 
-.name-bar{
-    font-size: 32px;
+.name-bar {
+  font-size: 32px;
+  font-family: sans-serif;
 }
 
-.img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 33px;
-    margin-bottom: 10px;
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 33px;
+  margin-bottom: 10px;
 }
 
-.img2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 33px;
-    margin-bottom: 10px;
+.img2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 33px;
+  margin-bottom: 10px;
 }
 
-.main-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 40px;
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 40px;
 }
 
 .image-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-  
+
 .text-wrapper {
-    text-align: center;
+  text-align: center;
 }
 
 .left-left,
 .left,
 .right,
-.right-right{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    justify-content: center;
-    width: 250px;
-    height: 110px;
-    background-color: #bbeefc;
+.right-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  width: 250px;
+  height: 110px;
+  background-color: #bbeefc;
 }
 
-.button-wrapper{
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.button-wrapper {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .border {
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .next {
-    font-size: 20px;
-    color: black;
-    border: 25px #bbeefc solid;
-    border-radius: 0px;
-    background-color: #bbeefc;
-  }
+  font-size: 20px;
+  color: black;
+  border: 25px #bbeefc solid;
+  border-radius: 0px;
+  background-color: #bbeefc;
+}

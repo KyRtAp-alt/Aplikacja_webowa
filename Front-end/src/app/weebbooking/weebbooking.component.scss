@@ -3,7 +3,11 @@
   justify-content: space-between;
   margin-top: 60px;
   background-color: #bbeefc;
-  height: 600px;
+  height: 500px;
+}
+
+.container-left {
+  // margin-left: 80px;
 }
 
 .container-right {
@@ -13,28 +17,28 @@
 .main_title {
   color: #00bfa8;
   display: flex;
-  // justify-content: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .title {
-  font-size: 30px;
+  font-size: 26px;
   margin-left: 50px;
   margin-top: 50px;
-  // font-weight: bold;
 }
 
 .img {
   display: flex;
-  width: 450px;
-  height: 450px;
+  width: 300px;
+  height: 300px;
+  margin-top: 30px;
+  margin-right: 30px;
 }
 
 .text_1 {
-  font-size: 12px;
-  padding: 15px 50px 0;
+  font-size: 14px;
+  padding: 0px 50px 0;
   box-sizing: content-box;
-  width: 650px;
+  width: 850px;
   font-family: sans-serif;
 }
 
@@ -42,19 +46,23 @@
   padding: 30px 50px 0;
   font-size: 16px;
   box-sizing: content-box;
-  width: 400px;
   line-height: 20px;
   font-family: sans-serif;
 }
 
+h2 {
+  margin-bottom: 15px;
+}
+
 .button {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  background-color: #bbeefc;
+  height: 80px;
 }
 
 .button_border {
-  margin-top: 50px;
   padding: 0 50px;
   font-size: 24px;
   color: white;
