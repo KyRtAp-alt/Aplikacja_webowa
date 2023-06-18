@@ -1,18 +1,19 @@
+.main-container {
+  display: flex;
+  justify-content: space-around;
+}
+
 .title-box {
-  margin-top: 40px;
+  margin-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
-  // background-color: #bbeefc;
-  // height: 80px;
-  // border-radius: 50px;
-  // box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.25);
+  margin-bottom: 15px;
 }
 
 .add-doctor {
   color: white;
-  font-size: 30px;
+  font-size: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,23 +32,23 @@
 }
 
 .name {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 5px;
   font-family: sans-serif;
+  margin-left: 10px;
 }
 
 .border {
   border: 1px #bbeefc solid;
   border-radius: 10px;
   height: 30px;
-  width: 200px;
+  width: 300px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .group-box {
   background-color: #bbeefc;
-  width: 450px;
-  height: 510px;
+  width: 350px;
   border-radius: 20px;
   box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.25);
 }
@@ -76,10 +77,18 @@
   background-color: #3a5470;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s;
+  margin-bottom: 15px;
 
   &:active {
     transform: scale(0.95);
   }
+}
+
+.name-2 {
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  border: 0px;
 }
 
 //////////////////////////////////////////////////////////
@@ -91,120 +100,77 @@
 }
 //////////////////////////////////////////////////////////
 
-.title-column {
-  color: white;
-  font-size: 30px;
+.right-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 400px;
-  background-color: #01a3a4;
-  border-radius: 20px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-top: 100px;
+  height: 100vh;
 }
 
 .title-column-border {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.title-column {
+  font-size: 24px;
+  margin: 0;
 }
 
 .main-box-list {
-  display: grid;
-}
-
-.main-column {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 20px;
 }
 
 .doctor-button-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: 50px;
-  border-radius: 20px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: 1px solid #3a5470;
-  background-color: #3a5470;
-  margin-bottom: 30px;
-  transition: transform 0.2s;
-
-  &:active {
-    transform: scale(0.95);
-  }
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .title-doctor-button-list {
-  color: white;
-  font-size: 20px;
+  margin: 0;
 }
 
-.doctor-list {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-  font-size: 20px;
+.main-doctor-list {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.main-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .list {
   display: flex;
-  justify-content: space-between;
-  font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  gap: 10px;
-}
-
-.main-doctor-list {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #bbeefc;
-  width: 800px;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0px 18px 18px rgba(0, 0, 0, 0.25);
-  margin-bottom: 60px;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
 }
 
 .firstname,
 .lastname,
 .category,
-.specialization {
-  // display: flex;
-  // align-items: center;
-  margin-right: 20px;
-  font-size: 18px;
+.specialization,
+.content {
+  margin-right: 10px;
 }
 
-.main-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.q {
-  display: grid;
-}
-
-.docotr-delate,
+.doctor-delate,
 .doctor-edit {
-  background-color: #3a5470;
-  color: white;
-  border-radius: 10px;
-  border: 1px solid #3a5470;
-  font-size: 16px;
-  transition: transform 0.2s;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 
-  &:active {
-    transform: scale(0.95);
-  }
+.doctor-edit {
+  background-color: #ffc107;
+  margin-right: 5px;
 }

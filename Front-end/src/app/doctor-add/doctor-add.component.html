@@ -1,74 +1,75 @@
 <app-header-admin></app-header-admin>
-<div class="main-box">
-    <form>
-        <div class="title-box">
-            <h2 class="add-doctor">{{ editingDoctor ? 'Edycja Lekarza' : 'Dodawanie Lekarza' }}</h2>
+<div class="main-container">
+    <div class="left-container">
+        <div class="main-box">
+            <form>
+                <div class="title-box">
+                    <h2 class="add-doctor">{{ editingDoctor ? 'Edycja Lekarza' : 'Dodawanie Lekarza' }}</h2>
+                </div>
+                <div class="group-box">
+                    <div class="form-group">
+                        <label class="name">Imię</label>
+                        <input class="border" name="firstname" [(ngModel)]="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Nazwisko</label>
+                        <input class="border" name="lastname" [(ngModel)]="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Kategoria</label>
+                        <select class="border" name="category" [(ngModel)]="category">
+                            <option value="Lekarz">Lekarz</option>
+                            <option value="Specialista">Specialista</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Specjalizacja</label>
+                        <select class="border" name="specialization" [(ngModel)]="specialization">
+                            <option value="Lekarz medycyny rodzinnej">Lekarz medycyny rodzinnej</option>
+                            <option value="Lekarz pediatra">Lekarz pediatra</option>
+                            <option value="Medycyna pracy">Medycyna pracy</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Opis</label>
+                        <textarea class="name-2" name="content" placeholder="Dodaj opis"
+                            [(ngModel)]="content"></textarea>
+                    </div>
+                    <div class="border-but">
+                        <button class="button-border"
+                            (click)="(!isEmptyFields()) && (editingDoctor ? updateDoctor() : addDoctor())">
+                            {{ editingDoctor ? 'Zapisz' : 'Dodaj' }}
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="group-box">
-            <div class="form-group">
-                <label class="name">Imię</label>
-                <input class="border" name="firstname" [(ngModel)]="firstname">
-            </div>
-            <div class="form-group">
-                <label class="name">Nazwisko</label>
-                <input class="border" name="lastname" [(ngModel)]="lastname">
-            </div>
-            <div class="form-group">
-                <label class="name">Kategoria</label>
-                <select class="border" name="category" [(ngModel)]="category">
-                    <option value="Lekarz">Lekarz</option>
-                    <option value="Specialista">Specialista</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="name">Specjalizacja</label>
-                <select class="border" name="specialization" [(ngModel)]="specialization">
-                    <option value="Lekarz medycyny rodzinnej">Lekarz medycyny rodzinnej</option>
-                    <option value="Lekarz pediatra">Lekarz pediatra</option>
-                    <option value="Medycyna pracy">Medycyna pracy</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="name">Opis</label>
-                <textarea class="name" name="content" placeholder="Enter content" [(ngModel)]="content"></textarea>
-            </div>
-            <div class="border-but">
-                <button class="button-border"
-                    (click)="(!isEmptyFields()) && (editingDoctor ? updateDoctor() : addDoctor())">
-                    {{ editingDoctor ? 'Zapisz' : 'Dodaj' }}
+    </div>
+    <div class="right-container">
+        <!-- <div class="title-column-border">
+            <h2 class="title-column">Lista Lekarzy / Specialistów</h2>
+        </div> -->
+        <div class="main-column">
+            <div class="main-box-list">
+                <button class="doctor-button-list" (click)="getDoctors()">
+                    <p class="title-doctor-button-list">Odśwież listę</p>
                 </button>
-            </div>
-        </div>
-    </form>
-</div>
-<!-- End 1 -->
-<!-- <div class="bar"></div> -->
-<!-- 2 -->
-<div class="title-column-border">
-    <h2 class="title-column">Lista Lekarzy / Specialistów</h2>
-</div>
-
-<div class="main-column">
-    <div class="main-box-list">
-        <button class="doctor-button-list" (click)="getDoctors()">
-            <p class="title-doctor-button-list">Odśwież listę</p>
-        </button>
-        <div class="main-doctor-list" *ngIf="doctors.length > 0">
-            <div class="main-list ">
-                <!-- <h2 class="doctor-list">Lista lekarzy:</h2> -->
-                <ul class="q">
-                    <li *ngFor="let doctor of doctors" class="list">
-                        <span class="firstname">{{doctor.imie}}</span>
-                        <span class="lastname">{{doctor.nazwisko}}</span>
-                        <span class="category">{{doctor.kategoria}}</span>
-                        <span class="specialization">{{doctor.specializacja}}</span>
-                        <span class="content">{{doctor.opis}}</span>
-                        <button class="docotr-delate" (click)="deleteDoctor(doctor._id)">Usuń</button>
-                        <button class="doctor-edit" (click)="editDoctor(doctor)">Edytuj</button>
-                    </li>
-                </ul>
+                <div class="main-doctor-list" *ngIf="doctors.length > 0">
+                    <div class="main-list">
+                        <ul class="q">
+                            <li *ngFor="let doctor of doctors" class="list">
+                                <span class="firstname">{{doctor.imie}}</span>
+                                <span class="lastname">{{doctor.nazwisko}}</span>
+                                <span class="category">{{doctor.kategoria}}</span>
+                                <span class="specialization">{{doctor.specializacja}}</span>
+                                <span class="content">{{doctor.opis}}</span>
+                                <button class="doctor-delete" (click)="deleteDoctor(doctor._id)">Usuń</button>
+                                <button class="doctor-edit" (click)="editDoctor(doctor)">Edytuj</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- End 2 -->
