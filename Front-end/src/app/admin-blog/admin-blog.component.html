@@ -30,9 +30,6 @@
         </div>
     </div>
 </div>
-
-<!-- 312312 -->
-
 <div class="right-container">
     <div class="title-column-border">
         <h2 class="title-column">BLOG</h2>
@@ -47,7 +44,7 @@
                     <ul class="q">
                         <li *ngFor="let blog of blogs" class="list">
                             <span class="firstname">{{blog.tytul}}</span>
-                            <span class="contents">{{blog.tresc}}</span>
+                            <span class="content">{{blog.tresc}}</span>
                             <button class="doctor-edit" (click)="editBlog(blog)">Edytuj</button>
                             <button class="doctor-delete" (click)="confirmDelete(blog._id)">Usuń</button>
                         </li>

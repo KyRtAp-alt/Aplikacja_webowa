@@ -12,7 +12,6 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { ImgNavbarOtherComponent } from './img-navbar-other/img-navbar-other.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { Blog3Component } from './blog3/blog3.component';
 import { SubpageBlog1Component } from './subpage-blog1/subpage-blog1.component';
 import { SubpageBlog2Component } from './subpage-blog2/subpage-blog2.component';
 import { SubpageBlog3Component } from './subpage-blog3/subpage-blog3.component';
@@ -49,7 +48,6 @@ import { BlogListComponent } from './blog-list/blog-list.component';
     ImgNavbarOtherComponent,
     HeaderComponent,
     NavbarComponent,
-    Blog3Component,
     SubpageBlog1Component,
     SubpageBlog2Component,
     SubpageBlog3Component,

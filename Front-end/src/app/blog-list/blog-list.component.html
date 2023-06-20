@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="button">
-        <button class="button_border"
-            routerLink="/chrapanie–uciazliwy-problem-nie-tylko-dla-chorego">Czytajwięcej</button>
+        <button class="button_border" [routerLink]="['/blog-test']" [queryParams]="{id: blog.id}"
+            (click)="selectedBlog = blog">Czytaj więcej</button>
     </div>
 </div>

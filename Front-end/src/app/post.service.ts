@@ -1,7 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PostService {}
+export class BlogService {
+  private blogData: any[] = [];
+
+  constructor() {}
+
+  setBlogData(blog: any) {
+    this.blogData.push(blog);
+  }
+
+  getBlogData() {
+    return this.blogData;
+  }
+}

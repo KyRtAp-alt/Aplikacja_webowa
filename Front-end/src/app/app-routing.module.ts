@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: '', component: MainpageComponent },
   { path: 'mainpage', component: MainpageComponent },
   {
-    path: 'chrapanie–uciazliwy-problem-nie-tylko-dla-chorego',
+    path: 'blog-test/:id',
     component: SubpageBlog1Component,
   },
   {

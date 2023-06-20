@@ -12,6 +12,7 @@ export class BlogListComponent {
   content: string = '';
   currentBlogIndex: number = 0;
   currentBlog: any;
+  selectedBlog: any;
 
   constructor(private blogService: BlogService) {}
 
