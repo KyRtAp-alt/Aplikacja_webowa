@@ -1,1 +1,18 @@
 <app-header-admin></app-header-admin>
+<div class="main-column">
+    <div class="main-box-list">
+        <button class="doctor-butto-list" (click)="getBlogs()">
+            <p class="title-doctor-button-list">Odśwież listę</p>
+        </button>
+        <div class="main-doctor-list" *ngIf="blogs.length > 0">
+            <div class="main-list">
+                <ul class="q">
+                    <li *ngFor="let blog of blogs" class="list">
+                        <span class="">{{blog.title}}</span>
+                        <span class="">{{blog.contents}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

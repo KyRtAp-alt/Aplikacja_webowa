@@ -11,10 +11,10 @@ export class DoctorAddComponent {
   firstname: string = '';
   lastname: string = '';
   category: string = '';
+  content: string = '';
   specialization: string = '';
   selectedDoctorId: string = '';
   editingDoctor: boolean = false;
-  content: string = '';
 
   constructor(private doctorService: DoctorService) {}
 
