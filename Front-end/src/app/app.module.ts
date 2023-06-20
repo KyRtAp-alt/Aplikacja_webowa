@@ -34,6 +34,7 @@ import { PriceListComponent } from './price-list/price-list.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { HttpClientModule } from '@angular/common/http';
     PriceListComponent,
     OurTeamComponent,
     ContactComponent,
+    BlogListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

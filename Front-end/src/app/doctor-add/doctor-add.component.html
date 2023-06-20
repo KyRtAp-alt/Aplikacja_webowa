@@ -4,7 +4,7 @@
         <div class="main-box">
             <form>
                 <div class="title-box">
-                    <h2 class="add-doctor">{{ editingDoctor ? 'Edycja Lekarza' : 'Dodawanie Lekarza' }}</h2>
+                    <h2 class="add-doctor">{{ editingDoctor ? 'Edycja Pracownika' : 'Dodawanie Pracownika' }}</h2>
                 </div>
                 <div class="group-box">
                     <div class="form-group">
@@ -67,7 +67,8 @@
                             <span class="category">{{doctor.kategoria}}</span>
                             <span class="specialization">{{doctor.specializacja}}</span>
                             <span class="content">{{doctor.opis}}</span>
-                            <button class="doctor-edit" (click)="editDoctor(doctor)">Edytuj</button>
+                            <button class="doctor-edit" (click)="editDoctor(doctor)"
+                                (click)="scrollToTop()">Edytuj</button>
                             <button class="doctor-delete" (click)="confirmDelete(doctor._id)">Usuń</button>
                         </li>
                     </ul>

@@ -1,17 +1,58 @@
 <app-header-admin></app-header-admin>
-<div class="main-column">
-    <div class="main-box-list">
-        <button class="doctor-butto-list" (click)="getBlogs()">
-            <p class="title-doctor-button-list">Odśwież listę</p>
-        </button>
-        <div class="main-doctor-list" *ngIf="blogs.length > 0">
-            <div class="main-list">
-                <ul class="q">
-                    <li *ngFor="let blog of blogs" class="list">
-                        <span class="">{{blog.title}}</span>
-                        <span class="">{{blog.contents}}</span>
-                    </li>
-                </ul>
+<div class="main-container">
+    <div class="left-container">
+        <div class="main-box">
+            <form>
+                <div class="title-box">
+                    <h2 class="add-doctor">{{ editingBlog ? 'Edycja Blog' : 'Dodawanie Bloga' }}</h2>
+                </div>
+                <div class="group-box">
+                    <div class="form-group">
+                        <label class="name">Tytuł</label>
+                        <input class="border" name="firstname" [(ngModel)]="title">
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Opis</label>
+                        <textarea class="name-2" name="contents" placeholder="Dodaj opis" [(ngModel)]="content"
+                            maxlength="800"></textarea>
+                        <div class="character-count">
+                            Pozostało znaków: {{ 800 - content.length }}
+                        </div>
+                    </div>
+                    <div class="border-but">
+                        <button class="button-border"
+                            (click)="(!isEmptyFields()) && (editingBlog ? updateBlog() : addBlog())">
+                            {{ editingBlog ? 'Zapisz' : 'Dodaj' }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 312312 -->
+
+<div class="right-container">
+    <div class="title-column-border">
+        <h2 class="title-column">BLOG</h2>
+    </div>
+    <div class="main-column">
+        <div class="main-box-list">
+            <button class="doctor-button-list" (click)="getBlogs()">
+                <p class="title-doctor-button-list">Odśwież listę</p>
+            </button>
+            <div class="main-doctor-list" *ngIf="blogs.length > 0">
+                <div class="main-list">
+                    <ul class="q">
+                        <li *ngFor="let blog of blogs" class="list">
+                            <span class="firstname">{{blog.tytul}}</span>
+                            <span class="contents">{{blog.tresc}}</span>
+                            <button class="doctor-edit" (click)="editBlog(blog)">Edytuj</button>
+                            <button class="doctor-delete" (click)="confirmDelete(blog._id)">Usuń</button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

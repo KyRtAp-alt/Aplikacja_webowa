@@ -9,7 +9,7 @@ import { BlogService } from '../blog.service';
 export class AdminBlogComponent {
   blogs: any[] = [];
   title: string = '';
-  contents: string = '';
+  content: string = '';
   selectedBlogId: string = '';
   editingBlog: boolean = false;
 
@@ -31,10 +31,10 @@ export class AdminBlogComponent {
     );
   }
 
-  addBlogs() {
+  addBlog() {
     const newBlog = {
       tytul: this.title,
-      tresc: this.contents,
+      tresc: this.content,
     };
 
     this.blogService.addBlogs(newBlog).subscribe(
@@ -60,17 +60,27 @@ export class AdminBlogComponent {
     );
   }
 
-  editBlgos(blog: any) {
+  confirmDelete(blogId: string) {
+    const confirmation = confirm(
+      'Czy na pewno chcesz usunąć tego lekarza, specialistę?'
+    );
+    if (confirmation) {
+      this.deleteBlog(blogId);
+      alert('Usunięto lekarza, specialistę');
+    }
+  }
+
+  editBlog(blog: any) {
     this.selectedBlogId = blog._id;
     this.title = blog.tytul;
-    this.contents = blog.tresc;
+    this.content = blog.tresc;
     this.editingBlog = true;
   }
 
-  updateBlogs() {
+  updateBlog() {
     const updateBlogs = {
       tytul: this.title,
-      tresc: this.contents,
+      tresc: this.content,
     };
 
     this.blogService.updateBlog(this.selectedBlogId, updateBlogs).subscribe(
@@ -89,6 +99,10 @@ export class AdminBlogComponent {
   clearForm() {
     this.selectedBlogId = '';
     this.title = '';
-    this.contents = '';
+    this.content = '';
+  }
+
+  isEmptyFields(): boolean {
+    return !this.title || !this.content;
   }
 }
