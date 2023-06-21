@@ -4,6 +4,29 @@
 <div class="bar">
     <h2 class="name-bar">Nasze Specializacje</h2>
 </div>
+<div class="main-box">
+    <div class="box" *ngFor="let ros of ross">
+        <div class="main-container">
+            <div class="left-left" routerLink="/lekarz-medycyny-rodzinnej">
+                <div class="img-wrapper">
+                    <img class="img" src="../../assets/345979825_1043354946644494_7845053283846885340_n.png">
+                </div>
+                <div class="text-wrapper">
+                    <div class="text">
+                        <h2 class="title">{{ros.nazwa}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+
+
+
+<!-- <div class="bar">
+    <h2 class="name-bar">Nasze Specializacje</h2>
+</div>
 <div class="main-container">
     <div class="left-left" routerLink="/lekarz-medycyny-rodzinnej">
         <div class="img-wrapper">
@@ -45,52 +68,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="border" *ngIf="!showMore">
-    <button class="next" (click)="onShowMore()">Więcej</button>
-</div>
-<div *ngIf="showMore">
-    <div class="main-container">
-        <div class="left-left" routerLink="/lekarz-balneolog">
-            <div class="img-wrapper">
-                <img class="img" src="../../assets/345979825_1043354946644494_7845053283846885340_n.png">
-            </div>
-            <div class="text-wrapper">
-                <div class="text">
-                    <h2 class="title">Lekarz balneolog</h2>
-                </div>
-            </div>
-        </div>
-        <div class="left">
-            <!-- <div class="img-wrapper">
-            <img class="img" src="../../assets/345979825_1043354946644494_7845053283846885340_n.png">
-        </div> -->
-            <div class="text-wrapper">
-                <div class="text">
-                    <h2 class="title">empty</h2>
-                </div>
-            </div>
-        </div>
-        <div class="right">
-            <!-- <div class="img-wrapper">
-            <img class="img" src="../../assets/345979825_1043354946644494_7845053283846885340_n.png">
-        </div> -->
-            <div class="text-wrapper">
-                <div class="text">
-                    <h2 class="title">empty</h2>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="right-right">
-        <div class="img-wrapper">
-            <img class="img2" src="../../assets/345308033_1602997716831678_5304376267414405608_n.gif">
-        </div>
-        <div class="text-wrapper">
-            <div class="text">
-                <h2 class="title">empty</h2>
-            </div>
-        </div>
-    </div> -->
-    </div>
-</div>
-<app-footer></app-footer>
+</div> -->

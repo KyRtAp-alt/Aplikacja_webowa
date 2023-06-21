@@ -100,4 +100,8 @@ export class AdminRosComponent {
   isEmptyFields(): boolean {
     return !this.name;
   }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

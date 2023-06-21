@@ -105,4 +105,8 @@ export class AdminBlogComponent {
   isEmptyFields(): boolean {
     return !this.title || !this.content;
   }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

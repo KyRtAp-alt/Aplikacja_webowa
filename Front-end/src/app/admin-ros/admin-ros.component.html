@@ -36,7 +36,7 @@
                     <ul class="q">
                         <li *ngFor="let ros of ross" class="list">
                             <span class="firstname">{{ros.nazwa}}</span>
-                            <button class="doctor-edit" (click)="editRos(ros)">Edytuj</button>
+                            <button class="doctor-edit" (click)="editRos(ros)" (click)="scrollToTop()">Edytuj</button>
                             <button class="doctor-delete" (click)="confirmDelete(ros._id)">Usuń</button>
                         </li>
                     </ul>
@@ -44,4 +44,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="scroll-to-top" (click)="scrollToTop()">
+    <i class="fas fa-chevron-up">&#8593; </i>
 </div>

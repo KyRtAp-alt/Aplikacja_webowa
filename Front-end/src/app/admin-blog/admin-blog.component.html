@@ -45,7 +45,7 @@
                         <li *ngFor="let blog of blogs" class="list">
                             <span class="firstname">{{blog.tytul}}</span>
                             <span class="content">{{blog.tresc}}</span>
-                            <button class="doctor-edit" (click)="editBlog(blog)">Edytuj</button>
+                            <button class="doctor-edit" (click)="editBlog(blog)" (click)="scrollToTop()">Edytuj</button>
                             <button class="doctor-delete" (click)="confirmDelete(blog._id)">Usuń</button>
                         </li>
                     </ul>
@@ -53,4 +53,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="scroll-to-top" (click)="scrollToTop()">
+    <i class="fas fa-chevron-up">&#8593; </i>
 </div>
