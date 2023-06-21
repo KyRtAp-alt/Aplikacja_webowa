@@ -14,6 +14,11 @@ export class BlogListComponent {
   currentBlog: any;
   selectedBlog: any;
 
+  onShowMore() {
+    this.showMore = true;
+  }
+  showMore = false;
+
   constructor(private blogService: BlogService) {}
 
   ngOnInit() {
