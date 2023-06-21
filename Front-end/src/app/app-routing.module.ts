@@ -20,6 +20,7 @@ import { PriceListComponent } from './price-list/price-list.component';
 import { AppComponent } from './app.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ContactComponent } from './contact/contact.component';
+import { AdminRosComponent } from './admin-ros/admin-ros.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'cennik', component: PriceListComponent },
   { path: 'nasz-zespol', component: OurTeamComponent },
   { path: 'kontakt', component: ContactComponent },
+  { path: 'ros', component: AdminRosComponent },
 ];
 
 @NgModule({

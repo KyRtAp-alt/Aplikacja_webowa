@@ -1,1 +1,47 @@
-<p>admin-ros works!</p>
+<app-header-admin></app-header-admin>
+<div class="main-container">
+    <div class="left-container">
+        <div class="main-box">
+            <form>
+                <div class="title-box">
+                    <h2 class="add-doctor">{{ editingRos ? 'Edycja Specjalizacji' : 'Dodawanie Specjalizacji' }}</h2>
+                </div>
+                <div class="group-box">
+                    <div class="form-group">
+                        <label class="name">Nazwa</label>
+                        <input class="border" name="firstname" [(ngModel)]="name">
+                    </div>
+                    <div class="border-but">
+                        <button class="button-border"
+                            (click)="(!isEmptyFields()) && (editingRos ? updateRos() : addRos())">
+                            {{ editingRos ? 'Zapisz' : 'Dodaj' }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="right-container">
+    <div class="title-column-border">
+        <h2 class="title-column">Specjalizacje</h2>
+    </div>
+    <div class="main-column">
+        <div class="main-box-list">
+            <button class="doctor-button-list" (click)="getRoss()">
+                <p class="title-doctor-button-list">Odśwież listę</p>
+            </button>
+            <div class="main-doctor-list" *ngIf="ross.length > 0">
+                <div class="main-list">
+                    <ul class="q">
+                        <li *ngFor="let ros of ross" class="list">
+                            <span class="firstname">{{ros.nazwa}}</span>
+                            <button class="doctor-edit" (click)="editRos(ros)">Edytuj</button>
+                            <button class="doctor-delete" (click)="confirmDelete(ros._id)">Usuń</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

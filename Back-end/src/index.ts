@@ -12,6 +12,9 @@ app.use("/doctor", doctor);
 const blog = require("./modules/blog");
 app.use("/blog", blog);
 
+const ros = require("./modules/ros");
+app.use("/ros", ros);
+
 app.listen(3000, () => {
   console.log("Application started on port 3000!");
 });
