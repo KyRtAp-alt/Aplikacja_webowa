@@ -13,6 +13,7 @@ export class DoctorAddComponent {
   category: string = '';
   content: string = '';
   specialization: string = '';
+  worktime: string = '';
   selectedDoctorId: string = '';
   editingDoctor: boolean = false;
 
@@ -41,6 +42,7 @@ export class DoctorAddComponent {
       kategoria: this.category,
       specializacja: this.specialization,
       opis: this.content,
+      czaspracy: this.worktime,
     };
 
     this.doctorService.addDoctor(newDoctor).subscribe(
@@ -83,6 +85,7 @@ export class DoctorAddComponent {
     this.category = doctor.kategoria;
     this.specialization = doctor.specializacja;
     this.content = doctor.opis;
+    this.worktime = doctor.czaspracy;
     this.editingDoctor = true;
   }
 
@@ -93,6 +96,7 @@ export class DoctorAddComponent {
       kategoria: this.category,
       specializacja: this.specialization,
       opis: this.content,
+      czaspracy: this.worktime,
     };
 
     this.doctorService
@@ -117,6 +121,7 @@ export class DoctorAddComponent {
     this.category = '';
     this.specialization = '';
     this.content = '';
+    this.worktime = '';
   }
 
   isEmptyFields(): boolean {
@@ -125,7 +130,8 @@ export class DoctorAddComponent {
       !this.lastname ||
       !this.category ||
       !this.specialization ||
-      !this.content
+      !this.content ||
+      !this.worktime
     );
   }
 

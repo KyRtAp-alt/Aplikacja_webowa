@@ -38,6 +38,17 @@
                             Pozostało znaków: {{ 800 - content.length }}
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="name">Określ czas pracy</label>
+                        <select class="border" name="worktime" [(ngModel)]="worktime">
+                            <option value="od pon do wt 8-16">od pon do wt 8-16</option>
+                            <!-- <option value="Lekarz pediatra">Lekarz pediatra</option>
+                            <option value="Medycyna pracy">Medycyna pracy</option> -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Dostępność pracownika</label>
+                    </div>
                     <div class="border-but">
                         <button class="button-border"
                             (click)="(!isEmptyFields()) && (editingDoctor ? updateDoctor() : addDoctor())">
@@ -66,6 +77,7 @@
                             <span class="lastname">{{doctor.nazwisko}}</span>
                             <span class="category">{{doctor.kategoria}}</span>
                             <span class="specialization">{{doctor.specializacja}}</span>
+                            <span class="worktime">{{doctor.czaspracy}}</span>
                             <span class="content">{{doctor.opis}}</span>
                             <div class="buttons">
                                 <button class="doctor-edit" (click)="editDoctor(doctor)"
