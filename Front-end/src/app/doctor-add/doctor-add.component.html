@@ -67,9 +67,11 @@
                             <span class="category">{{doctor.kategoria}}</span>
                             <span class="specialization">{{doctor.specializacja}}</span>
                             <span class="content">{{doctor.opis}}</span>
-                            <button class="doctor-edit" (click)="editDoctor(doctor)"
-                                (click)="scrollToTop()">Edytuj</button>
-                            <button class="doctor-delete" (click)="confirmDelete(doctor._id)">Usuń</button>
+                            <div class="buttons">
+                                <button class="doctor-edit" (click)="editDoctor(doctor)"
+                                    (click)="scrollToTop()">Edytuj</button>
+                                <button class="doctor-delete" (click)="confirmDelete(doctor._id)">Usuń</button>
+                            </div>
                         </li>
                     </ul>
                 </div>

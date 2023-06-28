@@ -1,7 +1,7 @@
 .header {
   display: flex;
   align-items: center;
-  height: 65px;
+  height: 70px;
   justify-content: space-between;
 }
 
@@ -17,10 +17,10 @@
   align-items: center;
 }
 
-.zu,
-.ce,
-.nz,
-.k {
+.p1,
+.p2,
+.p3,
+.p4 {
   font-size: 20px;
   margin-right: 20px;
   border: 1px;
@@ -28,7 +28,7 @@
   background-color: white;
 }
 
-.uw {
+.p5 {
   font-size: 20px;
   color: white;
   margin-right: 20px;
@@ -38,20 +38,20 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.zu,
-.ce,
-.nz,
-.k,
-.uw {
+.p1,
+.p2,
+.p3,
+.p4,
+.p5 {
   transform: scale(1);
   transition: transform 0.3s;
 }
 
-.ce:hover,
-.zu:hover,
-.nz:hover,
-.k:hover,
-.uw:hover {
+.p1:hover,
+.p2:hover,
+.p3:hover,
+.p4:hover,
+.p5:hover {
   transform: scale(1.2);
 }
 
@@ -63,7 +63,7 @@
 }
 
 .main_name {
-  font-size: 32px;
+  font-size: 26px;
   color: #22a6b3;
   border: 1px;
   border-radius: 0px;
