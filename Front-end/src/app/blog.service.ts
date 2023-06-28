@@ -24,4 +24,8 @@ export class BlogService {
   updateBlog(id: string, blog: any) {
     return this.http.put(`http://localhost:3000/blog/${id}`, blog);
   }
+
+  getBlogById(id: string) {
+    return this.http.get(`http://localhost:3000/blog/${id}`);
+  }
 }

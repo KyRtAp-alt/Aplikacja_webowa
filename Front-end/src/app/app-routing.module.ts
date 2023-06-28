@@ -25,7 +25,7 @@ import { AdminRosComponent } from './admin-ros/admin-ros.component';
 const routes: Routes = [
   { path: '', component: MainpageComponent },
   { path: 'mainpage', component: MainpageComponent },
-  { path: 'blog-test', component: SubpageBlog1Component },
+  { path: 'blog-test/:id', component: SubpageBlog1Component },
   {
     path: 'dretwienia-rak–jakie-moga-byc-przyczyny',
     component: SubpageBlog2Component,

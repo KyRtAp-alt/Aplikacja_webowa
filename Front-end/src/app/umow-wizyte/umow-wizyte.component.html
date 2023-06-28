@@ -1,16 +1,44 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 <app-img-navbar-other></app-img-navbar-other>
-<div class="main-container">
-    <div class="top-container">
-        <h2 class="main-title">Proszę wybrać typ wizyty</h2>
-        <div class="box-list">
-            <h2>Wszystkie</h2>
-            <h2>&#8595;</h2>
+<div class="ms">
+    <div class="ms_outer">
+        <div class="title-border">
+            <h2 class="title-box">Umów wizytę</h2>
         </div>
-    </div>
-    <div>
-        dasdas
+        <div class="form-group">
+            <label class="">Typ wizyty</label>
+            <select></select>
+        </div>
+        <div class="ms_inner">
+            <div class="main-box" *ngFor="let doctor of doctors">
+                <div class="test-border">
+                    <div class="img-border">
+                        <img class="img" src="../../assets/doctor-g2cd220903_1920.png">
+                    </div>
+                    <div class="box-border">
+                        <div class="name-border">
+                            <span class="firstname">{{doctor.imie}}</span>
+                            <span class="lastname">{{doctor.nazwisko}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="w" *ngIf="!doctor.showMore">
+                        <button class="" (click)="onShowMore(doctor)">&darr;</button>
+                    </div>
+                    <div class="v">
+                        <div class="category2" *ngIf="doctor.showMore">
+                            <span class="category">{{doctor.kategoria}}</span>
+                            <div *ngIf="doctor.showMore">
+                                <span class="category"></span>
+                                <button class="" (click)="onShowLess(doctor)">&uarr;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <app-footer></app-footer>

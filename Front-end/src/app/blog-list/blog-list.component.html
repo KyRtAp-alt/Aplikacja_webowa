@@ -19,8 +19,7 @@
                     </div>
                 </div>
                 <div class="button">
-                    <button class="button_border" routerLink="/blog-test" (click)="selectedBlog = blog">Czytaj
-                        więcej</button>
+                    <button class="button_border" [routerLink]="['/blog-test', blog.id]">Czytaj więcej</button>
                 </div>
             </div>
         </div>

@@ -58,4 +58,21 @@ router.put("/:id", async (req: Request, res: Response) => {
   res.status(200).send("Zmieniono tresc wpisu na blogu");
 });
 
+router.get("/:id", async (req: Request, res: Response) => {
+  try {
+    const id = new ObjectId(req.params.id);
+    await client.connect();
+    const db = client.db();
+    const collection = db.collection("blog");
+    const result = await collection.findOne({ _id: id });
+    if (result) {
+      res.status(200).send(result);
+    } else {
+      res.status(404).send("Brak wpisu na blogu o podanym ID");
+    }
+  } catch (e) {
+    res.status(400).send("Błąd podczas pobierania wpisu na blogu");
+  }
+});
+
 module.exports = router;
