@@ -7,12 +7,16 @@
             <h2 class="title-box">Umów wizytę</h2>
         </div>
         <div class="form-group">
-            <label class="">Typ wizyty</label>
-            <select></select>
+            <label class="name">Typ wizyty</label>
+            <!-- <select class="border" name="specialization" [(ngModel)]="specialization">
+                <option value="Lekarz medycyny rodzinnej">Lekarz medycyny rodzinnej</option>
+                <option value="Lekarz pediatra">Lekarz pediatra</option>
+                <option value="Medycyna pracy">Medycyna pracy</option>
+            </select> -->
         </div>
         <div class="ms_inner">
             <div class="main-box" *ngFor="let doctor of doctors">
-                <div class="test-border">
+                <div class="">
                     <div class="img-border">
                         <img class="img" src="../../assets/doctor-g2cd220903_1920.png">
                     </div>
@@ -20,21 +24,23 @@
                         <div class="name-border">
                             <span class="firstname">{{doctor.imie}}</span>
                             <span class="lastname">{{doctor.nazwisko}}</span>
+                            <span class="category">{{doctor.kategoria}}</span>
+                            <span class="category">{{doctor.specializacja}}</span>
                         </div>
-                        <span class="worktime">{{doctor.czaspracy}}</span>
+                        <div class="name-border">
+                            <span class="worktime">Pracuje</span>
+                            <span class="worktime">{{doctor.czaspracy}}</span>
+                        </div>
+                        <div class="more" *ngIf="!doctor.showMore">
+                            <button class="clickme" (click)="onShowMore(doctor)">&darr;</button>
+                        </div>
                     </div>
                 </div>
-                <div class="">
-                    <div class="w" *ngIf="!doctor.showMore">
-                        <button class="" (click)="onShowMore(doctor)">&darr;</button>
-                    </div>
-                    <div class="v">
+                <div class="main-box-2">
+                    <div class="">
                         <div class="category2" *ngIf="doctor.showMore">
-                            <span class="category">{{doctor.kategoria}}</span>
-                            <div *ngIf="doctor.showMore">
-                                <span class="category"></span>
-                                <button class="" (click)="onShowLess(doctor)">&uarr;</button>
-                            </div>
+                            <span class="category"></span>
+                            <button class="clickme" (click)="onShowLess(doctor)">&uarr;</button>
                         </div>
                     </div>
                 </div>

@@ -11,6 +11,7 @@ export class UmowWizyteComponent {
   lastname: string = '';
   category: string = '';
   worktime: string = '';
+  specialization: string = '';
   currentDoctorIndex: number = 0;
   currentDoctor: any;
   expandedDoctor: any;
