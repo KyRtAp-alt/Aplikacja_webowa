@@ -72,6 +72,7 @@
                 <div class="main-list">
                     <ul class="q">
                         <li *ngFor="let doctor of doctors" class="list">
+                            <!-- <div class="data-doctor-list"> -->
                             <span class="firstname">
                                 Imię:
                                 {{doctor.imie}}
@@ -92,9 +93,11 @@
                                 Czas pracy:
                                 {{doctor.czaspracy}}
                             </span>
+                            <!-- </div> -->
                             <span class="content">
-                                Opis:
-                                {{doctor.opis}}</span>
+                                <p class="ops">Opis:</p>
+                                {{doctor.opis}}
+                            </span>
                             <div class="buttons">
                                 <button class="doctor-edit" (click)="editDoctor(doctor)"
                                     (click)="scrollToTop()">Edytuj</button>
