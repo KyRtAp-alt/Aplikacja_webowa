@@ -16,9 +16,11 @@ export class DoctorAddComponent {
   worktime: string = '';
   selectedDoctorId: string = '';
   editingDoctor: boolean = false;
+  currentRosIndex: number = 0;
+  currentRos: any;
+  selectedRos: any;
 
   constructor(private doctorService: DoctorService) {}
-
   ngOnInit() {
     this.getDoctors();
   }
