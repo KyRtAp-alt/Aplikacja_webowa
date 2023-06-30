@@ -1,3 +1,13 @@
+.ms {
+  display: flex;
+  justify-content: center;
+}
+
+.ms_outer {
+  width: 100%;
+  max-width: 1980px;
+}
+
 .header {
   display: flex;
   align-items: center;

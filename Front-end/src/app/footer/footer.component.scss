@@ -1,3 +1,13 @@
+.ms {
+  display: flex;
+  justify-content: center;
+}
+
+.ms_outer {
+  width: 100%;
+  max-width: 1980px;
+}
+
 .main-container {
   display: flex;
   justify-content: space-around;
@@ -17,7 +27,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  line-height: 2.0em;
+  line-height: 2em;
   color: white;
 }
 
@@ -26,7 +36,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  line-height: 2.0em;
+  line-height: 2em;
 }
 
 // .img {
@@ -57,7 +67,9 @@
   font-size: 14px;
 }
 
-.text1,.text2,.text3{
+.text1,
+.text2,
+.text3 {
   font-size: 14px;
 }
 

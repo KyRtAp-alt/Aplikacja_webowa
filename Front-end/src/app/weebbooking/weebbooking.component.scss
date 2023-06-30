@@ -12,7 +12,10 @@
   max-width: 1440px;
   height: 100%;
   margin-top: 40px;
-  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media (min-width: 1445px) {
+    border-radius: 10px;
+  }
 }
 
 .container-left {
@@ -76,8 +79,8 @@ h2 {
 }
 
 .button_border {
-  padding: 0 50px;
-  font-size: 24px;
+  // padding: 0 50px;
+  font-size: 20px;
   color: white;
   border: 5px #01a3a4 solid;
   border-radius: 20px;

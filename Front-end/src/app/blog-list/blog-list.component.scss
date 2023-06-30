@@ -25,7 +25,9 @@
   margin-top: 40px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 40px;
-  border-radius: 10px;
+  @media (min-width: 1445px) {
+    border-radius: 10px;
+  }
 }
 
 .title-box {
@@ -87,8 +89,8 @@
 }
 
 .button_border {
-  padding: 0 50px;
-  font-size: 25px;
+  // padding: 0 50px;
+  font-size: 20px;
   color: white;
   margin-right: 20px;
   border: 5px #01a3a4 solid;
