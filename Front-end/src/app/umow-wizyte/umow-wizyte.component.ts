@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
+import { RosService } from '../ros.service';
+
 @Component({
   selector: 'app-umow-wizyte',
   templateUrl: './umow-wizyte.component.html',
@@ -15,6 +17,13 @@ export class UmowWizyteComponent {
   currentDoctorIndex: number = 0;
   currentDoctor: any;
   expandedDoctor: any;
+  //ros
+  ross: any[] = [];
+  name: string = '';
+  currentRosIndex: number = 0;
+  currentRos: any;
+  selectedRos: any;
+  specializations: string[] = [];
 
   onShowMore(doctor: any) {
     doctor.showMore = true;
@@ -24,10 +33,14 @@ export class UmowWizyteComponent {
     doctor.showMore = false;
   }
 
-  constructor(private doctorService: DoctorService) {}
+  constructor(
+    private doctorService: DoctorService,
+    private rosService: RosService
+  ) {}
 
   ngOnInit() {
     this.getDoctors();
+    this.getRoss();
   }
 
   getDoctors() {
@@ -35,6 +48,19 @@ export class UmowWizyteComponent {
       (doctors: any) => {
         console.log(doctors);
         this.doctors = doctors;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  getRoss() {
+    this.rosService.getRoss().subscribe(
+      (ross: any) => {
+        console.log(ross);
+        this.ross = ross;
+        this.specializations = ross.map((ros: any) => ros.nazwa);
       },
       (error) => {
         console.error(error);

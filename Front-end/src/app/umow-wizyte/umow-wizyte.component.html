@@ -9,9 +9,7 @@
         <div class="form-group">
             <label class="name">Typ wizyty</label>
             <select class="border" name="specialization" [(ngModel)]="specialization">
-                <option value="Lekarz medycyny rodzinnej">Lekarz medycyny rodzinnej</option>
-                <option value="Lekarz pediatra">Lekarz pediatra</option>
-                <option value="Medycyna pracy">Medycyna pracy</option>
+                <option *ngFor="let spec of specializations" [value]="spec">{{ spec }}</option>
             </select>
         </div>
         <div class="ms_inner">
