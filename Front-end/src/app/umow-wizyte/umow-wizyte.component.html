@@ -29,59 +29,65 @@
                             <span class="worktime">Pracuje</span>
                             <span class="worktime">{{doctor.czaspracy}}</span>
                         </div>
-                        <div class="more" *ngIf="!doctor.showMore">
-                            <button class="clickme" (click)="onShowMore(doctor)">&darr;</button>
+                        <div class="more">
+                            <button class="clickme" *ngIf="!doctor.showMore"
+                                (click)="onShowMore(doctor)">&darr;</button>
+                            <button class="clickme" *ngIf="doctor.showMore" (click)="onShowLess(doctor)">&uarr;</button>
                         </div>
                     </div>
                 </div>
                 <div class="main-box-2" *ngIf="doctor.showMore">
-                    <button class="clickme" (click)="onShowLess(doctor)">&uarr;</button>
                     <div class="q">
                         <div class="category2">
                             <div class="data-list">
                                 <div class="list">
                                     <span class="day">Poniedziałek</span>
                                     <div class="w">
+                                        <span class="time">8:00</span>
                                         <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
+                                        <span class="time">9:00</span>
+                                        <span class="time">9:30</span>
+                                        <span class="time">10:00</span>
                                     </div>
                                 </div>
                                 <div class="list">
                                     <span class="day">Wtorek</span>
                                     <div class="w">
+                                        <span class="time">8:00</span>
                                         <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
+                                        <span class="time">9:00</span>
+                                        <span class="time">9:30</span>
+                                        <span class="time">10:00</span>
                                     </div>
                                 </div>
                                 <div class="list">
                                     <span class="day">Środa</span>
                                     <div class="w">
+                                        <span class="time">8:00</span>
                                         <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
+                                        <span class="time">9:00</span>
+                                        <span class="time">9:30</span>
+                                        <span class="time">10:00</span>
                                     </div>
                                 </div>
                                 <div class="list">
                                     <span class="day">Czwartek</span>
                                     <div class="w">
+                                        <span class="time">8:00</span>
                                         <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
+                                        <span class="time">9:00</span>
+                                        <span class="time">9:30</span>
+                                        <span class="time">10:00</span>
                                     </div>
                                 </div>
                                 <div class="list">
                                     <span class="day">Piątek</span>
                                     <div class="w">
+                                        <span class="time">8:00</span>
                                         <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
-                                        <span class="time">8:30</span>
+                                        <span class="time">9:00</span>
+                                        <span class="time">9:30</span>
+                                        <span class="time">10:00</span>
                                     </div>
                                 </div>
                             </div>
