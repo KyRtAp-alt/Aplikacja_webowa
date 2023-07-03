@@ -60,8 +60,8 @@ router.put("/:id", async (req: Request, res: Response) => {
 
 router.get("/:id", async (req: Request, res: Response) => {
   try {
-    const id = new ObjectId(req.params.id);
     await client.connect();
+    const id = new ObjectId(req.params.id);
     const db = client.db();
     const collection = db.collection("blog");
     const result = await collection.findOne({ _id: id });

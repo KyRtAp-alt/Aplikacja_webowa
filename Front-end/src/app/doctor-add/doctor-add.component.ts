@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
+import { RosService } from '../ros.service';
 
 @Component({
   selector: 'app-doctor-add',
@@ -16,13 +17,22 @@ export class DoctorAddComponent {
   worktime: string = '';
   selectedDoctorId: string = '';
   editingDoctor: boolean = false;
+  //ros
+  ross: any[] = [];
+  name: string = '';
   currentRosIndex: number = 0;
   currentRos: any;
   selectedRos: any;
+  specializations: string[] = [];
 
-  constructor(private doctorService: DoctorService) {}
+  constructor(
+    private doctorService: DoctorService,
+    private rosService: RosService
+  ) {}
+
   ngOnInit() {
     this.getDoctors();
+    this.getRoss();
   }
 
   getDoctors() {
@@ -30,6 +40,19 @@ export class DoctorAddComponent {
       (doctors: any) => {
         console.log(doctors);
         this.doctors = doctors;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  getRoss() {
+    this.rosService.getRoss().subscribe(
+      (ross: any) => {
+        console.log(ross);
+        this.ross = ross;
+        this.specializations = ross.map((ros: any) => ros.nazwa);
       },
       (error) => {
         console.error(error);

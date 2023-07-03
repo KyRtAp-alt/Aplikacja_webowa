@@ -25,9 +25,7 @@
                     <div class="form-group">
                         <label class="name">Specjalizacja</label>
                         <select class="border" name="specialization" [(ngModel)]="specialization">
-                            <option value="Lekarz medycyny rodzinnej">Lekarz medycyny rodzinnej</option>
-                            <option value="Lekarz pediatra">Lekarz pediatra</option>
-                            <option value="Medycyna pracy">Medycyna pracy</option>
+                            <option *ngFor="let spec of specializations" [value]="spec">{{ spec }}</option>
                         </select>
                     </div>
                     <div class="form-group">
