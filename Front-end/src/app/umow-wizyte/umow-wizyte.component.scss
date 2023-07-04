@@ -284,3 +284,24 @@
   justify-content: center;
   margin-top: 30px;
 }
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background-color: #01a3a4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  border: 3px solid white;
+}
+
+.scroll-to-top i {
+  color: #fff;
+  font-size: 20px;
+}
