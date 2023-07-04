@@ -6,12 +6,12 @@
         <div class="title-border">
             <h2 class="title-box">Umów wizytę</h2>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label class="name">Typ wizyty</label>
             <select class="border" name="specialization" [(ngModel)]="specialization">
                 <option *ngFor="let spec of specializations" [value]="spec">{{ spec }}</option>
             </select>
-        </div>
+        </div> -->
         <div class="ms_inner">
             <div class="main-box" *ngFor="let doctor of doctors">
                 <div class="">
@@ -96,25 +96,39 @@
                                             <div class="forms-outer">
                                                 <div class="forms-inner">
                                                     <div class="s">
-                                                        <img class="img" src="../../assets/doctor-g2cd220903_1920.png">
+                                                        <div class="img-border2">
+                                                            <img class="img2"
+                                                                src="../../assets/doctor-g2cd220903_1920.png">
+                                                        </div>
                                                         <span class="title">Rezerwacja wizyty</span>
                                                         <span class="title">data - czas</span>
                                                         <span class="title-m">Przychodnia medyczna MedLife</span>
-                                                        <div class="form">
+                                                        <div class="form2">
                                                             <div class="form-group">
-                                                                <input class="border" placeholder="Imie">
-                                                                <input class="border" placeholder="Nazwisko">
+                                                                <input class="border2" placeholder="Imie">
+                                                                <input class="border2" placeholder="Nazwisko">
                                                             </div>
                                                         </div>
-                                                        <div class="form">
+                                                        <div class="form2">
                                                             <div class="form-group">
-                                                                <input class="border" placeholder="Telefon komórkowy">
-                                                                <input class="border" placeholder="E-mail">
+                                                                <input class="border2" placeholder="Telefon komórkowy">
+                                                                <input class="border2" placeholder="E-mail">
                                                             </div>
                                                         </div>
-                                                        <div class="form">
+                                                        <div class="form2">
                                                             <textarea class="name-2" name="content"
-                                                                placeholder="Dodaj opis" maxlength="800"></textarea>
+                                                                placeholder="Wpisz objawy, problemy, dodatkowe informacje (opcionalnie)"></textarea>
+                                                        </div>
+                                                        <div class="controls">
+                                                            <div class="button-border">
+                                                                <button (click)="closeModal()"
+                                                                    class="button">REZYGNUJE</button>
+                                                            </div>
+                                                            <div class="button-border">
+                                                                <button class="button">
+                                                                    REJESTRUJE
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
