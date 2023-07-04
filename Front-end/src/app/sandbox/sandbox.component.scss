@@ -1,0 +1,59 @@
+.forms {
+  width: 800px;
+  height: 550px;
+  background-color: grey;
+}
+
+.forms-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  margin-top: 30px;
+  width: 40px;
+  height: 40px;
+}
+
+.s {
+  display: grid;
+  justify-content: center;
+}
+
+.title-m {
+  color: white;
+  font-size: 20px;
+}
+
+.title,
+.title-m {
+  display: flex;
+  justify-content: center;
+}
+
+.q {
+  display: grid;
+}
+
+.border {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.form {
+  display: flex;
+  margin-top: 20px;
+}
+
+.form-group {
+}
+
+.name-2 {
+  width: 450px;
+  height: auto;
+  min-height: 100px;
+  max-height: 300px;
+  resize: vertical;
+  overflow: auto;
+}

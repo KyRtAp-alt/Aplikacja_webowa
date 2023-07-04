@@ -35,6 +35,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { AdminRosComponent } from './admin-ros/admin-ros.component';
+import { SandboxComponent } from './sandbox/sandbox.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { AdminRosComponent } from './admin-ros/admin-ros.component';
     ContactComponent,
     BlogListComponent,
     AdminRosComponent,
+    SandboxComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

@@ -24,6 +24,15 @@ export class UmowWizyteComponent {
   currentRos: any;
   selectedRos: any;
   specializations: string[] = [];
+  showForm: boolean = false;
+
+  openModal() {
+    this.showForm = true;
+  }
+
+  closeModal() {
+    this.showForm = false;
+  }
 
   onShowMore(doctor: any) {
     doctor.showMore = true;

@@ -1,6 +1,8 @@
 .ms {
   display: flex;
   justify-content: center;
+  background-color: #01a3a4;
+  margin-top: 60px;
 }
 
 .ms_outer {
@@ -11,16 +13,9 @@
 .main-container {
   display: flex;
   justify-content: space-around;
-  // margin-top: 60px;
   height: 80px;
   background-color: #01a3a4;
 }
-
-// .left-container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
 
 .center-container {
   display: flex;
@@ -39,29 +34,14 @@
   line-height: 2em;
 }
 
-// .img {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 200px;
-//   height: 164px;
-// }
-
 .right-title {
   font-size: 16px;
   color: #244160;
 }
 
 .center-title {
-  // margin-top: 30px;
   font-size: 16px;
-  // width: 200px;
 }
-
-// .cookie {
-//   margin-top: 40px;
-//   font-size: 10px;
-// }
 
 .time {
   font-size: 14px;
