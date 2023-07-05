@@ -1,14 +1,14 @@
 <div class="ms">
     <div class="ms_outer">
-        <div class="title-box-border">
-            <h2 class="title-box">Blog</h2>
+        <div class="title-border">
+            <h2 class="title">Blog</h2>
         </div>
         <div class="ms_inner">
             <div class="contents-box" *ngFor="let blog of blogs">
                 <div class="main-container">
                     <div class="container-left">
-                        <div class="main-title">
-                            <h2 class="title">{{blog.tytul}}</h2>
+                        <div class="title-blog-border">
+                            <h2 class="title-blog">{{blog.tytul}}</h2>
                         </div>
                         <div class="text">
                             <h2 class="text">{{blog.tresc}}</h2>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="button">
-                    <button class="button_border" [routerLink]="['/blog-test', blog.id]">Czytaj więcej</button>
+                    <button class="button-border" [routerLink]="['/blog-test', blog.id]">Czytaj więcej</button>
                 </div>
             </div>
         </div>

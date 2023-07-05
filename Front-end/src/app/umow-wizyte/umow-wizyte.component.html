@@ -1,20 +1,20 @@
-<app-header></app-header>
-<app-navbar></app-navbar>
-<app-img-navbar-other></app-img-navbar-other>
-<div class="ms">
-    <div class="ms_outer">
-        <div class="title-border">
-            <h2 class="title-box">Umów wizytę</h2>
-        </div>
-        <!-- <div class="form-group">
+<!-- <div class="form-group">
             <label class="name">Typ wizyty</label>
             <select class="border" name="specialization" [(ngModel)]="specialization">
                 <option *ngFor="let spec of specializations" [value]="spec">{{ spec }}</option>
             </select>
         </div> -->
+<app-header></app-header>
+<app-navbar></app-navbar>
+<app-img-navbar-other></app-img-navbar-other>
+<div class="ms">
+    <div class="ms_outer">
+        <div class="main-title-border">
+            <h2 class="title-box">Umów wizytę</h2>
+        </div>
         <div class="ms_inner">
-            <div class="main-box" *ngFor="let doctor of doctors">
-                <div class="">
+            <div class="loop-box" *ngFor="let doctor of doctors">
+                <div class="z">
                     <div class="img-border">
                         <img class="img" src="../../assets/doctor-g2cd220903_1920.png">
                     </div>
@@ -40,58 +40,12 @@
                     <div class="q">
                         <div class="category2">
                             <div class="data-list">
-                                <div class="list">
-                                    <div class="wraper">
-                                        <span class="day">Poniedziałek</span>
-                                        <div class="data-wraper">
-                                            <button class="time">8:00</button>
-                                            <button class="time">8:30</button>
-                                            <button class="time">9:00</button>
-                                            <button class="time">9:30</button>
-                                            <button class="time">10:00</button>
-                                            <button class="time">10:30</button>
-                                            <button class="time">11:00</button>
-                                            <button class="time">11:30</button>
-                                            <button class="time">12:00</button>
-                                            <button class="time">12:30</button>
-                                            <button class="time">13:00</button>
-                                            <button class="time">13:30</button>
-                                            <button class="time">14:00</button>
-                                            <button class="time">14:30</button>
-                                            <button class="time">15:00</button>
-                                            <button class="time">15:30</button>
-                                            <button class="time">16:00</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list">
-                                    <div class="wraper">
-                                        <span class="day">Wtorek</span>
-                                        <div class="data-wraper">
-                                            <button class="time">8:00</button>
-                                            <button class="time">8:30</button>
-                                            <button class="time">9:00</button>
-                                            <button class="time">9:30</button>
-                                            <button class="time">10:00</button>
-                                            <button class="time">10:30</button>
-                                            <button class="time">11:00</button>
-                                            <button class="time">11:30</button>
-                                            <button class="time">12:00</button>
-                                            <button class="time">12:30</button>
-                                            <button class="time">13:00</button>
-                                            <button class="time">13:30</button>
-                                            <button class="time">14:00</button>
-                                            <button class="time">14:30</button>
-                                            <button class="time">15:00</button>
-                                            <button class="time">15:30</button>
-                                            <button class="time">16:00</button>
-                                        </div>
-                                    </div>
-                                </div>
                                 <span (click)="openModal()">TEST</span>
                                 <div *ngIf="showForm" class="modal-background">
                                     <div class="modal-content">
-                                        <button class="close-button" (click)="closeModal()">&times;</button>
+                                        <div class="close-button-border">
+                                            <button class="close-button" (click)="closeModal()">&times;</button>
+                                        </div>
                                         <div class="forms">
                                             <div class="forms-outer">
                                                 <div class="forms-inner">
@@ -103,6 +57,11 @@
                                                         <span class="title">Rezerwacja wizyty</span>
                                                         <span class="title">data - czas</span>
                                                         <span class="title-m">Przychodnia medyczna MedLife</span>
+                                                        <div class="form-name">
+                                                            <span class="fn">{{doctor.kategoria}}</span>
+                                                            <span class="fn">{{doctor.imie}}</span>
+                                                            <span class="fn">{{doctor.nazwisko}}</span>
+                                                        </div>
                                                         <div class="form2">
                                                             <div class="form-group">
                                                                 <input class="border2" placeholder="Imie">
@@ -120,11 +79,11 @@
                                                                 placeholder="Wpisz objawy, problemy, dodatkowe informacje (opcionalnie)"></textarea>
                                                         </div>
                                                         <div class="controls">
-                                                            <div class="button-border">
+                                                            <div class="button-border-controls">
                                                                 <button (click)="closeModal()"
-                                                                    class="button">REZYGNUJE</button>
+                                                                    class="button-close">REZYGNUJE</button>
                                                             </div>
-                                                            <div class="button-border">
+                                                            <div class="button-border-controls">
                                                                 <button class="button">
                                                                     REJESTRUJE
                                                                 </button>
@@ -133,78 +92,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="list">
-                                    <div class="wraper">
-                                        <span class="day">Środa</span>
-                                        <div class="data-wraper">
-                                            <button class="time">8:00</button>
-                                            <button class="time">8:30</button>
-                                            <button class="time">9:00</button>
-                                            <button class="time">9:30</button>
-                                            <button class="time">10:00</button>
-                                            <button class="time">10:30</button>
-                                            <button class="time">11:00</button>
-                                            <button class="time">11:30</button>
-                                            <button class="time">12:00</button>
-                                            <button class="time">12:30</button>
-                                            <button class="time">13:00</button>
-                                            <button class="time">13:30</button>
-                                            <button class="time">14:00</button>
-                                            <button class="time">14:30</button>
-                                            <button class="time">15:00</button>
-                                            <button class="time">15:30</button>
-                                            <button class="time">16:00</button>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="list">
-                                    <div class="wraper">
-                                        <span class="day">Czwartek</span>
-                                        <div class="data-wraper">
-                                            <button class="time">8:00</button>
-                                            <button class="time">8:30</button>
-                                            <button class="time">9:00</button>
-                                            <button class="time">9:30</button>
-                                            <button class="time">10:00</button>
-                                            <button class="time">10:30</button>
-                                            <button class="time">11:00</button>
-                                            <button class="time">11:30</button>
-                                            <button class="time">12:00</button>
-                                            <button class="time">12:30</button>
-                                            <button class="time">13:00</button>
-                                            <button class="time">13:30</button>
-                                            <button class="time">14:00</button>
-                                            <button class="time">14:30</button>
-                                            <button class="time">15:00</button>
-                                            <button class="time">15:30</button>
-                                            <button class="time">16:00</button>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <div class="list">
-                                    <div class="wraper">
-                                        <span class="day">Piątek</span>
-                                        <div class="data-wraper">
-                                            <button class="time">8:00</button>
-                                            <button class="time">8:30</button>
-                                            <button class="time">9:00</button>
-                                            <button class="time">9:30</button>
-                                            <button class="time">10:00</button>
-                                            <button class="time">10:30</button>
-                                            <button class="time">11:00</button>
-                                            <button class="time">11:30</button>
-                                            <button class="time">12:00</button>
-                                            <button class="time">12:30</button>
-                                            <button class="time">13:00</button>
-                                            <button class="time">13:30</button>
-                                            <button class="time">14:00</button>
-                                            <button class="time">14:30</button>
-                                            <button class="time">15:00</button>
-                                            <button class="time">15:30</button>
-                                            <button class="time">16:00</button>
                                         </div>
                                     </div>
                                 </div>
@@ -239,3 +126,28 @@
 <span class="time">15:00</span>
 <span class="time">15:30</span>
 <span class="time">16:00</span> -->
+
+<!-- <div class="list">
+    <div class="wraper">
+        <span class="day">Piątek</span>
+        <div class="data-wraper">
+            <button class="time">8:00</button>
+            <button class="time">8:30</button>
+            <button class="time">9:00</button>
+            <button class="time">9:30</button>
+            <button class="time">10:00</button>
+            <button class="time">10:30</button>
+            <button class="time">11:00</button>
+            <button class="time">11:30</button>
+            <button class="time">12:00</button>
+            <button class="time">12:30</button>
+            <button class="time">13:00</button>
+            <button class="time">13:30</button>
+            <button class="time">14:00</button>
+            <button class="time">14:30</button>
+            <button class="time">15:00</button>
+            <button class="time">15:30</button>
+            <button class="time">16:00</button>
+        </div>
+    </div>
+</div> -->
