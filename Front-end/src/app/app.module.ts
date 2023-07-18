@@ -36,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { AdminRosComponent } from './admin-ros/admin-ros.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
+import { AdminReservationComponent } from './admin-reservation/admin-reservation.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { SandboxComponent } from './sandbox/sandbox.component';
     BlogListComponent,
     AdminRosComponent,
     SandboxComponent,
+    AdminReservationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

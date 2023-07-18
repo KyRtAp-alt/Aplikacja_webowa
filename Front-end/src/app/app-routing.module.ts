@@ -22,6 +22,7 @@ import { OurTeamComponent } from './our-team/our-team.component';
 import { ContactComponent } from './contact/contact.component';
 import { AdminRosComponent } from './admin-ros/admin-ros.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
+import { AdminReservationComponent } from './admin-reservation/admin-reservation.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'kontakt', component: ContactComponent },
   { path: 'ros', component: AdminRosComponent },
   { path: 'sandbox', component: SandboxComponent },
+  { path: 'rezerwacja', component: AdminReservationComponent },
 ];
 
 @NgModule({

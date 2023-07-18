@@ -8,7 +8,6 @@
   justify-content: space-between;
   align-items: flex-start;
   background-color: #bbeefc;
-  // background-color: #01a3a4;
   width: 100%;
   max-width: 1440px;
   height: 100%;
@@ -33,7 +32,6 @@
   font-size: 26px;
   margin-left: 50px;
   margin-top: 50px;
-  // color: white;
 }
 
 .img {
@@ -50,8 +48,6 @@
   padding: 0px 50px 0;
   box-sizing: content-box;
   width: 850px;
-  font-family: sans-serif;
-  // color: white;
 }
 
 .second-text {
@@ -59,8 +55,11 @@
   font-size: 16px;
   box-sizing: content-box;
   line-height: 20px;
+}
+
+.first-text,
+.second-text {
   font-family: sans-serif;
-  // color: white;
 }
 
 h2 {

@@ -1,5 +1,5 @@
 import express from "express";
-import { Request, Response } from "express";
+// import { Request, Response } from "express";
 const cors = require("cors");
 
 const app = express();
@@ -14,6 +14,9 @@ app.use("/blog", blog);
 
 const ros = require("./modules/ros");
 app.use("/ros", ros);
+
+const reservation = require("./modules/reservation");
+app.use("/reservation", reservation);
 
 app.listen(3000, () => {
   console.log("Application started on port 3000!");
