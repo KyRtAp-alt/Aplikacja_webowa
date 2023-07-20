@@ -18,6 +18,9 @@ app.use("/ros", ros);
 const reservation = require("./modules/reservation");
 app.use("/reservation", reservation);
 
+const schedule = require("./modules/schedule");
+app.use("/schedule", schedule);
+
 app.listen(3000, () => {
   console.log("Application started on port 3000!");
 });

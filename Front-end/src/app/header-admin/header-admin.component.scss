@@ -29,7 +29,7 @@
 
 .top-box,
 .botton-box {
-  height: 40px;
+  height: 25px;
   background-color: #22a6b3;
 }
 
@@ -41,6 +41,9 @@
 .botton-box {
   width: 100%;
   max-width: 1440px;
+  @media (min-width: 1445px) {
+    border-radius: 10px;
+  }
 }
 
 .logo {
