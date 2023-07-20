@@ -2,25 +2,22 @@ import express from "express";
 import { Request, Response } from "express";
 import { MongoClient, ObjectId } from "mongodb";
 
+const doctorService = require("../service/doctorService");
+
 const router = express.Router();
 router.use(express.json());
 const client = new MongoClient(
   "mongodb+srv://admin:Book54321@cluster0.qxenmyc.mongodb.net/Restauracja"
 );
 
-router.get("/", async (req: Request, res: Response) => {
-  await client.connect();
-  const db = client.db();
-  const collection = db.collection("doctor");
-  const result = await collection.find();
-  let aray: Object[] = [];
-  result
-    .forEach((element) => {
-      aray.push(element);
-    })
-    .then(() => {
-      res.status(200).send(aray);
-    });
+router.get("/", async (req, res) => {
+  try {
+    const doctors = await doctorService.getAllDoctors();
+    res.status(200).send(doctors);
+  } catch (error) {
+    console.error("Error while fetching doctors", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 router.post("/", async (req: Request, res: Response) => {
@@ -59,3 +56,18 @@ router.put("/:id", async (req: Request, res: Response) => {
 });
 
 module.exports = router;
+
+// router.get("/", async (req: Request, res: Response) => {
+//   await client.connect();
+//   const db = client.db();
+//   const collection = db.collection("doctor");
+//   const result = await collection.find();
+//   let aray: Object[] = [];
+//   result
+//     .forEach((element) => {
+//       aray.push(element);
+//     })
+//     .then(() => {
+//       res.status(200).send(aray);
+//     });
+// });
