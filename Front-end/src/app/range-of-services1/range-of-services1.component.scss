@@ -58,3 +58,13 @@
   grid-template-columns: repeat(4, auto);
   gap: 60px;
 }
+
+@media screen and (max-width: 1430px) {
+  .main-box {
+    grid-template-columns: repeat(1, auto);
+  }
+
+  .name-bar {
+    font-size: 26px;
+  }
+}

@@ -36,3 +36,15 @@
   color: white;
   font-family: sans-serif;
 }
+
+@media screen and (max-width: 700px) {
+  .em,
+  .tel,
+  .ul {
+    font-size: 14px;
+  }
+
+  .header {
+    display: grid;
+  }
+}

@@ -9,8 +9,9 @@
 }
 
 .img {
-  width: 1440px;
-  height: 650px;
+  width: 100%;
+  max-width: 1440px;
+  // height: 650px;
   background-position: top;
   background-repeat: no-repeat;
   object-fit: cover;
