@@ -59,7 +59,7 @@
   gap: 60px;
 }
 
-@media screen and (max-width: 1430px) {
+@media (max-width: 1024px) {
   .main-box {
     grid-template-columns: repeat(1, auto);
     gap: 0px;
@@ -71,5 +71,14 @@
 
   .left-left {
     margin-top: 20px;
+    height: 90px;
+    width: 200px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .bar {
   }
 }
