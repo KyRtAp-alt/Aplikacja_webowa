@@ -86,3 +86,26 @@ h2 {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+@media (max-width: 1439px) {
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #bbeefc;
+    width: 100%;
+    max-width: auto;
+    height: 100%;
+    margin-top: 40px;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+
+  .img {
+    display: none;
+  }
+}
