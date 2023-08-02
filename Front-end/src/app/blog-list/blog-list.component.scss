@@ -72,6 +72,13 @@
   }
 }
 
+// .container-left {
+//   @media (max-height: 700px) {
+//     width: 100%;
+//     max-width: 300px;
+//   }
+// }
+
 .title-blog-border {
   color: #00bfa8;
   display: flex;
@@ -92,6 +99,9 @@
 
   @media (max-width: 1024px) {
     font-size: 14px;
+    width: 100%;
+    max-width: 300px;
+    padding: 0px;
   }
 }
 
@@ -139,6 +149,7 @@
 .mobile-foto {
   visibility: hidden;
   display: none;
+
   @media (max-width: 1100px) {
     display: block;
   }
