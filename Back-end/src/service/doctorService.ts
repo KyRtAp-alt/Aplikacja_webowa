@@ -17,6 +17,56 @@ async function getAllDoctors() {
   }
 }
 
+// async function addDoctor(doctorData) {
+//   try {
+//     await client.connect();
+//     const db = client.db();
+//     const collection = db.collection("doctor");
+//     const result = await collection.insertOne(doctorData);
+//     return result;
+//   } catch (error) {
+//     console.error("Błąd podczas dodawania lekarza do bazy danych", error);
+//     throw error;
+//   }
+// }
+
+// async function deleteDoctor(doctorId) {
+//   try {
+//     await client.connect();
+//     const db = client.db();
+//     const collection = db.collection("doctor");
+//     const id = new ObjectId(doctorId);
+//     const result = await collection.deleteOne({ _id: id });
+//     return result.deletedCount;
+//   } catch (error) {
+//     console.error("Błąd podczas usuwania lekarza z bazy danych", error);
+//     throw error;
+//   }
+// }
+
+// async function updateDoctor(doctorId, updatedData) {
+//   try {
+//     await client.connect();
+//     const db = client.db();
+//     const collection = db.collection("doctor");
+//     const id = new ObjectId(doctorId);
+//     const result = await collection.updateOne(
+//       { _id: id },
+//       { $set: updatedData }
+//     );
+//     return result.modifiedCount;
+//   } catch (error) {
+//     console.error(
+//       "Błąd podczas aktualizacji danych lekarza w bazie danych",
+//       error
+//     );
+//     throw error;
+//   }
+// }
+
 module.exports = {
   getAllDoctors,
+  // addDoctor,
+  // deleteDoctor,
+  // updateDoctor,
 };
