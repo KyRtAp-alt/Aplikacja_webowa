@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { RosService } from '../ros.service';
+import { VisitService } from '../visit.service';
 
 @Component({
   selector: 'app-umow-wizyte',
@@ -25,6 +26,13 @@ export class UmowWizyteComponent {
   selectedRos: any;
   specializations: string[] = [];
   showForm: boolean = false;
+  //visit
+  visits: any[] = [];
+  clientfirstname: string = '';
+  clientlastname: string = '';
+  clientcontact: string = '';
+  clientmail: string = '';
+  clientcontent: string = '';
 
   openModal() {
     this.showForm = true;
@@ -44,7 +52,8 @@ export class UmowWizyteComponent {
 
   constructor(
     private doctorService: DoctorService,
-    private rosService: RosService
+    private rosService: RosService,
+    private visitService: VisitService
   ) {}
 
   ngOnInit() {
@@ -76,6 +85,28 @@ export class UmowWizyteComponent {
       }
     );
   }
+
+  addVisit() {
+    const newVisit = {
+      imieklienta: this.clientfirstname,
+      nazwiskoklienta: this.clientlastname,
+      kontaktklienta: this.clientcontact,
+      mailklient: this.clientmail,
+      opisklienta: this.clientcontent,
+    };
+
+    this.visitService.addVisit(newVisit).subscribe(
+      () => {
+        console.log('Dodano wizyte');
+        this.clearForm();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  clearForm() {}
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });

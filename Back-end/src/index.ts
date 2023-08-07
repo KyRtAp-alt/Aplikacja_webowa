@@ -15,11 +15,14 @@ app.use("/blog", blog);
 const ros = require("./modules/ros");
 app.use("/ros", ros);
 
-const reservation = require("./modules/reservation");
-app.use("/reservation", reservation);
+// const reservation = require("./modules/reservation");
+// app.use("/reservation", reservation);
 
 const schedule = require("./modules/schedule");
 app.use("/schedule", schedule);
+
+const visit = require("./modules/visit");
+app.use("/visit", visit);
 
 app.listen(3000, () => {
   console.log("Application started on port 3000!");

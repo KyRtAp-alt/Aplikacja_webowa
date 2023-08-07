@@ -14,7 +14,7 @@ export class ScheduleService {
   }
 
   addSchedule(schedule: any) {
-    return this.http.post('http://localgost:3000/schedule', schedule);
+    return this.http.post('http://localhost:3000/schedule', schedule);
   }
 
   delateSchedule(id: string) {
