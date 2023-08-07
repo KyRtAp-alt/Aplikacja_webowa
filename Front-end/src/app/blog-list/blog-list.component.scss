@@ -43,14 +43,9 @@
   background-color: #bbeefc;
   border-radius: 20px;
 
-  @media (max-width: 1440) {
+  @media (max-width: 1440px) {
     width: 100%;
-    max-width: 1000px;
-  }
-
-  @media (max-width: 1100px) {
-    width: 100%;
-    max-width: 600px;
+    max-height: 800px;
   }
 }
 
@@ -65,19 +60,26 @@
 
 .container-right {
   display: flex;
-
-  @media (max-width: 1100px) {
-    visibility: hidden;
-    display: none;
-  }
 }
 
-// .container-left {
-//   @media (max-height: 700px) {
-//     width: 100%;
-//     max-width: 300px;
-//   }
-// }
+.container-left {
+  @media (max-width: 1024px) {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  @media (max-width: 1023px) {
+    width: 100%;
+    max-width: 900px;
+    height: 350px;
+  }
+
+  @media (max-width: 650px) {
+    width: 100%;
+    max-width: 300px;
+    height: 500px;
+  }
+}
 
 .title-blog-border {
   color: #00bfa8;
@@ -89,19 +91,24 @@
   padding: 30px 30px 0;
 }
 
-.text {
+.text-border {
   padding: 30px 30px;
   font-size: 18px;
   box-sizing: content-box;
-  width: 500px;
-  height: 100px;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  max-height: 100px;
   line-height: 20px;
 
   @media (max-width: 1024px) {
     font-size: 14px;
     width: 100%;
-    max-width: 300px;
-    padding: 0px;
+    max-width: 600px;
+    padding: 10px;
+  }
+
+  @media (max-width: 769px) {
   }
 }
 
@@ -112,6 +119,26 @@
   align-items: center;
   width: 400px;
   height: 230px;
+
+  @media (max-width: 1100px) {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+.img-mobi {
+  @media (max-width: 1090px) {
+    display: flex;
+    position: relative;
+    visibility: visible;
+    width: 300px;
+    height: 200px;
+  }
+
+  @media (max-width: 700px) {
+    width: 250px;
+    height: 150px;
+  }
 }
 
 .button {
@@ -119,6 +146,10 @@
   justify-content: center;
   align-items: center;
   height: 60px;
+
+  @media (max-width: 769px) {
+    margin-top: 25px;
+  }
 }
 
 .button-border {
@@ -151,6 +182,9 @@
   display: none;
 
   @media (max-width: 1100px) {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
   }
 }
