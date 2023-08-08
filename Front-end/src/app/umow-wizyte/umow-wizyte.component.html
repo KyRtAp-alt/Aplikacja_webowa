@@ -62,33 +62,39 @@
                                                             <span class="fn">{{doctor.imie}}</span>
                                                             <span class="fn">{{doctor.nazwisko}}</span>
                                                         </div>
-                                                        <div class="form2">
-                                                            <div class="form-group">
-                                                                <input class="border2" placeholder="Imie"
-                                                                    [(ngModel)]="clientfirstname">
-                                                                <input class="border2" placeholder="Nazwisko"
-                                                                    [(ngModel)]="clientlastname">
+                                                        <div class="contact-form">
+                                                            <div class="form2">
+                                                                <div class="form-group">
+                                                                    <input class="border2" placeholder="Imie"
+                                                                        [(ngModel)]="clientfirstname">
+                                                                    <input class="border2" placeholder="Nazwisko"
+                                                                        [(ngModel)]="clientlastname">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form2">
-                                                            <div class="form-group">
-                                                                <input class="border2" placeholder="Telefon komórkowy">
-                                                                <input class="border2" placeholder="E-mail">
+                                                            <div class="form2">
+                                                                <div class="form-group">
+                                                                    <input class="border2"
+                                                                        placeholder="Telefon komórkowy"
+                                                                        [(ngModel)]="clientcontact">
+                                                                    <input class="border2" placeholder="E-mail"
+                                                                        [(ngModel)]="clientmail">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form2">
-                                                            <textarea class="name-2" name="content"
-                                                                placeholder="Wpisz objawy, problemy, dodatkowe informacje (opcionalnie)"></textarea>
-                                                        </div>
-                                                        <div class="controls">
-                                                            <div class="button-border-controls">
-                                                                <button (click)="closeModal()"
-                                                                    class="button-close">REZYGNUJE</button>
+                                                            <div class="form2">
+                                                                <textarea class="name-2" name="content"
+                                                                    placeholder="Wpisz objawy, problemy, dodatkowe informacje (opcionalnie)"
+                                                                    [(ngModel)]="clientcontent"></textarea>
                                                             </div>
-                                                            <div class="button-border-controls">
-                                                                <button class="button">
-                                                                    REJESTRUJE
-                                                                </button>
+                                                            <div class="controls">
+                                                                <div class="button-border-controls">
+                                                                    <button (click)="closeModal()"
+                                                                        class="button-close">REZYGNUJE</button>
+                                                                </div>
+                                                                <div class="button-border-controls">
+                                                                    <button class="button" (click)="addVisit()">
+                                                                        REJESTRUJE
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
