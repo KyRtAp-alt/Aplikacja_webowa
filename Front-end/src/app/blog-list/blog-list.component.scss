@@ -31,6 +31,7 @@
   font-size: 32px;
 }
 
+// ustwaienie kolumn
 .blog-list {
   display: grid;
   justify-content: center;
@@ -38,6 +39,18 @@
   margin-top: 10px;
   grid-template-columns: repeat(2, auto);
   gap: 100px;
+
+  @media (max-width: 1025px) {
+    gap: 50px;
+  }
+
+  @media (max-width: 769px) {
+    grid-template-columns: repeat(1, auto);
+  }
+
+  // @media (max-width: 426px) {
+  //   grid-template-columns: repeat(1, auto);
+  // }
 }
 
 .box-list {
@@ -48,12 +61,39 @@
   font-family: sans-serif;
 }
 
+// wymiary boxow z zawartoscia
 .main-container {
   width: 100%;
   max-width: 500px;
   height: 550px;
   background-color: #bbeefc;
-  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  @media (max-width: 1025px) {
+    max-width: 400px;
+    height: 600px;
+  }
+
+  @media (max-width: 769px) {
+    max-width: 700px;
+    height: auto;
+  }
+
+  @media (max-width: 426px) {
+    max-width: 400px;
+    height: auto;
+  }
+
+  @media (max-width: 376px) {
+    max-width: 350px;
+    height: auto;
+  }
+
+  @media (max-width: 321px) {
+    max-width: 300px;
+    height: auto;
+  }
 }
 
 .text-border {
@@ -72,6 +112,47 @@
   border: 3px solid #22a6b3;
   border-radius: 10px;
   margin-top: 30px;
+
+  @media (max-width: 769px) {
+  }
+}
+
+.button-border {
+  display: flex;
+  justify-content: center;
+  background-color: #bbeefc;
+  border-end-end-radius: 20px;
+  border-end-start-radius: 20px;
+}
+
+.button {
+  font-size: 20px;
+  color: white;
+  border: 5px #01a3a4 solid;
+  border-radius: 20px;
+  background-color: #01a3a4;
+  margin-bottom: 20px;
+}
+
+.title-blog-border {
+  color: #00bfa8;
+  display: flex;
+}
+
+.title-blog {
+  font-size: 28px;
+  padding: 30px 30px 20px 30px;
+  font-family: sans-serif;
+
+  @media (max-width: 700px) {
+    font-size: 24px;
+  }
+}
+
+.text {
+  @media (max-width: 426px) {
+    padding: 0px 30px 20px 30px;
+  }
 }
 
 // .ms {
@@ -157,21 +238,6 @@
 //   }
 // }
 
-.title-blog-border {
-  color: #00bfa8;
-  display: flex;
-}
-
-.title-blog {
-  font-size: 28px;
-  padding: 30px 30px 20px 30px;
-  font-family: sans-serif;
-
-  @media (max-width: 700px) {
-    font-size: 24px;
-  }
-}
-
 // .text-border {
 //   padding: 30px 30px;
 //   font-size: 17px;
@@ -192,12 +258,6 @@
 //   @media (max-width: 769px) {
 //   }
 // }
-
-.text {
-  @media (max-width: 426px) {
-    padding: 0px 30px 20px 30px;
-  }
-}
 
 // .img {
 //   padding: 40px;
