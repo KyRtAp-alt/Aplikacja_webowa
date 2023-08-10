@@ -12,11 +12,11 @@
                         <input class="border" name="firstname" [(ngModel)]="title">
                     </div>
                     <div class="form-group">
-                        <label class="name">Opis</label>
+                        <label class="name">Streszczenie opisu</label>
                         <textarea class="name-2" name="contents" placeholder="Dodaj opis" [(ngModel)]="content"
-                            maxlength="800"></textarea>
+                            maxlength="500"></textarea>
                         <div class="character-count">
-                            Pozostało znaków: {{ 800 - content.length }}
+                            Pozostało znaków: {{ 500 - content.length }}
                         </div>
                     </div>
                     <div class="border-but">

@@ -110,7 +110,7 @@
     font-size: 14px;
     width: 100%;
     max-width: 600px;
-    padding: 0px;
+    // padding: 0px;
   }
 
   @media (max-width: 769px) {
@@ -118,7 +118,8 @@
 }
 
 .text {
-  @media (max-width: 1px) {
+  @media (max-width: 426px) {
+    padding: 0px 30px 20px 30px;
   }
 }
 
@@ -146,8 +147,8 @@
   }
 
   @media (max-width: 700px) {
-    width: 250px;
-    height: 150px;
+    width: 150px;
+    height: 100px;
   }
 }
 

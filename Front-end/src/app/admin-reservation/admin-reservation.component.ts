@@ -8,6 +8,7 @@ import { VisitService } from '../visit.service';
 })
 export class AdminReservationComponent {
   visits: any[] = [];
+  // name: string = '';
   clientfirstname: string = '';
   clientlastname: string = '';
   clientcontact: string = '';
@@ -31,4 +32,26 @@ export class AdminReservationComponent {
       }
     );
   }
+
+  addVisit() {
+    const newVisit = {
+      imieklienta: this.clientfirstname,
+      nazwiskoklienta: this.clientlastname,
+      kontaktklienta: this.clientcontact,
+      mailklient: this.clientmail,
+      opisklienta: this.clientcontent,
+    };
+
+    this.visitService.addVisit(newVisit).subscribe(
+      () => {
+        console.log('Dodano wizyte');
+        this.clearForm();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  clearForm() {}
 }
