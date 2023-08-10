@@ -1,11 +1,12 @@
 .ms {
-  display: flex;
-  justify-content: center;
 }
 
 .ms_outer {
-  width: 100%;
-  max-width: 1440px;
+}
+
+.bar {
+  display: flex;
+  justify-content: center;
 }
 
 .title-border {
@@ -30,56 +31,131 @@
   font-size: 32px;
 }
 
-.ms_inner {
+.blog-list {
   display: grid;
   justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  grid-template-columns: repeat(2, auto);
+  gap: 100px;
 }
 
-.contents-box {
-  width: 100%;
-  max-width: 1300px;
-  margin-bottom: 40px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #bbeefc;
-  border-radius: 20px;
+.box-list {
+}
 
-  @media (max-width: 1440px) {
-    width: 100%;
-    max-height: 800px;
-  }
+.text,
+.title {
+  font-family: sans-serif;
 }
 
 .main-container {
+  width: 100%;
+  max-width: 500px;
+  height: 550px;
+  background-color: #bbeefc;
+  border-radius: 20px;
+}
+
+.text-border {
+  padding: 0px 30px 30px 30px;
+  line-height: 25px;
+}
+
+.mobile-foto {
   display: flex;
-  justify-content: space-around;
-
-  @media (max-width: 1100px) {
-    display: grid;
-  }
+  justify-content: center;
 }
 
-.container-right {
-  display: flex;
+.img-mobi {
+  width: 250px;
+  height: 150px;
+  border: 3px solid #22a6b3;
+  border-radius: 10px;
+  margin-top: 30px;
 }
 
-.container-left {
-  @media (max-width: 1024px) {
-    width: 100%;
-    max-width: 900px;
-  }
+// .ms {
+//   display: flex;
+//   justify-content: center;
+// }
 
-  @media (max-width: 1023px) {
-    width: 100%;
-    max-width: 900px;
-    height: 350px;
-  }
+// .ms_outer {
+//   width: 100%;
+//   max-width: 1440px;
+// }
 
-  @media (max-width: 650px) {
-    width: 100%;
-    max-width: 300px;
-    height: 500px;
-  }
-}
+// .title-border {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 50px;
+//   background-color: #bbeefc;
+//   color: #22a6b3;
+//   width: 100%;
+//   max-width: 1440px;
+//   margin-top: 40px;
+//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//   margin-bottom: 40px;
+
+//   @media (min-width: 1445px) {
+//     border-radius: 10px;
+//   }
+// }
+
+// .title {
+//   font-size: 32px;
+// }
+
+// .ms_inner {
+//   display: grid;
+//   justify-content: center;
+// }
+
+// .contents-box {
+//   width: 100%;
+//   max-width: 1300px;
+//   margin-bottom: 40px;
+//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//   background-color: #bbeefc;
+//   border-radius: 20px;
+
+//   @media (max-width: 1440px) {
+//     width: 100%;
+//     max-height: 800px;
+//   }
+// }
+
+// .main-container {
+//   display: flex;
+//   justify-content: space-around;
+
+//   @media (max-width: 1100px) {
+//     display: grid;
+//   }
+// }
+
+// .container-right {
+//   display: flex;
+// }
+
+// .container-left {
+//   @media (max-width: 1024px) {
+//     width: 100%;
+//     max-width: 900px;
+//   }
+
+//   @media (max-width: 1023px) {
+//     width: 100%;
+//     max-width: 900px;
+//     height: 350px;
+//   }
+
+//   @media (max-width: 650px) {
+//     width: 100%;
+//     max-width: 300px;
+//     height: 500px;
+//   }
+// }
 
 .title-blog-border {
   color: #00bfa8;
@@ -96,26 +172,26 @@
   }
 }
 
-.text-border {
-  padding: 30px 30px;
-  font-size: 17px;
-  box-sizing: content-box;
-  width: 100%;
-  max-width: 500px;
-  height: 100%;
-  max-height: 100px;
-  line-height: 20px;
+// .text-border {
+//   padding: 30px 30px;
+//   font-size: 17px;
+//   box-sizing: content-box;
+//   width: 100%;
+//   max-width: 500px;
+//   height: 100%;
+//   max-height: 100px;
+//   line-height: 20px;
 
-  @media (max-width: 1024px) {
-    font-size: 14px;
-    width: 100%;
-    max-width: 600px;
-    // padding: 0px;
-  }
+//   @media (max-width: 1024px) {
+//     font-size: 14px;
+//     width: 100%;
+//     max-width: 600px;
+//     // padding: 0px;
+//   }
 
-  @media (max-width: 769px) {
-  }
-}
+//   @media (max-width: 769px) {
+//   }
+// }
 
 .text {
   @media (max-width: 426px) {
@@ -123,79 +199,79 @@
   }
 }
 
-.img {
-  padding: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 380px;
-  height: 210px;
+// .img {
+//   padding: 40px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 380px;
+//   height: 210px;
 
-  @media (max-width: 1100px) {
-    visibility: hidden;
-    display: none;
-  }
-}
+//   @media (max-width: 1100px) {
+//     visibility: hidden;
+//     display: none;
+//   }
+// }
 
-.img-mobi {
-  @media (max-width: 1090px) {
-    display: flex;
-    position: relative;
-    visibility: visible;
-    width: 300px;
-    height: 200px;
-  }
+// .img-mobi {
+//   @media (max-width: 1090px) {
+//     display: flex;
+//     position: relative;
+//     visibility: visible;
+//     width: 300px;
+//     height: 200px;
+//   }
 
-  @media (max-width: 700px) {
-    width: 150px;
-    height: 100px;
-  }
-}
+//   @media (max-width: 700px) {
+//     width: 150px;
+//     height: 100px;
+//   }
+// }
 
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
+// .button {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 60px;
 
-  @media (max-width: 769px) {
-    margin-top: 25px;
-  }
-}
+//   @media (max-width: 769px) {
+//     margin-top: 25px;
+//   }
+// }
 
-.button-border {
-  font-size: 20px;
-  color: white;
-  // margin-right: 20px;
-  border: 5px #01a3a4 solid;
-  border-radius: 20px;
-  background-color: #01a3a4;
-}
+// .button-border {
+//   font-size: 20px;
+//   color: white;
+//   // margin-right: 20px;
+//   border: 5px #01a3a4 solid;
+//   border-radius: 20px;
+//   background-color: #01a3a4;
+// }
 
-.main-box {
-  margin-top: 60px;
-}
+// .main-box {
+//   margin-top: 60px;
+// }
 
-.border {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// .border {
+//   margin-top: 30px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-.text,
-.title {
-  font-family: sans-serif;
-}
+// .text,
+// .title {
+//   font-family: sans-serif;
+// }
 
-.mobile-foto {
-  visibility: hidden;
-  display: none;
+// .mobile-foto {
+//   visibility: hidden;
+//   display: none;
 
-  @media (max-width: 1100px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-}
+//   @media (max-width: 1100px) {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-top: 20px;
+//   }
+// }
