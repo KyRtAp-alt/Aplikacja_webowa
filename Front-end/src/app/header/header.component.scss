@@ -15,6 +15,7 @@
   justify-content: flex-end;
   background-color: #01a3a4;
   height: 55px;
+  // letter-spacing: 1px;
 
   @media (max-width: 819px) {
     // display: grid;
@@ -25,8 +26,14 @@
   }
 
   @media (max-width: 426px) {
-    justify-content: flex-start;
+    justify-content: flex-end;
+    align-items: flex-end;
     display: grid;
+    text-align: right;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: auto;
   }
 }
 

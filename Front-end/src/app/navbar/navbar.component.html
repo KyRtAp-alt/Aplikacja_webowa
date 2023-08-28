@@ -19,14 +19,17 @@
                         <button class="p5" routerLink="/umow-wizyte">Umów wizytę</button>
                     </div>
                 </div>
+                <div class="header-hamburger-menu" (click)="toggleMenu()">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<!-- <div class="container-right menu-fixed">
-    <button class="menu-toggle" (click)="toggleMenu()">Menu</button>
+<div class="container-right menu-fixed">
+    <button class="menu-toggle">X</button>
     <div class="menu" [ngClass]="{ 'active': isMenuOpen }">
         <button class="p1" routerLink="/zakres-uslug">Zakres usług</button>
         <button class="p2" routerLink="/cennik">Cennik</button>
@@ -36,4 +39,4 @@
             <button class="p5" routerLink="/umow-wizyte">Umów wizytę</button>
         </div>
     </div>
-</div> -->
+</div>

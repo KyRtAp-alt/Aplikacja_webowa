@@ -20,6 +20,17 @@ h2 {
   @media (min-width: 1445px) {
     border-radius: 10px;
   }
+
+  @media (max-width: 1439px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #bbeefc;
+    width: 100%;
+    max-width: auto;
+    height: 100%;
+    margin-top: 40px;
+  }
 }
 
 .right-container {
@@ -37,8 +48,31 @@ h2 {
   margin-left: 50px;
   margin-top: 50px;
 
-  @media (max-width: 300px) {
-    font-size: 10px;
+  @media (max-width: 1439px) {
+    font-size: 26px;
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+
+  @media (max-width: 700px) {
+    margin-left: 0px;
+    margin-top: 20px;
+    font-size: 26px;
+    padding: 0 50px 0;
+  }
+
+  // @media (max-width: 436px) {
+  //   font-size: 20px;
+  // }
+
+  // @media (max-width: 374px) {
+  //   font-size: 20px;
+  // }
+
+  @media (max-width: 321px) {
+    font-size: 26px;
+    padding: 0 10px 0;
+    text-align: center;
   }
 }
 
@@ -49,6 +83,10 @@ h2 {
   margin-top: 10px;
   margin-right: 10px;
   border-radius: 10px;
+
+  @media (max-width: 1439px) {
+    display: none;
+  }
 }
 
 .first-text {
@@ -58,6 +96,16 @@ h2 {
   // width: 850px;
   // width: 100%;
   max-width: 850px;
+
+  @media (max-width: 700px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 321px) {
+    padding: 0 30px 0;
+    text-align: left;
+    font-size: 14px;
+  }
 }
 
 .second-text {
@@ -65,6 +113,16 @@ h2 {
   font-size: 16px;
   box-sizing: content-box;
   line-height: 20px;
+
+  @media (max-width: 700px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 321px) {
+    padding-top: 0px;
+    padding-left: 10px;
+    font-size: 12px;
+  }
 }
 
 .first-text,
@@ -76,7 +134,7 @@ h2 {
   margin-bottom: 15px;
 }
 
-.border-button {
+.button-border {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,50 +153,4 @@ h2 {
   background-color: #01a3a4;
   margin-top: 30px;
   margin-bottom: 30px;
-}
-
-@media (max-width: 1439px) {
-  .main-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: #bbeefc;
-    width: 100%;
-    max-width: auto;
-    height: 100%;
-    margin-top: 40px;
-  }
-
-  .title {
-    font-size: 26px;
-    margin-left: 50px;
-    margin-top: 50px;
-  }
-
-  .img {
-    display: none;
-  }
-}
-
-@media (max-width: 700px) {
-  .title {
-    margin-left: 0px;
-    margin-top: 20px;
-    font-size: 26px;
-    padding: 0 50px 0;
-  }
-
-  .first-text {
-    font-size: 14px;
-  }
-
-  .second-text {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 374px) {
-  .title {
-    font-size: 24px;
-  }
 }
