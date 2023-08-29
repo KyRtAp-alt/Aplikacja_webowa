@@ -1,59 +1,73 @@
-.forms {
-  width: 800px;
-  height: 550px;
-  background-color: grey;
-}
+$menuHeight: 60px;
+$menuBreakpoint: 768px;
 
-.forms-outer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+#my-first {
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
 
-.img {
-  margin-top: 30px;
-  width: 40px;
-  height: 40px;
-}
+  .logotype {
+    a {
+      padding: 0 8px;
+      font-size: 1.4rem;
+      text-decoration: none;
+      color: #07c;
+    }
+  }
 
-.s {
-  display: grid;
-  justify-content: center;
-}
+  .burger {
+    padding: 0 10px;
+    border-left: 1px solid #eee;
+    display: none;
+    cursor: pointer;
 
-.title-m {
-  color: white;
-  font-size: 20px;
-}
+    i {
+      color: #999;
+      line-height: $menuHeight;
+    }
 
-.title,
-.title-m {
-  display: flex;
-  justify-content: center;
-}
+    @media (max-width: $menuBreakpoint) {
+      display: block;
+    }
+  }
 
-.q {
-  display: grid;
-}
+  .menu {
+    display: flex;
+    align-items: center;
 
-.border {
-  width: 200px;
-  margin-right: 20px;
-}
+    @media (max-width: $menuBreakpoint) {
+      display: none;
 
-.form {
-  display: flex;
-  margin-top: 20px;
-}
+      &.is-open {
+        display: block;
+        position: absolute;
+        top: #{$menuHeight + 2};
+        background: #fff;
+        width: 100%;
+        z-index: 999;
 
-.form-group {
-}
+        .menu-item {
+          border-bottom: 1px solid #cccccc;
+        }
+      }
+    }
 
-.name-2 {
-  width: 450px;
-  height: auto;
-  min-height: 100px;
-  max-height: 300px;
-  resize: vertical;
-  overflow: auto;
+    .menu-item {
+      padding: 0 10px;
+      height: $menuHeight;
+      line-height: $menuHeight;
+      text-decoration: none;
+      display: block;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #454545;
+    }
+  }
 }

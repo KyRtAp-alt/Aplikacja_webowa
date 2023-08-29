@@ -1,4 +1,48 @@
-<div class="ms">
+<div class="nav">
+    <a class="logo-container">
+        <img src="../../assets/343958848_562057416008897_96267590959828_n.png" alt="" class="logo" routerLink="">
+        <span class="main_name" routerLink="">MedLife</span>
+    </a>
+    <a class="router-container">
+        <nav id="my-first">
+            <ul>
+                <li class="burger" (click)="toggleMenu()">
+                    <i class="material-icons">{{ isMenuOpen ? "Close" : "Menu" }}</i>
+                </li>
+                <li class="menu" [class.is-open]="isMenuOpen">
+                    <a routerLink="/zakres-uslug" class="menu-item">Zakres usług</a>
+                    <a routerLink="/cennik" class="menu-item">Cennik</a>
+                    <a routerLink="/nasz-zespol" class="menu-item">Nasz zespół</a>
+                    <a routerLink="/kontakt" class="menu-item">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </a>
+</div>
+
+
+
+<!-- <div class="header-hamburger-menu" (click)="toggleMenu()">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+    </div> -->
+
+<!-- <nav class="nav-menu">
+        <ul class="nav-list">
+            <li class="nav__el">
+                <a href="" class="nav__el-link"></a>
+            </li>
+            <li class="nav__el">
+                <a href="" class="nav__el-link"></a>
+            </li>
+            <li class="nav__el">
+                <a href="/nasz-zespol" class="nav__el-link"></a>
+            </li>
+        </ul>
+    </nav> -->
+
+<!-- <div class="ms">
     <div class="ms_outer">
         <div class="ms_inner">
             <div class="header">
@@ -39,4 +83,4 @@
             <button class="p5" routerLink="/umow-wizyte">Umów wizytę</button>
         </div>
     </div>
-</div>
+</div> -->

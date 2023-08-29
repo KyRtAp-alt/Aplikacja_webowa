@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +8,7 @@ import { RouterModule } from '@angular/router';
 export class NavbarComponent {
   isMenuOpen = false;
 
-  toggleMenu() {
+  toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 }

@@ -3,8 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-sandbox',
   templateUrl: './sandbox.component.html',
-  styleUrls: ['./sandbox.component.scss']
+  styleUrls: ['./sandbox.component.scss'],
 })
 export class SandboxComponent {
+  isMenuOpen = false;
 
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }
