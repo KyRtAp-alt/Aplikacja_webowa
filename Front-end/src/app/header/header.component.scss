@@ -58,6 +58,16 @@
   }
 }
 
+.em {
+  @media (max-width: 9999px) {
+    margin-right: 10px;
+  }
+
+  @media (max-width: 767px) {
+    margin-right: 0px;
+  }
+}
+
 .em,
 .tel,
 .ul {

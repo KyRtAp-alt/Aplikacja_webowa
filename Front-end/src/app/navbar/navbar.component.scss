@@ -1,11 +1,24 @@
 $menuHeight: 136px;
 $menuBreakpoint: 768px;
 
+.ms {
+  display: flex;
+  justify-content: center;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  max-width: 1980px;
+  width: 100%;
+}
+
+.nav-sc {
+  // width: 100%;
+  // max-width: 1980px;
 }
 
 #my-first {
@@ -15,18 +28,8 @@ $menuBreakpoint: 768px;
     background: #fff;
   }
 
-  .logotype {
-    a {
-      padding: 0 8px;
-      font-size: 1.4rem;
-      text-decoration: none;
-      color: #07c;
-    }
-  }
-
   .burger {
     padding: 0 10px;
-    // border-left: 1px solid #eee;
     display: none;
     cursor: pointer;
 
@@ -40,7 +43,7 @@ $menuBreakpoint: 768px;
     }
   }
 
-  .menu {
+  .nav-list {
     display: flex;
     align-items: center;
 
@@ -55,22 +58,32 @@ $menuBreakpoint: 768px;
         width: 100%;
         z-index: 9;
         left: 0;
-
-        .menu-item {
-          border-bottom: 1px solid #cccccc;
-        }
       }
     }
 
-    .menu-item {
+    .menu-item,
+    .menu-item-rez {
       padding: 0 10px;
       height: 50px;
       line-height: 50px;
       text-decoration: none;
       display: block;
       font-size: 20px;
-      color: #244160;
       font-family: sans-serif;
+    }
+  }
+
+  .menu-item {
+    color: #244160;
+  }
+
+  .menu-item-rez {
+    background-color: #01a3a4;
+    color: white;
+    margin-right: 10px;
+
+    @media (max-width: 426px) {
+      margin-right: 0px;
     }
   }
 }
@@ -79,6 +92,7 @@ $menuBreakpoint: 768px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: 1980px;
 }
 
 .logo {
@@ -88,9 +102,13 @@ $menuBreakpoint: 768px;
   margin-right: 20px;
 }
 
-.main_name {
+.main-name {
   font-size: 30px;
   color: #244160;
+
+  @media (max-height: 426px) {
+    font-size: 24px;
+  }
 }
 
 ///////////////////////////////
