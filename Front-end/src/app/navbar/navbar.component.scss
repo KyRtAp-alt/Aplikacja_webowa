@@ -1,9 +1,10 @@
-$menuHeight: 136px;
+$menuHeight: 122px;
 $menuBreakpoint: 768px;
 
 .ms {
   display: flex;
   justify-content: center;
+  height: auto;
 }
 
 .nav {
@@ -14,6 +15,7 @@ $menuBreakpoint: 768px;
   padding-bottom: 10px;
   max-width: 1980px;
   width: 100%;
+  height: 60px;
 }
 
 .nav-sc {
@@ -35,7 +37,7 @@ $menuBreakpoint: 768px;
 
     i {
       color: #244160;
-      line-height: 60px;
+      // line-height: 60px;
     }
 
     @media (max-width: $menuBreakpoint) {
@@ -81,9 +83,11 @@ $menuBreakpoint: 768px;
     background-color: #01a3a4;
     color: white;
     margin-right: 10px;
+    border-radius: 15px;
 
-    @media (max-width: 426px) {
+    @media (max-width: 769px) {
       margin-right: 0px;
+      border-radius: 0px;
     }
   }
 }
@@ -103,11 +107,63 @@ $menuBreakpoint: 768px;
 }
 
 .main-name {
-  font-size: 30px;
+  font-size: 36px;
   color: #244160;
 
-  @media (max-height: 426px) {
+  @media (max-width: 426px) {
     font-size: 24px;
+  }
+}
+
+.header-hamburger-menu {
+  display: none;
+  visibility: visible;
+
+  @media (max-width: 769px) {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+  }
+}
+
+.header-hamburger-menu:active {
+  display: none;
+}
+
+.header-close-menu {
+  display: none;
+  visibility: hidden;
+
+  @media (max-width: 769px) {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+  }
+
+  :active {
+    visibility: visible;
+  }
+}
+
+.hamburger-bar {
+  width: 35px;
+  height: 3px;
+  background-color: #01a3a4;
+
+  &:nth-child(2) {
+    margin: 6px 0;
+  }
+}
+
+.hamburger-bar-close {
+  width: 35px;
+  height: 3px;
+  background-color: #01a3a4;
+
+  &:nth-child(1) {
+    margin: 6px 0;
   }
 }
 

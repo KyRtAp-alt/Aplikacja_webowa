@@ -11,4 +11,12 @@ export class NavbarComponent {
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
+
+  toggleMenuNew(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+    document
+      .querySelector('.header-hamburger-menu')!
+      .classList.toggle('active');
+    document.querySelector('.header-close-menu')!.classList.toggle('active');
+  }
 }

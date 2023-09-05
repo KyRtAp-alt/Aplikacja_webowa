@@ -7,8 +7,18 @@
         <a class="router-container">
             <nav id="my-first">
                 <ul>
-                    <li class="burger" (click)="toggleMenu()">
-                        <i class="material-icons">{{ isMenuOpen ? "Close" : "Menu" }}</i>
+                    <li class="burger" (click)="toggleMenuNew()">
+                        <!-- <i class="material-icons">{{ isMenuOpen ? "Close" : "Menu" }}</i> -->
+                        <!-- {{ isMenuOpen ? '' : '' }} -->
+                        <div class="header-hamburger-menu active">
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                            <span class="hamburger-bar"></span>
+                        </div>
+                        <div class="header-close-menu">
+                            <span class="hamburger-bar-close"></span>
+                            <span class="hamburger-bar-close"></span>
+                        </div>
                     </li>
                     <nav class="nav-menu">
                         <ul class="nav-list" [class.is-open]="isMenuOpen">
@@ -34,60 +44,3 @@
         <span class="hamburger-bar"></span>
         <span class="hamburger-bar"></span>
     </div> -->
-
-<!-- <nav class="nav-menu">
-        <ul class="nav-list">
-            <li class="nav__el">
-                <a href="" class="nav__el-link"></a>
-            </li>
-            <li class="nav__el">
-                <a href="" class="nav__el-link"></a>
-            </li>
-            <li class="nav__el">
-                <a href="/nasz-zespol" class="nav__el-link"></a>
-            </li>
-        </ul>
-    </nav> -->
-
-<!-- <div class="ms">
-    <div class="ms_outer">
-        <div class="ms_inner">
-            <div class="header">
-                <div class="container-left">
-                    <a routerLink="">
-                        <img class="logo" src="../../assets/343958848_562057416008897_96267590959828_n.png">
-                    </a>
-                    <div class="main_name">
-                        <button class="main_name" routerLink="">MedLife</button>
-                    </div>
-                </div>
-                <div class="container-right">
-                    <button class="p1" routerLink="/zakres-uslug">Zakres usług</button>
-                    <button class="p2" routerLink="/cennik">Cennik</button>
-                    <button class="p3" routerLink="/nasz-zespol">Nasz zespół</button>
-                    <button class="p4" routerLink="/kontakt">Kontakt</button>
-                    <div class="border">
-                        <button class="p5" routerLink="/umow-wizyte">Umów wizytę</button>
-                    </div>
-                </div>
-                <div class="header-hamburger-menu" (click)="toggleMenu()">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container-right menu-fixed">
-    <button class="menu-toggle">X</button>
-    <div class="menu" [ngClass]="{ 'active': isMenuOpen }">
-        <button class="p1" routerLink="/zakres-uslug">Zakres usług</button>
-        <button class="p2" routerLink="/cennik">Cennik</button>
-        <button class="p3" routerLink="/nasz-zespol">Nasz zespół</button>
-        <button class="p4" routerLink="/kontakt">Kontakt</button>
-        <div class="border">
-            <button class="p5" routerLink="/umow-wizyte">Umów wizytę</button>
-        </div>
-    </div>
-</div> -->
