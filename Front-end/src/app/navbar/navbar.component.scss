@@ -104,11 +104,13 @@ $menuBreakpoint: 768px;
   height: 50px;
   margin-left: 10px;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .main-name {
   font-size: 36px;
   color: #244160;
+  cursor: pointer;
 
   @media (max-width: 426px) {
     font-size: 24px;

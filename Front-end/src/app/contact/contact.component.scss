@@ -1,3 +1,9 @@
+.ms {
+  display: grid;
+  justify-content: center;
+  // align-items: center;
+}
+
 .main-container {
   margin-top: 60px;
   background-color: #bbeefc;
@@ -38,6 +44,8 @@ h2 {
   justify-content: center;
   align-items: center;
   background-color: #bbeefc;
+  width: 100%;
+  max-width: 1980px;
 }
 
 .img-2 {
