@@ -72,6 +72,7 @@ $menuBreakpoint: 768px;
       display: block;
       font-size: 20px;
       font-family: sans-serif;
+      font-weight: 400;
       transform: scale(1);
       transition: transform 0.3s;
 
@@ -90,7 +91,8 @@ $menuBreakpoint: 768px;
   }
 
   .menu-item {
-    color: #244160;
+    // color: #244160;
+    color: #21395d;
   }
 
   .menu-item-rez {
@@ -125,6 +127,8 @@ $menuBreakpoint: 768px;
   font-size: 36px;
   color: #244160;
   cursor: pointer;
+  font-family: sans-serif;
+  font-weight: 350;
 
   @media (max-width: 426px) {
     font-size: 24px;

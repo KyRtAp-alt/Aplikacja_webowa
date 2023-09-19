@@ -8,13 +8,15 @@
 </div>
 <div class="main-box">
     <div class="box" *ngFor="let doctor of doctors">
-        <div class="first-container">
-            <img class="img" src="../../assets/img-doctorr/LEKARZ.jpg">
-        </div>
-        <div class="second-container">
-            <span class="category">{{doctor.kategoria}}</span>
-            <span class="firstname">{{doctor.imie}}</span>
-            <span class="lastname">{{doctor.nazwisko}}</span>
+        <div class="twince-container">
+            <div class="first-container">
+                <img class="img" src="../../assets/img-doctorr/LEKARZ.jpg">
+            </div>
+            <div class="second-container">
+                <span class="category">{{doctor.kategoria}}</span>
+                <span class="firstname">{{doctor.imie}}</span>
+                <span class="lastname">{{doctor.nazwisko}}</span>
+            </div>
         </div>
         <div class="third-container">
             <p class="content">{{doctor.opis}}</p>
