@@ -95,8 +95,6 @@
 }
 
 .first-container {
-  // display: flex;
-  // justify-content: center;
   padding-top: 30px; //10px
   padding-bottom: 30px;
   padding-left: 10px; //30px
@@ -174,6 +172,7 @@ span {
   margin-bottom: 15px;
   font-size: 16px;
   line-height: 1.4;
+  word-spacing: 1px;
 
   @media (max-width: 1200px) {
     font-size: 16px;

@@ -34,29 +34,29 @@
 <div class="ms">
     <div class="ms_outer">
         <div class="bar">
-            <div class="title-border">
+            <a class="title-border">
                 <h2 class="title">Blog</h2>
-            </div>
+            </a>
         </div>
         <div class="ms_inner">
             <div class="blog-list">
                 <div class="box-list" *ngFor="let blog of blogs">
                     <div class="box">
                         <div class="main-container">
-                            <div class="mobile-foto">
+                            <a class="mobile-foto">
                                 <img class="img-mobi" src="../../assets/AdobeStock_119605372_Easy-Resize.com(1).jpg">
-                            </div>
-                            <div class="title-blog-border">
+                            </a>
+                            <a class="title-blog-border">
                                 <h2 class="title-blog">{{blog.tytul}}</h2>
-                            </div>
-                            <div class="text-border">
+                            </a>
+                            <a class="text-border">
                                 <h2 class="text">{{blog.tresc}}</h2>
-                            </div>
+                            </a>
                         </div>
-                        <div class="button-border">
+                        <a class="button-border">
                             <button class="button" [routerLink]="['/blog-test', blog.id]">Czytaj
                                 więcej</button>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

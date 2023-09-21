@@ -166,9 +166,10 @@
 }
 
 .title-blog {
-  font-size: 28px;
+  font-size: 26px;
   padding: 30px 30px 20px 30px;
   font-family: sans-serif;
+  font-weight: 300;
 
   @media (max-width: 700px) {
     font-size: 24px;
@@ -184,6 +185,9 @@
 }
 
 .text {
+  padding-left: 10px;
+  padding-right: 10px;
+
   @media (max-width: 426px) {
     padding: 0px 30px 20px 30px;
   }
