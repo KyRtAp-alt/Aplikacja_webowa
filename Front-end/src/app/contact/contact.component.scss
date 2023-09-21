@@ -1,7 +1,11 @@
 .ms {
   display: grid;
   justify-content: center;
-  // align-items: center;
+}
+
+.qwer {
+  width: 100%;
+  max-width: 1440px;
 }
 
 .main-container {
@@ -44,8 +48,8 @@ h2 {
   justify-content: center;
   align-items: center;
   background-color: #bbeefc;
-  width: 100%;
-  max-width: 1980px;
+  // width: 100%;
+  // max-width: 1440px;
 }
 
 .img-2 {

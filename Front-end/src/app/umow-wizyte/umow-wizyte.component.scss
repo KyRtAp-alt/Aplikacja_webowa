@@ -34,8 +34,9 @@
 }
 
 .title-box {
-  font-size: 32px;
   font-family: sans-serif;
+  font-size: 30px;
+  font-weight: 300;
 }
 
 .loop-box {
@@ -118,6 +119,10 @@
   @media (max-width: 426px) {
     font-size: 14px;
   }
+
+  @media (max-width: 321px) {
+    font-size: 12px;
+  }
 }
 
 .worktime {
@@ -149,6 +154,18 @@
 
   @media (max-width: 769px) {
     width: 680px;
+  }
+
+  @media (max-width: 426px) {
+    width: 330px;
+  }
+
+  @media (max-width: 376px) {
+    width: 300px;
+  }
+
+  @media (max-width: 321px) {
+    width: 250px;
   }
 }
 

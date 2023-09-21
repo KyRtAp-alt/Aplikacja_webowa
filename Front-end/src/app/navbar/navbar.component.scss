@@ -73,14 +73,21 @@ $menuBreakpoint: 768px;
       font-size: 20px;
       font-family: sans-serif;
       font-weight: 400;
-      transform: scale(1);
+      transform: scale(0.9);
       transition: transform 0.3s;
 
       @media (max-width: 1025px) {
       }
     }
 
-    .menu-item:hover,
+    .menu-item:hover {
+      transform: scale(1.2);
+
+      @media (max-width: 1025px) {
+        transform: scale(1);
+      }
+    }
+
     .menu-item-rez:hover {
       transform: scale(1.1);
 
