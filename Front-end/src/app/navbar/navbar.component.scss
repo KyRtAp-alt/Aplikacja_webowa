@@ -31,7 +31,7 @@ $menuBreakpoint: 768px;
   }
 
   .burger {
-    padding: 0 10px;
+    padding: 0; //0 10px
     display: none;
     cursor: pointer;
 
@@ -60,6 +60,7 @@ $menuBreakpoint: 768px;
         width: 100%;
         z-index: 9;
         left: 0;
+        opacity: 0.9; // przezroczystosc
       }
     }
 
@@ -77,6 +78,8 @@ $menuBreakpoint: 768px;
       transition: transform 0.3s;
 
       @media (max-width: 1025px) {
+        transform: scale(1);
+        font-size: 20px;
       }
     }
 
@@ -100,6 +103,10 @@ $menuBreakpoint: 768px;
   .menu-item {
     // color: #244160;
     color: #21395d;
+
+    @media (max-width: 769px) {
+      border-bottom: 3px solid #01a3a4; //obramowanie linkow
+    }
   }
 
   .menu-item-rez {
@@ -111,6 +118,7 @@ $menuBreakpoint: 768px;
     @media (max-width: 769px) {
       margin-right: 0px;
       border-radius: 0px;
+      border-bottom: 3px solid #01a3a4;
     }
   }
 }
