@@ -142,7 +142,8 @@
 
 .category2 {
   width: 1050px;
-  height: 630px;
+  // height: 630px;
+  height: auto + 20px;
   background-color: #bbeefc;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -182,7 +183,7 @@
 }
 
 .data-list {
-  margin-top: 15px;
+  // margin-top: 15px;
   display: flex;
   justify-content: space-around;
   font-size: 18px;
@@ -411,4 +412,32 @@
 
 .fn {
   margin-left: 5px;
+}
+
+.schedule {
+  margin: 20px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 2px solid #55b8b2;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #55b8b2;
+  width: 100px;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+td.reserved {
+  background-color: red;
+  width: 10px;
 }

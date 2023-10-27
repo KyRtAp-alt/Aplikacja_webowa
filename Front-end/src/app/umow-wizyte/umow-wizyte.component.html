@@ -40,7 +40,24 @@
                     <div class="q">
                         <div class="category2">
                             <div class="data-list">
-                                <span (click)="openModal()">8:35</span>
+                                <!-- <span (click)="openModal()">8:35</span> -->
+                                <div class="schedule">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let hour of availableHours">
+                                                <td>{{ hour }}</td>
+                                                <td (click)="openModal()" *ngFor="let day of daysOfWeek"
+                                                    [ngClass]="{'reserved': isHourReserved(day, hour)}"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div *ngIf="showForm" class="modal-background">
                                     <div class="modal-content">
                                         <div class="close-button-border">
@@ -116,47 +133,3 @@
     <i class="fas fa-chevron-up">&#8593; </i>
 </div>
 <app-footer></app-footer>
-
-
-<!-- <span class="time">8:00</span>
-<span class="time">8:30</span>
-<span class="time">9:00</span>
-<span class="time">9:30</span>
-<span class="time">10:00</span>
-<span class="time">10:30</span>
-<span class="time">11:00</span>
-<span class="time">11:30</span>
-<span class="time">12:00</span>
-<span class="time">12:30</span>
-<span class="time">13:00</span>
-<span class="time">13:30</span>
-<span class="time">14:00</span>
-<span class="time">14:30</span>
-<span class="time">15:00</span>
-<span class="time">15:30</span>
-<span class="time">16:00</span> -->
-
-<!-- <div class="list">
-    <div class="wraper">
-        <span class="day">Piątek</span>
-        <div class="data-wraper">
-            <button class="time">8:00</button>
-            <button class="time">8:30</button>
-            <button class="time">9:00</button>
-            <button class="time">9:30</button>
-            <button class="time">10:00</button>
-            <button class="time">10:30</button>
-            <button class="time">11:00</button>
-            <button class="time">11:30</button>
-            <button class="time">12:00</button>
-            <button class="time">12:30</button>
-            <button class="time">13:00</button>
-            <button class="time">13:30</button>
-            <button class="time">14:00</button>
-            <button class="time">14:30</button>
-            <button class="time">15:00</button>
-            <button class="time">15:30</button>
-            <button class="time">16:00</button>
-        </div>
-    </div>
-</div> -->
