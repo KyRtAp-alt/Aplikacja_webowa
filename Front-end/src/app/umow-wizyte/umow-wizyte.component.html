@@ -91,7 +91,8 @@
                                                                         class="button-close">REZYGNUJE</button>
                                                                 </div>
                                                                 <div class="button-border-controls">
-                                                                    <button class="button" (click)="addVisit()">
+                                                                    <button class="button" (click)="registerVisit()"
+                                                                        [disabled]="isEmptyFields()">
                                                                         REJESTRUJE
                                                                     </button>
                                                                 </div>

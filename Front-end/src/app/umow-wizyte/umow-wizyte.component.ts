@@ -42,12 +42,23 @@ export class UmowWizyteComponent {
     this.showForm = false;
   }
 
+  closeModalVis() {
+    this.showForm = false;
+  }
+
   onShowMore(doctor: any) {
     doctor.showMore = true;
   }
 
   onShowLess(doctor: any) {
     doctor.showMore = false;
+  }
+
+  registerVisit() {
+    if (!this.isEmptyFields()) {
+      this.addVisit();
+      this.closeModalVis();
+    }
   }
 
   constructor(
@@ -98,7 +109,8 @@ export class UmowWizyteComponent {
     this.visitService.addVisit(newVisit).subscribe(
       () => {
         console.log('Dodano wizyte');
-        this.clearForm();
+        // this.clearForm();
+        this.closeModal();
       },
       (error) => {
         console.error(error);
@@ -106,7 +118,16 @@ export class UmowWizyteComponent {
     );
   }
 
-  clearForm() {}
+  // clearForm() {}
+
+  isEmptyFields(): boolean {
+    return (
+      !this.clientfirstname ||
+      !this.clientlastname ||
+      !this.clientcontact ||
+      !this.clientmail
+    );
+  }
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
