@@ -383,11 +383,25 @@
   cursor: pointer;
   z-index: 9999;
   border: 3px solid white;
+
+  @media (max-width: 1441px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: 426px) {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .scroll-to-top i {
   color: #fff;
   font-size: 20px;
+
+  @media (max-width: 426px) {
+    font-size: 15px;
+  }
 }
 
 .form-name {
