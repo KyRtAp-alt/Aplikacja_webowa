@@ -23,6 +23,9 @@ import { ContactComponent } from './contact/contact.component';
 import { AdminRosComponent } from './admin-ros/admin-ros.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
 import { AdminReservationComponent } from './admin-reservation/admin-reservation.component';
+import { ReceptionSchemeComponent } from './reception-scheme/reception-scheme.component';
+import { ReceptionHomepageComponent } from './reception-homepage/reception-homepage.component';
+import { ReceptionReservationComponent } from './reception-reservation/reception-reservation.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -42,17 +45,26 @@ const routes: Routes = [
   { path: 'medycyna-pracy', component: SubpageRof3Component },
   { path: 'kwalifikacje-prawa-jazdy', component: SubpageRof4Component },
   { path: 'lekarz-balneolog', component: SubpageRof5Component },
-  { path: 'admin', component: AdminLoginComponent },
-  { path: 'admin-homepage', component: AdminHomepageComponent },
-  { path: 'add-doctor', component: DoctorAddComponent },
-  { path: 'admin-blog', component: AdminBlogComponent },
   { path: 'umow-wizyte', component: UmowWizyteComponent },
   { path: 'pages', component: PagesComponent },
   { path: 'cennik', component: PriceListComponent },
   { path: 'nasz-zespol', component: OurTeamComponent },
   { path: 'kontakt', component: ContactComponent },
-  { path: 'ros', component: AdminRosComponent },
   { path: 'sandbox', component: SandboxComponent },
+
+  //Admin
+  { path: 'admin', component: AdminLoginComponent },
+  { path: 'admin-homepage', component: AdminHomepageComponent },
+  { path: 'add-doctor', component: DoctorAddComponent },
+  { path: 'admin-blog', component: AdminBlogComponent },
+  { path: 'ros', component: AdminRosComponent },
+
+  //Recepcja
+  { path: 'recepcja-stronaglowna', component: ReceptionHomepageComponent },
+  { path: 'recepcja-harmonogram', component: ReceptionSchemeComponent },
+  { path: 'recepcja-rezerwacja', component: ReceptionReservationComponent },
+
+  //SYF
   { path: 'rezerwacja', component: AdminReservationComponent },
 ];
 

@@ -40,24 +40,7 @@
                     <div class="q">
                         <div class="category2">
                             <div class="data-list">
-                                <!-- <span (click)="openModal()">8:35</span> -->
-                                <div class="schedule">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th *ngFor="let day of daysOfWeek">{{ day }}</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let hour of availableHours">
-                                                <td>{{ hour }}</td>
-                                                <td (click)="openModal()" *ngFor="let day of daysOfWeek"
-                                                    [ngClass]="{'reserved': isHourReserved(day, hour)}"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <span (click)="openModal()">8:35</span>
                                 <div *ngIf="showForm" class="modal-background">
                                     <div class="modal-content">
                                         <div class="close-button-border">
@@ -82,18 +65,18 @@
                                                         <div class="contact-form">
                                                             <div class="form2">
                                                                 <div class="form-group">
-                                                                    <input class="border2" placeholder="Imie"
+                                                                    <input class="border2" placeholder="Imie *"
                                                                         [(ngModel)]="clientfirstname">
-                                                                    <input class="border2" placeholder="Nazwisko"
+                                                                    <input class="border2" placeholder="Nazwisko *"
                                                                         [(ngModel)]="clientlastname">
                                                                 </div>
                                                             </div>
                                                             <div class="form2">
                                                                 <div class="form-group">
                                                                     <input class="border2"
-                                                                        placeholder="Telefon komórkowy"
+                                                                        placeholder="Telefon komórkowy *"
                                                                         [(ngModel)]="clientcontact">
-                                                                    <input class="border2" placeholder="E-mail"
+                                                                    <input class="border2" placeholder="E-mail *"
                                                                         [(ngModel)]="clientmail">
                                                                 </div>
                                                             </div>
@@ -133,3 +116,29 @@
     <i class="fas fa-chevron-up">&#8593; </i>
 </div>
 <app-footer></app-footer>
+
+
+
+
+
+
+
+<!--Formularz -->
+
+<!-- <div class="schedule">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hour of availableHours">
+                <td>{{ hour }}</td>
+                <td (click)="openModal()" *ngFor="let day of daysOfWeek"
+                    [ngClass]="{'reserved': isHourReserved(day, hour)}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->

@@ -37,6 +37,10 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { AdminRosComponent } from './admin-ros/admin-ros.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
 import { AdminReservationComponent } from './admin-reservation/admin-reservation.component';
+import { ReceptionSchemeComponent } from './reception-scheme/reception-scheme.component';
+import { ReceptionHomepageComponent } from './reception-homepage/reception-homepage.component';
+import { HeaderReceptionComponent } from './header-reception/header-reception.component';
+import { ReceptionReservationComponent } from './reception-reservation/reception-reservation.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +78,10 @@ import { AdminReservationComponent } from './admin-reservation/admin-reservation
     AdminRosComponent,
     SandboxComponent,
     AdminReservationComponent,
+    ReceptionSchemeComponent,
+    ReceptionHomepageComponent,
+    HeaderReceptionComponent,
+    ReceptionReservationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
