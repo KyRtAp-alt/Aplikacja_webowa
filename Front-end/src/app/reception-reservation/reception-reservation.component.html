@@ -1,5 +1,47 @@
 <app-header-reception></app-header-reception>
-<p>reception-reservation works!</p>
-<div class="list">
-
+<!-- <div class="list" *ngIf="visits.length > 0">
+    <button (click)="getVisit()">CLICK ME</button>
+    <ul class="">
+        <li *ngFor="let vist or visits"></li>
+    </ul>
+</div> -->
+<div class="right-container">
+    <div class="title-column-border">
+        <h2 class="title-column">Lista Rezerwacji</h2>
+    </div>
+    <div class="main-box-list">
+        <div class="main-doctor-list" *ngIf="visits.length > 0">
+            <div class="main-list">
+                <div class="dbl-border">
+                    <!-- <button class="doctor-button-list" (click)="getVisit()">
+                        <p class="title-doctor-button-list">Odśwież listę</p>
+                    </button> -->
+                </div>
+                <ul class="q">
+                    <li *ngFor="let visit of visits" class="list">
+                        <span class="clientfirstname">
+                            Imię:
+                            {{visit.imieklienta}}
+                        </span>
+                        <span class="clientlastname">
+                            Nazwisko:
+                            {{visit.nazwiskoklienta}}
+                        </span>
+                        <span class="clientcontact">
+                            Telefon:
+                            {{visit.kontaktklienta}}
+                        </span>
+                        <span class="clientmail">
+                            E-mail:
+                            {{visit.mailklient}}
+                        </span>
+                        <span class="clientcontent">
+                            Opis:
+                            {{visit.opisklienta}}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
