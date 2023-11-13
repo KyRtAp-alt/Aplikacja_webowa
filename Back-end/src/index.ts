@@ -24,6 +24,9 @@ app.use("/schedule", schedule);
 const visit = require("./modules/visit");
 app.use("/visit", visit);
 
+const scheme = require("./modules/scheme");
+app.use("/scheme", scheme);
+
 app.listen(3000, () => {
   console.log("Application started on port 3000!");
 });
