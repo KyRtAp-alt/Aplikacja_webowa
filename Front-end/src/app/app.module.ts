@@ -41,6 +41,7 @@ import { ReceptionSchemeComponent } from './reception-scheme/reception-scheme.co
 import { ReceptionHomepageComponent } from './reception-homepage/reception-homepage.component';
 import { HeaderReceptionComponent } from './header-reception/header-reception.component';
 import { ReceptionReservationComponent } from './reception-reservation/reception-reservation.component';
+import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { ReceptionReservationComponent } from './reception-reservation/reception
     ReceptionHomepageComponent,
     HeaderReceptionComponent,
     ReceptionReservationComponent,
+    AdminSchemeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

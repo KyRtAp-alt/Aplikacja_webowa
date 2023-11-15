@@ -1,0 +1,82 @@
+<app-header-admin></app-header-admin>
+<!-- <p>admin-scheme works!</p> -->
+<!-- <div class="q">
+    <div class="left-container">
+        <div class="main-box">
+            <form>
+                <div class="title-box">
+                    <h2 class="b">Utwórz Harmonogram</h2>
+                </div>
+                <div class="">
+                    <label class="">Nazwa harmonogramu</label>
+                    <input class="" name="">
+                </div>
+                <div class="group-box">
+                    <div class="form-group">
+                        <label class="">Dni tygodnia</label>
+                        <select>
+                            <option>poniedzialek</option>
+                            <option>wtorek</option>
+                            <option>sroda</option>
+                            <option>czwartek</option>
+                            <option>piatek</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <label class="">Od godziny</label>
+                        <input type="time" name="">
+                    </div>
+                    <div class="">
+                        <label class="">Do godziny</label>
+                        <input type="time" name="">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<div class="q">
+    <div class="left-container">
+        <div class="main-box">
+            <form #scheduleForm="ngForm" (ngSubmit)="generateSchedule(scheduleForm.value)">
+                <div class="title-box">
+                    <h2 class="b">Utwórz Harmonogram</h2>
+                </div>
+                <div class="form-group">
+                    <label for="scheduleName">Nazwa harmonogramu</label>
+                    <input id="scheduleName" name="scheduleName" ngModel class="form-control" required>
+                </div>
+                <div class="group-box">
+                    <div class="form-group">
+                        <label for="dayOfWeek">Dni tygodnia</label>
+                        <select id="dayOfWeek" name="dayOfWeek" ngModel class="form-control" required>
+                            <option value="poniedzialek">poniedziałek</option>
+                            <option value="wtorek">wtorek</option>
+                            <option value="sroda">środa</option>
+                            <option value="czwartek">czwartek</option>
+                            <option value="piatek">piątek</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="startTime">Od godziny</label>
+                        <input id="startTime" name="startTime" type="time" ngModel class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endTime">Do godziny</label>
+                        <input id="endTime" name="endTime" type="time" ngModel class="form-control" required>
+                    </div>
+                </div>
+                <button type="submit">Generuj</button>
+            </form>
+            <div *ngIf="generatedSchedule.schedule.length > 0">
+                <h3>Wygenerowany Harmonogram:</h3>
+                <p>Nazwa harmonogramu: {{ generatedSchedule.name }}</p>
+                <p>Dzień tygodnia: {{ generatedSchedule.dayOfWeek }}</p>
+                <ul>
+                    <li *ngFor="let item of generatedSchedule.schedule">{{ item }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
