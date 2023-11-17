@@ -26,6 +26,7 @@ import { AdminReservationComponent } from './admin-reservation/admin-reservation
 import { ReceptionSchemeComponent } from './reception-scheme/reception-scheme.component';
 import { ReceptionHomepageComponent } from './reception-homepage/reception-homepage.component';
 import { ReceptionReservationComponent } from './reception-reservation/reception-reservation.component';
+// import { AdminSchemeComponent } from './admin-scheme/AdminSchemeComponent';
 import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
 
 const routes: Routes = [

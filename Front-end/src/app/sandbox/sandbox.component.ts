@@ -6,9 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./sandbox.component.scss'],
 })
 export class SandboxComponent {
-  isMenuOpen = false;
+  daysOfWeek: string[] = [
+    'Poniedzialek',
+    'Wtorek',
+    'Sroda',
+    'Czwartek',
+    'Piatek',
+    'Sobota',
+  ];
 
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+  generateSchedule(formData: any) {
+    const scheduleName = formData.scheduleName;
   }
 }

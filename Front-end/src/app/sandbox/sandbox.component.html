@@ -1,13 +1,18 @@
-<nav id="my-first">
-    <ul>
-        <li class="burger" (click)="toggleMenu()">
-            <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
-        </li>
-        <li class="menu" [class.is-open]="isMenuOpen">
-            <a href="#" class="menu-item">Home</a>
-            <a href="#" class="menu-item">About</a>
-            <a href="#" class="menu-item">Sign in / Register</a>
-            <a href="#" class="menu-item">Contact</a>
-        </li>
-    </ul>
-</nav>
+<div class="q">
+    <div class="left-container">
+        <div class="main-box">
+            <form #scheduleForm="ngForm" (ngSubmit)="generateSchedule"> <!--(scheduleForm.value)-->
+                <div class="title-box">
+                    <h2 class="b">Utworz Harmonogram</h2>
+                </div>
+                <div class="form-group">
+                    <label for="scheduleName">Nazwa harmonogramu</label>
+                    <input id="scheduleName" name="scheduleName" class="form-control" required>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
+1231 -->

@@ -36,14 +36,16 @@
                             Pozostało znaków: {{ 650 - content.length }}
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="name">Określ czas pracy</label>
                         <select class="border" name="worktime" [(ngModel)]="worktime">
-                            <!-- <option value="od pon do wt 8-16">od pon do wt 8-16</option> -->
                             <option value="od pon do czw 8-16">od pon do czw 8-16</option>
                             <option value="od pon do pt 8-16">od pon do pt 8-16</option>
                         </select>
-                    </div>
+
+                    </div> -->
+                    <!-- <option value="od pon do wt 8-16">od pon do wt 8-16</option> -->
+
                     <div class="form-group">
                         <label class="name">Dostępność pracownika</label>
                     </div>
@@ -63,7 +65,6 @@
         <h2 class="title-column">Lista Lekarzy / Specialistów</h2>
     </div>
     <div class="main-column">
-
         <div class="main-box-list">
             <div class="main-doctor-list" *ngIf="doctors.length > 0">
                 <div class="main-list">
@@ -91,10 +92,10 @@
                                 Specializacja:
                                 {{doctor.specializacja}}
                             </span>
-                            <span class="worktime">
+                            <!-- <span class="worktime">
                                 Czas pracy:
                                 {{doctor.czaspracy}}
-                            </span>
+                            </span> -->
                             <!-- </div> -->
                             <span class="content">
                                 <p class="ops">Opis:</p>

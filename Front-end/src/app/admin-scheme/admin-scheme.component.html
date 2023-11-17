@@ -1,4 +1,157 @@
 <app-header-admin></app-header-admin>
+<div class="main-column">
+    <div class="main-box-list">
+        <div class="main-doctor-list" *ngIf="doctors.length > 0">
+            <div class="main-list">
+                <div class="dbl-border">
+                    <button class="doctor-button-list" (click)="getDoctors()">
+                        <p class="title-doctor-button-list">Odśwież listę</p>
+                    </button>
+                </div>
+                <ul class="qq">
+                    <li *ngFor="let doctor of doctors" class="list">
+                        <!-- <div class="data-doctor-list"> -->
+                        <span class="firstname">
+                            Imię:
+                            {{doctor.imie}}
+                        </span>
+                        <span class="lastname">
+                            Nazwisko:
+                            {{doctor.nazwisko}}
+                        </span>
+                        <span class="category">
+                            Kategoria:
+                            {{doctor.kategoria}}
+                        </span>
+                        <span class="specialization">
+                            Specializacja:
+                            {{doctor.specializacja}}
+                        </span>
+                        <span class="">
+                            <button>Dodaj harmonogram</button>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="q">
+    <div class="left-container">
+        <div class="main-box">
+            <form #scheduleForm="ngForm" (ngSubmit)="generateSchedule(scheduleForm.value)">
+                <div class="title-box">
+                    <h2 class="b">Utwórz Harmonogram</h2>
+                </div>
+                <div class="form-group">
+                    <label for="scheduleName">Nazwa harmonogramu</label>
+                    <input id="scheduleName" name="scheduleName" [(ngModel)]="generatedSchedule.name"
+                        class="form-control" required>
+                </div>
+                <div class="group-box">
+                    <div class="form-group">
+                        <label>Wybrane dni tygodnia</label>
+                        <div class="form-check" *ngFor="let day of daysOfWeek">
+                            <input type="checkbox" [id]="day" [name]="day"
+                                [(ngModel)]="generatedSchedule.daysOfWeek[day]" class="form-check-input">
+                            <label [for]="day" class="form-check-label">{{ day }}</label>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="startTime">Od godziny</label>
+                        <input id="startTime" name="startTime" type="time" [(ngModel)]="generatedSchedule.startTime"
+                            class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endTime">Do godziny</label>
+                        <input id="endTime" name="endTime" type="time" [(ngModel)]="generatedSchedule.endTime"
+                            class="form-control" required>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- <button type="button" (click)="generateHourList()">Generuj Listę</button> -->
+                </div>
+                <button type="submit">Dodaj</button>
+            </form>
+            <div *ngIf="generatedSchedule.schedule.length > 0">
+                <h3>Wygenerowany Harmonogram:</h3>
+                <p>Nazwa harmonogramu: {{ generatedSchedule.name }}</p>
+                <p>Dni tygodnia: {{ selectedDaysToShow }}</p>
+                <!-- <p>Godziny: {{ selectedHoursToShow.join(', ') }}</p> -->
+                <ul>
+                    <li *ngFor="let item of generatedSchedule.schedule">{{ item }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="form-group">
+    <label>Wybierz godziny</label>
+    <div class="form-check" *ngFor="let hour of generateHoursRange()">
+        <input type="checkbox" [id]="hour" [name]="hour" [(ngModel)]="selectedHours[hour]"
+            class="form-check-input" (change)="toggleHourSelection(hour)">
+        <label [for]="hour" class="form-check-label">{{ hour }}</label>
+    </div>
+</div> -->
+
+
+<!-- od danej godziny do danej godziny generuje nam liste godzin z przerwa -->
+
+<!-- <div class="form-group">
+        <label for="startTime">Od godziny</label>
+        <input id="startTime" name="startTime" type="time" [(ngModel)]="generatedSchedule.startTime"
+        class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="endTime">Do godziny</label>
+        <input id="endTime" name="endTime" type="time" [(ngModel)]="generatedSchedule.endTime"
+        class="form-control" required>
+    </div> -->
+
+<!-- <ul>
+<li *ngFor="let item of generatedSchedule.schedule ">{{ item }}</li>
+</ul> -->
+
+
+<!-- <div class="form-group">
+    <label>Wybierz godziny</label>
+    <div class="form-check" *ngFor="let hour of generateHoursRange()">
+        <input type="checkbox" [id]="hour" [name]="hour" [(ngModel)]="selectedHours[hour]" class="form-check-input"
+            (change)="toggleHourSelection(hour)">
+        <label [for]="hour" class="form-check-label">{{ hour }}</label>
+    </div>
+</div> -->
+
+
 <!-- <p>admin-scheme works!</p> -->
 <!-- <div class="q">
     <div class="left-container">
@@ -35,48 +188,3 @@
         </div>
     </div>
 </div> -->
-
-<div class="q">
-    <div class="left-container">
-        <div class="main-box">
-            <form #scheduleForm="ngForm" (ngSubmit)="generateSchedule(scheduleForm.value)">
-                <div class="title-box">
-                    <h2 class="b">Utwórz Harmonogram</h2>
-                </div>
-                <div class="form-group">
-                    <label for="scheduleName">Nazwa harmonogramu</label>
-                    <input id="scheduleName" name="scheduleName" ngModel class="form-control" required>
-                </div>
-                <div class="group-box">
-                    <div class="form-group">
-                        <label for="dayOfWeek">Dni tygodnia</label>
-                        <select id="dayOfWeek" name="dayOfWeek" ngModel class="form-control" required>
-                            <option value="poniedzialek">poniedziałek</option>
-                            <option value="wtorek">wtorek</option>
-                            <option value="sroda">środa</option>
-                            <option value="czwartek">czwartek</option>
-                            <option value="piatek">piątek</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="startTime">Od godziny</label>
-                        <input id="startTime" name="startTime" type="time" ngModel class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="endTime">Do godziny</label>
-                        <input id="endTime" name="endTime" type="time" ngModel class="form-control" required>
-                    </div>
-                </div>
-                <button type="submit">Generuj</button>
-            </form>
-            <div *ngIf="generatedSchedule.schedule.length > 0">
-                <h3>Wygenerowany Harmonogram:</h3>
-                <p>Nazwa harmonogramu: {{ generatedSchedule.name }}</p>
-                <p>Dzień tygodnia: {{ generatedSchedule.dayOfWeek }}</p>
-                <ul>
-                    <li *ngFor="let item of generatedSchedule.schedule">{{ item }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
