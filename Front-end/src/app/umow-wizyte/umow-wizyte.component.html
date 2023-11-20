@@ -30,8 +30,8 @@
                             <span class="worktime">{{doctor.czaspracy}}</span>
                         </div> -->
                         <div class="more">
-                            <button class="clickme" *ngIf="!doctor.showMore"
-                                (click)="onShowMore(doctor)">&darr;</button>
+                            <button class="clickme" *ngIf="!doctor.showMore" (click)="onShowMore(doctor)">&darr;
+                            </button>
                             <button class="clickme" *ngIf="doctor.showMore" (click)="onShowLess(doctor)">&uarr;</button>
                         </div>
                     </div>

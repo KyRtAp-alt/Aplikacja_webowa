@@ -19,6 +19,8 @@ export class AdminSchemeComponent {
   category: string = '';
   days: string[] = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
   selectedDays: { [key: string]: boolean } = {};
+  name: any[] = [];
+  hours: any[] = [];
 
   selectedStartTime: string = '';
   selectedEndTime: string = '';
@@ -91,5 +93,17 @@ export class AdminSchemeComponent {
         console.error(error);
       }
     );
+  }
+
+  onShowMore(doctor: any) {
+    doctor.showMore = true;
+  }
+
+  onShowLess(doctor: any) {
+    doctor.showMore = false;
+  }
+
+  isEmptyFields(): boolean {
+    return !this.name || !this.days || !this.hours;
   }
 }

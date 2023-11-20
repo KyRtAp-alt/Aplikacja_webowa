@@ -28,15 +28,59 @@
                         </span>
                         <div></div>
                         <span class="">
-                            <button>Dodaj harmonogram</button>
+                            <button *ngIf="!doctor.showMore" (click)="onShowMore(doctor)">Dodaj plan</button>
+                            <button class="clickme" *ngIf="doctor.showMore" (click)="onShowLess(doctor)">&uarr;</button>
                         </span>
+                        <div class="" *ngIf="doctor.showMore">
+                            <div class="">
+                                <div>
+                                    <label for="scheduleName">Nazwa harmonogramu:</label>
+                                    <input type="text" id="scheduleName" [(ngModel)]="selectedScheduleName">
+                                </div>
+                                <div *ngFor="let day of days">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="selectedDays[day]"> {{ day }}
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="startTime">Godzina rozpoczęcia:</label>
+                                    <input type="time" id="startTime" [(ngModel)]="selectedStartTime">
+                                </div>
+                                <div>
+                                    <label for="endTime">Godzina zakończenia:</label>
+                                    <input type="time" id="endTime" [(ngModel)]="selectedEndTime">
+                                </div>
+                                <div>
+                                    <label for="interval">Odstęp czasowy (w minutach):</label>
+                                    <input type="number" id="interval" [(ngModel)]="selectedInterval" min="1">
+                                </div>
+                                <button (click)="generateHours()">Generuj</button>
+                                <div *ngIf="generatedHours.length > 0">
+                                    <p>Wybrane godziny:</p>
+                                    <div *ngFor="let hour of generatedHours">
+                                        <label>
+                                            <input type="checkbox" [(ngModel)]="selectedHours[hour]"> {{ hour }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <button (click)="(!isEmptyFields()) && (addSchedule())">Dodaj harmonogram</button>
+                                <div *ngIf=" schedules.length> 0">
+                                    <p>Harmonogramy:</p>
+                                    <div *ngFor="let schedule of schedules">
+                                        <p>{{ schedule.name }} - Dni: {{ schedule.days.join(', ') }} - Godziny: {{
+                                            schedule.hours.join(', ') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
-<div class="scheme-form">
+
+<!-- <div class="">
     <div>
         <label for="scheduleName">Nazwa harmonogramu:</label>
         <input type="text" id="scheduleName" [(ngModel)]="selectedScheduleName">
@@ -74,4 +118,4 @@
             <p>{{ schedule.name }} - Dni: {{ schedule.days.join(', ') }} - Godziny: {{ schedule.hours.join(', ') }}</p>
         </div>
     </div>
-</div>
+</div> -->
