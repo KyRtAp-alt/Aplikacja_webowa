@@ -14,7 +14,7 @@ export class SchemeService {
   }
 
   addVisit(schemes: any) {
-    return this.http.post(`http://localhost:3000/scheme'`, schemes);
+    return this.http.post(`http://localhost:3000/scheme`, schemes);
   }
 
   deleteVisit(id: string) {

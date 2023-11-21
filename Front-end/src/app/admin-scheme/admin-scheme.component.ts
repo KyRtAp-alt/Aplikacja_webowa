@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
+import { SchemeService } from '../scheme.service';
 
 interface Schedule {
   name: string;
@@ -13,23 +14,29 @@ interface Schedule {
   styleUrls: ['./admin-scheme.component.scss'],
 })
 export class AdminSchemeComponent {
-  doctors: any[] = [];
-  firstname: string = '';
-  lastname: string = '';
-  category: string = '';
+  //Main
   days: string[] = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
   selectedDays: { [key: string]: boolean } = {};
   name: any[] = [];
   hours: any[] = [];
-
   selectedStartTime: string = '';
   selectedEndTime: string = '';
   selectedInterval: number = 30;
   selectedScheduleName: string = '';
   generatedHours: string[] = [];
   selectedHours: { [key: string]: boolean } = {};
-
   schedules: Schedule[] = [];
+
+  //DoctorService
+  doctors: any[] = [];
+  firstname: string = '';
+  lastname: string = '';
+  category: string = '';
+
+  //SchemeService
+  visits: any[] = [];
+  selectedVisitId: string = '';
+  editingVisit: boolean = false;
 
   generateHours() {
     this.generatedHours = this.generateHourRange(
@@ -78,9 +85,14 @@ export class AdminSchemeComponent {
     return `${hour < 10 ? '0' : ''}${hour}:${minute < 10 ? '0' : ''}${minute}`;
   }
 
-  constructor(private doctorService: DoctorService) {}
+  constructor(
+    private doctorService: DoctorService,
+    private schemeService: SchemeService
+  ) {}
+
   ngOnInit() {
     this.getDoctors();
+    this.getVisit();
   }
 
   getDoctors() {
@@ -95,13 +107,82 @@ export class AdminSchemeComponent {
     );
   }
 
-  onShowMore(doctor: any) {
-    doctor.showMore = true;
+  getVisit() {
+    this.schemeService.getVisit().subscribe(
+      (visits: any) => {
+        console.log(visits);
+        this.visits = visits;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
-  onShowLess(doctor: any) {
-    doctor.showMore = false;
+  addVisit() {
+    const newVisit = {
+      nazwa: this.selectedScheduleName,
+      dnitygodnia: this.selectedDays,
+      wybranegodziny: this.selectedHours,
+    };
+
+    this.schemeService.addVisit(newVisit).subscribe(
+      () => {
+        console.log('Dodano harmonogram');
+        this.clearForm();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
+
+  deleteVisit(id: string) {
+    this.schemeService.deleteVisit(id).subscribe(() => {
+      console.log('Usunięto harmonogram');
+      this.getVisit();
+    });
+  }
+
+  confirmDelete() {}
+
+  editVisit(visit: any) {
+    this.selectedVisitId = visit._id;
+    this.editingVisit = true;
+  }
+
+  updateVisit() {
+    const updateVisit = {
+      nazwa: this.selectedScheduleName,
+      dnitygodnia: this.selectedDays,
+      wybranegodziny: this.selectedHours,
+    };
+
+    this.schemeService
+      .updateVisit(this.selectedVisitId, updateVisit)
+      .subscribe(() => {
+        console.log('Zaktulizowano harmonogram');
+        this.getVisit();
+        this.clearForm();
+        this.editingVisit = false;
+      });
+  }
+
+  clearForm() {
+    this.selectedScheduleName = '';
+  }
+
+  // onShowMore(doctor: any) {
+  //   doctor.showMore = true;
+  // }
+
+  // onShowLess(doctor: any) {
+  //   doctor.showMore = false;
+  // }
+
+  // clearForm() {
+  //   this.name = ' ';
+  // }
 
   isEmptyFields(): boolean {
     return !this.name || !this.days || !this.hours;
