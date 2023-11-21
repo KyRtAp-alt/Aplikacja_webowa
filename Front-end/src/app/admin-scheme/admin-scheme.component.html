@@ -50,6 +50,28 @@
     </div>
 </div>
 
+<div class="">
+    <div class="">
+        <h2>Lista haromogramow</h2>
+    </div>
+    <div class="" *ngIf="visits.length >0">
+        <button (click)="getVisit()">123</button>
+    </div>
+    <ul>
+        <li *ngFor="let visits of visits">
+            <span>
+                {{visits.nazwa}}
+            </span>
+            <span *ngFor="let day of visits.dnitygodnia | keyvalue">
+                {{ day.key }}
+            </span>
+            <span *ngFor="let hour of visits.wybranegodziny | keyvalue">
+                {{ hour.key }}
+            </span>
+        </li>
+    </ul>
+</div>
+
 <div class="main-column">
     <div class="main-box-list">
         <div class="main-doctor-list" *ngIf="doctors.length > 0">

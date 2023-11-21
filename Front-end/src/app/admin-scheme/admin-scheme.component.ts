@@ -37,6 +37,7 @@ export class AdminSchemeComponent {
   visits: any[] = [];
   selectedVisitId: string = '';
   editingVisit: boolean = false;
+  dnitygodnia: any[] = [];
 
   generateHours() {
     this.generatedHours = this.generateHourRange(
