@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { DoctorService } from '../doctor.service';
+import { RosService } from '../ros.service';
+import { SchemeService } from '../scheme.service';
 
 interface Schedule {
   name: string;
@@ -11,242 +14,300 @@ interface Schedule {
   templateUrl: './sandbox.component.html',
   styleUrls: ['./sandbox.component.scss'],
 })
-export class SandboxComponent {}
+export class SandboxComponent {
+  doctors: any[] = [];
+  firstname: string = '';
+  lastname: string = '';
+  category: string = '';
+  content: string = '';
+  specialization: string = '';
+  worktime: string = '';
+  selectedDoctorId: string = '';
+  editingDoctor: boolean = false;
 
-// days: string[] = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
-// selectedDays: { [key: string]: boolean } = {};
+  //ros
+  ross: any[] = [];
+  name: string = '';
+  currentRosIndex: number = 0;
+  currentRos: any;
+  selectedRos: any;
+  specializations: string[] = [];
 
-// selectedStartTime: string = '';
-// selectedEndTime: string = '';
-// selectedInterval: number = 30;
-// selectedScheduleName: string = '';
-// generatedHours: string[] = [];
-// selectedHours: { [key: string]: boolean } = {};
+  //SchemeService
+  visits: any[] = [];
+  scheme: any[] = [];
+  selectedDoctorSchedule: string = '';
+  workscheme: string = '';
+  wrokschemes: string[] = [];
 
-// schedules: Schedule[] = [];
+  constructor(
+    private doctorService: DoctorService,
+    private rosService: RosService,
+    private schemeService: SchemeService
+  ) {}
 
-// generateHours() {
-//   this.generatedHours = this.generateHourRange(
-//     this.selectedStartTime,
-//     this.selectedEndTime,
-//     this.selectedInterval
-//   );
-//   this.selectedHours = {};
-// }
+  ngOnInit() {
+    this.getDoctors();
+    this.getRoss();
+    this.getSchemes();
+  }
 
-// addSchedule() {
-//   const selectedDaysArray = Object.keys(this.selectedDays).filter(
-//     (day) => this.selectedDays[day]
-//   );
-//   const newSchedule: Schedule = {
-//     name: this.selectedScheduleName || 'Nowy Harmonogram',
-//     days: selectedDaysArray,
-//     hours: Object.keys(this.selectedHours).filter(
-//       (hour) => this.selectedHours[hour]
-//     ),
-//   };
+  getDoctors() {
+    this.doctorService.getDoctors().subscribe(
+      (doctors: any) => {
+        console.log(doctors);
+        this.doctors = doctors;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
-//   this.schedules.push(newSchedule);
-// }
+  getRoss() {
+    this.rosService.getRoss().subscribe(
+      (ross: any) => {
+        console.log(ross);
+        this.ross = ross;
+        this.specializations = ross.map((ros: any) => ros.nazwa);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
-// generateHourRange(
-//   startTime: string,
-//   endTime: string,
-//   interval: number
-// ): string[] {
-//   const startHour = new Date(`1970-01-01T${startTime}`);
-//   const endHour = new Date(`1970-01-01T${endTime}`);
-//   const hourRange: string[] = [];
+  addDoctor() {
+    const newDoctor = {
+      imie: this.firstname,
+      nazwisko: this.lastname,
+      kategoria: this.category,
+      specializacja: this.specialization,
+      opis: this.content,
+      czaspracy: this.worktime,
+    };
 
-//   while (startHour <= endHour) {
-//     hourRange.push(this.formatHour(startHour));
-//     startHour.setMinutes(startHour.getMinutes() + interval);
-//   }
+    this.doctorService.addDoctor(newDoctor).subscribe(
+      () => {
+        console.log('Dodano lekarza');
+        this.clearForm();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
-//   return hourRange;
-// }
+  confirmDelete(doctorId: string) {
+    const confirmation = confirm(
+      'Czy na pewno chcesz usunąć tego lekarza, specialistę?'
+    );
+    if (confirmation) {
+      this.deleteDoctor(doctorId);
+      alert('Usunięto lekarza, specialistę');
+    }
+  }
 
-// formatHour(date: Date): string {
-//   const hour = date.getHours();
-//   const minute = date.getMinutes();
-//   return `${hour < 10 ? '0' : ''}${hour}:${minute < 10 ? '0' : ''}${minute}`;
-// }
+  deleteDoctor(id: string) {
+    this.doctorService.deleteDoctor(id).subscribe(
+      () => {
+        console.log('Usunięto lekarza');
+        this.getDoctors();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
-// selectedStartTime: string = '';
-// selectedEndTime: string = '';
-// timeInterval: number = 1; // Default interval is set to 1 hour
-// generatedTimeRange: string[] = [];
-// selectedTimes: { [key: string]: boolean } = {};
-// generateTimeRange() {
-//   const startHour = parseInt(this.selectedStartTime.split(':')[0]);
-//   const endHour = parseInt(this.selectedEndTime.split(':')[0]);
-//   const interval = this.timeInterval;
-//   interval: number = 30;
-//   this.generatedTimeRange = [];
-//   for (let hour = startHour; hour <= endHour; hour++) {
-//     for (let minute = 0; minute < 60; minute += this.interval) {
-//       const formattedHour = hour.toString().padStart(2, '0');
-//       const formattedMinute = minute.toString().padStart(2, '0');
-//       const time = `${formattedHour}:${formattedMinute}`;
-//       hoursRange.push(time);
-//     }
-//   }
-//   return hoursRange;
-// }
-// generateHoursRange() {
-//   const startHour = 8;
-//   const endHour = 16;
-//   const hoursRange = [];
-//   for (let hour = startHour; hour <= endHour; hour++) {
-//     for (let minute = 0; minute < 60; minute += this.interval) {
-//       const formattedHour = hour.toString().padStart(2, '0');
-//       const formattedMinute = minute.toString().padStart(2, '0');
-//       const time = `${formattedHour}:${formattedMinute}`;
-//       hoursRange.push(time);
-//     }
-//   }
-// }
+  editDoctor(doctor: any) {
+    this.selectedDoctorId = doctor._id;
+    this.firstname = doctor.imie;
+    this.lastname = doctor.nazwisko;
+    this.category = doctor.kategoria;
+    this.specialization = doctor.specializacja;
+    this.content = doctor.opis;
+    this.worktime = doctor.czaspracy;
+    this.editingDoctor = true;
+  }
 
-// generatedSchedule: { name: string; dayOfWeek: string; schedule: string[] } = {
-//   name: '',
-//   dayOfWeek: '',
-//   schedule: [],
-// };
-// generateSchedule(formData: any) {
-//   const scheduleName = formData.scheduleName;
-//   const dayOfWeek = formData.dayOfWeek;
-//   const startTime = new Date(`2023-01-01T${formData.startTime}`);
-//   const endTime = new Date(`2023-01-01T${formData.endTime}`);
-//   let currentTime = new Date(startTime);
-//   const step = 30; // minuty
-//   this.generatedSchedule = {
-//     name: scheduleName,
-//     dayOfWeek: dayOfWeek,
-//     schedule: [],
-//   };
-//   while (currentTime <= endTime) {
-//     const formattedTime = this.formatTime(currentTime);
-//     this.generatedSchedule.schedule.push(formattedTime);
-//     currentTime.setMinutes(currentTime.getMinutes() + step);
-//   }
-//   console.log('Wygenerowany Harmonogram:', this.generatedSchedule);
-// }
-// private formatTime(date: Date): string {
-//   const hours = date.getHours().toString().padStart(2, '0');
-//   const minutes = date.getMinutes().toString().padStart(2, '0');
-//   return `${hours}:${minutes}`;
-// }
-// doctors: any[] = [];
-// firstname: string = '';
-// lastname: string = '';
-// category: string = '';
-// daysOfWeek: string[] = [
-//   'Poniedzialek',
-//   'Wtorek',
-//   'Sroda',
-//   'Czwartek',
-//   'Piatek',
-//   'Sobota',
-// ];
-// availableHours: string[] = [];
-// selectedGeneratedHours: { [key: string]: boolean } = {};
-// showGeneratedHoursList: boolean = false;
-// selectedHoursToShow: string[] = [];
-// selectedDaysToShow: string = '';
-// selectedHours: { [key: string]: boolean } = {};
-// generatedHoursRange: string[] = [];
-// interval: number = 30;
-// generateHoursRange() {
-//   const startHour = 8;
-//   const endHour = 16;
-//   const hoursRange = [];
-//   for (let hour = startHour; hour <= endHour; hour++) {
-//     for (let minute = 0; minute < 60; minute += this.interval) {
-//       const formattedHour = hour.toString().padStart(2, '0');
-//       const formattedMinute = minute.toString().padStart(2, '0');
-//       const time = `${formattedHour}:${formattedMinute}`;
-//       hoursRange.push(time);
-//     }
-//   }
-//   this.generatedHoursRange = hoursRange;
-// }
-// toggleHourSelection(hour: string) {
-//   this.selectedHours[hour] = !this.selectedHours[hour];
-// }
-// constructor(private doctorService: DoctorService) {}
-// ngOnInit() {
-//   this.getDoctors();
-// }
-// generatedSchedule: {
-//   name: string;
-//   schedule: string[];
-//   daysOfWeek: { [key: string]: boolean };
-//   startTime: string;
-//   endTime: string;
-// } = {
-//   name: '',
-//   schedule: [],
-//   daysOfWeek: {},
-//   startTime: '',
-//   endTime: '',
-// };
-// getDoctors() {
-//   this.doctorService.getDoctors().subscribe(
-//     (doctors: any) => {
-//       console.log(doctors);
-//       this.doctors = doctors;
-//     },
-//     (error) => {
-//       console.error(error);
-//     }
-//   );
-// }
-// generateSchedule(formData: any) {
-//   const scheduleName = formData.scheduleName;
-//   const dayOfWeek = formData.dayOfWeek;
-//   const startTime = new Date(`2023-01-01T${formData.startTime}`);
-//   const endTime = new Date(`2023-01-01T${formData.endTime}`);
-//   let currentTime = new Date(startTime);
-//   const step = 15; // minuty
-//   this.selectedDaysToShow = this.getSelectedDays();
-//   // this.selectedHoursToShow = this.generateSelectedHoursToShow();
-//   this.generatedSchedule = {
-//     name: scheduleName,
-//     daysOfWeek: { ...formData.daysOfWeek },
-//     startTime: formData.startTime,
-//     endTime: formData.endTime,
-//     schedule: [],
-//   };
-//   while (currentTime <= endTime) {
-//     const formattedTime = this.formatTime(currentTime);
-//     this.generatedSchedule.schedule.push(formattedTime);
-//     currentTime.setMinutes(currentTime.getMinutes() + step);
-//   }
-//   console.log('FormData:', formData);
-//   console.log('Wygenerowany Harmonogram:', this.generatedSchedule);
-//   console.log('Selected Days:', this.selectedDaysToShow);
-//   console.log('Selected Hours:', this.selectedHoursToShow);
-// }
-// private formatTime(date: Date): string {
-//   const hours = date.getHours().toString().padStart(2, '0');
-//   const minutes = date.getMinutes().toString().padStart(2, '0');
-//   return `${hours}:${minutes}`;
-// }
-// getSelectedDays(): string {
-//   return this.daysOfWeek
-//     .filter((day) => this.generatedSchedule.daysOfWeek[day])
-//     .join(', ');
-// }
-// // generateSelectedHoursToShow(): string[] {
-// //   const selectedHours: string[] = [];
-// //   for (const hour in this.selectedHours) {
-// //     if (this.selectedHours.hasOwnProperty(hour) && this.selectedHours[hour]) {
-// //       selectedHours.push(hour);
-// //     }
-// //   }
-// //   return selectedHours;
-// // }
-// // generateHourList(): void {
-// //   this.selectedHoursToShow = this.generateSelectedHoursToShow();
-// //   this.showGeneratedHoursList = true;
-// // }
+  updateDoctor() {
+    const updatedDoctor = {
+      imie: this.firstname,
+      nazwisko: this.lastname,
+      kategoria: this.category,
+      specializacja: this.specialization,
+      opis: this.content,
+      czaspracy: this.worktime,
+    };
+
+    this.doctorService
+      .updateDoctor(this.selectedDoctorId, updatedDoctor)
+      .subscribe(
+        () => {
+          console.log('Zaktualizowano lekarza');
+          this.getDoctors();
+          this.clearForm();
+          this.editingDoctor = false;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
+
+  clearForm() {
+    this.selectedDoctorId = '';
+    this.firstname = '';
+    this.lastname = '';
+    this.category = '';
+    this.specialization = '';
+    this.content = '';
+    this.worktime = '';
+  }
+
+  isEmptyFields(): boolean {
+    return (
+      !this.firstname ||
+      !this.lastname ||
+      !this.category ||
+      !this.specialization ||
+      !this.content
+      // !this.worktime
+    );
+  }
+
+  //Main
+  days: string[] = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
+  selectedDays: { [key: string]: boolean } = {};
+  hours: any[] = [];
+  selectedStartTime: string = '';
+  selectedEndTime: string = '';
+  selectedInterval: number = 30;
+  selectedScheduleName: string = '';
+  generatedHours: string[] = [];
+  selectedHours: { [key: string]: boolean } = {};
+  schedules: Schedule[] = [];
+
+  schemes: any[] = [];
+  dnitygodnia: any[] = [];
+  selectedSchemeId: string = '';
+  editingScheme: boolean = false;
+  // selectedVisitId: string = '';
+
+  generateHours() {
+    this.generatedHours = this.generateHourRange(
+      this.selectedStartTime,
+      this.selectedEndTime,
+      this.selectedInterval
+    );
+    this.selectedHours = {};
+  }
+
+  generateHourRange(
+    startTime: string,
+    endTime: string,
+    interval: number
+  ): string[] {
+    const startHour = new Date(`2023-01-01T${startTime}`);
+    const endHour = new Date(`2023-01-01T${endTime}`);
+    const hourRange: string[] = [];
+
+    while (startHour <= endHour) {
+      hourRange.push(this.formatHour(startHour));
+      startHour.setMinutes(startHour.getMinutes() + interval);
+    }
+
+    return hourRange;
+  }
+
+  formatHour(date: Date): string {
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    return `${hour < 10 ? '0' : ''}${hour}:${minute < 10 ? '0' : ''}${minute}`;
+  }
+
+  getSchemes() {
+    this.schemeService.getScheme().subscribe(
+      (schemes: any) => {
+        console.log(schemes);
+        this.visits = schemes;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  addScheme() {
+    const newScheme = {
+      nazwa: this.selectedScheduleName,
+      dnitygodnia: this.selectedDays,
+      wybranegodziny: this.selectedHours,
+    };
+
+    this.schemeService.addScheme(newScheme).subscribe(
+      () => {
+        console.log('Dodano harmonogram');
+        this.clearForm();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  deleteScheme(id: string) {
+    this.schemeService.deleteScheme(id).subscribe(
+      () => {
+        console.log('Usunieto garmonogram');
+        this.getSchemes();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  editScheme(scheme: any) {
+    this.selectedSchemeId = scheme._id;
+    this.editingScheme = true;
+    this.name = scheme.nazwa;
+    this.days = scheme.dnitygodnia;
+    this.hours = scheme.wybranegodziny;
+  }
+
+  updateScheme() {
+    const updateScheme = {
+      nazwa: this.selectedScheduleName,
+      dnitygodnia: this.selectedDays,
+      wybranegodziny: this.selectedHours,
+    };
+
+    this.schemeService
+      .updateScheme(this.selectedSchemeId, updateScheme)
+      .subscribe(
+        () => {
+          console.log('Zaktulizowano harmonogram');
+          this.getSchemes();
+          this.clearForm();
+          this.editingScheme = false;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
+
+  onShowMore(doctor: any) {
+    doctor.showMore = true;
+  }
+
+  onShowLess(doctor: any) {
+    doctor.showMore = false;
+  }
+
+  // clearForm() {
+  //   this.name = ' ';
+  // }
+}

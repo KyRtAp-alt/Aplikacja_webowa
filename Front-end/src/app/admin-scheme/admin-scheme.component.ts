@@ -1,3 +1,18 @@
+// addSchedule() {
+//   const selectedDaysArray = Object.keys(this.selectedDays).filter(
+//     (day) => this.selectedDays[day]
+//   );
+//   const newSchedule: Schedule = {
+//     name: this.selectedScheduleName || 'Nowy Harmonogram',
+//     days: selectedDaysArray,
+//     hours: Object.keys(this.selectedHours).filter(
+//       (hour) => this.selectedHours[hour]
+//     ),
+//   };
+
+//   this.schedules.push(newSchedule);
+// }
+
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { SchemeService } from '../scheme.service';
@@ -64,21 +79,6 @@ export class AdminSchemeComponent {
     );
     this.selectedHours = {};
   }
-
-  // addSchedule() {
-  //   const selectedDaysArray = Object.keys(this.selectedDays).filter(
-  //     (day) => this.selectedDays[day]
-  //   );
-  //   const newSchedule: Schedule = {
-  //     name: this.selectedScheduleName || 'Nowy Harmonogram',
-  //     days: selectedDaysArray,
-  //     hours: Object.keys(this.selectedHours).filter(
-  //       (hour) => this.selectedHours[hour]
-  //     ),
-  //   };
-
-  //   this.schedules.push(newSchedule);
-  // }
 
   generateHourRange(
     startTime: string,
@@ -148,6 +148,9 @@ export class AdminSchemeComponent {
   editScheme(scheme: any) {
     this.selectedSchemeId = scheme._id;
     this.editingScheme = true;
+    this.name = scheme.nazwa;
+    this.days = scheme.dnitygodnia;
+    this.hours = scheme.wybranegodziny;
   }
 
   updateScheme() {
@@ -176,14 +179,20 @@ export class AdminSchemeComponent {
     this.selectedScheduleName = '';
   }
 
+  getDoctors() {
+    this.doctorService.getDoctors().subscribe(
+      (doctors: any) => {
+        console.log(doctors);
+        this.doctors = doctors;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
   // addDoctor() {
   //   const newDoctor = {
-  //     imie: this.firstname,
-  //     nazwisko: this.lastname,
-  //     kategoria: this.category,
-  //     specializacja: this.specialization,
-  //     opis: this.content,
-  //     czaspracy: this.worktime,
   //     nazwa: this.selectedScheduleName,
   //     dnitygodnia: this.selectedDays,
   //     wybranegodziny: this.selectedHours,
@@ -200,87 +209,49 @@ export class AdminSchemeComponent {
   //   );
   // }
 
-  // editDoctor(doctor: any) {
-  //   this.selectedDoctorId = doctor._id;
-  //   this.firstname = doctor.imie;
-  //   this.lastname = doctor.nazwisko;
-  //   this.category = doctor.kategoria;
-  //   this.specialization = doctor.specializacja;
-  //   this.content = doctor.opis;
-  //   this.worktime = doctor.czaspracy;
-  //   this.editingDoctor = true;
-  // }
-
-  // updateDoctor() {
-  //   const updatedDoctor = {
-  //     imie: this.firstname,
-  //     nazwisko: this.lastname,
-  //     kategoria: this.category,
-  //     specializacja: this.specialization,
-  //     opis: this.content,
-  //     czaspracy: this.worktime,
-  //   };
-
-  //   this.doctorService
-  //     .updateDoctor(this.selectedDoctorId, updatedDoctor)
-  //     .subscribe(
-  //       () => {
-  //         console.log('Zaktualizowano lekarza');
-  //         this.getDoctors();
-  //         this.clearForm();
-  //         this.editingDoctor = false;
-  //       },
-  //       (error) => {
-  //         console.error(error);
-  //       }
-  //     );
-  // }
-
-  getDoctors() {
-    this.doctorService.getDoctors().subscribe(
-      (doctors: any) => {
-        console.log(doctors);
-        this.doctors = doctors;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  editDoctor(doctor: any) {
+    this.editingDoctor = true;
+    this.selectedDoctorId = doctor._id;
+    this.selectedScheduleName = doctor.nazwa;
+    this.selectedDays = doctor.dnitygodnia;
+    this.selectedHours = doctor.wybranegodziny;
   }
 
-  // deleteScheme(id: string) {
-  //   this.schemeService.deleteScheme(id).subscribe(
-  //     () => {
-  //       console.log('Usunięto harmonogram');
-  //       this.getSchemes();
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
+  updateDoctor() {
+    const updatedDoctor = {
+      nazwa: this.selectedScheduleName,
+      dnitygodnia: this.selectedDays,
+      wybranegodziny: this.selectedHours,
+    };
 
-  // confirmDelete(schemeId: string) {
-  //   const confirmation = confirm('Czy na pewno chcesz usunąć harmonogram?');
-  //   if (confirmation) {
-  //     this.deleteScheme(schemeId);
-  //     alert('Usunięto harmonogram');
-  //   }
-  // }
+    this.doctorService
+      .updateDoctor(this.selectedDoctorId, updatedDoctor)
+      .subscribe(
+        () => {
+          console.log('Zaktualizowano lekarza');
+          this.getDoctors();
+          this.clearForm();
+          this.editingDoctor = false;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
 
-  // onShowMore(doctor: any) {
-  //   doctor.showMore = true;
-  // }
+  onShowMore(doctor: any) {
+    doctor.showMore = true;
+  }
 
-  // onShowLess(doctor: any) {
-  //   doctor.showMore = false;
-  // }
+  onShowLess(doctor: any) {
+    doctor.showMore = false;
+  }
 
   // clearForm() {
   //   this.name = ' ';
   // }
 
-  isEmptyFields(): boolean {
-    return !this.name || !this.days || !this.hours;
+  isEmptyFields() {
+    // return !this.name || !this.days || !this.hours;
   }
 }

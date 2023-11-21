@@ -1,178 +1,241 @@
-<!-- <div class="form-group">
-    <label for="startTime">Od godziny</label>
-    <input id="startTime" name="startTime" type="time" [(ngModel)]="selectedStartTime" class="form-control" required>
-</div>
-<div class="form-group">
-    <label for="endTime">Do godziny</label>
-    <input id="endTime" name="endTime" type="time" [(ngModel)]="selectedEndTime" class="form-control" required>
-</div>
-<div class="form-group">
-    <label for="interval">Co jaki czas (w minutach)</label>
-    <input id="interval" name="interval" type="number" [(ngModel)]="interval" class="form-control" required>
-</div>
-
-<button (click)="generateTimeRange()">Generuj godziny</button>
-
-<div *ngIf="generatedTimeRange">
-    <h2>Wygenerowany zakres czasu</h2>
-    <div *ngFor="let time of generatedTimeRange">
-        <input type="checkbox" [(ngModel)]="selectedTimes[time]" id="{{time}}">
-        <label for="{{time}}">{{time}}</label>
-    </div>
-</div> -->
-<!-- <div>
-    <label for="scheduleName">Nazwa harmonogramu:</label>
-    <input type="text" id="scheduleName" [(ngModel)]="selectedScheduleName">
-</div>
-<div *ngFor="let day of days">
-    <label>
-        <input type="checkbox" [(ngModel)]="selectedDays[day]"> {{ day }}
-    </label>
-</div>
-<div>
-    <label for="startTime">Godzina rozpoczęcia:</label>
-    <input type="time" id="startTime" [(ngModel)]="selectedStartTime">
-</div>
-<div>
-    <label for="endTime">Godzina zakończenia:</label>
-    <input type="time" id="endTime" [(ngModel)]="selectedEndTime">
-</div>
-<div>
-    <label for="interval">Odstęp czasowy (w minutach):</label>
-    <input type="number" id="interval" [(ngModel)]="selectedInterval" min="1">
-</div>
-<button (click)="generateHours()">Generuj</button>
-<div *ngIf="generatedHours.length > 0">
-    <p>Wybrane godziny:</p>
-    <div *ngFor="let hour of generatedHours">
-        <label>
-            <input type="checkbox" [(ngModel)]="selectedHours[hour]"> {{ hour }}
-        </label>
-    </div>
-</div>
-<button (click)="addSchedule()">Dodaj harmonogram</button>
-<div *ngIf="schedules.length > 0">
-    <p>Harmonogramy:</p>
-    <div *ngFor="let schedule of schedules">
-        <p>{{ schedule.name }} - Dni: {{ schedule.days.join(', ') }} - Godziny: {{ schedule.hours.join(', ') }}</p>
-    </div>
-</div> -->
-<!-- <div class="q">
-    <div class="left-container">
-        <div class="main-box">
-            <form #scheduleForm="ngForm" (ngSubmit)="generateSchedule(scheduleForm.value)">
-                <div class="title-box">
-                    <h2 class="b">Utwórz Harmonogram</h2>
-                </div>
-                <div class="form-group">
-                    <label for="scheduleName">Nazwa harmonogramu</label>
-                    <input id="scheduleName" name="scheduleName" ngModel class="form-control" required>
-                </div>
-                <div class="group-box">
-                    <div class="form-group">
-                        <label for="dayOfWeek">Dni tygodnia</label>
-                        <select id="dayOfWeek" name="dayOfWeek" ngModel class="form-control" required>
-                            <option value="poniedzialek">poniedziałek</option>
-                            <option value="wtorek">wtorek</option>
-                            <option value="sroda">środa</option>
-                            <option value="czwartek">czwartek</option>
-                            <option value="piatek">piątek</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="startTime">Od godziny</label>
-                        <input id="startTime" name="startTime" type="time" ngModel class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="endTime">Do godziny</label>
-                        <input id="endTime" name="endTime" type="time" ngModel class="form-control" required>
-                    </div>
-                </div>
-                <button type="submit">Generuj</button>
-            </form>
-            <div *ngIf="generatedSchedule.schedule.length > 0">
-                <h3>Wygenerowany Harmonogram:</h3>
-                <p>Nazwa harmonogramu: {{ generatedSchedule.name }}</p>
-                <p>Dzień tygodnia: {{ generatedSchedule.dayOfWeek }}</p>
-                <ul>
-                    <li *ngFor="let item of generatedSchedule.schedule">{{ item }}</li>
-                </ul>
-            </div>
-        </div>
-    </div> -->
-
-
-<!-- <div class="form-group">
-    <label>Wybierz godziny</label>
-    <div class="form-check" *ngFor="let hour of generateHoursRange()">
-        <input type="checkbox" [id]="hour" [name]="hour" [(ngModel)]="selectedHours[hour]"
-            class="form-check-input" (change)="toggleHourSelection(hour)">
-        <label [for]="hour" class="form-check-label">{{ hour }}</label>
-    </div>
-</div> -->
-
-
-<!-- od danej godziny do danej godziny generuje nam liste godzin z przerwa -->
-
-<!-- <div class="form-group">
-        <label for="startTime">Od godziny</label>
-        <input id="startTime" name="startTime" type="time" [(ngModel)]="generatedSchedule.startTime"
-        class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="endTime">Do godziny</label>
-        <input id="endTime" name="endTime" type="time" [(ngModel)]="generatedSchedule.endTime"
-        class="form-control" required>
-    </div> -->
-
-<!-- <ul>
-<li *ngFor="let item of generatedSchedule.schedule ">{{ item }}</li>
-</ul> -->
-
-
-<!-- <div class="form-group">
-    <label>Wybierz godziny</label>
-    <div class="form-check" *ngFor="let hour of generateHoursRange()">
-        <input type="checkbox" [id]="hour" [name]="hour" [(ngModel)]="selectedHours[hour]" class="form-check-input"
-            (change)="toggleHourSelection(hour)">
-        <label [for]="hour" class="form-check-label">{{ hour }}</label>
-    </div>
-</div> -->
-
-
-<!-- <p>admin-scheme works!</p> -->
-<!-- <div class="q">
+<app-header-admin></app-header-admin>
+<div class="main-container">
     <div class="left-container">
         <div class="main-box">
             <form>
                 <div class="title-box">
-                    <h2 class="b">Utwórz Harmonogram</h2>
-                </div>
-                <div class="">
-                    <label class="">Nazwa harmonogramu</label>
-                    <input class="" name="">
+                    <h2 class="add-doctor">{{ editingDoctor ? 'Edycja Pracownika' : 'Dodawanie Pracownika' }}</h2>
                 </div>
                 <div class="group-box">
                     <div class="form-group">
-                        <label class="">Dni tygodnia</label>
-                        <select>
-                            <option>poniedzialek</option>
-                            <option>wtorek</option>
-                            <option>sroda</option>
-                            <option>czwartek</option>
-                            <option>piatek</option>
+                        <label class="name">Imię</label>
+                        <input class="border" name="firstname" [(ngModel)]="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Nazwisko</label>
+                        <input class="border" name="lastname" [(ngModel)]="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Kategoria</label>
+                        <select class="border" name="category" [(ngModel)]="category">
+                            <option class="test123" value="Lekarz">Lekarz</option>
+                            <option class="test123" value="Specialista">Specialista</option>
                         </select>
                     </div>
-                    <div class="">
-                        <label class="">Od godziny</label>
-                        <input type="time" name="">
+                    <div class="form-group">
+                        <label class="name">Specjalizacja</label>
+                        <select class="border" name="specialization" [(ngModel)]="specialization">
+                            <option *ngFor="let spec of specializations" [value]="spec">{{ spec }}</option>
+                        </select>
                     </div>
-                    <div class="">
-                        <label class="">Do godziny</label>
-                        <input type="time" name="">
+                    <div class="form-group">
+                        <label class="name">Harmonogram Pracy</label>
+                        <select class="border" name="workscheme" [(ngModel)]="workscheme">
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="name">Opis</label>
+                        <textarea class="name-2" name="content" placeholder="Dodaj opis" [(ngModel)]="content"
+                            maxlength="800"></textarea>
+                        <div class="character-count">
+                            Pozostało znaków: {{ 650 - content.length }}
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="name">Określ czas pracy</label>
+                        <select class="border" name="worktime" [(ngModel)]="worktime">
+                            <option value="od pon do czw 8-16">od pon do czw 8-16</option>
+                            <option value="od pon do pt 8-16">od pon do pt 8-16</option>
+                        </select>
+
+                    </div> -->
+                    <!-- <option value="od pon do wt 8-16">od pon do wt 8-16</option> -->
+
+                    <!-- <div class="form-group">
+                        <label class="name">Dostępność pracownika</label>
+                    </div> -->
+                    <div class="border-but">
+                        <button class="button-border"
+                            (click)="(!isEmptyFields()) && (editingDoctor ? updateDoctor() : addDoctor())">
+                            {{ editingDoctor ? 'Zapisz' : 'Dodaj' }}
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-</div> -->
+</div>
+<div class="right-container">
+    <div class="title-column-border">
+        <h2 class="title-column">Lista Lekarzy / Specialistów</h2>
+    </div>
+    <div class="main-column">
+        <div class="main-box-list">
+            <div class="main-doctor-list" *ngIf="doctors.length > 0">
+                <div class="main-list">
+                    <div class="dbl-border">
+                        <button class="doctor-button-list" (click)="getDoctors()">
+                            <p class="title-doctor-button-list">Odśwież listę</p>
+                        </button>
+                    </div>
+                    <ul class="q">
+                        <li *ngFor="let doctor of doctors" class="list">
+                            <!-- <div class="data-doctor-list"> -->
+                            <span class="firstname">
+                                Imię:
+                                {{doctor.imie}}
+                            </span>
+                            <span class="lastname">
+                                Nazwisko:
+                                {{doctor.nazwisko}}
+                            </span>
+                            <span class="category">
+                                Kategoria:
+                                {{doctor.kategoria}}
+                            </span>
+                            <span class="specialization">
+                                Specializacja:
+                                {{doctor.specializacja}}
+                            </span>
+
+                            <span class="content">
+                                <p class="ops">Opis:</p>
+                                {{doctor.opis}}
+                            </span>
+                            <div class="buttons">
+                                <button class="doctor-edit" (click)="editDoctor(doctor)">Edytuj</button>
+                                <button class="doctor-delete" (click)="confirmDelete(doctor._id)">Usuń</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-container-scheme">
+    <div class="first-container">
+        <div class="border-title">
+            <h2 class="main-title-scheme">Dodawanie harmonogramu pracy</h2>
+        </div>
+        <div class="form-group">
+            <label for="scheduleName">Nazwa harmonogramu:</label>
+            <input type="text" id="scheduleName" [(ngModel)]="selectedScheduleName">
+        </div>
+        <label>Dni pracy:</label>
+        <div class="form-group" *ngFor="let day of days">
+            <label>
+                <input type="checkbox" [(ngModel)]="selectedDays[day]"> {{ day }}
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="startTime">Godzina rozpoczęcia:</label>
+            <input type="time" id="startTime" [(ngModel)]="selectedStartTime">
+        </div>
+        <div class="form-group">
+            <label for="endTime">Godzina zakończenia:</label>
+            <input type="time" id="endTime" [(ngModel)]="selectedEndTime">
+        </div>
+        <div class="form-group">
+            <label for="interval">Odstęp czasowy (w minutach):</label>
+            <input type="number" id="interval" [(ngModel)]="selectedInterval" min="1">
+        </div>
+        <div class="form-group">
+            <button (click)="generateHours()">Generuj</button>
+        </div>
+        <div class="form-group" *ngIf="generatedHours.length > 0">
+            <p>Wybrane godziny:</p>
+            <div *ngFor="let hour of generatedHours">
+                <label>
+                    <input type="checkbox" [(ngModel)]="selectedHours[hour]"> {{ hour }}
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button (click)="(!isEmptyFields()) && (addScheme())">Dodaj harmonogram</button>
+        </div>
+        <div *ngIf=" schedules.length> 0">
+            <p>Harmonogramy:</p>
+            <div *ngFor="let schedule of schedules">
+                <p>{{ schedule.name }} - Dni: {{ schedule.days.join(', ') }} - Godziny: {{
+                    schedule.hours.join(', ') }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-column">
+    <div class="main-box-list">
+        <div class="main-doctor-list" *ngIf="doctors.length > 0">
+            <div class="main-list">
+                <div class="dbl-border">
+                    <button class="doctor-button-list" (click)="getDoctors()">
+                        <p class="title-doctor-button-list">Odśwież listę</p>
+                    </button>
+                </div>
+                <ul class="qq">
+                    <li *ngFor="let doctor of doctors" class="list">
+                        <span class="firstname">
+                            Imię:
+                            {{doctor.imie}}
+                        </span>
+                        <span class="lastname">
+                            Nazwisko:
+                            {{doctor.nazwisko}}
+                        </span>
+                        <span class="category">
+                            Kategoria:
+                            {{doctor.kategoria}}
+                        </span>
+                        <span class="specialization">
+                            Specializacja:
+                            {{doctor.specializacja}}
+                        </span>
+                        <span class="">
+                            <button *ngIf="!doctor.showMore" (click)="onShowMore(doctor)">Dodaj plan</button>
+                            <button class="clickme" *ngIf="doctor.showMore" (click)="onShowLess(doctor)">&uarr;</button>
+                        </span>
+                        <div class="" *ngIf="doctor.showMore">
+                            <div class="">
+                                <div>
+                                    <label for="scheduleName">Nazwa harmonogramu:</label>
+                                    <input type="text" id="scheduleName" [(ngModel)]="selectedScheduleName">
+                                </div>
+                                <div *ngFor="let day of days">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="selectedDays[day]"> {{ day }}
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="startTime">Godzina rozpoczęcia:</label>
+                                    <input type="time" id="startTime" [(ngModel)]="selectedStartTime">
+                                </div>
+                                <div>
+                                    <label for="endTime">Godzina zakończenia:</label>
+                                    <input type="time" id="endTime" [(ngModel)]="selectedEndTime">
+                                </div>
+                                <div>
+                                    <label for="interval">Odstęp czasowy (w minutach):</label>
+                                    <input type="number" id="interval" [(ngModel)]="selectedInterval" min="1">
+                                </div>
+                                <button (click)="generateHours()">Generuj</button>
+                                <div *ngIf="generatedHours.length > 0">
+                                    <p>Wybrane godziny:</p>
+                                    <div *ngFor="let hour of generatedHours">
+                                        <label>
+                                            <input type="checkbox" [(ngModel)]="selectedHours[hour]"> {{ hour }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <button (click)="(editDoctor(doctor))">Dodaj
+                                    harmonogram1</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
