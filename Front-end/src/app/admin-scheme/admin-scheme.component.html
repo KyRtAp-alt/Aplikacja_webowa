@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="form-group">
-            <button (click)="(!isEmptyFields()) && (addVisit())">Dodaj harmonogram</button>
+            <button (click)="(!isEmptyFields()) && (addScheme())">Dodaj harmonogram</button>
         </div>
         <div *ngIf=" schedules.length> 0">
             <p>Harmonogramy:</p>
@@ -55,7 +55,7 @@
         <h2>Lista haromogramow</h2>
     </div>
     <div class="" *ngIf="visits.length >0">
-        <button (click)="getVisit()">123</button>
+        <button (click)="getSchemes()">zaladuj</button>
     </div>
     <ul>
         <li *ngFor="let visits of visits">
@@ -68,9 +68,23 @@
             <span *ngFor="let hour of visits.wybranegodziny | keyvalue">
                 {{ hour.key }}
             </span>
+            <!-- <button class="" (click)="editScheme(scheme)">Edytuj</button> -->
+            <!-- <button class="" (click)="confirmDelete(scheme._id)">Usuń</button> -->
+            <button class="" (click)="deleteScheme(visits._id)">Usuń</button>
+
         </li>
     </ul>
 </div>
+
+<!-- <ul *ngIf="visits.length > 0">
+    <li *ngFor="let visits of visits">
+        <span>{{visits.nazwa}}</span>
+        <div>
+            <button class="" (click)="editVisit(visits)">Edytuj</button>
+            <button class="" (click)="confirmDelete(visits._id)">Usuń</button>
+        </div>
+    </li>
+</ul> -->
 
 <div class="main-column">
     <div class="main-box-list">
@@ -99,12 +113,17 @@
                             Specializacja:
                             {{doctor.specializacja}}
                         </span>
-                        <div></div>
+                        <div>
+                            <label>harmonogram</label>
+                            <select>
+                                <option *ngFor="let visits of visits" [value]="visits">{{name}}</option>
+                            </select>
+                        </div>
                         <!-- <span class="">
                             <button *ngIf="!doctor.showMore" (click)="onShowMore(doctor)">Dodaj plan</button>
                             <button class="clickme" *ngIf="doctor.showMore" (click)="onShowLess(doctor)">&uarr;</button>
-                        </span>
-                        <div class="" *ngIf="doctor.showMore">
+                        </span> -->
+                        <!-- <div class="" *ngIf="doctor.showMore">
                             <div class="">
                                 <div>
                                     <label for="scheduleName">Nazwa harmonogramu:</label>
@@ -136,14 +155,8 @@
                                         </label>
                                     </div>
                                 </div>
-                                <button (click)="(!isEmptyFields()) && (addSchedule())">Dodaj harmonogram</button>
-                                <div *ngIf=" schedules.length> 0">
-                                    <p>Harmonogramy:</p>
-                                    <div *ngFor="let schedule of schedules">
-                                        <p>{{ schedule.name }} - Dni: {{ schedule.days.join(', ') }} - Godziny: {{
-                                            schedule.hours.join(', ') }}</p>
-                                    </div>
-                                </div>
+                                <button (click)="(editDoctor(doctor))">Dodaj
+                                    harmonogram1</button>
                             </div>
                         </div> -->
                     </li>

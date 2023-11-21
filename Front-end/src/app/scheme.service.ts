@@ -9,19 +9,19 @@ export class SchemeService {
 
   constructor(private http: HttpClient) {}
 
-  getVisit() {
+  getScheme() {
     return this.http.get('http://localhost:3000/scheme');
   }
 
-  addVisit(schemes: any) {
+  addScheme(schemes: any) {
     return this.http.post(`http://localhost:3000/scheme`, schemes);
   }
 
-  deleteVisit(id: string) {
-    return this.http.get(`http://localhost:3000/scheme/${id}`);
+  deleteScheme(id: string) {
+    return this.http.delete(`http://localhost:3000/scheme/${id}`);
   }
 
-  updateVisit(id: string, schemes: any) {
+  updateScheme(id: string, schemes: any) {
     return this.http.put(`http://localhost:3000/scheme/${id}`, schemes);
   }
 }

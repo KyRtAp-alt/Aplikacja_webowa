@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { RosService } from '../ros.service';
+import { SchemeService } from '../scheme.service';
 
 @Component({
   selector: 'app-doctor-add',
@@ -8,6 +9,7 @@ import { RosService } from '../ros.service';
   styleUrls: ['./doctor-add.component.scss'],
 })
 export class DoctorAddComponent {
+  //Main
   doctors: any[] = [];
   firstname: string = '';
   lastname: string = '';
@@ -17,6 +19,7 @@ export class DoctorAddComponent {
   worktime: string = '';
   selectedDoctorId: string = '';
   editingDoctor: boolean = false;
+
   //ros
   ross: any[] = [];
   name: string = '';
@@ -25,14 +28,25 @@ export class DoctorAddComponent {
   selectedRos: any;
   specializations: string[] = [];
 
+  //SchemeService
+  visits: any[] = [];
+  scheme: any[] = [];
+  workscheme: string = '';
+  workschemes: string[] = [];
+  isits: any[] = [];
+  schemes: any[] = [];
+  dnitygodnia: any[] = [];
+
   constructor(
     private doctorService: DoctorService,
-    private rosService: RosService
+    private rosService: RosService,
+    private schemeService: SchemeService
   ) {}
 
   ngOnInit() {
     this.getDoctors();
     this.getRoss();
+    this.getSchemes();
   }
 
   getDoctors() {
@@ -53,6 +67,19 @@ export class DoctorAddComponent {
         console.log(ross);
         this.ross = ross;
         this.specializations = ross.map((ros: any) => ros.nazwa);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  getSchemes() {
+    this.schemeService.getScheme().subscribe(
+      (schemes: any) => {
+        console.log(schemes);
+        this.visits = schemes;
+        this.workscheme = schemes.map((schemes: any) => schemes.name);
       },
       (error) => {
         console.error(error);
@@ -155,8 +182,8 @@ export class DoctorAddComponent {
       !this.lastname ||
       !this.category ||
       !this.specialization ||
-      !this.content ||
-      !this.worktime
+      !this.content
+      // !this.worktime
     );
   }
 
