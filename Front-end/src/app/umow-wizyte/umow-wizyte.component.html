@@ -40,7 +40,28 @@
                     <div class="q">
                         <div class="category2">
                             <div class="data-list">
-                                <span (click)="openModal()">8:35</span>
+                                <div class="">
+                                    <div class="" *ngIf="visits.length >0"></div>
+                                    <ul class="rabarbar">
+                                        <li class="" *ngFor="let visits of visits">
+                                            <!-- <span>
+                                                {{visits.nazwa}}
+                                            </span> -->
+                                            <div class="groszekborder">
+                                                <span class="groszek" *ngFor="let day of visits.dnitygodnia | keyvalue">
+                                                    {{ day.key }}
+                                                </span>
+                                            </div>
+                                            <div class="ccv-border">
+                                                <span class="ccv" *ngFor="let hour of visits.wybranegodziny | keyvalue"
+                                                    (click)="openModal()">
+                                                    {{ hour.key }}
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- <span (click)="openModal()">8:35</span> -->
                                 <div *ngIf="showForm" class="modal-background">
                                     <div class="modal-content">
                                         <div class="close-button-border">

@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { RosService } from '../ros.service';
 
+// interface Schedule {
+//   name: string;
+//   days: string[];
+//   hours: string[];
+// }
+
 @Component({
   selector: 'app-doctor-add',
   templateUrl: './doctor-add.component.html',
@@ -26,6 +32,51 @@ export class DoctorAddComponent {
   currentRos: any;
   selectedRos: any;
   specializations: string[] = [];
+
+  //Work scheme
+  // days: string[] = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
+  // selectedDays: { [key: string]: boolean } = {};
+  // name: any[] = [];
+  // hours: any[] = [];
+  // selectedStartTime: string = '';
+  // selectedEndTime: string = '';
+  // selectedInterval: number = 30;
+  // selectedScheduleName: string = '';
+  // generatedHours: string[] = [];
+  // selectedHours: { [key: string]: boolean } = {};
+  // schedules: Schedule[] = [];
+
+  // generateHours() {
+  //   this.generatedHours = this.generateHourRange(
+  //     this.selectedStartTime,
+  //     this.selectedEndTime,
+  //     this.selectedInterval
+  //   );
+  //   this.selectedHours = {};
+  // }
+
+  // generateHourRange(
+  //   startTime: string,
+  //   endTime: string,
+  //   interval: number
+  // ): string[] {
+  //   const startHour = new Date(`2023-01-01T${startTime}`);
+  //   const endHour = new Date(`2023-01-01T${endTime}`);
+  //   const hourRange: string[] = [];
+
+  //   while (startHour <= endHour) {
+  //     hourRange.push(this.formatHour(startHour));
+  //     startHour.setMinutes(startHour.getMinutes() + interval);
+  //   }
+
+  //   return hourRange;
+  // }
+
+  // formatHour(date: Date): string {
+  //   const hour = date.getHours();
+  //   const minute = date.getMinutes();
+  //   return `${hour < 10 ? '0' : ''}${hour}:${minute < 10 ? '0' : ''}${minute}`;
+  // }
 
   constructor(
     private doctorService: DoctorService,

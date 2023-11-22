@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { RosService } from '../ros.service';
 import { VisitService } from '../visit.service';
-
+import { SchemeService } from '../scheme.service';
 @Component({
   selector: 'app-umow-wizyte',
   templateUrl: './umow-wizyte.component.html',
@@ -99,12 +99,14 @@ export class UmowWizyteComponent {
   constructor(
     private doctorService: DoctorService,
     private rosService: RosService,
-    private visitService: VisitService
+    private visitService: VisitService,
+    private schemeService: SchemeService
   ) {}
 
   ngOnInit() {
     this.getDoctors();
     this.getRoss();
+    // this.getSchemes();
   }
 
   getDoctors() {
@@ -167,4 +169,22 @@ export class UmowWizyteComponent {
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // getSchemes() {
+  //   this.schemeService.getScheme().subscribe(
+  //     (schemes: any) => {
+  //       console.log(schemes);
+  //       this.visits = schemes;
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
+
+  workname: any[] = [];
+
+  schemes: any[] = [];
+  dnitygodnia: any[] = [];
+  wybranegodziny: any[] = [];
 }
