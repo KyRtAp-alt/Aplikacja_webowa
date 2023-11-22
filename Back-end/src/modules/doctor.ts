@@ -70,6 +70,10 @@ router.put("/:id", async (req: Request, res: Response) => {
   res.status(200).send("Zmieniono dane Lekarza");
 });
 
+// export interface Doctor {
+//   schedule: schedule;
+// }
+
 module.exports = router;
 
 // router.post("/", async (req: Request, res: Response) => {

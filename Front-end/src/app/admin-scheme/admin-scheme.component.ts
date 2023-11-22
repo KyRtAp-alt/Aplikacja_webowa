@@ -54,9 +54,11 @@ export class AdminSchemeComponent {
   editingDoctor: boolean = false;
 
   //SchemeService
+  workname: any[] = [];
   visits: any[] = [];
   schemes: any[] = [];
   dnitygodnia: any[] = [];
+  wybranegodziny: any[] = [];
   selectedSchemeId: string = '';
   editingScheme: boolean = false;
   // selectedVisitId: string = '';
@@ -67,7 +69,7 @@ export class AdminSchemeComponent {
   ) {}
 
   ngOnInit() {
-    this.getDoctors();
+    // this.getDoctors();
     this.getSchemes();
   }
 
@@ -117,7 +119,7 @@ export class AdminSchemeComponent {
 
   addScheme() {
     const newScheme = {
-      nazwa: this.selectedScheduleName,
+      workname: this.selectedScheduleName,
       dnitygodnia: this.selectedDays,
       wybranegodziny: this.selectedHours,
     };
@@ -148,14 +150,14 @@ export class AdminSchemeComponent {
   editScheme(scheme: any) {
     this.selectedSchemeId = scheme._id;
     this.editingScheme = true;
-    this.name = scheme.nazwa;
+    this.name = scheme.name;
     this.days = scheme.dnitygodnia;
     this.hours = scheme.wybranegodziny;
   }
 
   updateScheme() {
     const updateScheme = {
-      nazwa: this.selectedScheduleName,
+      workname: this.selectedScheduleName,
       dnitygodnia: this.selectedDays,
       wybranegodziny: this.selectedHours,
     };
@@ -179,66 +181,6 @@ export class AdminSchemeComponent {
     this.selectedScheduleName = '';
   }
 
-  getDoctors() {
-    this.doctorService.getDoctors().subscribe(
-      (doctors: any) => {
-        console.log(doctors);
-        this.doctors = doctors;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  // addDoctor() {
-  //   const newDoctor = {
-  //     nazwa: this.selectedScheduleName,
-  //     dnitygodnia: this.selectedDays,
-  //     wybranegodziny: this.selectedHours,
-  //   };
-
-  //   this.doctorService.addDoctor(newDoctor).subscribe(
-  //     () => {
-  //       console.log('Dodano lekarza');
-  //       this.clearForm();
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-
-  editDoctor(doctor: any) {
-    this.editingDoctor = true;
-    this.selectedDoctorId = doctor._id;
-    this.selectedScheduleName = doctor.nazwa;
-    this.selectedDays = doctor.dnitygodnia;
-    this.selectedHours = doctor.wybranegodziny;
-  }
-
-  updateDoctor() {
-    const updatedDoctor = {
-      nazwa: this.selectedScheduleName,
-      dnitygodnia: this.selectedDays,
-      wybranegodziny: this.selectedHours,
-    };
-
-    this.doctorService
-      .updateDoctor(this.selectedDoctorId, updatedDoctor)
-      .subscribe(
-        () => {
-          console.log('Zaktualizowano lekarza');
-          this.getDoctors();
-          this.clearForm();
-          this.editingDoctor = false;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-  }
-
   onShowMore(doctor: any) {
     doctor.showMore = true;
   }
@@ -252,6 +194,65 @@ export class AdminSchemeComponent {
   // }
 
   isEmptyFields() {
-    // return !this.name || !this.days || !this.hours;
+    return !this.workname || !this.days || !this.hours;
   }
 }
+// getDoctors() {
+//   this.doctorService.getDoctors().subscribe(
+//     (doctors: any) => {
+//       console.log(doctors);
+//       this.doctors = doctors;
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+//   );
+// }
+
+// addDoctor() {
+//   const newDoctor = {
+//     nazwa: this.selectedScheduleName,
+//     dnitygodnia: this.selectedDays,
+//     wybranegodziny: this.selectedHours,
+//   };
+
+//   this.doctorService.addDoctor(newDoctor).subscribe(
+//     () => {
+//       console.log('Dodano lekarza');
+//       this.clearForm();
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+//   );
+// }
+
+// editDoctor(doctor: any) {
+//   this.editingDoctor = true;
+//   this.selectedDoctorId = doctor._id;
+//   this.selectedScheduleName = doctor.nazwa;
+//   this.selectedDays = doctor.dnitygodnia;
+//   this.selectedHours = doctor.wybranegodziny;
+// }
+
+// updateDoctor() {
+//   const updatedDoctor = {
+//     nazwa: this.selectedScheduleName,
+//     dnitygodnia: this.selectedDays,
+//     wybranegodziny: this.selectedHours,
+//   };
+
+//   this.doctorService
+//     .updateDoctor(this.selectedDoctorId, updatedDoctor)
+//     .subscribe(
+//       () => {
+//         console.log('Zaktualizowano lekarza');
+//         this.getDoctors();
+//         this.clearForm();
+//         this.editingDoctor = false;
+//       },
+//       (error) => {
+//         console.error(error);
+//       }
+//     );
+// }

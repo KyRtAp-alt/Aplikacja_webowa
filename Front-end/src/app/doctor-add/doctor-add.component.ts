@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { RosService } from '../ros.service';
-import { SchemeService } from '../scheme.service';
 
 @Component({
   selector: 'app-doctor-add',
@@ -28,23 +27,14 @@ export class DoctorAddComponent {
   selectedRos: any;
   specializations: string[] = [];
 
-  //SchemeService
-  visits: any[] = [];
-  scheme: any[] = [];
-  selectedDoctorSchedule: string = '';
-  workscheme: string = '';
-  wrokschemes: string[] = [];
-
   constructor(
     private doctorService: DoctorService,
-    private rosService: RosService,
-    private schemeService: SchemeService
+    private rosService: RosService
   ) {}
 
   ngOnInit() {
     this.getDoctors();
     this.getRoss();
-    this.getSchemes();
   }
 
   getDoctors() {
@@ -65,18 +55,6 @@ export class DoctorAddComponent {
         console.log(ross);
         this.ross = ross;
         this.specializations = ross.map((ros: any) => ros.nazwa);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  getSchemes() {
-    this.schemeService.getScheme().subscribe(
-      (schemes: any) => {
-        console.log(schemes);
-        this.visits = schemes;
       },
       (error) => {
         console.error(error);
@@ -170,7 +148,7 @@ export class DoctorAddComponent {
     this.category = '';
     this.specialization = '';
     this.content = '';
-    this.worktime = '';
+    // this.worktime = '';
   }
 
   isEmptyFields(): boolean {

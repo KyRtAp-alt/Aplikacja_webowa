@@ -28,14 +28,6 @@
                             <option *ngFor="let spec of specializations" [value]="spec">{{ spec }}</option>
                         </select>
                     </div>
-                    <!-- <div class="form-group">
-                        <label class="name">Harmonogram Pracy</label>
-                        <div class="">
-                            <select class="border">
-                                <option *ngFor="let visits of visits">{{visits.nazwa}}</option>
-                            </select>
-                        </div>
-                    </div> -->
                     <div class="form-group">
                         <label class="name">Opis</label>
                         <textarea class="name-2" name="content" placeholder="Dodaj opis" [(ngModel)]="content"
@@ -44,21 +36,9 @@
                             Pozostało znaków: {{ 650 - content.length }}
                         </div>
                     </div>
-                    <!-- <div class="form-group">
-                        <label class="name">Określ czas pracy</label>
-                        <select class="border" name="worktime" [(ngModel)]="worktime">
-                            <option value="od pon do czw 8-16">od pon do czw 8-16</option>
-                            <option value="od pon do pt 8-16">od pon do pt 8-16</option>
-                        </select>
-
-                    </div> -->
-                    <!-- <option value="od pon do wt 8-16">od pon do wt 8-16</option> -->
-
-                    <!-- <div class="form-group">
-                        <label class="name">Dostępność pracownika</label>
-                    </div> -->
                     <div class="border-but">
-                        <button class="button-border" (click)="(!isEmptyFields()) && ( updateDoctor())">
+                        <button class="button-border"
+                            (click)="(!isEmptyFields()) && (editingDoctor ? updateDoctor() : addDoctor() )">
                             {{ editingDoctor ? 'Zapisz' : 'Dodaj' }}
                         </button>
                     </div>
@@ -123,3 +103,17 @@
 <div class="scroll-to-top" (click)="scrollToTop()">
     <i class="fas fa-chevron-up">&#8593; </i>
 </div>
+
+<!-- <div class="form-group">
+                        <label class="name">Określ czas pracy</label>
+                        <select class="border" name="worktime" [(ngModel)]="worktime">
+                            <option value="od pon do czw 8-16">od pon do czw 8-16</option>
+                            <option value="od pon do pt 8-16">od pon do pt 8-16</option>
+                        </select>
+
+                    </div> -->
+<!-- <option value="od pon do wt 8-16">od pon do wt 8-16</option> -->
+
+<!-- <div class="form-group">
+                        <label class="name">Dostępność pracownika</label>
+                    </div> -->
