@@ -61,40 +61,40 @@ export class UmowWizyteComponent {
     }
   }
 
-  daysOfWeek: string[] = [
-    'Poniedzialek',
-    'Wtorek',
-    'Sroda',
-    'Czwartek',
-    'Piatek',
-  ];
-  availableHours: string[] = [
-    '8:00',
-    '8:30',
-    '9:00',
-    '9:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-    '13:00',
-    '13:30',
-    '14:00',
-  ];
+  // daysOfWeek: string[] = [
+  //   'Poniedzialek',
+  //   'Wtorek',
+  //   'Sroda',
+  //   'Czwartek',
+  //   'Piatek',
+  // ];
+  // availableHours: string[] = [
+  //   '8:00',
+  //   '8:30',
+  //   '9:00',
+  //   '9:30',
+  //   '10:00',
+  //   '10:30',
+  //   '11:00',
+  //   '11:30',
+  //   '12:00',
+  //   '12:30',
+  //   '13:00',
+  //   '13:30',
+  //   '14:00',
+  // ];
 
-  isHourReserved(day: string, hour: string): boolean {
-    return this.reservedAppointments.some(
-      (appointment) => appointment.day === day && appointment.hour === hour
-    );
-  }
+  // isHourReserved(day: string, hour: string): boolean {
+  //   return this.reservedAppointments.some(
+  //     (appointment) => appointment.day === day && appointment.hour === hour
+  //   );
+  // }
 
-  reservedAppointments: any[] = [
-    { day: 'Wtorek', hour: '8:00' },
-    { day: 'Wtorek', hour: '8:30' },
-    { day: 'Sroda', hour: '9:30' },
-  ];
+  // reservedAppointments: any[] = [
+  //   { day: 'Wtorek', hour: '8:00' },
+  //   { day: 'Wtorek', hour: '8:30' },
+  //   { day: 'Sroda', hour: '9:30' },
+  // ];
 
   constructor(
     private doctorService: DoctorService,
@@ -106,7 +106,7 @@ export class UmowWizyteComponent {
   ngOnInit() {
     this.getDoctors();
     this.getRoss();
-    // this.getSchemes();
+    this.getSchemes();
   }
 
   getDoctors() {
@@ -170,17 +170,17 @@ export class UmowWizyteComponent {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // getSchemes() {
-  //   this.schemeService.getScheme().subscribe(
-  //     (schemes: any) => {
-  //       console.log(schemes);
-  //       this.visits = schemes;
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
+  getSchemes() {
+    this.schemeService.getScheme().subscribe(
+      (schemes: any) => {
+        console.log(schemes);
+        this.visits = schemes;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
   workname: any[] = [];
 

@@ -14,6 +14,16 @@
   margin-right: 50px;
 }
 
+.hours {
+  color: green;
+  cursor: pointer;
+}
+
+.reserved {
+  color: red;
+  cursor: not-allowed; // Możesz dostosować styl kursora
+}
+
 // .main-container-scheme {
 //   display: flex;
 //   align-items: center;
