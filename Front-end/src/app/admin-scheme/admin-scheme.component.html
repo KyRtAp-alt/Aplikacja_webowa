@@ -1,5 +1,46 @@
 <app-header-admin></app-header-admin>
+<div class="">
+    <div class="">
+        <div class="list">
+            <div class="form-group">
+                <div class="tst">
+                    <label class="day">Poniedziłek</label>
+                    <div class="">
+                        <label>Pracuje od</label>
+                        <input type="time">
+                    </div>
+                    <div class="">
+                        <label>Pracuje do</label>
+                        <input type="time">
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <label>Wtorek</label>
+            </div>
+            <div class="">
+                <label>Środa</label>
+            </div>
+            <div class="">
+                <label>Czwartek</label>
+            </div>
+            <div class="">
+                <label>Piątek</label>
+            </div>
+            <div class="">
+                <label>Sobota</label>
+            </div>
+        </div>
+    </div>
+</div>
 
+<form (ngSubmit)="onSubmit()">
+    <label for="selectedTime">Wybierz godzinę:</label>
+    <select id="selectedTime" name="selectedTime" [(ngModel)]="selectedTime" required>
+        <option *ngFor="let timeSlot of timeSlots" [value]="timeSlot">{{ timeSlot }}</option>
+    </select>
+    <button type="submit">Zapisz</button>
+</form>
 <!-- <div class="main-column">
     <div class="main-box-list">
         <div class="main-doctor-list" *ngIf="doctors.length > 0">

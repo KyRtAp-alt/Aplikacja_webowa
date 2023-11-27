@@ -29,6 +29,28 @@ import { SchemeService } from '../scheme.service';
   styleUrls: ['./admin-scheme.component.scss'],
 })
 export class AdminSchemeComponent {
+  timeSlots: string[] = this.generateTimeSlots();
+  selectedTime: string = '';
+
+  generateTimeSlots(): string[] {
+    // Tutaj możesz dostosować logikę generowania godzin
+    // Na potrzeby przykładu, generujemy godziny od 9:00 AM do 5:00 PM co godzinę
+    const startTime = 9;
+    const endTime = 17;
+    const timeSlots: string[] = [];
+
+    for (let i = startTime; i <= endTime; i++) {
+      timeSlots.push(`${i}:00 AM`);
+    }
+
+    return timeSlots;
+  }
+
+  onSubmit() {
+    // Tutaj możesz dodać logikę obsługi formularza, używając this.selectedTime
+    console.log(`Wybrano godzinę: ${this.selectedTime}`);
+  }
+
   //Main
   // days: string[] = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
   // selectedDays: { [key: string]: boolean } = {};
