@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
-import { RosService } from '../ros.service';
+// import { RosService } from '../ros.service';
 import { VisitService } from '../visit.service';
 import { SchemeService } from '../scheme.service';
 @Component({
@@ -98,14 +98,14 @@ export class UmowWizyteComponent {
 
   constructor(
     private doctorService: DoctorService,
-    private rosService: RosService,
+    // private rosService: RosService,
     private visitService: VisitService,
     private schemeService: SchemeService
   ) {}
 
   ngOnInit() {
     this.getDoctors();
-    this.getRoss();
+    // this.getRoss();
     this.getSchemes();
   }
 
@@ -121,18 +121,18 @@ export class UmowWizyteComponent {
     );
   }
 
-  getRoss() {
-    this.rosService.getRoss().subscribe(
-      (ross: any) => {
-        console.log(ross);
-        this.ross = ross;
-        this.specializations = ross.map((ros: any) => ros.nazwa);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
+  // getRoss() {
+  //   this.rosService.getRoss().subscribe(
+  //     (ross: any) => {
+  //       console.log(ross);
+  //       this.ross = ross;
+  //       this.specializations = ross.map((ros: any) => ros.nazwa);
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 
   addVisit() {
     const newVisit = {
