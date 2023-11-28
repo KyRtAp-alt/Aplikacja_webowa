@@ -1,5 +1,32 @@
+.boss {
+  margin-top: 50px;
+}
+
+.all {
+  display: block;
+}
+
+.worktime {
+  display: flex;
+  margin-bottom: 30px;
+}
+
 .form-group {
   margin-bottom: 10px;
+}
+
+.time-group {
+  margin-right: 20px;
+}
+
+input[type="time"] {
+  // border: none;
+  border: 2px solid gray;
+  border-radius: 10px;
+  height: 30px;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .tst {
@@ -12,6 +39,10 @@
 
 .day {
   margin-right: 50px;
+}
+
+.name {
+  display: block;
 }
 
 .hours {
