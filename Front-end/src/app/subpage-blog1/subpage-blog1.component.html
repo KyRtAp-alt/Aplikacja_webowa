@@ -1,4 +1,83 @@
-<div *ngFor="let blog of blogs">
-    <h2>{{ blog.title }}</h2>
-    <p>{{ blog.content }}</p>
+<!-- <div *ngFor="let blog of blogs">
+    <h2>{{ blog.tytul }}</h2>
+    <p>{{ blog.tresc }}</p>
+</div> -->
+
+
+<!-- <div class="main-list">
+    <ul class="q">
+        <li *ngFor="let blog of blogs" class="list">
+            <span class="firstname">{{blog.tytul}}</span>
+            <span class="content">{{blog.tresc}}</span>
+        </li>
+    </ul>
+</div> -->
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="bar-navbar">
+
+</div>
+<!-- <app-img-navbar-other></app-img-navbar-other> -->
+<div class="main-container" *ngFor="let blog of blogs" class="list">
+    <div class="left-container">
+        <h2>{{blog.tytul}}</h2>
+    </div>
+    <div class="center-container">
+        <img class="img" src="">
+    </div>
+    <div class="right-container">
+        <p class="text">
+            {{blog.tresc}}
+        </p>
+        <h2 class="main-title">
+        </h2>
+        <p class="text">
+
+        </p>
+        <p class="text">
+
+        </p>
+        <h2 class="main-title-2">
+        </h2>
+        <p class="text">
+
+        </p>
+        <h2 class="main-title-3">
+
+        </h2>
+        <p class="text">
+
+        </p>
+        <p class="text">
+
+        </p>
+        <h2 class="main-title-4">
+        </h2>
+        <p class="text">
+
+        </p>
+        <div class="text-c">
+            <!-- <p class="grid">- </p>
+            <p class="grid">- </p>
+            <p class="grid">- </p>
+            <p class="grid">- </p> -->
+        </div>
+        <h2 class="main-title-5">
+        </h2>
+        <p class="text">
+
+        </p>
+        <p class="text">
+
+        </p>
+        <p class="text">
+
+        </p>
+        <p class="text">
+
+        </p>
+        <p class="text">
+
+        </p>
+    </div>
 </div>

@@ -30,13 +30,13 @@
         </div>
     </div>
 </div> -->
-
 <div class="ms">
     <div class="ms_outer">
         <div class="bar">
             <a class="title-border">
                 <h2 class="title">Blog</h2>
             </a>
+            <div id="bloglist"></div>
         </div>
         <div class="ms_inner">
             <div class="blog-list">
@@ -54,7 +54,7 @@
                             </a>
                         </div>
                         <a class="button-border">
-                            <button class="button" [routerLink]="['/blog-test', blog.id]">Czytaj
+                            <button class="button" [routerLink]="['/blog-test', blog._id]">Czytaj
                                 więcej</button>
                         </a>
                     </div>
