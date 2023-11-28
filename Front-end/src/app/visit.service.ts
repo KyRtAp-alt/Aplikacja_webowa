@@ -26,7 +26,12 @@ export class VisitService {
     return this.http.put(`http://localhost:3000/visit/${id}`, visit);
   }
 
-  reserveHour(hour: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/reservations`, { hour });
+  // reserveHour(hour: string): Observable<any> {
+  //   return this.http.post<any>(`${this.apiUrl}/reservations`, { hour });
+  // }
+
+  getDoctorDate(pracownikID: string): Observable<any> {
+    const url = `http://localhost:3000/scheme/${pracownikID}`;
+    return this.http.get(url);
   }
 }

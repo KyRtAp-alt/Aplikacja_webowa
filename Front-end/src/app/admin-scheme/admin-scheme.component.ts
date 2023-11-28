@@ -16,6 +16,7 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { SchemeService } from '../scheme.service';
+import { VisitService } from '../visit.service';
 
 interface Schedule {
   name: string;
@@ -99,6 +100,16 @@ export class AdminSchemeComponent {
   sobotaDo: string = '';
   sobotaAktywny: boolean = true;
 
+  constructor(
+    private doctorService: DoctorService,
+    private schemeService: SchemeService
+  ) {}
+
+  ngOnInit() {
+    this.getDoctors();
+    // this.getSchemes();
+  }
+
   addScheme() {
     const newScheme = {
       czaspracy: {
@@ -139,13 +150,33 @@ export class AdminSchemeComponent {
       .map((part) => parseInt(part, 10));
     return [hours, minutes];
   }
+  //Koniec formularza
+
+  getDoctors() {
+    this.doctorService.getDoctors().subscribe(
+      (doctors: any) => {
+        console.log(doctors);
+        this.doctors = doctors;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  onShowMore(doctor: any) {
+    doctor.showMore = true;
+  }
+
+  onShowLess(doctor: any) {
+    doctor.showMore = false;
+  }
 
   clearForm() {
     this.poniedzialekAktywny;
   }
 
-  //Koniec formularza
-
+  //Inne
   sendData() {
     const data = {
       czaspracy: {
@@ -169,232 +200,156 @@ export class AdminSchemeComponent {
     if (this.poniedzialekAktywny || this.wtorekAktywny || this.srodaAktywny) {
       console.log(data);
     } else {
-      console.log('Żaden dzień nie jest aktywny.');
+      console.log('Zaden dzien nie jest aktywny.');
     }
   }
-
-  constructor(
-    private doctorService: DoctorService,
-    private schemeService: SchemeService
-  ) {}
-
-  ngOnInit() {
-    this.getDoctors();
-    // this.getSchemes();
-  }
-
-  // clientFirstname: { [key: string]: string } = {};
-  // clientLastname: { [key: string]: string } = {};
-
-  // selectedHoursToReserve: string[] = [];
-
-  // reserveHour(hour: string) {
-  //   if (!this.isHourReserved(hour)) {
-  //     this.reservedHours.push(hour);
-  //     console.log('Zarezerwowano godzinę:', hour);
-  //   } else {
-  //     console.log('Godzina już zarezerwowana');
-  //   }
-  // }
-
-  // isEmptyClientFields(hour: string): boolean {
-  //   return !this.clientFirstname[hour] || !this.clientLastname[hour];
-  // }
-
-  // toggleHourSelection(hour: string) {
-  //   if (this.selectedHoursToReserve.includes(hour)) {
-  //     this.selectedHoursToReserve = this.selectedHoursToReserve.filter(
-  //       (selectedHour) => selectedHour !== hour
-  //     );
-  //   } else {
-  //     this.selectedHoursToReserve.push(hour);
-  //   }
-  // }
-
-  // isHourReserved(hour: string): boolean {
-  //   return this.reservedHours.includes(hour);
-  // }
-
-  // constructor(
-  //   private doctorService: DoctorService,
-  //   private schemeService: SchemeService
-  // ) {}
-
-  // ngOnInit() {
-  //   this.getDoctors();
-  //   this.getSchemes();
-  // }
-
-  // generateHours() {
-  //   this.generatedHours = this.generateHourRange(
-  //     this.selectedStartTime,
-  //     this.selectedEndTime,
-  //     this.selectedInterval
-  //   );
-  //   this.selectedHours = {};
-  // }
-
-  // generateHourRange(
-  //   startTime: string,
-  //   endTime: string,
-  //   interval: number
-  // ): string[] {
-  //   const startHour = new Date(`2023-01-01T${startTime}`);
-  //   const endHour = new Date(`2023-01-01T${endTime}`);
-  //   const hourRange: string[] = [];
-
-  //   while (startHour <= endHour) {
-  //     hourRange.push(this.formatHour(startHour));
-  //     startHour.setMinutes(startHour.getMinutes() + interval);
-  //   }
-
-  //   return hourRange;
-  // }
-
-  // formatHour(date: Date): string {
-  //   const hour = date.getHours();
-  //   const minute = date.getMinutes();
-  //   return `${hour < 10 ? '0' : ''}${hour}:${minute < 10 ? '0' : ''}${minute}`;
-  // }
-
-  // getSchemes() {
-  //   this.schemeService.getScheme().subscribe(
-  //     (schemes: any) => {
-  //       console.log(schemes);
-  //       this.visits = schemes;
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-  // addScheme() {
-  //   const newScheme = {
-  //     workname: this.selectedScheduleName,
-  //     dnitygodnia: this.selectedDays,
-  //     wybranegodziny: this.generatedHours.filter(
-  //       (hour) => this.selectedHours[hour]
-  //     ),
-  //   };
-
-  //   this.schemeService.addScheme(newScheme).subscribe(
-  //     () => {
-  //       console.log('Dodano harmonogram');
-  //       this.clearForm();
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-  // deleteScheme(id: string) {
-  //   this.schemeService.deleteScheme(id).subscribe(
-  //     () => {
-  //       console.log('Usunieto garmonogram');
-  //       this.getSchemes();
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-  // editScheme(scheme: any) {
-  //   this.selectedSchemeId = scheme._id;
-  //   this.editingScheme = true;
-  //   this.name = scheme.name;
-  //   this.days = scheme.dnitygodnia;
-  //   this.hours = scheme.wybranegodziny;
-  // }
-  // updateScheme() {
-  //   const updateScheme = {
-  //     workname: this.selectedScheduleName,
-  //     dnitygodnia: this.selectedDays,
-  //     wybranegodziny: this.selectedHours,
-  //   };
-  //   this.schemeService
-  //     .updateScheme(this.selectedSchemeId, updateScheme)
-  //     .subscribe(
-  //       () => {
-  //         console.log('Zaktulizowano harmonogram');
-  //         this.getSchemes();
-  //         this.clearForm();
-  //         this.editingScheme = false;
-  //       },
-  //       (error) => {
-  //         console.error(error);
-  //       }
-  //     );
-  // }
-  // clearForm() {
-  //   this.selectedScheduleName = '';
-  // }
-  onShowMore(doctor: any) {
-    doctor.showMore = true;
-  }
-  onShowLess(doctor: any) {
-    doctor.showMore = false;
-  }
-  // isEmptyFields() {
-  //   return !this.workname || !this.days || !this.hours;
-  // }
-
-  getDoctors() {
-    this.doctorService.getDoctors().subscribe(
-      (doctors: any) => {
-        console.log(doctors);
-        this.doctors = doctors;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  addDoctor() {
-    const newDoctor = {
-      // nazwa: this.selectedScheduleName,
-      // dnitygodnia: this.selectedDays,
-      // wybranegodziny: this.selectedHours,
-    };
-
-    this.doctorService.addDoctor(newDoctor).subscribe(
-      () => {
-        console.log('Dodano lekarza');
-        // this.clearForm();
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
-  editDoctor(doctor: any) {
-    this.editingDoctor = true;
-    this.selectedDoctorId = doctor._id;
-    // this.selectedScheduleName = doctor.nazwa;
-    // this.selectedDays = doctor.dnitygodnia;
-    // this.selectedHours = doctor.wybranegodziny;
-  }
-
-  updateDoctor() {
-    const updatedDoctor = {
-      // nazwa: this.selectedScheduleName,
-      // dnitygodnia: this.selectedDays,
-      // wybranegodziny: this.selectedHours,
-    };
-
-    this.doctorService
-      .updateDoctor(this.selectedDoctorId, updatedDoctor)
-      .subscribe(
-        () => {
-          console.log('Zaktualizowano lekarza');
-          this.getDoctors();
-          // this.clearForm();
-          this.editingDoctor = false;
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-  }
 }
+
+// clientFirstname: { [key: string]: string } = {};
+// clientLastname: { [key: string]: string } = {};
+
+// selectedHoursToReserve: string[] = [];
+
+// reserveHour(hour: string) {
+//   if (!this.isHourReserved(hour)) {
+//     this.reservedHours.push(hour);
+//     console.log('Zarezerwowano godzinę:', hour);
+//   } else {
+//     console.log('Godzina już zarezerwowana');
+//   }
+// }
+
+// isEmptyClientFields(hour: string): boolean {
+//   return !this.clientFirstname[hour] || !this.clientLastname[hour];
+// }
+
+// toggleHourSelection(hour: string) {
+//   if (this.selectedHoursToReserve.includes(hour)) {
+//     this.selectedHoursToReserve = this.selectedHoursToReserve.filter(
+//       (selectedHour) => selectedHour !== hour
+//     );
+//   } else {
+//     this.selectedHoursToReserve.push(hour);
+//   }
+// }
+
+// isHourReserved(hour: string): boolean {
+//   return this.reservedHours.includes(hour);
+// }
+
+// constructor(
+//   private doctorService: DoctorService,
+//   private schemeService: SchemeService
+// ) {}
+
+// ngOnInit() {
+//   this.getDoctors();
+//   this.getSchemes();
+// }
+
+// generateHours() {
+//   this.generatedHours = this.generateHourRange(
+//     this.selectedStartTime,
+//     this.selectedEndTime,
+//     this.selectedInterval
+//   );
+//   this.selectedHours = {};
+// }
+
+// generateHourRange(
+//   startTime: string,
+//   endTime: string,
+//   interval: number
+// ): string[] {
+//   const startHour = new Date(`2023-01-01T${startTime}`);
+//   const endHour = new Date(`2023-01-01T${endTime}`);
+//   const hourRange: string[] = [];
+
+//   while (startHour <= endHour) {
+//     hourRange.push(this.formatHour(startHour));
+//     startHour.setMinutes(startHour.getMinutes() + interval);
+//   }
+
+//   return hourRange;
+// }
+
+// formatHour(date: Date): string {
+//   const hour = date.getHours();
+//   const minute = date.getMinutes();
+//   return `${hour < 10 ? '0' : ''}${hour}:${minute < 10 ? '0' : ''}${minute}`;
+// }
+
+// getSchemes() {
+//   this.schemeService.getScheme().subscribe(
+//     (schemes: any) => {
+//       console.log(schemes);
+//       this.visits = schemes;
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+//   );
+// }
+// addScheme() {
+//   const newScheme = {
+//     workname: this.selectedScheduleName,
+//     dnitygodnia: this.selectedDays,
+//     wybranegodziny: this.generatedHours.filter(
+//       (hour) => this.selectedHours[hour]
+//     ),
+//   };
+
+//   this.schemeService.addScheme(newScheme).subscribe(
+//     () => {
+//       console.log('Dodano harmonogram');
+//       this.clearForm();
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+//   );
+// }
+// deleteScheme(id: string) {
+//   this.schemeService.deleteScheme(id).subscribe(
+//     () => {
+//       console.log('Usunieto garmonogram');
+//       this.getSchemes();
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+//   );
+// }
+// editScheme(scheme: any) {
+//   this.selectedSchemeId = scheme._id;
+//   this.editingScheme = true;
+//   this.name = scheme.name;
+//   this.days = scheme.dnitygodnia;
+//   this.hours = scheme.wybranegodziny;
+// }
+// updateScheme() {
+//   const updateScheme = {
+//     workname: this.selectedScheduleName,
+//     dnitygodnia: this.selectedDays,
+//     wybranegodziny: this.selectedHours,
+//   };
+//   this.schemeService
+//     .updateScheme(this.selectedSchemeId, updateScheme)
+//     .subscribe(
+//       () => {
+//         console.log('Zaktulizowano harmonogram');
+//         this.getSchemes();
+//         this.clearForm();
+//         this.editingScheme = false;
+//       },
+//       (error) => {
+//         console.error(error);
+//       }
+//     );
+// }
+// clearForm() {
+//   this.selectedScheduleName = '';
+// }
+// isEmptyFields() {
+//   return !this.workname || !this.days || !this.hours;
+// }}
