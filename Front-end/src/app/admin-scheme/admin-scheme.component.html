@@ -31,9 +31,22 @@
                         </div>
                         <div class="" *ngIf="doctor.showMore">
                             <div class="boss">
-                                <div>
-                                    <label>Czas wizyty</label>
+                                <div class="">
+                                    <label>ID lekarza: {{ doctor._id }}</label>
+                                    <input [(ngModel)]="pracownikID">
+                                </div>
+                                <div class="">
+                                    <div class="">
+                                        <span>{{doctor.imie}}</span>
+                                    </div>
+                                    <div class="">
+                                        <span>{{doctor.nazwisko}}</span>
+                                    </div>
+                                </div>
+                                <div class="time-select">
+                                    <label class="">Czas wizyty</label>
                                     <input type="number" [(ngModel)]="czasWizyty">
+                                    <span>minut</span>
                                 </div>
                                 <div class="all">
                                     <div class="worktime">
@@ -67,11 +80,78 @@
                                             <label>Do</label>
                                             <input type="time" [(ngModel)]="wtorekDo">
                                         </div>
-
+                                    </div>
+                                    <div class="worktime">
+                                        <div class="name">
+                                            <span class="day">Środa</span>
+                                            <label>
+                                                <input type="checkbox" [(ngModel)]="srodaAktywny"> Aktywny
+                                            </label>
+                                        </div>
+                                        <div class="">
+                                            <label>Od</label>
+                                            <input type="time" [(ngModel)]="srodaOd">
+                                        </div>
+                                        <div>
+                                            <label>Do</label>
+                                            <input type="time" [(ngModel)]="srodaDo">
+                                        </div>
+                                    </div>
+                                    <div class="worktime">
+                                        <div class="name">
+                                            <span class="day">Czwartek</span>
+                                            <label>
+                                                <input type="checkbox" [(ngModel)]="czwartekAktywny"> Aktywny
+                                            </label>
+                                        </div>
+                                        <div class="">
+                                            <label>Od</label>
+                                            <input type="time" [(ngModel)]="czwartekOd">
+                                        </div>
+                                        <div>
+                                            <label>Do</label>
+                                            <input type="time" [(ngModel)]="czwartekDo">
+                                        </div>
+                                    </div>
+                                    <div class="worktime">
+                                        <div class="name">
+                                            <span class="day">Piątek</span>
+                                            <label>
+                                                <input type="checkbox" [(ngModel)]="piatekAktywny"> Aktywny
+                                            </label>
+                                        </div>
+                                        <div class="">
+                                            <label>Od</label>
+                                            <input type="time" [(ngModel)]="piatekOd">
+                                        </div>
+                                        <div>
+                                            <label>Do</label>
+                                            <input type="time" [(ngModel)]="piatekDo">
+                                        </div>
+                                    </div>
+                                    <div class="worktime">
+                                        <div class="name">
+                                            <span class="day">Sobota</span>
+                                            <label>
+                                                <input type="checkbox" [(ngModel)]="sobotaAktywny"> Aktywny
+                                            </label>
+                                        </div>
+                                        <div class="">
+                                            <label>Od</label>
+                                            <input type="time" [(ngModel)]="sobotaOd">
+                                        </div>
+                                        <div>
+                                            <label>Do</label>
+                                            <input type="time" [(ngModel)]="sobotaDo">
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="">
+                                    <label class="">Data waznosci harmonogramu</label>
+                                    <input>
+                                </div>
                             </div>
-                            <button (click)="sendData()">Dodaj</button>
+                            <button (click)="addScheme()">Dodaj</button>
 
                             <!-- <div class="">
                                 <div class="">

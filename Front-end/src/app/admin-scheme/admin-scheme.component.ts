@@ -66,13 +66,85 @@ export class AdminSchemeComponent {
   reservedHours: string[] = [];
 
   //Formularz dodawania
+  czasWizyty: number = 0;
+  pracownikID: string = '';
+
+  //poniedzialek
   poniedzialekOd: string = '';
   poniedzialekDo: string = '';
+  poniedzialekAktywny: boolean = true;
+
+  //wtorek
   wtorekOd: string = '';
   wtorekDo: string = '';
-  czasWizyty: number = 0;
-  poniedzialekAktywny: boolean = true;
   wtorekAktywny: boolean = true;
+
+  //sroda
+  srodaOd: string = '';
+  srodaDo: string = '';
+  srodaAktywny: boolean = true;
+
+  //czwartek
+  czwartekOd: string = '';
+  czwartekDo: string = '';
+  czwartekAktywny: boolean = true;
+
+  //piatek
+  piatekOd: string = '';
+  piatekDo: string = '';
+  piatekAktywny: boolean = true;
+
+  //sobota
+  sobotaOd: string = '';
+  sobotaDo: string = '';
+  sobotaAktywny: boolean = true;
+
+  addScheme() {
+    const newScheme = {
+      czaspracy: {
+        poniedzialek: this.poniedzialekAktywny
+          ? [
+              this.parseTime(this.poniedzialekOd),
+              this.parseTime(this.poniedzialekDo),
+            ]
+          : null,
+        wtorek: this.wtorekAktywny
+          ? [this.parseTime(this.wtorekOd), this.parseTime(this.wtorekDo)]
+          : null,
+        sroda: this.srodaAktywny
+          ? [this.parseTime(this.srodaOd), this.parseTime(this.srodaDo)]
+          : null,
+        czwartek: this.czwartekAktywny
+          ? [this.parseTime(this.czwartekOd), this.parseTime(this.czwartekDo)]
+          : null,
+      },
+      czaswizyty: this.czasWizyty,
+      pracownikID: this.pracownikID,
+    };
+
+    this.schemeService.addScheme(newScheme).subscribe(
+      () => {
+        console.log('Dodano harmonogram');
+        // this.clearForm();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  private parseTime(timeString: string): number[] {
+    const [hours, minutes] = timeString
+      .split(':')
+      .map((part) => parseInt(part, 10));
+    return [hours, minutes];
+  }
+
+  clearForm() {
+    this.poniedzialekAktywny;
+  }
+
+  //Koniec formularza
 
   sendData() {
     const data = {
@@ -86,20 +158,20 @@ export class AdminSchemeComponent {
         wtorek: this.wtorekAktywny
           ? [this.parseTime(this.wtorekOd), this.parseTime(this.wtorekDo)]
           : null,
+        sroda: this.srodaAktywny
+          ? [this.parseTime(this.srodaOd), this.parseTime(this.srodaDo)]
+          : null,
       },
       czaswizyty: this.czasWizyty,
+      pracownikID: this.pracownikID,
     };
-    console.log(data);
-  }
 
-  private parseTime(timeString: string): number[] {
-    const [hours, minutes] = timeString
-      .split(':')
-      .map((part) => parseInt(part, 10));
-    return [hours, minutes];
+    if (this.poniedzialekAktywny || this.wtorekAktywny || this.srodaAktywny) {
+      console.log(data);
+    } else {
+      console.log('Żaden dzień nie jest aktywny.');
+    }
   }
-
-  //Koniec formularza
 
   constructor(
     private doctorService: DoctorService,
