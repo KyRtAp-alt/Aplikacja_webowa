@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: '', component: MainpageComponent },
   { path: 'mainpage', component: MainpageComponent },
   { path: 'blog/:id', component: SubpageBlog1Component },
+  { path: 'ros/:id', component: SubpageRof1Component },
   {
     path: 'dretwienia-rak–jakie-moga-byc-przyczyny',
     component: SubpageBlog2Component,
@@ -42,7 +43,6 @@ const routes: Routes = [
     component: SubpageBlog3Component,
   },
   { path: 'zakres-uslug', component: RangeOfServices1Component },
-  { path: 'lekarz-medycyny-rodzinnej', component: SubpageRof1Component },
   { path: 'lekarz-pediatra', component: SubpageRof2Component },
   { path: 'medycyna-pracy', component: SubpageRof3Component },
   { path: 'kwalifikacje-prawa-jazdy', component: SubpageRof4Component },

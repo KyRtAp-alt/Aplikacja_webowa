@@ -9,6 +9,7 @@ import { RosService } from '../ros.service';
 export class AdminRosComponent {
   ross: any[] = [];
   name: string = '';
+  description: string = '';
   selectedRosId: string = '';
   editingRos: boolean = false;
 
@@ -33,6 +34,7 @@ export class AdminRosComponent {
   addRos() {
     const newRos = {
       nazwa: this.name,
+      opis: this.description,
     };
 
     this.rosService.addRos(newRos).subscribe(
@@ -71,6 +73,7 @@ export class AdminRosComponent {
   editRos(ros: any) {
     this.selectedRosId = ros._id;
     this.name = ros.nazwa;
+    this.description = ros.opis;
     this.editingRos = true;
   }
 
@@ -95,6 +98,7 @@ export class AdminRosComponent {
   clearForm() {
     this.selectedRosId = '';
     this.name = '';
+    this.description = '';
   }
 
   isEmptyFields(): boolean {

@@ -19,15 +19,16 @@
 }
 
 .img {
-  width: 600px;
-  height: 400px;
+  width: 400px; //600px
+  height: 250px; //400px
   border: 5px solid #22a6b3;
   border-radius: 10px;
 }
 
 .right-container {
-  display: block;
+  display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 40px;
   width: 1100px;
   line-height: 25px;
@@ -68,4 +69,18 @@
 .bar-navbar {
   background-color: #01a3a4;
   height: 30px;
+}
+
+.test-border {
+  display: block;
+  justify-content: center;
+  margin-top: 40px;
+  width: 1100px;
+  line-height: 25px;
+}
+
+.test {
+  font-size: 18px;
+  font-family: sans-serif;
+  margin-bottom: 1.5em;
 }

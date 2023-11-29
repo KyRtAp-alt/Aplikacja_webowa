@@ -11,6 +11,10 @@
                         <label class="name">Nazwa</label>
                         <input class="border" name="firstname" [(ngModel)]="name">
                     </div>
+                    <div class="form-group">
+                        <label class="name">Opis</label>
+                        <textarea class="border-2" name="description" [(ngModel)]="description"></textarea>
+                    </div>
                     <div class="border-but">
                         <button class="button-border"
                             (click)="(!isEmptyFields()) && (editingRos ? updateRos() : addRos())">

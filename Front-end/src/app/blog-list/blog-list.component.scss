@@ -42,8 +42,8 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  grid-template-columns: repeat(2, auto);
-  gap: 30px;
+  grid-template-columns: repeat(1, auto); //2
+  gap: 10px; //30
 
   @media (max-width: 1025px) {
     gap: 50px;
@@ -69,8 +69,8 @@
 // wymiary boxow z zawartoscia
 .main-container {
   width: 100%;
-  max-width: 600px;
-  height: 450px;
+  max-width: 1000px; //600px
+  height: auto; //450px
   background-color: #bbeefc;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -164,6 +164,7 @@
 .title-blog-border {
   color: #00bfa8;
   display: flex;
+  justify-content: center; //add
 }
 
 .title-blog {
