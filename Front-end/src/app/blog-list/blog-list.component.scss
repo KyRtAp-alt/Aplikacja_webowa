@@ -43,7 +43,7 @@
   align-items: center;
   margin-top: 10px;
   grid-template-columns: repeat(2, auto);
-  gap: 100px;
+  gap: 30px;
 
   @media (max-width: 1025px) {
     gap: 50px;
@@ -70,7 +70,7 @@
 .main-container {
   width: 100%;
   max-width: 600px;
-  height: 550px;
+  height: 450px;
   background-color: #bbeefc;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

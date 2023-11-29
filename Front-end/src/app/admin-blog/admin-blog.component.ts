@@ -10,6 +10,7 @@ export class AdminBlogComponent {
   blogs: any[] = [];
   title: string = '';
   content: string = '';
+  description: string = '';
   selectedBlogId: string = '';
   editingBlog: boolean = false;
 
@@ -35,6 +36,7 @@ export class AdminBlogComponent {
     const newBlog = {
       tytul: this.title,
       tresc: this.content,
+      trescopisu: this.description,
     };
 
     this.blogService.addBlogs(newBlog).subscribe(
@@ -74,6 +76,7 @@ export class AdminBlogComponent {
     this.selectedBlogId = blog._id;
     this.title = blog.tytul;
     this.content = blog.tresc;
+    this.description = blog.trescopisu;
     this.editingBlog = true;
   }
 
@@ -81,6 +84,7 @@ export class AdminBlogComponent {
     const updateBlogs = {
       tytul: this.title,
       tresc: this.content,
+      trescopisu: this.description,
     };
 
     this.blogService.updateBlog(this.selectedBlogId, updateBlogs).subscribe(
@@ -100,10 +104,11 @@ export class AdminBlogComponent {
     this.selectedBlogId = '';
     this.title = '';
     this.content = '';
+    this.description = '';
   }
 
   isEmptyFields(): boolean {
-    return !this.title || !this.content;
+    return !this.title || !this.content || !this.description;
   }
 
   scrollToTop(): void {

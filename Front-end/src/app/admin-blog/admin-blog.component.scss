@@ -86,10 +86,22 @@
 
 .name-2 {
   width: 300px;
-  height: 300px;
+  height: 150px;
   border-radius: 10px;
   border: 0px;
   resize: vertical;
+  max-height: 250px;
+  min-height: 150px;
+}
+
+.name-3 {
+  width: 300px;
+  height: 350px;
+  border-radius: 10px;
+  border: 0px;
+  resize: vertical;
+  max-height: 500px;
+  min-height: 200px;
 }
 
 //////////////////////////////////////////////////////////
