@@ -63,12 +63,16 @@ export class AdminSchemeComponent {
   wybranegodziny: any[] = [];
   selectedSchemeId: string = '';
   editingScheme: boolean = false;
-  // selectedVisitId: string = '';
+  selectedVisitId: string = '';
   reservedHours: string[] = [];
+  // selectedSchemeId: string = '';
+  selectedScheme: any;
+  // selectedSchemeId: string = '';
 
   //Formularz dodawania
   czasWizyty: number = 0;
   pracownikID: string = '';
+  nazwaharmonogramu: string = '';
 
   //poniedzialek
   poniedzialekOd: string = '';
@@ -131,6 +135,7 @@ export class AdminSchemeComponent {
       },
       czaswizyty: this.czasWizyty,
       pracownikID: this.pracownikID,
+      nazwaharmonogramu: this.nazwaharmonogramu,
     };
 
     this.schemeService.addScheme(newScheme).subscribe(
@@ -175,35 +180,36 @@ export class AdminSchemeComponent {
   clearForm() {
     this.poniedzialekAktywny;
   }
-
-  //Inne
-  sendData() {
-    const data = {
-      czaspracy: {
-        poniedzialek: this.poniedzialekAktywny
-          ? [
-              this.parseTime(this.poniedzialekOd),
-              this.parseTime(this.poniedzialekDo),
-            ]
-          : null,
-        wtorek: this.wtorekAktywny
-          ? [this.parseTime(this.wtorekOd), this.parseTime(this.wtorekDo)]
-          : null,
-        sroda: this.srodaAktywny
-          ? [this.parseTime(this.srodaOd), this.parseTime(this.srodaDo)]
-          : null,
-      },
-      czaswizyty: this.czasWizyty,
-      pracownikID: this.pracownikID,
-    };
-
-    if (this.poniedzialekAktywny || this.wtorekAktywny || this.srodaAktywny) {
-      console.log(data);
-    } else {
-      console.log('Zaden dzien nie jest aktywny.');
-    }
-  }
 }
+
+//Inne
+
+// sendData() {
+//   const data = {
+//     czaspracy: {
+//       poniedzialek: this.poniedzialekAktywny
+//         ? [
+//             this.parseTime(this.poniedzialekOd),
+//             this.parseTime(this.poniedzialekDo),
+//           ]
+//         : null,
+//       wtorek: this.wtorekAktywny
+//         ? [this.parseTime(this.wtorekOd), this.parseTime(this.wtorekDo)]
+//         : null,
+//       sroda: this.srodaAktywny
+//         ? [this.parseTime(this.srodaOd), this.parseTime(this.srodaDo)]
+//         : null,
+//     },
+//     czaswizyty: this.czasWizyty,
+//     pracownikID: this.pracownikID,
+//   };
+
+//   if (this.poniedzialekAktywny || this.wtorekAktywny || this.srodaAktywny) {
+//     console.log(data);
+//   } else {
+//     console.log('Zaden dzien nie jest aktywny.');
+//   }
+// }
 
 // clientFirstname: { [key: string]: string } = {};
 // clientLastname: { [key: string]: string } = {};

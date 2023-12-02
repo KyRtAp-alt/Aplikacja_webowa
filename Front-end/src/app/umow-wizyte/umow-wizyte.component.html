@@ -25,18 +25,31 @@
                             <span class="lastname">{{doctor.nazwisko}}</span>
                             <span class="category">({{doctor.specializacja}})</span>
                         </div>
-                        <!-- <div class="name-border">
-                            <span class="worktime">Pracuje</span>
-                            <span class="worktime">{{doctor.czaspracy}}</span>
-                        </div> -->
                         <div class="more">
                             <button class="clickme" *ngIf="!doctor.showMore" (click)="onShowMore(doctor)">&darr;
                             </button>
                             <button class="clickme" *ngIf="doctor.showMore" (click)="onShowLess(doctor)">&uarr;</button>
                         </div>
                     </div>
+                    <div>
+                        <div *ngIf="doctor.showMore">
+                            <span>{{doctor.nazwaharmonogramu}}</span>
+                            <div class="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="main-box-2" *ngIf="doctor.showMore">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div *ngIf="doctor.showMore">
+                    <div *ngFor="let visit of visits">
+                        <span>{{visit.nazwaharmonogramu}}</span>
+                    </div>
+                </div> -->
+
+<!-- <div class="main-box-2" *ngIf="doctor.showMore">
                     <div class="q">
                         <div class="category2">
                             <div class="data-list">
@@ -51,12 +64,9 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <!-- <div *ngFor="let visit of visits">
-                                    <div (click)="openModal()">
-                                        {{visit.czaspracy}}
-                                    </div>
-                                </div> -->
-                                <!-- <span (click)="openModal()">8:35</span> -->
+                                <div>
+
+                                </div>
                                 <div *ngIf="showForm" class="modal-background">
                                     <div class="modal-content">
                                         <div class="close-button-border">
@@ -123,17 +133,19 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </div> -->
 <div class="scroll-to-top" (click)="scrollToTop()">
     <i class="fas fa-chevron-up">&#8593; </i>
 </div>
 <app-footer></app-footer>
 
 
+<!-- <div *ngFor="let visit of visits">
+                                    <div (click)="openModal()">
+                                        {{visit.czaspracy}}
+                                    </div>
+                                </div> -->
+<!-- <span (click)="openModal()">8:35</span> -->
 
 
 
