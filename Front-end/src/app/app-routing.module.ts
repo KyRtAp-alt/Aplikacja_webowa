@@ -28,6 +28,7 @@ import { ReceptionHomepageComponent } from './reception-homepage/reception-homep
 import { ReceptionReservationComponent } from './reception-reservation/reception-reservation.component';
 // import { AdminSchemeComponent } from './admin-scheme/AdminSchemeComponent';
 import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'nasz-zespol', component: OurTeamComponent },
   { path: 'kontakt', component: ContactComponent },
   { path: 'sandbox', component: SandboxComponent },
+  { path: 'bloglist', component: BlogListComponent },
 
   //Admin
   { path: 'admin', component: AdminLoginComponent },

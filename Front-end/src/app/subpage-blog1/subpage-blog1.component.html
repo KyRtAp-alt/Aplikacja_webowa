@@ -1,5 +1,10 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
+<div class="bar">
+    <a class="border-name">
+        <span class="name" routerLink="/bloglist">Lista blogów</span>
+    </a>
+</div>
 <div class="main-container" *ngFor="let blog of blogs">
     <div class="left-container">
         <h2>{{blog.tytul}}</h2>

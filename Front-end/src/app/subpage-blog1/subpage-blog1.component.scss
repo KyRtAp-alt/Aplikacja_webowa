@@ -64,3 +64,23 @@
 .main-title-5 {
   margin-top: 25px;
 }
+
+.bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #01a3a4;
+  height: 50px;
+}
+
+.border-name {
+  border: 3px solid white;
+  border-radius: 10px;
+}
+
+.name {
+  font-size: 26px;
+  font-family: sans-serif;
+  padding: 15px;
+  color: #21395d;
+}
