@@ -96,12 +96,12 @@
 
 .name-3 {
   width: 300px;
-  height: 350px;
+  height: 100px;
   border-radius: 10px;
   border: 0px;
   resize: vertical;
-  max-height: 500px;
-  min-height: 200px;
+  max-height: 250px;
+  min-height: 100px;
 }
 
 //////////////////////////////////////////////////////////
@@ -243,6 +243,15 @@
   justify-content: center;
   cursor: pointer;
   z-index: 9999;
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clickme {
 }
 
 .scroll-to-top i {

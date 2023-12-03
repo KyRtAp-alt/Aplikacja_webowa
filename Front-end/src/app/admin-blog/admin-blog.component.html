@@ -3,33 +3,73 @@
     <div class="left-container">
         <div class="main-box">
             <form>
-                <div class="title-box">
+                <a class="title-box">
                     <h2 class="add-doctor">{{ editingBlog ? 'Edycja Blog' : 'Dodawanie Bloga' }}</h2>
-                </div>
+                </a>
                 <div class="group-box">
-                    <div class="form-group">
-                        <label class="name">Tytuł</label>
-                        <input class="border" name="firstname" [(ngModel)]="title">
-                    </div>
-                    <div class="form-group">
+                    <a class="form-group">
+                        <label class="name">Tytuł bloga</label>
+                        <input class="border" name="title" [(ngModel)]="title">
+                    </a>
+                    <a class="form-group">
+                        <label class="name">Zdjęcie do bloga</label>
+                        <span class="border"></span>
+                    </a>
+                    <a class="form-group">
+                        <label class="name">Opis zapoznawczy</label>
+                        <textarea class="name-3" name="content" placeholder="" [(ngModel)]="content">
+                        </textarea>
+                    </a>
+                    <a class="form-group">
+                        <label class="name">Pierwszy nagłówek</label>
+                        <textarea class="border" name="lead1" placeholder="" [(ngModel)]="lead1"></textarea>
+                        <a class="more">
+                            <button class="clickme" (click)="toggleDescription1()">xyz</button>
+                        </a>
+                        <a *ngIf="onshowdescription1" class="form-group">
+                            <label class="name">Pierwszy opis</label>
+                            <textarea class="name-3" name="description1" placeholder=""
+                                [(ngModel)]="description1"></textarea>
+                        </a>
+                    </a>
+                    <a class="form-group">
+                        <label class="name">Drugi nagłówek</label>
+                        <textarea class="border" name="lead2" placeholder="" [(ngModel)]="lead2"></textarea>
+                        <a class="more">
+                            <button class="clickme" (click)="toggleDescription2()">xyz</button>
+                        </a>
+                        <a *ngIf="onshowdescription2" class="form-group">
+                            <label class="name">Drugi opis</label>
+                            <textarea class="name-3" name="description2" placeholder=""
+                                [(ngModel)]="description2"></textarea>
+                        </a>
+                    </a>
+                    <a class="form-group">
+                        <label class="name">Trzeci nagłówek</label>
+                        <textarea class="border" name="lead3" placeholder="" [(ngModel)]="lead3"></textarea>
+                        <a class="more">
+                            <button class="clickme" (click)="toggleDescription3()">xyz</button>
+                        </a>
+                        <a *ngIf="onshowdescription3" class="form-group">
+                            <label class="name">Drugi opis</label>
+                            <textarea class="name-3" name="description3" placeholder=""
+                                [(ngModel)]="description3"></textarea>
+                        </a>
+                    </a>
+                    <a class=" form-group">
                         <label class="name">Streszczenie opisu</label>
-                        <textarea class="name-2" name="contents" placeholder="Strzeszczenie opisu" [(ngModel)]="content"
-                            maxlength="500"></textarea>
-                        <div class="character-count">
+                        <textarea class="name-2" name="endcontent" placeholder="Strzeszczenie opisu"
+                            [(ngModel)]="endcontent" maxlength="500"></textarea>
+                        <a class="character-count">
                             Pozostało znaków: {{ 500 - content.length }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="name">Opis blogu</label>
-                        <textarea class="name-3" name="description" placeholder="" [(ngModel)]="description">
-                    </textarea>
-                    </div>
-                    <div class="border-but">
+                        </a>
+                    </a>
+                    <a class="border-but">
                         <button class="button-border"
                             (click)="(!isEmptyFields()) && (editingBlog ? updateBlog() : addBlog())">
                             {{ editingBlog ? 'Zapisz' : 'Dodaj' }}
                         </button>
-                    </div>
+                    </a>
                 </div>
             </form>
         </div>
@@ -45,7 +85,7 @@
                 <p class="title-doctor-button-list">Odśwież listę</p>
             </button>
             <div class="main-doctor-list" *ngIf="blogs.length > 0">
-                <div class="main-list">
+                <a class="main-list">
                     <ul class="q">
                         <li *ngFor="let blog of blogs" class="list">
                             <span class="firstname">{{blog.tytul}}</span>
@@ -55,11 +95,38 @@
                             <button class="doctor-delete" (click)="confirmDelete(blog._id)">Usuń</button>
                         </li>
                     </ul>
-                </div>
+                </a>
             </div>
         </div>
     </div>
 </div>
-<div class="scroll-to-top" (click)="scrollToTop()">
+<a class="scroll-to-top" (click)="scrollToTop()">
     <i class="fas fa-chevron-up">&#8593; </i>
-</div>
+</a>
+
+
+<!-- <a class="form-group">
+    <label class="name">Pierwszy nagłówek</label>
+    <textarea class="border" name="lead1" placeholder="" [(ngModel)]="lead1">
+    </textarea>
+    <a class="more">
+        <button class="clickme" (click)="showdescription1()">Pokaż opis</button>
+    </a>
+    <a *ngIf="onshowdescription1" class="form-group">
+        <label class="name">Pierwszy opis</label>
+        <textarea class="name-3" name="description1" placeholder="" [(ngModel)]="description1"></textarea>
+        <button class="clickme" (click)="closedescription1()">Schowaj opis</button>
+    </a>
+</a> -->
+
+<!-- <div class="form-group">
+    <label class="name">Pierwszy nagłówek</label>
+    <textarea class="border" name="lead1" placeholder="" [(ngModel)]="lead1"></textarea>
+    <a class="more">
+        <button class="clickme" (click)="toggleDescription1()"></button>
+    </a>
+    <a *ngIf="onshowdescription1" class="form-group">
+        <label class="name">Pierwszy opis</label>
+        <textarea class="name-3" name="description1" placeholder="" [(ngModel)]="description1"></textarea>
+    </a>
+</div> -->

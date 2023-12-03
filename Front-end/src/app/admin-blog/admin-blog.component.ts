@@ -8,11 +8,21 @@ import { BlogService } from '../blog.service';
 })
 export class AdminBlogComponent {
   blogs: any[] = [];
-  title: string = '';
-  content: string = '';
-  description: string = '';
   selectedBlogId: string = '';
   editingBlog: boolean = false;
+  onshowdescription1: boolean = false;
+  onshowdescription2: boolean = false;
+  onshowdescription3: boolean = false;
+  //
+  title: string = '';
+  content: string = '';
+  endcontent: string = '';
+  lead1: string = '';
+  lead2: string = '';
+  lead3: string = '';
+  description1: string = '';
+  description2: string = '';
+  description3: string = '';
 
   constructor(private blogService: BlogService) {}
 
@@ -36,7 +46,13 @@ export class AdminBlogComponent {
     const newBlog = {
       tytul: this.title,
       tresc: this.content,
-      trescopisu: this.description,
+      skrotopisu: this.endcontent,
+      naglowek1: this.lead1,
+      naglowek2: this.lead2,
+      naglowek3: this.lead3,
+      trescopisu1: this.description1,
+      trescopisu2: this.description2,
+      trescopisu3: this.description3,
     };
 
     this.blogService.addBlogs(newBlog).subscribe(
@@ -73,18 +89,14 @@ export class AdminBlogComponent {
   }
 
   editBlog(blog: any) {
+    this.editingBlog = true;
     this.selectedBlogId = blog._id;
     this.title = blog.tytul;
-    this.content = blog.tresc;
-    this.description = blog.trescopisu;
-    this.editingBlog = true;
   }
 
   updateBlog() {
     const updateBlogs = {
       tytul: this.title,
-      tresc: this.content,
-      trescopisu: this.description,
     };
 
     this.blogService.updateBlog(this.selectedBlogId, updateBlogs).subscribe(
@@ -100,15 +112,49 @@ export class AdminBlogComponent {
     );
   }
 
+  // showdescription1() {
+  //   this.onshowdescription1 = true;
+  // }
+
+  // closedescription1() {
+  //   this.onshowdescription1 = false;
+  // }
+
+  // showdescription2() {
+  //   this.onshowdescription2 = true;
+  // }
+
+  // closedescription2() {
+  //   this.onshowdescription2 = false;
+  // }
+
+  // showdescription3() {
+  //   this.onshowdescription3 = true;
+  // }
+
+  // closedescription3() {
+  //   this.onshowdescription3 = false;
+  // }
+
+  toggleDescription1() {
+    this.onshowdescription1 = !this.onshowdescription1;
+  }
+
+  toggleDescription2() {
+    this.onshowdescription2 = !this.onshowdescription2;
+  }
+
+  toggleDescription3() {
+    this.onshowdescription3 = !this.onshowdescription3;
+  }
+
   clearForm() {
     this.selectedBlogId = '';
     this.title = '';
-    this.content = '';
-    this.description = '';
   }
 
   isEmptyFields(): boolean {
-    return !this.title || !this.content || !this.description;
+    return !this.title;
   }
 
   scrollToTop(): void {

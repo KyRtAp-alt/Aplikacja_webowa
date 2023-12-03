@@ -1,23 +1,5 @@
-<!-- <div *ngFor="let blog of blogs">
-    <h2>{{ blog.tytul }}</h2>
-    <p>{{ blog.tresc }}</p>
-</div> -->
-
-
-<!-- <div class="main-list">
-    <ul class="q">
-        <li *ngFor="let blog of blogs" class="list">
-            <span class="firstname">{{blog.tytul}}</span>
-            <span class="content">{{blog.tresc}}</span>
-        </li>
-    </ul>
-</div> -->
 <app-header></app-header>
 <app-navbar></app-navbar>
-<div class="bar-navbar">
-
-</div>
-<!-- <app-img-navbar-other></app-img-navbar-other> -->
 <div class="main-container" *ngFor="let blog of blogs">
     <div class="left-container">
         <h2>{{blog.tytul}}</h2>
@@ -25,62 +7,28 @@
     <div class="center-container">
         <img class="img" src=" ../../assets/AdobeStock_119605372_Easy-Resize.com(1).jpg">
     </div>
-    <div class="test-border">
-        <p class="test">{{blog.trescopisu}}</p>
+    <div class="right-container">
+        <a>
+            <p class="text">{{blog.tresc}}</p>
+        </a>
+        <a>
+            <p class="main-title">{{blog.naglowek1}}</p>
+        </a>
+        <a>
+            <p class="text">{{blog.trescopisu1}}</p>
+        </a>
+        <a>
+            <p class="main-title">{{blog.naglowek2}}</p>
+        </a>
+        <a>
+            <p class="text">{{blog.trescopisu2}}</p>
+        </a>
+        <a>
+            <p class="main-title">{{blog.naglowek3}}</p>
+        </a>
+        <a>
+            <p class="text">{{blog.trescopisu3}}</p>
+        </a>
     </div>
-    <!-- <div class="right-container">
-        <p class="text">
-        </p>
-        <h2 class="main-title">
-        </h2>
-        <p class="text">
-
-        </p>
-        <p class="text">
-
-        </p>
-        <h2 class="main-title-2">
-        </h2>
-        <p class="text">
-
-        </p>
-        <h2 class="main-title-3">
-
-        </h2>
-        <p class="text">
-
-        </p>
-        <p class="text">
-
-        </p>
-        <h2 class="main-title-4">
-        </h2>
-        <p class="text">
-
-        </p>
-        <div class="text-c">
-        </div>
-        <h2 class="main-title-5">
-        </h2>
-        <p class="text">
-
-        </p>
-        <p class="text">
-
-        </p>
-        <p class="text">
-
-        </p>
-        <p class="text">
-
-        </p>
-        <p class="text">
-
-        </p>
-    </div> -->
 </div>
-
-<!-- <p class="grid">- </p>
-            <p class="grid">- </p>
-            <p class="grid">- </p>
-            <p class="grid">- </p> -->
+<app-footer></app-footer>
