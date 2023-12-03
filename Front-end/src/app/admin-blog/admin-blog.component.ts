@@ -92,11 +92,27 @@ export class AdminBlogComponent {
     this.editingBlog = true;
     this.selectedBlogId = blog._id;
     this.title = blog.tytul;
+    this.content = blog.tresc;
+    this.endcontent = blog.skrotopisu;
+    this.lead1 = blog.naglowek1;
+    this.lead2 = blog.naglowek2;
+    this.lead3 = blog.naglowek3;
+    this.description1 = blog.trescopisu1;
+    this.description2 = blog.trescopisu2;
+    this.description3 = blog.trescopisu3;
   }
 
   updateBlog() {
     const updateBlogs = {
       tytul: this.title,
+      tresc: this.content,
+      skrotopisu: this.endcontent,
+      naglowek1: this.lead1,
+      naglowek2: this.lead2,
+      naglowek3: this.lead3,
+      trescopisu1: this.description1,
+      trescopisu2: this.description2,
+      trescopisu3: this.description3,
     };
 
     this.blogService.updateBlog(this.selectedBlogId, updateBlogs).subscribe(

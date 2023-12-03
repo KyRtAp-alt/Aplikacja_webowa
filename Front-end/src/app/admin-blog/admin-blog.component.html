@@ -89,10 +89,11 @@
                     <ul class="q">
                         <li *ngFor="let blog of blogs" class="list">
                             <span class="firstname">{{blog.tytul}}</span>
-                            <span class="content">{{blog.tresc}}</span>
-                            <span class="content">{{blog.trescopisu}}</span>
-                            <button class="doctor-edit" (click)="editBlog(blog)" (click)="scrollToTop()">Edytuj</button>
-                            <button class="doctor-delete" (click)="confirmDelete(blog._id)">Usuń</button>
+                            <div>
+                                <button class="doctor-edit" (click)="editBlog(blog)"
+                                    (click)="scrollToTop()">Edytuj</button>
+                                <button class="doctor-delete" (click)="confirmDelete(blog._id)">Usuń</button>
+                            </div>
                         </li>
                     </ul>
                 </a>

@@ -144,7 +144,7 @@
 
 .main-box-list {
   background-color: #bbeefc;
-  width: 1400px;
+  width: 800px;
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 30px;
@@ -183,7 +183,9 @@
 .list {
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px solid #3a5470;
+  border-bottom: 5px solid #01a3a4;
+  // border-radius: 5px;
+  // margin-bottom: 50px;
   padding: 10px 0;
 }
 
@@ -193,18 +195,18 @@
 .specialization,
 .content {
   margin-right: 10px;
+  font-size: 18px;
 }
 
 .content {
   height: 300px;
   width: 400px;
 }
-
 .doctor-edit,
 .doctor-delete {
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  // padding: 5px 10px;
   cursor: pointer;
   justify-content: center;
   transition: transform 0.2s;
@@ -217,16 +219,16 @@
 .doctor-edit {
   background-color: #3a5470;
   margin-right: 5px;
-  width: 100px;
-  height: 50px;
+  width: 80px;
+  height: 30px;
   border-radius: 20px;
 }
 
 .doctor-delete {
   background-color: red;
   margin-right: 5px;
-  width: 100px;
-  height: 50px;
+  width: 80px;
+  height: 30px;
   border-radius: 20px;
 }
 
