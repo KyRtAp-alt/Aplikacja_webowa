@@ -34,67 +34,11 @@ export class UmowWizyteComponent {
   clientmail: string = '';
   clientcontent: string = '';
 
-  openModal() {
-    this.showForm = true;
-  }
+  workname: any[] = [];
 
-  closeModal() {
-    this.showForm = false;
-  }
-
-  closeModalVis() {
-    this.showForm = false;
-  }
-
-  onShowMore(doctor: any) {
-    doctor.showMore = true;
-  }
-
-  onShowLess(doctor: any) {
-    doctor.showMore = false;
-  }
-
-  registerVisit() {
-    if (!this.isEmptyFields()) {
-      this.addVisit();
-      this.closeModalVis();
-    }
-  }
-
-  // daysOfWeek: string[] = [
-  //   'Poniedzialek',
-  //   'Wtorek',
-  //   'Sroda',
-  //   'Czwartek',
-  //   'Piatek',
-  // ];
-  // availableHours: string[] = [
-  //   '8:00',
-  //   '8:30',
-  //   '9:00',
-  //   '9:30',
-  //   '10:00',
-  //   '10:30',
-  //   '11:00',
-  //   '11:30',
-  //   '12:00',
-  //   '12:30',
-  //   '13:00',
-  //   '13:30',
-  //   '14:00',
-  // ];
-
-  // isHourReserved(day: string, hour: string): boolean {
-  //   return this.reservedAppointments.some(
-  //     (appointment) => appointment.day === day && appointment.hour === hour
-  //   );
-  // }
-
-  // reservedAppointments: any[] = [
-  //   { day: 'Wtorek', hour: '8:00' },
-  //   { day: 'Wtorek', hour: '8:30' },
-  //   { day: 'Sroda', hour: '9:30' },
-  // ];
+  schemes: any[] = [];
+  dnitygodnia: any[] = [];
+  wybranegodziny: any[] = [];
 
   constructor(
     private doctorService: DoctorService,
@@ -121,18 +65,17 @@ export class UmowWizyteComponent {
     );
   }
 
-  // getRoss() {
-  //   this.rosService.getRoss().subscribe(
-  //     (ross: any) => {
-  //       console.log(ross);
-  //       this.ross = ross;
-  //       this.specializations = ross.map((ros: any) => ros.nazwa);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
+  getSchemes() {
+    this.schemeService.getScheme().subscribe(
+      (schemes: any) => {
+        console.log(schemes);
+        this.schemes = schemes;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
 
   addVisit() {
     const newVisit = {
@@ -155,7 +98,14 @@ export class UmowWizyteComponent {
     );
   }
 
-  // clearForm() {}
+  registerVisit() {
+    if (!this.isEmptyFields()) {
+      this.addVisit();
+      this.closeModalVis();
+    }
+  }
+
+  clearForm() {}
 
   isEmptyFields(): boolean {
     return (
@@ -170,21 +120,71 @@ export class UmowWizyteComponent {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  getSchemes() {
-    this.schemeService.getScheme().subscribe(
-      (schemes: any) => {
-        console.log(schemes);
-        this.visits = schemes;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  openModal() {
+    this.showForm = true;
   }
 
-  workname: any[] = [];
+  closeModal() {
+    this.showForm = false;
+  }
 
-  schemes: any[] = [];
-  dnitygodnia: any[] = [];
-  wybranegodziny: any[] = [];
+  closeModalVis() {
+    this.showForm = false;
+  }
+
+  onShowMore(doctor: any) {
+    doctor.showMore = true;
+  }
+
+  onShowLess(doctor: any) {
+    doctor.showMore = false;
+  }
 }
+
+// daysOfWeek: string[] = [
+//   'Poniedzialek',
+//   'Wtorek',
+//   'Sroda',
+//   'Czwartek',
+//   'Piatek',
+// ];
+// availableHours: string[] = [
+//   '8:00',
+//   '8:30',
+//   '9:00',
+//   '9:30',
+//   '10:00',
+//   '10:30',
+//   '11:00',
+//   '11:30',
+//   '12:00',
+//   '12:30',
+//   '13:00',
+//   '13:30',
+//   '14:00',
+// ];
+
+// isHourReserved(day: string, hour: string): boolean {
+//   return this.reservedAppointments.some(
+//     (appointment) => appointment.day === day && appointment.hour === hour
+//   );
+// }
+
+// reservedAppointments: any[] = [
+//   { day: 'Wtorek', hour: '8:00' },
+//   { day: 'Wtorek', hour: '8:30' },
+//   { day: 'Sroda', hour: '9:30' },
+// ];
+
+// getRoss() {
+//   this.rosService.getRoss().subscribe(
+//     (ross: any) => {
+//       console.log(ross);
+//       this.ross = ross;
+//       this.specializations = ross.map((ros: any) => ros.nazwa);
+//     },
+//     (error) => {
+//       console.error(error);
+//     }
+//   );
+// }

@@ -1,49 +1,12 @@
-<!-- <div class="">
-    <div class="main-container-scheme">
-        <div class="first-container">
-            <div class="border-title">
-                <h2 class="main-title-scheme">Dodawanie harmonogramu pracy</h2>
-            </div>
-            <div class="form-group">
-                <label for="scheduleName">Nazwa harmonogramu:</label>
-                <input type="text" id="scheduleName" [(ngModel)]="selectedScheduleName">
-            </div>
-            <label>Dni pracy:</label>
-            <div class="form-group" *ngFor="let day of days">
-                <label>
-                    <input type="checkbox" [(ngModel)]="selectedDays[day]"> {{ day }}
-                </label>
-            </div>
-            <div class="form-group">
-                <label for="startTime">Godzina rozpoczęcia:</label>
-                <input type="time" id="startTime" [(ngModel)]="selectedStartTime">
-            </div>
-            <div class="form-group">
-                <label for="endTime">Godzina zakończenia:</label>
-                <input type="time" id="endTime" [(ngModel)]="selectedEndTime">
-            </div>
-            <div class="form-group">
-                <label for="interval">Odstęp czasowy (w minutach):</label>
-                <input type="number" id="interval" [(ngModel)]="selectedInterval" min="1">
-            </div>
-            <div class="form-group">
-                <button (click)="generateHours()">Generuj</button>
-            </div>
-            <div class="form-group" *ngIf="generatedHours.length > 0">
-                <p>Wybrane godziny:</p>
-                <div *ngFor="let hour of generatedHours">
-                    <label>
-                        <input type="checkbox" [(ngModel)]="selectedHours[hour]"> {{ hour }}
-                    </label>
-                </div>
-            </div>
-            <div *ngIf=" schedules.length> 0">
-                <p>Harmonogramy:</p>
-                <div *ngFor="let schedule of schedules">
-                    <p>{{ schedule.name }} - Dni: {{ schedule.days.join(', ') }} - Godziny: {{
-                        schedule.hours.join(', ') }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+<div>
+    <ul class="q">
+        <li *ngFor="let doctor of doctors" class="q">
+            <span class="">
+                {{doctor._id}}
+            </span>
+            <span class="">
+                {{doctor.harmonogram}}
+            </span>
+        </li>
+    </ul>
+</div>
