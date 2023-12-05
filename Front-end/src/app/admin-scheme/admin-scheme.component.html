@@ -1,5 +1,5 @@
 <app-header-admin></app-header-admin>
-<div class="main-column">
+<!-- <div class="main-column">
     <div class="main-box-list">
         <div class="main-doctor-list" *ngIf="doctors.length > 0">
             <div class="main-list">
@@ -30,133 +30,7 @@
                             </span>
                         </div>
                         <div class="" *ngIf="doctor.showMore">
-                            <div class="boss">
-                                <div class="">
-                                    <label>ID lekarza: {{ doctor._id }}</label>
-                                    <input [(ngModel)]="pracownikID">
-                                </div>
-                                <div class="">
-                                    <div class="">
-                                        <span>{{doctor.imie}}</span>
-                                    </div>
-                                    <div class="">
-                                        <span>{{doctor.nazwisko}}</span>
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <div class="">
-                                        <label class="">Nazwa harmonogramu</label>
-                                        <input name="nazwaharmonogramu" [(ngModel)]="nazwaharmonogramu">
-                                    </div>
-                                </div>
-                                <div class="time-select">
-                                    <label class="">Czas wizyty</label>
-                                    <input type="number" [(ngModel)]="czasWizyty">
-                                    <span>minut</span>
-                                </div>
-                                <div class="all">
-                                    <div class="worktime">
-                                        <div class="name">
-                                            <span class="day">Poniedziałek</span>
-                                            <label>
-                                                <input type="checkbox" [(ngModel)]="poniedzialekAktywny"> Aktywny
-                                            </label>
-                                        </div>
-                                        <div class="">
-                                            <label>Od</label>
-                                            <input type="time" [(ngModel)]="poniedzialekOd">
-                                        </div>
-                                        <div>
-                                            <label>Do</label>
-                                            <input type="time" [(ngModel)]="poniedzialekDo">
-                                        </div>
-                                    </div>
-                                    <div class="worktime">
-                                        <div class="name">
-                                            <span class="day">Wtorek</span>
-                                            <label>
-                                                <input type="checkbox" [(ngModel)]="wtorekAktywny"> Aktywny
-                                            </label>
-                                        </div>
-                                        <div class="">
-                                            <label>Od</label>
-                                            <input type="time" [(ngModel)]="wtorekOd">
-                                        </div>
-                                        <div>
-                                            <label>Do</label>
-                                            <input type="time" [(ngModel)]="wtorekDo">
-                                        </div>
-                                    </div>
-                                    <div class="worktime">
-                                        <div class="name">
-                                            <span class="day">Środa</span>
-                                            <label>
-                                                <input type="checkbox" [(ngModel)]="srodaAktywny"> Aktywny
-                                            </label>
-                                        </div>
-                                        <div class="">
-                                            <label>Od</label>
-                                            <input type="time" [(ngModel)]="srodaOd">
-                                        </div>
-                                        <div>
-                                            <label>Do</label>
-                                            <input type="time" [(ngModel)]="srodaDo">
-                                        </div>
-                                    </div>
-                                    <div class="worktime">
-                                        <div class="name">
-                                            <span class="day">Czwartek</span>
-                                            <label>
-                                                <input type="checkbox" [(ngModel)]="czwartekAktywny"> Aktywny
-                                            </label>
-                                        </div>
-                                        <div class="">
-                                            <label>Od</label>
-                                            <input type="time" [(ngModel)]="czwartekOd">
-                                        </div>
-                                        <div>
-                                            <label>Do</label>
-                                            <input type="time" [(ngModel)]="czwartekDo">
-                                        </div>
-                                    </div>
-                                    <div class="worktime">
-                                        <div class="name">
-                                            <span class="day">Piątek</span>
-                                            <label>
-                                                <input type="checkbox" [(ngModel)]="piatekAktywny"> Aktywny
-                                            </label>
-                                        </div>
-                                        <div class="">
-                                            <label>Od</label>
-                                            <input type="time" [(ngModel)]="piatekOd">
-                                        </div>
-                                        <div>
-                                            <label>Do</label>
-                                            <input type="time" [(ngModel)]="piatekDo">
-                                        </div>
-                                    </div>
-                                    <div class="worktime">
-                                        <div class="name">
-                                            <span class="day">Sobota</span>
-                                            <label>
-                                                <input type="checkbox" [(ngModel)]="sobotaAktywny"> Aktywny
-                                            </label>
-                                        </div>
-                                        <div class="">
-                                            <label>Od</label>
-                                            <input type="time" [(ngModel)]="sobotaOd">
-                                        </div>
-                                        <div>
-                                            <label>Do</label>
-                                            <input type="time" [(ngModel)]="sobotaDo">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="">
-                                    <label class="">Data waznosci harmonogramu</label>
-                                    <input>
-                                </div>
-                            </div>
+
                             <button (click)="addScheme()">Dodaj</button>
                         </div>
                     </li>
@@ -164,15 +38,155 @@
             </div>
         </div>
     </div>
+</div> -->
+<div class="boss">
+    <div class="">
+        <div class="">
+            <label class="">Nazwa harmonogramu</label>
+            <input name="nazwaharmonogramu" [(ngModel)]="nazwaharmonogramu">
+        </div>
+    </div>
+    <div class="time-select">
+        <label class="">Czas wizyty</label>
+        <input type="number" [(ngModel)]="czasWizyty">
+        <span>minut</span>
+    </div>
+    <div class="all">
+        <div class="worktime">
+            <div class="name">
+                <span class="day">Poniedziałek</span>
+                <label>
+                    <input type="checkbox" [(ngModel)]="poniedzialekAktywny"> Aktywny
+                </label>
+            </div>
+            <div class="">
+                <label>Od</label>
+                <input type="time" [(ngModel)]="poniedzialekOd">
+            </div>
+            <div>
+                <label>Do</label>
+                <input type="time" [(ngModel)]="poniedzialekDo">
+            </div>
+        </div>
+        <div class="worktime">
+            <div class="name">
+                <span class="day">Wtorek</span>
+                <label>
+                    <input type="checkbox" [(ngModel)]="wtorekAktywny"> Aktywny
+                </label>
+            </div>
+            <div class="">
+                <label>Od</label>
+                <input type="time" [(ngModel)]="wtorekOd">
+            </div>
+            <div>
+                <label>Do</label>
+                <input type="time" [(ngModel)]="wtorekDo">
+            </div>
+        </div>
+        <div class="worktime">
+            <div class="name">
+                <span class="day">Środa</span>
+                <label>
+                    <input type="checkbox" [(ngModel)]="srodaAktywny"> Aktywny
+                </label>
+            </div>
+            <div class="">
+                <label>Od</label>
+                <input type="time" [(ngModel)]="srodaOd">
+            </div>
+            <div>
+                <label>Do</label>
+                <input type="time" [(ngModel)]="srodaDo">
+            </div>
+        </div>
+        <div class="worktime">
+            <div class="name">
+                <span class="day">Czwartek</span>
+                <label>
+                    <input type="checkbox" [(ngModel)]="czwartekAktywny"> Aktywny
+                </label>
+            </div>
+            <div class="">
+                <label>Od</label>
+                <input type="time" [(ngModel)]="czwartekOd">
+            </div>
+            <div>
+                <label>Do</label>
+                <input type="time" [(ngModel)]="czwartekDo">
+            </div>
+        </div>
+        <div class="worktime">
+            <div class="name">
+                <span class="day">Piątek</span>
+                <label>
+                    <input type="checkbox" [(ngModel)]="piatekAktywny"> Aktywny
+                </label>
+            </div>
+            <div class="">
+                <label>Od</label>
+                <input type="time" [(ngModel)]="piatekOd">
+            </div>
+            <div>
+                <label>Do</label>
+                <input type="time" [(ngModel)]="piatekDo">
+            </div>
+        </div>
+        <div class="worktime">
+            <div class="name">
+                <span class="day">Sobota</span>
+                <label>
+                    <input type="checkbox" [(ngModel)]="sobotaAktywny"> Aktywny
+                </label>
+            </div>
+            <div class="">
+                <label>Od</label>
+                <input type="time" [(ngModel)]="sobotaOd">
+            </div>
+            <div>
+                <label>Do</label>
+                <input type="time" [(ngModel)]="sobotaDo">
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <label class="">Data waznosci harmonogramu</label>
+        <input>
+    </div>
+    <button (click)="addScheme()">Dodaj</button>
+</div>
+<div>
+    <div>
+        <h2>Lista harmonogramow</h2>
+    </div>
+    <div>
+        <button class="doctor-button-list" (click)="getSchemes()">
+            <p class="title-doctor-button-list">Odśwież listę</p>
+        </button>
+        <div>
+            <ul *ngFor="let scheme of schemes">
+                <div>
+                    <a>
+                        <span>{{scheme.nazwaharmonogramu}}</span>
+                    </a>
+                    <a>
+                        <span></span>
+                    </a>
+                </div>
+            </ul>
+        </div>
+    </div>
 </div>
 
-<div class="next-form">
+
+
+<!-- <div class="next-form">
     <h2>generacja slotow</h2>
     <div *ngFor="let scheme of schemes">
         <span>
         </span>
     </div>
-</div>
+</div> -->
 
 
 

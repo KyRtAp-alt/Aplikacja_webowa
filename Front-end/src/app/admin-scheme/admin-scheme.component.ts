@@ -16,12 +16,16 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { SchemeService } from '../scheme.service';
-import { VisitService } from '../visit.service';
 
 interface Schedule {
-  name: string;
-  days: string[];
-  hours: string[];
+  // name: string;
+  // days: string[];
+  // hours: string[];
+
+  _id: string;
+  nazwaharmonogramu: string;
+  czaspracy: any;
+  czaswizyty: number;
 }
 
 @Component({
@@ -56,9 +60,9 @@ export class AdminSchemeComponent {
   selectedDoctor: any;
 
   //SchemeService
-  workname: any[] = [];
-  visits: any[] = [];
   schemes: any[] = [];
+  workname: any[] = [];
+  scheme: any[] = [];
   dnitygodnia: any[] = [];
   wybranegodziny: any[] = [];
   selectedSchemeId: string = '';
@@ -111,11 +115,12 @@ export class AdminSchemeComponent {
 
   ngOnInit() {
     this.getDoctors();
-    // this.getSchemes();
+    this.getSchemes();
   }
 
   addScheme() {
     const newScheme = {
+      nazwaharmonogramu: this.nazwaharmonogramu,
       czaspracy: {
         poniedzialek: this.poniedzialekAktywny
           ? [
@@ -132,16 +137,19 @@ export class AdminSchemeComponent {
         czwartek: this.czwartekAktywny
           ? [this.parseTime(this.czwartekOd), this.parseTime(this.czwartekDo)]
           : null,
+        piatek: this.piatekAktywny
+          ? [this.parseTime(this.piatekOd), this.parseTime(this.piatekDo)]
+          : null,
+        sobota: this.sobotaAktywny
+          ? [this.parseTime(this.sobotaOd), this.parseTime(this.sobotaDo)]
+          : null,
       },
       czaswizyty: this.czasWizyty,
-      pracownikID: this.pracownikID,
-      nazwaharmonogramu: this.nazwaharmonogramu,
     };
 
     this.schemeService.addScheme(newScheme).subscribe(
       () => {
         console.log('Dodano harmonogram');
-        // this.clearForm();
       },
       (error) => {
         console.error(error);
@@ -162,6 +170,18 @@ export class AdminSchemeComponent {
       (doctors: any) => {
         console.log(doctors);
         this.doctors = doctors;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  getSchemes() {
+    this.schemeService.getScheme().subscribe(
+      (schemes: any) => {
+        console.log(schemes);
+        this.schemes = schemes;
       },
       (error) => {
         console.error(error);

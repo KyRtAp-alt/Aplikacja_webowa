@@ -10,34 +10,26 @@ const client = new MongoClient(
   "mongodb+srv://admin:Book54321@cluster0.qxenmyc.mongodb.net/Restauracja"
 );
 
-router.get("/", async (req, res) => {
-  try {
-    const doctors = await doctorService.getAllDoctors();
-    res.status(200).send(doctors);
-  } catch (error) {
-    console.error("Error while fetching doctors", error);
-    res.status(500).send("Internal Server Error");
-  }
+router.get("/", async (req: Request, res: Response) => {
+  await client.connect();
+  const db = client.db();
+  const collection = db.collection("doctor");
+  const result = await collection.find();
+  let aray: Object[] = [];
+  result
+    .forEach((element) => {
+      aray.push(element);
+    })
+    .then(() => {
+      res.status(200).send(aray);
+    });
 });
-
-// router.get("/", async (req: Request, res: Response) => {
-//   await client.connect();
-//   const db = client.db();
-//   const collection = db.collection("doctor");
-//   const result = await collection.find();
-//   let aray: Object[] = [];
-//   result
-//     .forEach((element) => {
-//       aray.push(element);
-//     })
-//     .then(() => {
-//       res.status(200).send(aray);
-//     });
-// });
 
 router.post("/", async (req: Request, res: Response) => {
   await client.connect();
   const db = client.db();
+  req.body.harmonogram = new ObjectId(req.body.harmonogram);
+  console.log(req.body);
   const collection = db.collection("doctor");
   await collection
     .insertOne(req.body)
@@ -64,17 +56,35 @@ router.delete("/:id", async (req: Request, res: Response) => {
 router.put("/:id", async (req: Request, res: Response) => {
   await client.connect();
   const db = client.db();
+  // req.body.harmonogram = new ObjectId(req.body.harmonogram);
   const collection = db.collection("doctor");
   const id = new ObjectId(req.params.id);
   await collection.updateOne({ _id: id }, { $set: req.body });
   res.status(200).send("Zmieniono dane Lekarza");
 });
 
+// router.post("/doctor/:doctorId/assign-schedule", (req, res) => {
+//   const doctorId = req.params.doctorId;
+//   const schedule = req.body;
+//   console.log(`Przypisano harmonogram do lekarza o ID: ${doctorId}`, schedule);
+//   res.status(200).json({ message: "Harmonogram przypisany pomyślnie" });
+// });
+
+module.exports = router;
+
+// router.get("/", async (req, res) => {
+//   try {
+//     const doctors = await doctorService.getAllDoctors();
+//     res.status(200).send(doctors);
+//   } catch (error) {
+//     console.error("Error while fetching doctors", error);
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
+
 // export interface Doctor {
 //   schedule: schedule;
 // }
-
-module.exports = router;
 
 // router.post("/", async (req: Request, res: Response) => {
 //   try {

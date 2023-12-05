@@ -1,20 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { RosService } from '../ros.service';
 import { SchemeService } from '../scheme.service';
-
-// interface Schedule {
-//   name: string;
-//   days: string[];
-//   hours: string[];
-// }
+import { ObjectId } from 'mongodb';
 
 @Component({
   selector: 'app-doctor-add',
   templateUrl: './doctor-add.component.html',
   styleUrls: ['./doctor-add.component.scss'],
 })
-export class DoctorAddComponent {
+export class DoctorAddComponent implements OnInit {
   //Main
   doctors: any[] = [];
   firstname: string = '';
@@ -22,23 +17,18 @@ export class DoctorAddComponent {
   category: string = '';
   content: string = '';
   specialization: string = '';
-  // worktime: string = '';
   selectedDoctorId: string = '';
   editingDoctor: boolean = false;
 
   //ros
   ross: any[] = [];
   name: string = '';
-  currentRosIndex: number = 0;
-  currentRos: any;
-  selectedRos: any;
   specializations: string[] = [];
 
   //shceme
-  visits: any[] = [];
-  scheme: any[] = [];
-  selectedSchemeId: string = '';
-  selectedVisitId: string = '';
+  schemes: any[] = [];
+  scheme: string = '';
+  // scheme: ObjectId[] = [];
 
   constructor(
     private doctorService: DoctorService,
@@ -46,7 +36,7 @@ export class DoctorAddComponent {
     private schemeService: SchemeService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getDoctors();
     this.getRoss();
     this.getSchemes();
@@ -81,7 +71,7 @@ export class DoctorAddComponent {
     this.schemeService.getScheme().subscribe(
       (schemes: any) => {
         console.log(schemes);
-        this.visits = schemes;
+        this.schemes = schemes;
       },
       (error) => {
         console.error(error);
@@ -91,13 +81,12 @@ export class DoctorAddComponent {
 
   addDoctor() {
     const newDoctor = {
+      harmonogram: this.scheme,
       imie: this.firstname,
       nazwisko: this.lastname,
       kategoria: this.category,
       specializacja: this.specialization,
       opis: this.content,
-      // czaspracy: this.worktime,
-      nazwaharmonogramu: this.scheme,
     };
 
     this.doctorService.addDoctor(newDoctor).subscribe(
@@ -140,7 +129,7 @@ export class DoctorAddComponent {
     this.category = doctor.kategoria;
     this.specialization = doctor.specializacja;
     this.content = doctor.opis;
-    // this.worktime = doctor.czaspracy;
+    this.scheme = doctor.harmonogram;
     this.editingDoctor = true;
   }
 
@@ -151,7 +140,7 @@ export class DoctorAddComponent {
       kategoria: this.category,
       specializacja: this.specialization,
       opis: this.content,
-      // czaspracy: this.worktime,
+      harmonogram: this.scheme,
     };
 
     this.doctorService
@@ -176,66 +165,18 @@ export class DoctorAddComponent {
     this.category = '';
     this.specialization = '';
     this.content = '';
-    // this.worktime = '';
+    this.scheme = '';
   }
 
   isEmptyFields(): boolean {
-    return (
-      !this.firstname ||
-      !this.lastname ||
-      !this.category ||
-      !this.specialization ||
-      !this.content
-      // !this.worktime
-    );
+    return !this.firstname;
+    // !this.lastname ||
+    // !this.category ||
+    // !this.specialization ||
+    // !this.content
   }
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
-
-//Work scheme
-// days: string[] = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek'];
-// selectedDays: { [key: string]: boolean } = {};
-// name: any[] = [];
-// hours: any[] = [];
-// selectedStartTime: string = '';
-// selectedEndTime: string = '';
-// selectedInterval: number = 30;
-// selectedScheduleName: string = '';
-// generatedHours: string[] = [];
-// selectedHours: { [key: string]: boolean } = {};
-// schedules: Schedule[] = [];
-
-// generateHours() {
-//   this.generatedHours = this.generateHourRange(
-//     this.selectedStartTime,
-//     this.selectedEndTime,
-//     this.selectedInterval
-//   );
-//   this.selectedHours = {};
-// }
-
-// generateHourRange(
-//   startTime: string,
-//   endTime: string,
-//   interval: number
-// ): string[] {
-//   const startHour = new Date(`2023-01-01T${startTime}`);
-//   const endHour = new Date(`2023-01-01T${endTime}`);
-//   const hourRange: string[] = [];
-
-//   while (startHour <= endHour) {
-//     hourRange.push(this.formatHour(startHour));
-//     startHour.setMinutes(startHour.getMinutes() + interval);
-//   }
-
-//   return hourRange;
-// }
-
-// formatHour(date: Date): string {
-//   const hour = date.getHours();
-//   const minute = date.getMinutes();
-//   return `${hour < 10 ? '0' : ''}${hour}:${minute < 10 ? '0' : ''}${minute}`;
-// }
