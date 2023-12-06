@@ -9,7 +9,6 @@ import { AdminHomepageComponent } from './admin-homepage/admin-homepage.componen
 import { DoctorAddComponent } from './doctor-add/doctor-add.component';
 import { AdminBlogComponent } from './admin-blog/admin-blog.component';
 import { UmowWizyteComponent } from './umow-wizyte/umow-wizyte.component';
-import { PagesComponent } from './pages/pages.component';
 import { PriceListComponent } from './price-list/price-list.component';
 import { AppComponent } from './app.component';
 import { OurTeamComponent } from './our-team/our-team.component';
@@ -31,7 +30,6 @@ const routes: Routes = [
   { path: 'ros/:id', component: SubpageRof1Component },
   { path: 'zakres-uslug', component: RangeOfServices1Component },
   { path: 'umow-wizyte', component: UmowWizyteComponent },
-  { path: 'pages', component: PagesComponent },
   { path: 'cennik', component: PriceListComponent },
   { path: 'nasz-zespol', component: OurTeamComponent },
   { path: 'kontakt', component: ContactComponent },

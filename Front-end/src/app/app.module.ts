@@ -4,8 +4,6 @@ import { AppComponent } from './app.component';
 import { ImgNavbarComponent } from './img-navbar/img-navbar.component';
 import { WeebbookingComponent } from './weebbooking/weebbooking.component';
 import { SliderComponent } from './slider/slider.component';
-import { Blog1Component } from './blog1/blog1.component';
-import { Blog2Component } from './blog2/blog2.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainpageComponent } from './mainpage/mainpage.component';
@@ -22,7 +20,6 @@ import { DoctorAddComponent } from './doctor-add/doctor-add.component';
 import { AdminBlogComponent } from './admin-blog/admin-blog.component';
 import { UmowWizyteComponent } from './umow-wizyte/umow-wizyte.component';
 import { FormsModule } from '@angular/forms';
-import { PagesComponent } from './pages/pages.component';
 import { PriceListComponent } from './price-list/price-list.component';
 import { OurTeamComponent } from './our-team/our-team.component';
 import { ContactComponent } from './contact/contact.component';
@@ -44,8 +41,6 @@ import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
     ImgNavbarComponent,
     WeebbookingComponent,
     SliderComponent,
-    Blog1Component,
-    Blog2Component,
     FooterComponent,
     MainpageComponent,
     ImgNavbarOtherComponent,
@@ -60,7 +55,6 @@ import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
     DoctorAddComponent,
     AdminBlogComponent,
     UmowWizyteComponent,
-    PagesComponent,
     PriceListComponent,
     OurTeamComponent,
     ContactComponent,
