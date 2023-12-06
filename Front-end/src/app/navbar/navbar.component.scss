@@ -19,8 +19,6 @@ $menuBreakpoint: 768px;
 }
 
 .nav-sc {
-  // width: 100%;
-  // max-width: 1980px;
 }
 
 #my-first {
@@ -31,13 +29,12 @@ $menuBreakpoint: 768px;
   }
 
   .burger {
-    padding: 0; //0 10px
+    padding: 0;
     display: none;
     cursor: pointer;
 
     i {
       color: #244160;
-      // line-height: 60px;
     }
 
     @media (max-width: $menuBreakpoint) {
@@ -60,7 +57,7 @@ $menuBreakpoint: 768px;
         width: 100%;
         z-index: 9;
         left: 0;
-        opacity: 0.9; // przezroczystosc
+        opacity: 0.9;
       }
     }
 
@@ -101,11 +98,10 @@ $menuBreakpoint: 768px;
   }
 
   .menu-item {
-    // color: #244160;
     color: #21395d;
 
     @media (max-width: 769px) {
-      border-bottom: 3px solid #01a3a4; //obramowanie linkow
+      border-bottom: 3px solid #01a3a4;
     }
   }
 

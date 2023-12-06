@@ -13,11 +13,6 @@ export class RangeOfServices1Component {
   currentRos: any;
   selectedRos: any;
 
-  // onShowMore() {
-  //   this.showMore = true;
-  // }
-  // showMore = false;
-
   constructor(private rosService: RosService) {}
 
   ngOnInit() {

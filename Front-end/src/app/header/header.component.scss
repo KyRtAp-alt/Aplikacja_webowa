@@ -15,14 +15,11 @@
   justify-content: flex-end;
   background-color: #01a3a4;
   height: 55px;
-  // letter-spacing: 1px;
 
   @media (max-width: 819px) {
-    // display: grid;
   }
 
   @media (max-width: 743px) {
-    // display: grid;
   }
 
   @media (max-width: 426px) {
@@ -98,15 +95,3 @@
     font-size: 14px;
   }
 }
-
-// @media (max-width: 819px) {
-//   .em,
-//   .tel,
-//   .ul {
-//     font-size: 14px;
-//   }
-
-//   .header {
-//     display: grid;
-//   }
-// }

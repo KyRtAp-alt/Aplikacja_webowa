@@ -7,8 +7,6 @@ import { BlogService } from '../blog.service';
   templateUrl: './subpage-blog1.component.html',
   styleUrls: ['./subpage-blog1.component.scss'],
 })
-
-//implements OnInit
 export class SubpageBlog1Component implements OnInit {
   blogs: any[] = [];
   selectedBlogId: string = '';
@@ -48,22 +46,3 @@ export class SubpageBlog1Component implements OnInit {
     }
   }
 }
-
-// ngOnInit() {
-//   this.route.params.subscribe((params) => {
-//     const blogId = params['id'];
-//     this.getBlogData(blogId);
-//   });
-// }
-
-// getBlogData(id: string) {
-//   this.blogService.getBlogById(id).subscribe(
-//     (data) => {
-//       this.blogs = data;
-//       console.log(this.blogs);
-//     },
-//     (error) => {
-//       console.log(error);
-//     }
-//   );
-// }
