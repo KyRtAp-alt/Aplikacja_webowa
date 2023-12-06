@@ -26,15 +26,17 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 const routes: Routes = [
   { path: '', component: MainpageComponent },
   { path: 'mainpage', component: MainpageComponent },
-  { path: 'blog/:id', component: SubpageBlog1Component },
-  { path: 'ros/:id', component: SubpageRof1Component },
   { path: 'zakres-uslug', component: RangeOfServices1Component },
   { path: 'umow-wizyte', component: UmowWizyteComponent },
   { path: 'cennik', component: PriceListComponent },
   { path: 'nasz-zespol', component: OurTeamComponent },
   { path: 'kontakt', component: ContactComponent },
-  { path: 'sandbox', component: SandboxComponent },
   { path: 'bloglist', component: BlogListComponent },
+  { path: 'sandbox', component: SandboxComponent },
+
+  //
+  { path: 'blog/:id', component: SubpageBlog1Component },
+  { path: 'ros/:id', component: SubpageRof1Component },
 
   //Admin
   { path: 'admin', component: AdminLoginComponent },
