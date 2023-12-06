@@ -22,9 +22,12 @@
                     </a>
                     <a class="form-group">
                         <label class="name">Pierwszy nagłówek</label>
-                        <textarea class="border" name="lead1" placeholder="" [(ngModel)]="lead1"></textarea>
+                        <input class="border" name="lead1" [(ngModel)]="lead1">
                         <a class="more">
-                            <button class="clickme" (click)="toggleDescription1()">xyz</button>
+                            <button class="clickme" (click)="toggleDescription1()">
+                                <span *ngIf="!showArrow1">&darr;</span>
+                                <span *ngIf="showArrow1">&uarr;</span>
+                            </button>
                         </a>
                         <a *ngIf="onshowdescription1" class="form-group">
                             <label class="name">Pierwszy opis</label>
@@ -34,9 +37,12 @@
                     </a>
                     <a class="form-group">
                         <label class="name">Drugi nagłówek</label>
-                        <textarea class="border" name="lead2" placeholder="" [(ngModel)]="lead2"></textarea>
+                        <input class="border" name="lead2" placeholder="" [(ngModel)]="lead2">
                         <a class="more">
-                            <button class="clickme" (click)="toggleDescription2()">xyz</button>
+                            <button class="clickme" (click)="toggleDescription2()">
+                                <span *ngIf="!showArrow2">&darr;</span>
+                                <span *ngIf="showArrow2">&uarr;</span>
+                            </button>
                         </a>
                         <a *ngIf="onshowdescription2" class="form-group">
                             <label class="name">Drugi opis</label>
@@ -46,12 +52,15 @@
                     </a>
                     <a class="form-group">
                         <label class="name">Trzeci nagłówek</label>
-                        <textarea class="border" name="lead3" placeholder="" [(ngModel)]="lead3"></textarea>
+                        <input class="border" name="lead3" placeholder="" [(ngModel)]="lead3">
                         <a class="more">
-                            <button class="clickme" (click)="toggleDescription3()">xyz</button>
+                            <button class="clickme" (click)="toggleDescription3()">
+                                <span *ngIf="!showArrow3">&darr;</span>
+                                <span *ngIf="showArrow3">&uarr;</span>
+                            </button>
                         </a>
                         <a *ngIf="onshowdescription3" class="form-group">
-                            <label class="name">Drugi opis</label>
+                            <label class="name">Trzeci opis</label>
                             <textarea class="name-3" name="description3" placeholder=""
                                 [(ngModel)]="description3"></textarea>
                         </a>
@@ -104,7 +113,6 @@
 <a class="scroll-to-top" (click)="scrollToTop()">
     <i class="fas fa-chevron-up">&#8593; </i>
 </a>
-
 
 <!-- <a class="form-group">
     <label class="name">Pierwszy nagłówek</label>

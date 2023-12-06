@@ -13,6 +13,9 @@ export class AdminBlogComponent {
   onshowdescription1: boolean = false;
   onshowdescription2: boolean = false;
   onshowdescription3: boolean = false;
+  showArrow1: boolean = false;
+  showArrow2: boolean = false;
+  showArrow3: boolean = false;
   //
   title: string = '';
   content: string = '';
@@ -128,42 +131,28 @@ export class AdminBlogComponent {
     );
   }
 
-  // showdescription1() {
-  //   this.onshowdescription1 = true;
-  // }
-
-  // closedescription1() {
-  //   this.onshowdescription1 = false;
-  // }
-
-  // showdescription2() {
-  //   this.onshowdescription2 = true;
-  // }
-
-  // closedescription2() {
-  //   this.onshowdescription2 = false;
-  // }
-
-  // showdescription3() {
-  //   this.onshowdescription3 = true;
-  // }
-
-  // closedescription3() {
-  //   this.onshowdescription3 = false;
-  // }
-
   toggleDescription1() {
     this.onshowdescription1 = !this.onshowdescription1;
+    this.showArrow1 = !this.showArrow1;
   }
 
   toggleDescription2() {
     this.onshowdescription2 = !this.onshowdescription2;
+    this.showArrow2 = !this.showArrow2;
   }
 
   toggleDescription3() {
     this.onshowdescription3 = !this.onshowdescription3;
+    this.showArrow3 = !this.showArrow3;
   }
 
+  onShowMore(doctor: any) {
+    doctor.showMore = true;
+  }
+
+  onShowLess(doctor: any) {
+    doctor.showMore = false;
+  }
   clearForm() {
     this.selectedBlogId = '';
     this.title = '';
@@ -177,3 +166,27 @@ export class AdminBlogComponent {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
+
+// showdescription1() {
+//   this.onshowdescription1 = true;
+// }
+
+// closedescription1() {
+//   this.onshowdescription1 = false;
+// }
+
+// showdescription2() {
+//   this.onshowdescription2 = true;
+// }
+
+// closedescription2() {
+//   this.onshowdescription2 = false;
+// }
+
+// showdescription3() {
+//   this.onshowdescription3 = true;
+// }
+
+// closedescription3() {
+//   this.onshowdescription3 = false;
+// }
