@@ -28,7 +28,6 @@ export class DoctorAddComponent implements OnInit {
   //shceme
   schemes: any[] = [];
   scheme: string = '';
-  // scheme: ObjectId[] = [];
 
   constructor(
     private doctorService: DoctorService,

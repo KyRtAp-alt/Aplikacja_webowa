@@ -40,7 +40,8 @@
                         <label class="name">Dni pracy</label>
                         <select class="border" name="scheme" [(ngModel)]="scheme">
                             <option>Wybierz dzień pracy</option>
-                            <option *ngFor="let scheme of schemes" [value]="scheme._id">{{ scheme._id }}</option>
+                            <option *ngFor="let scheme of schemes" [value]="scheme._id">{{ scheme.nazwaharmonogramu }}
+                            </option>
                         </select>
                     </div>
                     <div class="border-but">

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DoctorService } from '../doctor.service';
 import { SchemeService } from '../scheme.service';
 import { VisitService } from '../visit.service';
 
@@ -9,8 +8,8 @@ import { VisitService } from '../visit.service';
   styleUrls: ['./sandbox.component.scss'],
 })
 export class SandboxComponent {
-  doctors: any[] = [];
-  schemes: string = '';
+  schemes: any[] = [];
+  scheme: string = '';
   firstname: string = '';
   lastname: string = '';
   category: string = '';
@@ -18,33 +17,18 @@ export class SandboxComponent {
   specialization: string = '';
   selectedDoctorId: string = '';
   editingDoctor: boolean = false;
-  scheme: string = '';
 
   constructor(
-    private doctorService: DoctorService,
     private schemeService: SchemeService,
     private visitService: VisitService
   ) {}
 
   ngOnInit() {
-    this.getDoctors();
     this.getSchemes();
   }
 
   addVisit() {
     const newVisit = {};
-  }
-
-  getDoctors() {
-    this.doctorService.getDoctors().subscribe(
-      (doctors: any) => {
-        console.log(doctors);
-        this.doctors = doctors;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
   }
 
   getSchemes() {
