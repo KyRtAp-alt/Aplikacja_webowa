@@ -123,25 +123,22 @@ export class AdminSchemeComponent {
       nazwaharmonogramu: this.nazwaharmonogramu,
       czaspracy: {
         poniedzialek: this.poniedzialekAktywny
-          ? [
-              this.parseTime(this.poniedzialekOd),
-              this.parseTime(this.poniedzialekDo),
-            ]
+          ? [{ starttime: this.poniedzialekOd, endtime: this.poniedzialekDo }]
           : null,
         wtorek: this.wtorekAktywny
-          ? [this.parseTime(this.wtorekOd), this.parseTime(this.wtorekDo)]
+          ? [{ starttime: this.wtorekOd, endtime: this.wtorekDo }]
           : null,
         sroda: this.srodaAktywny
-          ? [this.parseTime(this.srodaOd), this.parseTime(this.srodaDo)]
+          ? [{ starttime: this.srodaOd, endtime: this.srodaDo }]
           : null,
         czwartek: this.czwartekAktywny
-          ? [this.parseTime(this.czwartekOd), this.parseTime(this.czwartekDo)]
+          ? [{ starttime: this.czwartekOd, endtime: this.czwartekDo }]
           : null,
         piatek: this.piatekAktywny
-          ? [this.parseTime(this.piatekOd), this.parseTime(this.piatekDo)]
+          ? [{ starttime: this.piatekOd, endtime: this.piatekDo }]
           : null,
         sobota: this.sobotaAktywny
-          ? [this.parseTime(this.sobotaOd), this.parseTime(this.sobotaDo)]
+          ? [{ starttime: this.sobotaOd, endtime: this.sobotaDo }]
           : null,
       },
       czaswizyty: this.czasWizyty,
@@ -150,6 +147,7 @@ export class AdminSchemeComponent {
     this.schemeService.addScheme(newScheme).subscribe(
       () => {
         console.log('Dodano harmonogram');
+        this.getSchemes();
       },
       (error) => {
         console.error(error);

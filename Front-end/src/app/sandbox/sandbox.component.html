@@ -1,11 +1,17 @@
-<div>
-    <ul class="q">
+<!-- <div>
+    <ul class="">
         <li *ngFor="let scheme of schemes" class="q">
             <span class="">
+                <span class="day-name">Poniedziałek</span>
             </span>
-            <span class="">
-                {{scheme._id}}
-            </span>
+            <div class="hours-list">
+            </div>
         </li>
+    </ul>
+</div> -->
+
+<div *ngIf="starttime && endtime">
+    <ul>
+        <li *ngFor="let hour of generatedHours">{{ hour }}</li>
     </ul>
 </div>
