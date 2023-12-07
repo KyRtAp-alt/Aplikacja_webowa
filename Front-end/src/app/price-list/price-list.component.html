@@ -7,6 +7,22 @@
     </div>
 </div>
 <div class="box-1">
+    <div class="main-border-2">
+        <div class="border">
+            <h3 class="box-title">Wizyta</h3>
+        </div>
+        <div *ngFor="let ros of ross" class="box-text">
+            <h3>{{ros.nazwa}}</h3>
+            <h3>{{ros.cena}}zł</h3>
+        </div>
+        <div class="box-text"></div>
+    </div>
+</div>
+<a class="scroll-to-top" (click)="scrollToTop()">
+    <i class="fas fa-chevron-up">&#8593; </i>
+</a>
+<app-footer></app-footer>
+<!-- <div class="box-1">
     <div class="main-border-1">
         <div class="border">
             <h3 class="box-title">Wizyta lekarska</h3>
@@ -24,8 +40,8 @@
             <h3>150zł</h3>
         </div>
     </div>
-</div>
-<div class="box-1">
+</div> -->
+<!-- <div class="box-1">
     <div class="main-border-2">
         <div class="border">
             <h3 class="box-title">Wizyta specjaliści</h3>
@@ -51,14 +67,4 @@
             <h3>230zł</h3>
         </div>
     </div>
-</div>
-<div class="">
-    <h3 class="info">Przybliżona cena</h3>
-</div>
-<div class="">
-    <h3 class="info">Ceny wizyty mogą się różnić w zależności od Lekarza lub Specialisty</h3>
-</div>
-<a class="scroll-to-top" (click)="scrollToTop()">
-    <i class="fas fa-chevron-up">&#8593; </i>
-</a>
-<app-footer></app-footer>
+</div> -->

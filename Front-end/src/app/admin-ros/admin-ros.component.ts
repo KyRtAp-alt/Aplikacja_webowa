@@ -10,6 +10,7 @@ export class AdminRosComponent {
   ross: any[] = [];
   name: string = '';
   description: string = '';
+  price: string = '';
   selectedRosId: string = '';
   editingRos: boolean = false;
 
@@ -35,6 +36,7 @@ export class AdminRosComponent {
     const newRos = {
       nazwa: this.name,
       opis: this.description,
+      cena: this.price,
     };
 
     this.rosService.addRos(newRos).subscribe(
@@ -74,12 +76,15 @@ export class AdminRosComponent {
     this.selectedRosId = ros._id;
     this.name = ros.nazwa;
     this.description = ros.opis;
+    this.price = ros.cena;
     this.editingRos = true;
   }
 
   updateRos() {
     const updateRoss = {
       nazwa: this.name,
+      opis: this.description,
+      cena: this.price,
     };
 
     this.rosService.updateRos(this.selectedRosId, updateRoss).subscribe(
