@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RosService } from '../ros.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-admin-ros',
@@ -20,16 +21,33 @@ export class AdminRosComponent {
     this.getRoss();
   }
 
+  // getRoss() {
+  //   this.rosService.getRoss().subscribe(
+  //     (ross: any) => {
+  //       console.log(ross);
+  //       this.ross = ross;
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
+
   getRoss() {
-    this.rosService.getRoss().subscribe(
-      (ross: any) => {
-        console.log(ross);
-        this.ross = ross;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    this.rosService
+      .getRoss()
+      .pipe(
+        tap((ross: any) => {
+          console.log(ross);
+          this.ross = ross;
+        })
+      )
+      .subscribe(
+        () => {},
+        (error) => {
+          console.error(error);
+        }
+      );
   }
 
   addRos() {

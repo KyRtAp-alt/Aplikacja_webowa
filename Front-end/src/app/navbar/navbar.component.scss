@@ -15,7 +15,7 @@ $menuBreakpoint: 768px;
   padding-bottom: 10px;
   max-width: 1980px;
   width: 100%;
-  height: 60px;
+  height: 40px;
 }
 
 .nav-sc {
@@ -63,16 +63,16 @@ $menuBreakpoint: 768px;
 
     .menu-item,
     .menu-item-rez {
-      padding: 0 10px;
+      padding: 0 15px;
       height: 50px;
       line-height: 50px;
       text-decoration: none;
       display: block;
-      font-size: 20px;
+      font-size: 18px;
       font-family: sans-serif;
       font-weight: 400;
       transform: scale(1);
-      transition: transform 0.3s;
+      transition: transform 0.4s;
 
       @media (max-width: 1025px) {
         transform: scale(1);
@@ -108,8 +108,8 @@ $menuBreakpoint: 768px;
   .menu-item-rez {
     background-color: #01a3a4;
     color: white;
-    margin-right: 10px;
-    border-radius: 10px;
+    margin-right: 20px;
+    border-radius: 20px;
 
     @media (max-width: 769px) {
       margin-right: 0px;
@@ -129,7 +129,7 @@ $menuBreakpoint: 768px;
 .logo {
   width: 45px;
   height: 45px;
-  margin-left: 10px;
+  margin-left: 20px;
   margin-right: 20px;
   cursor: pointer;
 }
@@ -140,9 +140,19 @@ $menuBreakpoint: 768px;
   cursor: pointer;
   font-family: sans-serif;
   font-weight: 350;
+  transform: scale(1);
+  transition: transform 0.4s;
 
   @media (max-width: 426px) {
     font-size: 24px;
+  }
+}
+
+.main-name:hover {
+  transform: scale(1.2);
+
+  @media (max-width: 1025px) {
+    transform: scale(1);
   }
 }
 
