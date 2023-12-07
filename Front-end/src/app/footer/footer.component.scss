@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   background-color: #01a3a4;
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 .ms_outer {
@@ -13,7 +13,7 @@
 .main-container {
   display: flex;
   justify-content: space-around;
-  height: 80px;
+  height: 100px;
   background-color: #01a3a4;
 }
 
@@ -26,13 +26,13 @@
   color: white;
 }
 
-.right-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 2em;
-}
+// .right-container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   line-height: 2em;
+// }
 
 .right-title {
   font-size: 16px;
@@ -40,11 +40,11 @@
 }
 
 .center-title {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .time {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .text1,

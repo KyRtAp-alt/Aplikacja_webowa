@@ -40,3 +40,33 @@
   width: 450px;
   height: 280px;
 }
+
+.bar-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.border {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #01a3a4;
+  height: 50px;
+  width: 250px;
+  border-radius: 15px;
+}
+
+.border-name {
+  border: 3px solid white;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.name {
+  font-size: 26px;
+  font-family: sans-serif;
+  padding: 15px;
+  color: #01a3a4;
+}

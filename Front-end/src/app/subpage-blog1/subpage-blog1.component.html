@@ -1,13 +1,6 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 <div class="bar"></div>
-<div class="q">
-    <a class="border">
-        <a class="border-name">
-            <span class="name" routerLink="/bloglist">Lista wpisów</span>
-        </a>
-    </a>
-</div>
 <div class="main-container" *ngFor="let blog of blogs">
     <div class="left-container">
         <h2>{{blog.tytul}}</h2>
@@ -39,7 +32,7 @@
         </a>
     </div>
 </div>
-<div class="q">
+<div class="bar-2">
     <a class="border">
         <a class="border-name">
             <span class="name" routerLink="/bloglist">Lista wpisów</span>
