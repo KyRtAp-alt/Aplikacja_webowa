@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RosService } from '../ros.service';
 import { Title } from '@angular/platform-browser';
 
@@ -8,6 +8,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./range-of-services1.component.scss'],
 })
 export class RangeOfServices1Component {
+  showScrollButton = false;
+
   ross: any[] = [];
   name: string = '';
   currentRosIndex: number = 0;
@@ -32,6 +34,11 @@ export class RangeOfServices1Component {
         console.error(error);
       }
     );
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.showScrollButton = window.scrollY > 400;
   }
 
   scrollToTop(): void {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { Title } from '@angular/platform-browser';
 
@@ -8,6 +8,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./our-team.component.scss'],
 })
 export class OurTeamComponent {
+  showScrollButton = false;
+
   doctors: any[] = [];
   firstname: string = '';
   lastname: string = '';
@@ -36,6 +38,11 @@ export class OurTeamComponent {
         console.error(error);
       }
     );
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.showScrollButton = window.scrollY > 400;
   }
 
   scrollToTop(): void {

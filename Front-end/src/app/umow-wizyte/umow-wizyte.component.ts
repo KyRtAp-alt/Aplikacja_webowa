@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DoctorService } from '../doctor.service';
-// import { RosService } from '../ros.service';
 import { VisitService } from '../visit.service';
 import { SchemeService } from '../scheme.service';
 import { Title } from '@angular/platform-browser';
+// import { RosService } from '../ros.service';
 
 @Component({
   selector: 'app-umow-wizyte',
@@ -119,6 +119,13 @@ export class UmowWizyteComponent {
       !this.clientcontact ||
       !this.clientmail
     );
+  }
+
+  showScrollButton = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.showScrollButton = window.scrollY > 400;
   }
 
   scrollToTop(): void {

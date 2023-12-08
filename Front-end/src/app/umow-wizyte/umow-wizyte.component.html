@@ -137,9 +137,9 @@
         <span>{{visit.nazwaharmonogramu}}</span>
     </div>
 </div> -->
-<div class="scroll-to-top" (click)="scrollToTop()">
+<a *ngIf="showScrollButton" class="scroll-to-top" (click)="scrollToTop()">
     <i class="fas fa-chevron-up">&#8593; </i>
-</div>
+</a>
 <app-footer></app-footer>
 
 
