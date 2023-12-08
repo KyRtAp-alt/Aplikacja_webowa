@@ -13,14 +13,13 @@
 .main-container {
   display: flex;
   justify-content: space-around;
-  height: 100px;
+  height: auto;
   background-color: #01a3a4;
 }
 
 .center-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   line-height: 2em;
   color: white;
@@ -44,17 +43,34 @@
 }
 
 .time {
-  font-size: 15px;
-}
-
-.text1,
-.text2,
-.text3 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .bar {
-  margin-top: 60px;
-  height: 60px;
-  background-color: white;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid #bbeefc;
+  width: auto;
+}
+
+.help-border {
+  display: flex;
+  justify-content: space-between;
+}
+
+.help {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.help_name {
+  font-family: sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.copy {
+  font-family: Courier New, monospace;
+  font-size: 12px;
 }
