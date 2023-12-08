@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-our-team',
@@ -14,7 +15,12 @@ export class OurTeamComponent {
   currentDoctorIndex: number = 0;
   currentDoctor: any;
 
-  constructor(private doctorService: DoctorService) {}
+  constructor(
+    private doctorService: DoctorService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Nasz zespół');
+  }
 
   ngOnInit() {
     this.getDoctors();

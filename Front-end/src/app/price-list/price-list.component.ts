@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RosService } from '../ros.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-price-list',
@@ -9,7 +10,9 @@ import { RosService } from '../ros.service';
 export class PriceListComponent {
   ross: any[] = [];
 
-  constructor(private rosService: RosService) {}
+  constructor(private rosService: RosService, private titleService: Title) {
+    this.titleService.setTitle('Cennik');
+  }
 
   ngOnInit() {
     this.getRoss();

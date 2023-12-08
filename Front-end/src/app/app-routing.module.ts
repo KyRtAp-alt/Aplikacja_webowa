@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'cennik', component: PriceListComponent },
   { path: 'nasz-zespol', component: OurTeamComponent },
   { path: 'kontakt', component: ContactComponent },
-  { path: 'bloglist', component: BlogListComponent },
+  { path: 'blog', component: BlogListComponent },
   { path: 'sandbox', component: SandboxComponent },
 
   //

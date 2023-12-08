@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RosService } from '../ros.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-range-of-services1',
@@ -13,7 +14,9 @@ export class RangeOfServices1Component {
   currentRos: any;
   selectedRos: any;
 
-  constructor(private rosService: RosService) {}
+  constructor(private rosService: RosService, private titleService: Title) {
+    this.titleService.setTitle('Zakres usług');
+  }
 
   ngOnInit() {
     this.getRoss();

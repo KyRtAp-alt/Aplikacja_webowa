@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mainpage',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
 export class MainpageComponent {
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Strona głowna');
   }
 }
