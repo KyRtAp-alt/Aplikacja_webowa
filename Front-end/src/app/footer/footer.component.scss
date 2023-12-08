@@ -11,6 +11,7 @@
 }
 
 .main-container {
+  margin-top: 5px;
   display: flex;
   justify-content: space-around;
   height: auto;
@@ -25,25 +26,23 @@
   color: white;
 }
 
-// .right-container {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   line-height: 2em;
-// }
-
 .right-title {
   font-size: 16px;
   color: #244160;
 }
 
 .center-title {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .time {
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.center-title,
+.time,
+.help-name {
+  font-family: sans-serif;
 }
 
 .bar {
@@ -61,12 +60,12 @@
 
 .help {
   flex: 1;
-  margin: 0 5px;
+  margin: 0 3px;
 }
 
-.help_name {
-  font-family: sans-serif;
-  font-size: 16px;
+.help-name {
+  // color: #244160;
+  font-size: 12px;
   cursor: pointer;
 }
 
