@@ -34,6 +34,8 @@ import { HeaderReceptionComponent } from './header-reception/header-reception.co
 import { ReceptionReservationComponent } from './reception-reservation/reception-reservation.component';
 // import { AdminSchemeComponent } from './admin-scheme/AdminSchemeComponent';
 import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
+import { AppointmentGeneratorService } from './appointment-generator.service';
+import { ShcemeDisplayComponent } from './shceme-display/shceme-display.component';
 
 @NgModule({
   declarations: [
@@ -67,9 +69,10 @@ import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
     HeaderReceptionComponent,
     ReceptionReservationComponent,
     AdminSchemeComponent,
+    ShcemeDisplayComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [AppointmentGeneratorService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

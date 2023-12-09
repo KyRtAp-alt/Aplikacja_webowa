@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,4 +22,13 @@ export class SchemeService {
   updateScheme(id: string, schemes: any) {
     return this.http.put(`http://localhost:3000/scheme/${id}`, schemes);
   }
+
+  getHarmonogramById(id: string): Observable<any> {
+    const url = `${this.apiUrl}/harmonogramy/${id}`;
+    return this.http.get(url);
+  }
+
+  // getDoctorSchedule(doctorId: string): Observable<any> {
+  //   return this.http.get(`/api/doctors/${doctorId}/schedule`);
+  // }
 }

@@ -55,7 +55,7 @@ export class UmowWizyteComponent {
   ngOnInit() {
     this.getDoctors();
     // this.getRoss();
-    this.getSchemes();
+    // this.getSchemes();
   }
 
   getDoctors() {
@@ -70,17 +70,17 @@ export class UmowWizyteComponent {
     );
   }
 
-  getSchemes() {
-    this.schemeService.getScheme().subscribe(
-      (schemes: any) => {
-        console.log(schemes);
-        this.schemes = schemes;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
+  // getSchemes() {
+  //   this.schemeService.getScheme().subscribe(
+  //     (schemes: any) => {
+  //       console.log(schemes);
+  //       this.schemes = schemes;
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 
   addVisit() {
     const newVisit = {

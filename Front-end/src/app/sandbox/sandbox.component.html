@@ -1,17 +1,10 @@
-<!-- <div>
-    <ul class="">
-        <li *ngFor="let scheme of schemes" class="q">
-            <span class="">
-                <span class="day-name">Poniedziałek</span>
-            </span>
-            <div class="hours-list">
-            </div>
-        </li>
-    </ul>
-</div> -->
-
-<div *ngIf="starttime && endtime">
-    <ul>
-        <li *ngFor="let hour of generatedHours">{{ hour }}</li>
-    </ul>
+<div *ngFor="let doctor of doctors">
+    <div>
+        <a>{{doctor.imie}}</a>
+        <a>{{doctor.nazwisko}}</a>
+        <div>
+            {{doctor.harmonogram}}
+            <div class="here"></div>
+        </div>
+    </div>
 </div>

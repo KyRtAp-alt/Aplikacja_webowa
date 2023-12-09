@@ -1,27 +1,37 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
+import { DoctorService } from '../doctor.service';
 import { SchemeService } from '../scheme.service';
-import { VisitService } from '../visit.service';
 
 @Component({
   selector: 'app-sandbox',
   templateUrl: './sandbox.component.html',
   styleUrls: ['./sandbox.component.scss'],
 })
-export class SandboxComponent implements OnChanges {
+export class SandboxComponent {
+  nazwaharmonogramu: string = '';
+  doctors: any[] = [];
   schemes: any[] = [];
-  scheme: string = '';
-  firstname: string = '';
-  lastname: string = '';
-  category: string = '';
-  content: string = '';
-  specialization: string = '';
-  selectedDoctorId: string = '';
-  editingDoctor: boolean = false;
 
-  constructor(private schemeService: SchemeService) {}
+  constructor(
+    private doctorService: DoctorService,
+    private schemeService: SchemeService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getDoctors();
     this.getSchemes();
+  }
+
+  getDoctors() {
+    this.doctorService.getDoctors().subscribe(
+      (doctors: any) => {
+        console.log(doctors);
+        this.doctors = doctors;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   getSchemes() {
@@ -34,38 +44,5 @@ export class SandboxComponent implements OnChanges {
         console.error(error);
       }
     );
-  }
-
-  @Input() starttime: string = '';
-  @Input() endtime: string = '';
-  @Input() czasWizyty: number = 0;
-  generatedHours: string[] = [];
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['starttime'] || changes['endtime']) {
-      this.generateHours();
-    }
-  }
-
-  private generateHours(): void {
-    this.generatedHours = [];
-
-    if (!this.starttime || !this.endtime) {
-      return;
-    }
-
-    const startHour = parseInt(this.starttime.split(':')[0], 10);
-    const endHour = parseInt(this.endtime.split(':')[0], 10);
-    const startMinute = parseInt(this.starttime.split(':')[1], 10);
-
-    const visitInterval = this.czasWizyty || 30;
-
-    for (let hour = startHour; hour <= endHour; hour++) {
-      for (let minute = startMinute; minute < 60; minute += visitInterval) {
-        const formattedHour = hour < 10 ? `0${hour}` : `${hour}`;
-        const formattedMinute = minute < 10 ? `0${minute}` : `${minute}`;
-        this.generatedHours.push(`${formattedHour}:${formattedMinute}`);
-      }
-    }
   }
 }
