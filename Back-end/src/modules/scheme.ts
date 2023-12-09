@@ -23,6 +23,29 @@ router.get("/", async (req: Request, res: Response) => {
     });
 });
 
+router.get("/:id", async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  try {
+    await client.connect();
+    const db = client.db();
+    const collection = db.collection("harmonogram");
+    const result = await collection.findOne({ _id: new ObjectId(id) });
+    if (result) {
+      res.status(200).json(result);
+    } else {
+      res
+        .status(404)
+        .json({ message: "Nie znaleziono harmonogramu o podanym ID." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Wystąpił błąd serwera." });
+  } finally {
+    await client.close();
+  }
+});
+
 router.post("/", async (req: Request, res: Response) => {
   await client.connect();
   const db = client.db();

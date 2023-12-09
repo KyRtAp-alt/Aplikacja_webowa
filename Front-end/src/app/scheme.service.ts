@@ -23,8 +23,8 @@ export class SchemeService {
     return this.http.put(`http://localhost:3000/scheme/${id}`, schemes);
   }
 
-  getHarmonogramById(id: string): Observable<any> {
-    const url = `${this.apiUrl}/harmonogramy/${id}`;
+  getSchemeForDoctor(id: string): Observable<any> {
+    const url = `${this.apiUrl}/scheme/${id}`;
     return this.http.get(url);
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { SchemeService } from '../scheme.service';
 
@@ -7,7 +7,7 @@ import { SchemeService } from '../scheme.service';
   templateUrl: './sandbox.component.html',
   styleUrls: ['./sandbox.component.scss'],
 })
-export class SandboxComponent {
+export class SandboxComponent implements OnInit {
   nazwaharmonogramu: string = '';
   doctors: any[] = [];
   schemes: any[] = [];
@@ -45,4 +45,21 @@ export class SandboxComponent {
       }
     );
   }
+
+  // getScheduleDetails(scheduleId: string): any[] {
+  //   const scheduleDetails: any[] = [];
+
+  //   // Wykonaj zapytanie HTTP, aby pobrać szczegóły harmonogramu
+  //   this.schemeService.getSchemeForDoctor(scheduleId).subscribe(
+  //     (details: any) => {
+  //       // Tutaj możesz przypisać pobrane szczegóły do scheduleDetails
+  //       scheduleDetails.push(details);
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+
+  //   return scheduleDetails;
+  // }
 }

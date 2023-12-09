@@ -2,9 +2,11 @@
     <div>
         <a>{{doctor.imie}}</a>
         <a>{{doctor.nazwisko}}</a>
-        <div>
-            {{doctor.harmonogram}}
-            <div class="here"></div>
+        <div class="here">
+            <div *ngIf="doctor.harmonogram">
+                <!-- <div *ngFor="let schedule of getScheduleDetails(doctor.harmonogram)">
+                    {{ schedule.objectId }}
+                </div> -->
+            </div>
         </div>
     </div>
-</div>
