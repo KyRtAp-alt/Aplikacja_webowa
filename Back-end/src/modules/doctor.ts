@@ -48,11 +48,34 @@ router.get("/:id", async (req: Request, res: Response) => {
   }
 });
 
+router.get("/schedule/:doctorId", async (req: Request, res: Response) => {
+  const doctorId = req.params.doctorId;
+
+  try {
+    await client.connect();
+    const db = client.db();
+    const collection = db.collection("schedule");
+    const result = await collection.findOne({ doctorId: doctorId });
+    if (result) {
+      res.status(200).json(result);
+    } else {
+      res
+        .status(404)
+        .json({ message: "Nie znaleziono harmonogramu dla danego lekarza." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Wystąpił błąd serwera." });
+  } finally {
+    await client.close();
+  }
+});
+
 router.post("/", async (req: Request, res: Response) => {
   await client.connect();
   const db = client.db();
-  req.body.harmonogram = new ObjectId(req.body.harmonogram);
-  console.log(req.body);
+  // req.body.harmonogram = new ObjectId(req.body.harmonogram);
+  // console.log(req.body);
   const collection = db.collection("doctor");
   await collection
     .insertOne(req.body)
@@ -87,6 +110,13 @@ router.put("/:id", async (req: Request, res: Response) => {
 });
 
 module.exports = router;
+
+router.post("/doctor/:doctorId/assign-schedule", (req, res) => {
+  const doctorId = req.params.doctorId;
+  const schedule = req.body;
+  console.log(`Przypisano harmonogram do lekarza o ID: ${doctorId}`, schedule);
+  res.status(200).json({ message: "Harmonogram przypisany pomyślnie" });
+});
 
 // router.post("/doctor/:doctorId/assign-schedule", (req, res) => {
 //   const doctorId = req.params.doctorId;

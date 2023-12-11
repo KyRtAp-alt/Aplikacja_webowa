@@ -1,8 +1,20 @@
-import { Component, Input, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import * as moment from 'moment';
 import { SchemeService } from '../scheme.service';
-import { ActivatedRoute } from '@angular/router';
-import { DoctorService } from '../doctor.service';
-import { DoctorToschemeService } from '../doctor-toscheme.service';
+
+interface WorkTime {
+  starttime: string;
+  endtime: string;
+}
+
+export interface ScheduleData {
+  _id: string;
+  nazwaharmonogramu: string;
+  czaspracy: {
+    [key: string]: WorkTime[] | null;
+  };
+  czaswizyty: number;
+}
 
 @Component({
   selector: 'app-shceme-display',
@@ -10,133 +22,99 @@ import { DoctorToschemeService } from '../doctor-toscheme.service';
   styleUrls: ['./shceme-display.component.scss'],
 })
 export class ShcemeDisplayComponent implements OnInit {
-  schemes: any[] = [];
-  @Input() harmonogram: any;
-  selectedSchemeId: string = '';
+  @Input() scheduleId: string = '';
+  @Input() doctorId: string = '';
 
-  // getDays(): string[] {
-  //   return this.harmonogram ? Object.keys(this.harmonogram.czaspracy) : [];
-  // }
+  showForm: boolean = false;
 
-  constructor(
-    private schemeService: SchemeService,
-    private route: ActivatedRoute
-  ) {}
+  scheduleData: ScheduleData[] = [];
+
+  schedule: { day: string; hours: string[] }[] = [];
+
+  selectedDateTime: moment.Moment | null = null;
+
+  constructor(private schemeService: SchemeService) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.selectedSchemeId = params['id'];
-      this.getSchemes();
-    });
-  }
-
-  getSchemes() {
-    this.schemeService.getScheme().subscribe(
-      (schemes: any) => {
-        console.log(schemes);
-        this.schemes = schemes.filter(
-          (schemes: { _id: string }) => schemes._id === this.selectedSchemeId
-        );
+    this.schemeService.getScheduleData().subscribe(
+      (data: ScheduleData[]) => {
+        this.scheduleData = data;
+        this.generateSchedule();
       },
       (error) => {
-        console.error(error);
+        console.error('Error fetching schedule data:', error);
       }
     );
   }
+
+  generateSchedule() {
+    this.scheduleData.forEach((data) => {
+      Object.keys(data.czaspracy).forEach((day) => {
+        const dayName = this.mapDayName(day);
+        const workTimes: WorkTime[] | null = data.czaspracy[day];
+
+        if (workTimes) {
+          workTimes.forEach((time) => {
+            const startTime = moment(time.starttime, 'HH:mm');
+            const endTime = moment(time.endtime, 'HH:mm');
+            const visitDuration = moment.duration(data.czaswizyty, 'minutes');
+            let currentDateTime = startTime.clone();
+
+            while (currentDateTime.isBefore(endTime)) {
+              const timeString = currentDateTime.format('HH:mm');
+              const dateTime = currentDateTime.clone();
+              const scheduleEntry = this.schedule.find(
+                (entry) => entry.day === dayName
+              );
+
+              if (scheduleEntry) {
+                scheduleEntry.hours.push(timeString);
+              } else {
+                this.schedule.push({ day: dayName, hours: [timeString] });
+              }
+
+              currentDateTime.add(visitDuration);
+            }
+          });
+        }
+      });
+    });
+  }
+
+  onTimeClick(dateTime: moment.Moment) {
+    this.selectedDateTime = dateTime;
+  }
+
+  private mapDayName(day: string): string {
+    switch (day) {
+      case 'poniedzialek':
+        return 'Poniedziałek';
+      case 'wtorek':
+        return 'Wtorek';
+      case 'sroda':
+        return 'Środa';
+      case 'czwartek':
+        return 'Czwartek';
+      case 'piatek':
+        return 'Piątek';
+      case 'sobota':
+        return 'Sobota';
+      case 'niedziela':
+        return 'Niedziela';
+      default:
+        return day;
+    }
+  }
+
+  openModal() {
+    this.showForm = true;
+  }
+
+  closeModal() {
+    this.showForm = false;
+  }
+
+  closeModalVis() {
+    this.showForm = false;
+  }
 }
-// lekarzId: string | null = null;
-
-// constructor(
-//   private route: ActivatedRoute,
-//   private DoctorService: DoctorService
-// ) {}
-
-// ngOnInit(): void {
-//   this.route.paramMap.subscribe((params) => {
-//     this.lekarzId = params.get('id');
-//     if (this.lekarzId) {
-//       this.loadData();
-//     }
-//   });
-// }
-
-// private loadData(): void {
-//   this.DoctorService.getLekarz(this.lekarzId!).subscribe(
-//     (data) => {
-//       console.log(data);
-//     },
-//     (error) => {
-//       console.error(error);
-//     }
-//   );
-// }
-
-// lekarzId = '6571c03d5e58a92b9bdd7a18';
-
-// constructor(private DoctorToschemeService: DoctorToschemeService) {}
-
-// ngOnInit(): void {
-//   this.DoctorToschemeService.getHarmonogramy(this.lekarzId).subscribe(
-//     (data) => {
-//       console.log(data); // Tutaj możesz obsłużyć dane harmonogramów
-//     },
-//     (error) => {
-//       console.error(error);
-//     }
-//   );
-// }
-
-// lekarzId = ''; // Id lekarza (możesz uzyskać to dynamicznie)
-// lekarz: any;
-
-// constructor(private DoctorToschemeService: DoctorToschemeService) {}
-
-// ngOnInit(): void {
-//   this.DoctorToschemeService.getHarmonogramy(this.lekarzId).subscribe(
-//     (data) => {
-//       this.lekarz = data;
-//       console.log(this.lekarz);
-//     },
-//     (error) => {
-//       console.error(error);
-//     }
-//   );
-// }
-
-//   doctors: any[] = [];
-//   schemes: any[] = [];
-
-//   constructor(
-//     private doctorService: DoctorService,
-//     private schemeService: SchemeService
-//   ) {}
-
-//   ngOnInit() {
-//     this.getSchemes();
-//     this.getDoctors();
-//   }
-
-//   getSchemes() {
-//     this.schemeService.getScheme().subscribe(
-//       (schemes: any) => {
-//         console.log(schemes);
-//         this.schemes = schemes;
-//       },
-//       (error) => {
-//         console.error(error);
-//       }
-//     );
-//   }
-
-//   getDoctors() {
-//     this.doctorService.getDoctors().subscribe(
-//       (doctors: any) => {
-//         console.log(doctors);
-//         this.doctors = doctors;
-//       },
-//       (error) => {
-//         console.error(error);
-//       }
-//     );
-//   }
-// }

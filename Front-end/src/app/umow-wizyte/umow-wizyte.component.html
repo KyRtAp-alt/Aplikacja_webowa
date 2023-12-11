@@ -33,12 +33,8 @@
                     </div>
                     <div>
                         <div *ngIf="doctor.showMore">
-                            <!-- <span (click)="openModal()">8:35</span> -->
-                            <!-- <app-sandbox [starttime]="'08:00'" [endtime]="'10:00'"></app-sandbox> -->
-                            <!-- <div *ngIf="selectedDoctor">
-                                <app-shceme-display [harmonogram]="selectedDoctor.harmonogram"></app-shceme-display>
-                            </div> -->
-                            <app-shceme-display [harmonogram]="selectedDoctor?.harmonogram"></app-shceme-display>
+                            <app-shceme-display [scheduleId]="doctor.harmonogramId"></app-shceme-display>
+
                             <div class="main-box-2" *ngIf="doctor.showMore">
                                 <div class="q">
                                     <div class="category2">
@@ -136,6 +132,9 @@
         </div>
     </div>
 </div>
+
+<!-- <span (click)="openModal()">8:35</span> -->
+<!-- <app-sandbox [starttime]="'08:00'" [endtime]="'10:00'"></app-sandbox> -->
 <!-- <div *ngIf="doctor.showMore">
     <div *ngFor="let visit of visits">
         <span>{{visit.nazwaharmonogramu}}</span>

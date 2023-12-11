@@ -11,6 +11,9 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./umow-wizyte.component.scss'],
 })
 export class UmowWizyteComponent {
+  scheduleId: string = '';
+  currentDoctorSchedule: any[] = [];
+
   doctors: any[] = [];
   firstname: string = '';
   lastname: string = '';
@@ -56,6 +59,18 @@ export class UmowWizyteComponent {
     this.getDoctors();
     // this.getRoss();
     // this.getSchemes();
+  }
+
+  getDoctorSchedule(doctorId: string) {
+    this.schemeService.getHarmonogramData(doctorId).subscribe(
+      (schedule: any) => {
+        console.log('Harmonogram:', schedule);
+        this.currentDoctorSchedule = schedule;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 
   getDoctors() {
@@ -144,34 +159,22 @@ export class UmowWizyteComponent {
     this.showForm = false;
   }
 
-  // onShowMore(doctor: any) {
-  //   doctor.showMore = true;
-  // }
-
-  selectedDoctor: any;
-
   onShowMore(doctor: any) {
     doctor.showMore = true;
-    this.selectedDoctor = doctor;
-    this.getSchemes(doctor);
+    this.currentDoctor = doctor;
+    this.getDoctorSchedule(doctor._id); // Pobieranie harmonogramu dla wybranego doktora
   }
+
+  // selectedDoctor: any;
+
+  // onShowMore(doctor: any) {
+  //   doctor.showMore = true;
+  //   this.selectedDoctor = doctor;
+  //   this.getSchemes(doctor);
+  // }
 
   onShowLess(doctor: any) {
     doctor.showMore = false;
-  }
-
-  getSchemes(doctor: any) {
-    this.schemeService.getScheme().subscribe(
-      (schemes: any) => {
-        console.log(schemes);
-        this.schemes = schemes.filter(
-          (schemes: { _id: string }) => schemes._id === this.selectedDoctor
-        );
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
   }
 }
 

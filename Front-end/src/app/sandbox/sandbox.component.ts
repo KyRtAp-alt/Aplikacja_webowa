@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../doctor.service';
-import { SchemeService } from '../scheme.service';
 
 @Component({
   selector: 'app-sandbox',
@@ -8,18 +7,13 @@ import { SchemeService } from '../scheme.service';
   styleUrls: ['./sandbox.component.scss'],
 })
 export class SandboxComponent implements OnInit {
-  nazwaharmonogramu: string = '';
+  harmonogramId: string = '';
   doctors: any[] = [];
-  schemes: any[] = [];
 
-  constructor(
-    private doctorService: DoctorService,
-    private schemeService: SchemeService
-  ) {}
+  constructor(private doctorService: DoctorService) {}
 
   ngOnInit(): void {
     this.getDoctors();
-    this.getSchemes();
   }
 
   getDoctors() {
@@ -34,32 +28,11 @@ export class SandboxComponent implements OnInit {
     );
   }
 
-  getSchemes() {
-    this.schemeService.getScheme().subscribe(
-      (schemes: any) => {
-        console.log(schemes);
-        this.schemes = schemes;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+  onShowMore(doctor: any) {
+    doctor.showMore = true;
   }
 
-  // getScheduleDetails(scheduleId: string): any[] {
-  //   const scheduleDetails: any[] = [];
-
-  //   // Wykonaj zapytanie HTTP, aby pobrać szczegóły harmonogramu
-  //   this.schemeService.getSchemeForDoctor(scheduleId).subscribe(
-  //     (details: any) => {
-  //       // Tutaj możesz przypisać pobrane szczegóły do scheduleDetails
-  //       scheduleDetails.push(details);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-
-  //   return scheduleDetails;
-  // }
+  onShowLess(doctor: any) {
+    doctor.showMore = false;
+  }
 }
