@@ -25,6 +25,29 @@ router.get("/", async (req: Request, res: Response) => {
     });
 });
 
+router.get("/:id", async (req: Request, res: Response) => {
+  const id = req.params.id;
+
+  try {
+    await client.connect();
+    const db = client.db();
+    const collection = db.collection("doctor");
+    const result = await collection.findOne({ _id: new ObjectId(id) });
+    if (result) {
+      res.status(200).json(result);
+    } else {
+      res
+        .status(404)
+        .json({ message: "Nie znaleziono harmonogramu o podanym ID." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Wystąpił błąd serwera." });
+  } finally {
+    await client.close();
+  }
+});
+
 router.post("/", async (req: Request, res: Response) => {
   await client.connect();
   const db = client.db();
@@ -63,14 +86,14 @@ router.put("/:id", async (req: Request, res: Response) => {
   res.status(200).send("Zmieniono dane Lekarza");
 });
 
+module.exports = router;
+
 // router.post("/doctor/:doctorId/assign-schedule", (req, res) => {
 //   const doctorId = req.params.doctorId;
 //   const schedule = req.body;
 //   console.log(`Przypisano harmonogram do lekarza o ID: ${doctorId}`, schedule);
 //   res.status(200).json({ message: "Harmonogram przypisany pomyślnie" });
 // });
-
-module.exports = router;
 
 // router.get("/", async (req, res) => {
 //   try {

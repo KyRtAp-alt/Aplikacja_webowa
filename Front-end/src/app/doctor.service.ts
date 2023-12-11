@@ -8,6 +8,7 @@ import { SchemeService } from './scheme.service';
 })
 export class DoctorService {
   private apiUrl = 'http://localhost:3000';
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -31,5 +32,9 @@ export class DoctorService {
     return this.http.post(`${this.apiUrl}/doctor/${doctorId}/assign-schedule`, {
       scheduleId,
     });
+  }
+
+  getLekarz(lekarzId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${lekarzId}`);
   }
 }
