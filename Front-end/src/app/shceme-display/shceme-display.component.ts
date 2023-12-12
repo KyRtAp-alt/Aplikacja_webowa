@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as moment from 'moment';
 import { SchemeService } from '../scheme.service';
+import { DoctorService } from '../doctor.service';
 
 interface WorkTime {
   starttime: string;
@@ -28,9 +29,7 @@ export class ShcemeDisplayComponent implements OnInit {
   showForm: boolean = false;
 
   scheduleData: ScheduleData[] = [];
-
   schedule: { day: string; hours: string[] }[] = [];
-
   selectedDateTime: moment.Moment | null = null;
 
   constructor(private schemeService: SchemeService) {}
@@ -38,7 +37,7 @@ export class ShcemeDisplayComponent implements OnInit {
   ngOnInit() {
     this.schemeService.getScheduleData().subscribe(
       (data: ScheduleData[]) => {
-        this.scheduleData = data;
+        this.scheduleData = data.filter((item) => item._id === this.scheduleId);
         this.generateSchedule();
       },
       (error) => {

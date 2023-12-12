@@ -40,6 +40,11 @@ export class SchemeService {
       `http://localhost:3000/schedule/${doctorId}`
     );
   }
+
+  getScheduleForDoctor(doctorId: string): Observable<ScheduleData[]> {
+    const url = `${this.apiUrl}/doctor/${doctorId}`;
+    return this.http.get<ScheduleData[]>(url);
+  }
 }
 
 // getHarmonogramData(harmonogramId: string) {

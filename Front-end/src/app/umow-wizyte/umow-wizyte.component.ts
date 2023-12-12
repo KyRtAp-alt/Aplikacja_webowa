@@ -11,6 +11,9 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./umow-wizyte.component.scss'],
 })
 export class UmowWizyteComponent {
+  selectedScheduleId: string | null = null;
+  selectedDoctor: any;
+
   scheduleId: string = '';
   currentDoctorSchedule: any[] = [];
 
@@ -160,9 +163,13 @@ export class UmowWizyteComponent {
   }
 
   onShowMore(doctor: any) {
+    this.selectedDoctor = doctor;
     doctor.showMore = true;
-    this.currentDoctor = doctor;
-    this.getDoctorSchedule(doctor._id); // Pobieranie harmonogramu dla wybranego doktora
+  }
+
+  onShowLess(doctor: any) {
+    this.selectedDoctor = null;
+    doctor.showMore = false;
   }
 
   // selectedDoctor: any;
@@ -173,9 +180,9 @@ export class UmowWizyteComponent {
   //   this.getSchemes(doctor);
   // }
 
-  onShowLess(doctor: any) {
-    doctor.showMore = false;
-  }
+  // onShowLess(doctor: any) {
+  //   doctor.showMore = false;
+  // }
 }
 
 // daysOfWeek: string[] = [
