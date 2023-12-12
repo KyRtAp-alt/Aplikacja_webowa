@@ -1,4 +1,4 @@
-$menuHeight: 122px;
+$menuHeight: 95px;
 $menuBreakpoint: 768px;
 
 .ms {
@@ -52,12 +52,16 @@ $menuBreakpoint: 768px;
       &.is-open {
         display: block;
         position: absolute;
-        top: #{$menuHeight + 2};
+        top: #{$menuHeight};
         background: #fff;
         width: 100%;
         z-index: 9;
         left: 0;
         opacity: 0.9;
+      }
+
+      @media (max-width: 425px) {
+        margin-top: 20px;
       }
     }
 

@@ -6,6 +6,7 @@
 h2 {
   font-family: sans-serif;
   margin-bottom: 8px;
+  color: black;
 }
 
 .main-container {
@@ -45,9 +46,11 @@ h2 {
 }
 
 .title {
-  font-size: 28px;
+  font-size: 24px;
   margin-left: 50px;
   margin-top: 50px;
+  color: #244160;
+  font-weight: bold;
 
   @media (max-width: 1439px) {
     font-size: 26px;
