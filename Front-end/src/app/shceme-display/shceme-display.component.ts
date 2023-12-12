@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as moment from 'moment';
 import { SchemeService } from '../scheme.service';
-import { DoctorService } from '../doctor.service';
 
 interface WorkTime {
   starttime: string;
