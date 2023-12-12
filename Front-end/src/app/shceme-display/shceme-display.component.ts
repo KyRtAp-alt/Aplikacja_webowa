@@ -79,10 +79,6 @@ export class ShcemeDisplayComponent implements OnInit {
     });
   }
 
-  onTimeClick(dateTime: moment.Moment) {
-    this.selectedDateTime = dateTime;
-  }
-
   private mapDayName(day: string): string {
     switch (day) {
       case 'poniedzialek':

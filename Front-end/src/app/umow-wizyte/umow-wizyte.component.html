@@ -41,6 +41,10 @@
         </div>
     </div>
 </div>
+<a *ngIf="showScrollButton" class="scroll-to-top" (click)="scrollToTop()">
+    <i class="fas fa-chevron-up">&#8593; </i>
+</a>
+<app-footer></app-footer>
 
 <!-- pod scheme-display -->
 <!-- <div class="main-box-2" *ngIf="doctor.showMore">
@@ -167,10 +171,7 @@
         <span>{{visit.nazwaharmonogramu}}</span>
     </div>
 </div> -->
-<a *ngIf="showScrollButton" class="scroll-to-top" (click)="scrollToTop()">
-    <i class="fas fa-chevron-up">&#8593; </i>
-</a>
-<app-footer></app-footer>
+
 
 
 <!-- <div *ngFor="let visit of visits">

@@ -21,18 +21,6 @@ export class AdminRosComponent {
     this.getRoss();
   }
 
-  // getRoss() {
-  //   this.rosService.getRoss().subscribe(
-  //     (ross: any) => {
-  //       console.log(ross);
-  //       this.ross = ross;
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-
   getRoss() {
     this.rosService
       .getRoss()
