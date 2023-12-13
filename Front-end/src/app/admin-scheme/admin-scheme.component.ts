@@ -77,6 +77,8 @@ export class AdminSchemeComponent {
   czasWizyty: number = 0;
   pracownikID: string = '';
   nazwaharmonogramu: string = '';
+  startdataharmonogramu: string = '';
+  enddataharmonogramu: string = '';
 
   //poniedzialek
   poniedzialekOd: string = '';
@@ -142,6 +144,8 @@ export class AdminSchemeComponent {
           : null,
       },
       czaswizyty: this.czasWizyty,
+      startdataharmonogramu: this.startdataharmonogramu,
+      enddataharmonogramu: this.enddataharmonogramu,
     };
 
     this.schemeService.addScheme(newScheme).subscribe(

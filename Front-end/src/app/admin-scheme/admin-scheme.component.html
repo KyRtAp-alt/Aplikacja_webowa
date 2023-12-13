@@ -110,8 +110,12 @@
         </div>
     </div>
     <div class="">
-        <label class="">Data waznosci harmonogramu</label>
-        <input>
+        <label class="">Data waznosci harmonogramu od:</label>
+        <input type="date" [(ngModel)]="startdataharmonogramu">
+    </div>
+    <div class="">
+        <label class="">Data waznosci harmonogramu do:</label>
+        <input type="date" [(ngModel)]="enddataharmonogramu">
     </div>
     <button (click)="addScheme()">Dodaj</button>
 </div>
@@ -130,7 +134,10 @@
                         <span>{{scheme.nazwaharmonogramu}}</span>
                     </a>
                     <a>
-                        <span></span>
+                        <span>Od: {{ scheme.startdataharmonogramu }}</span>
+                    </a>
+                    <a>
+                        <span>Do: {{ scheme.enddataharmonogramu }}</span>
                     </a>
                 </div>
             </ul>
