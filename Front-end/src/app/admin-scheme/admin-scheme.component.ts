@@ -16,6 +16,7 @@
 import { Component } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { SchemeService } from '../scheme.service';
+import { error } from 'console';
 
 interface Schedule {
   // name: string;
@@ -159,6 +160,28 @@ export class AdminSchemeComponent {
     );
   }
 
+  editScheme(scheme: any) {
+    this.czasWizyty = scheme.czasWizyty;
+  }
+
+  updateScheme() {
+    const updateScheme = {
+      czasWizyty: this.czasWizyty,
+    };
+
+    this.schemeService
+      .updateScheme(this.selectedSchemeId, updateScheme)
+      .subscribe(
+        () => {
+          console.log('Zaktulizowana harmonogram');
+          this.getSchemes;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
+
   private parseTime(timeString: string): number[] {
     const [hours, minutes] = timeString
       .split(':')
@@ -201,6 +224,10 @@ export class AdminSchemeComponent {
 
   clearForm() {
     this.poniedzialekAktywny;
+  }
+
+  isEmptyFields(): boolean {
+    return !this.name;
   }
 }
 

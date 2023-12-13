@@ -1,0 +1,14 @@
+<div class="ms">
+    <div class="ms-outer">
+        <div class="ms-inner">
+            <div *ngFor="let entry of schedule" class="day-entry" [ngClass]="{'null-day': !entry.hours.length}">
+                <h3 class="days">{{ entry.day }}</h3>
+                <ul>
+                    <div class="hours-border">
+                        <li class="hours" *ngFor="let hour of entry.hours">{{ hour }}</li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

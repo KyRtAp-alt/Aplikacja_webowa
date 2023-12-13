@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as moment from 'moment';
 import { SchemeService } from '../scheme.service';
 
@@ -14,21 +14,20 @@ export interface ScheduleData {
     [key: string]: WorkTime[] | null;
   };
   czaswizyty: number;
-  startdataharmonogramu: string;
-  enddataharmonogramu: string;
 }
 
 @Component({
-  selector: 'app-shceme-display',
-  templateUrl: './shceme-display.component.html',
-  styleUrls: ['./shceme-display.component.scss'],
+  selector: 'app-scheme-display',
+  templateUrl: './scheme-display.component.html',
+  styleUrls: ['./scheme-display.component.scss'],
 })
-export class ShcemeDisplayComponent implements OnInit {
+export class SchemeDisplayComponent implements OnInit {
   @Input() scheduleId: string = '';
+  // @Input() doctorId: string = '';
 
   showForm: boolean = false;
 
-  scheduleData: ScheduleData | undefined;
+  scheduleData: ScheduleData[] = [];
   schedule: { day: string; hours: string[] }[] = [];
   selectedDateTime: moment.Moment | null = null;
 
@@ -37,7 +36,7 @@ export class ShcemeDisplayComponent implements OnInit {
   ngOnInit() {
     this.schemeService.getScheduleData().subscribe(
       (data: ScheduleData[]) => {
-        this.scheduleData = data.find((item) => item._id === this.scheduleId);
+        this.scheduleData = data.filter((item) => item._id === this.scheduleId);
         this.generateSchedule();
       },
       (error) => {
@@ -47,19 +46,16 @@ export class ShcemeDisplayComponent implements OnInit {
   }
 
   generateSchedule() {
-    if (this.scheduleData) {
-      Object.keys(this.scheduleData.czaspracy).forEach((day) => {
+    this.scheduleData.forEach((data) => {
+      Object.keys(data.czaspracy).forEach((day) => {
         const dayName = this.mapDayName(day);
-        const workTimes = this.scheduleData?.czaspracy[day] || [];
+        const workTimes: WorkTime[] | null = data.czaspracy[day];
 
         if (workTimes) {
           workTimes.forEach((time) => {
             const startTime = moment(time.starttime, 'HH:mm');
             const endTime = moment(time.endtime, 'HH:mm');
-            const visitDuration = moment.duration(
-              this.scheduleData?.czaswizyty,
-              'minutes'
-            );
+            const visitDuration = moment.duration(data.czaswizyty, 'minutes');
             let currentDateTime = startTime.clone();
 
             while (currentDateTime.isBefore(endTime)) {
@@ -78,9 +74,17 @@ export class ShcemeDisplayComponent implements OnInit {
               currentDateTime.add(visitDuration);
             }
           });
+        } else {
+          // If there are no work times defined for the day, add it to the schedule
+          const scheduleEntry = this.schedule.find(
+            (entry) => entry.day === dayName
+          );
+          if (!scheduleEntry) {
+            this.schedule.push({ day: dayName, hours: [] });
+          }
         }
       });
-    }
+    });
   }
 
   private mapDayName(day: string): string {

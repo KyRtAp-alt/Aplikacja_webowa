@@ -1,11 +1,8 @@
-<app-header></app-header>
-<app-navbar></app-navbar>
-<app-img-navbar-other></app-img-navbar-other>
 <div class="ms">
-    <div class="ms_outer">
-        <div class="main-title-border">
+    <div class="ms-outer">
+        <!-- <div class="main-title-border">
             <h2 class="title-box">Umów wizytę</h2>
-        </div>
+        </div> -->
         <div class="ms_inner">
             <div class="loop-box" *ngFor="let doctor of doctors">
                 <div class="z">
@@ -27,7 +24,8 @@
                     </div>
                     <div>
                         <div *ngIf="doctor.showMore">
-                            <app-shceme-display [scheduleId]="selectedDoctor?.harmonogram"></app-shceme-display>
+                            <app-scheme-display [scheduleId]="selectedDoctor?.harmonogram"></app-scheme-display>
+                            <!-- <app-shceme-display [scheduleId]="selectedDoctor?.harmonogram"></app-shceme-display> -->
                         </div>
                         <div class="main-box-2" *ngIf="doctor.showMore">
                             <div class="q">

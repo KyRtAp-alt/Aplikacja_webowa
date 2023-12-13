@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ImgNavbarComponent } from './img-navbar/img-navbar.component';
-import { WeebbookingComponent } from './weebbooking/weebbooking.component';
 import { SliderComponent } from './slider/slider.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -38,12 +37,14 @@ import { AppointmentGeneratorService } from './appointment-generator.service';
 import { ShcemeDisplayComponent } from './shceme-display/shceme-display.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './auth-guard.service';
+import { SchemeDisplayComponent } from './scheme-display/scheme-display.component';
+import { WebbookingComponent } from './webbooking/webbooking.component';
+import { WebbookingInfoComponent } from './webbooking-info/webbooking-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImgNavbarComponent,
-    WeebbookingComponent,
     SliderComponent,
     FooterComponent,
     MainpageComponent,
@@ -72,6 +73,9 @@ import { AuthGuardService } from './auth-guard.service';
     ReceptionReservationComponent,
     AdminSchemeComponent,
     ShcemeDisplayComponent,
+    SchemeDisplayComponent,
+    WebbookingComponent,
+    WebbookingInfoComponent,
   ],
   imports: [
     BrowserModule,

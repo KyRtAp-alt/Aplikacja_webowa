@@ -2,8 +2,6 @@ import { Component, HostListener, Input } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { VisitService } from '../visit.service';
 import { SchemeService } from '../scheme.service';
-import { Title } from '@angular/platform-browser';
-// import { RosService } from '../ros.service';
 
 @Component({
   selector: 'app-umow-wizyte',
@@ -50,18 +48,12 @@ export class UmowWizyteComponent {
 
   constructor(
     private doctorService: DoctorService,
-    // private rosService: RosService,
     private visitService: VisitService,
-    private schemeService: SchemeService,
-    private titleService: Title
-  ) {
-    this.titleService.setTitle('Umów wizytę');
-  }
+    private schemeService: SchemeService
+  ) {}
 
   ngOnInit() {
     this.getDoctors();
-    // this.getRoss();
-    // this.getSchemes();
   }
 
   getDoctorSchedule(doctorId: string) {

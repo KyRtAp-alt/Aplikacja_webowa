@@ -23,12 +23,14 @@ import { ReceptionReservationComponent } from './reception-reservation/reception
 import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { ShcemeDisplayComponent } from './shceme-display/shceme-display.component';
+import { WebbookingComponent } from './webbooking/webbooking.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
   { path: 'mainpage', component: MainpageComponent },
   { path: 'zakres-uslug', component: RangeOfServices1Component },
-  { path: 'umow-wizyte', component: UmowWizyteComponent },
+  { path: 'umow-wizyte', component: WebbookingComponent },
+  { path: 'umow-wizyte1', component: UmowWizyteComponent },
   { path: 'cennik', component: PriceListComponent },
   { path: 'nasz-zespol', component: OurTeamComponent },
   { path: 'kontakt', component: ContactComponent },

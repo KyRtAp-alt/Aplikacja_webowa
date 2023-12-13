@@ -117,7 +117,7 @@
         <label class="">Data waznosci harmonogramu do:</label>
         <input type="date" [(ngModel)]="enddataharmonogramu">
     </div>
-    <button (click)="addScheme()">Dodaj</button>
+    <button (click)="(!isEmptyFields()) && (editingScheme ? updateScheme() : addScheme())">Dodaj</button>
 </div>
 <div>
     <div>
@@ -139,6 +139,7 @@
                     <a>
                         <span>Do: {{ scheme.enddataharmonogramu }}</span>
                     </a>
+                    <button (click)="editScheme">Edytuj</button>
                 </div>
             </ul>
         </div>
