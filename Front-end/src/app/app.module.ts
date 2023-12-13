@@ -36,6 +36,8 @@ import { ReceptionReservationComponent } from './reception-reservation/reception
 import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
 import { AppointmentGeneratorService } from './appointment-generator.service';
 import { ShcemeDisplayComponent } from './shceme-display/shceme-display.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -71,8 +73,14 @@ import { ShcemeDisplayComponent } from './shceme-display/shceme-display.componen
     AdminSchemeComponent,
     ShcemeDisplayComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [AppointmentGeneratorService],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
+  providers: [AppointmentGeneratorService, AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
