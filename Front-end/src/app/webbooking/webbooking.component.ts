@@ -7,6 +7,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./webbooking.component.scss'],
 })
 export class WebbookingComponent {
+  showScrollButton = false;
+
   constructor(private titleService: Title) {
     this.titleService.setTitle('Umów wizytę');
   }

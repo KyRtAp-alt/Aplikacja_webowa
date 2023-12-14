@@ -40,6 +40,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { SchemeDisplayComponent } from './scheme-display/scheme-display.component';
 import { WebbookingComponent } from './webbooking/webbooking.component';
 import { WebbookingInfoComponent } from './webbooking-info/webbooking-info.component';
+import { PatientFormComponent } from './patient-form/patient-form.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { WebbookingInfoComponent } from './webbooking-info/webbooking-info.compo
     SchemeDisplayComponent,
     WebbookingComponent,
     WebbookingInfoComponent,
+    PatientFormComponent,
   ],
   imports: [
     BrowserModule,
