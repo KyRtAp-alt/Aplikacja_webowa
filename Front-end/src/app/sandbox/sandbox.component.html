@@ -1,22 +1,10 @@
-<!-- <div class="ms_inner">
-    <div class="loop-box" *ngFor="let doctor of doctors">
-        <div class="z">
-            <div class="box-border">
-                <div class="name-border">
-                    <span class="category">{{doctor.kategoria}}</span>
-                    <span class="firstname">{{doctor.imie}}</span>
-                    <span class="lastname">{{doctor.nazwisko}}</span>
-                    <span class="category">({{doctor.specializacja}})</span>
-                </div>
-                <div class="more">
-                    <button class="clickme" *ngIf="!doctor.showMore" (click)="onShowMore(doctor)">&darr;
-                    </button>
-                    <button class="clickme" *ngIf="doctor.showMore" (click)="onShowLess(doctor)">&uarr;</button>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="doctor.showMore">
-            <app-shceme-display [scheduleId]="doctor.harmonogramId"></app-shceme-display>
-        </div>
+<div>
+    <div>
+        <label>Określ liczbę tygodni</label>
+        <input [(ngModel)]="liczbaTygodni" type="number" (change)="generateTygodnie()">
     </div>
-</div> -->
+    <div *ngFor="let tydzien of tygodnie">
+        <span>{{ tydzien }} tydzień</span>
+        <input type="date" [(ngModel)]="daty[tydzien]" (change)="updateDates(tydzien)">
+    </div>
+</div>

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DoctorService } from '../doctor.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sandbox',
@@ -7,27 +6,45 @@ import { DoctorService } from '../doctor.service';
   styleUrls: ['./sandbox.component.scss'],
 })
 export class SandboxComponent {
-  // harmonogramId: string = '';
-  // doctors: any[] = [];
-  // constructor(private doctorService: DoctorService) {}
-  // ngOnInit(): void {
-  //   this.getDoctors();
-  // }
-  // getDoctors() {
-  //   this.doctorService.getDoctors().subscribe(
-  //     (doctors: any) => {
-  //       console.log(doctors);
-  //       this.doctors = doctors;
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-  // onShowMore(doctor: any) {
-  //   doctor.showMore = true;
-  // }
-  // onShowLess(doctor: any) {
-  //   doctor.showMore = false;
-  // }
+  liczbaTygodni: number = 0;
+  tygodnie: number[] = [];
+  daty: { [key: number]: string | null } = {};
+
+  generateTygodnie() {
+    this.tygodnie = Array.from(
+      { length: this.liczbaTygodni },
+      (_, index) => index + 1
+    );
+    this.initializeDates();
+  }
+
+  initializeDates() {
+    let currentDate: Date | null = null;
+
+    for (const tydzien of this.tygodnie) {
+      if (currentDate) {
+        currentDate = new Date(currentDate);
+        currentDate.setDate(currentDate.getDate() + 7);
+        this.daty[tydzien] = currentDate.toISOString().split('T')[0];
+      } else {
+        this.daty[tydzien] = null;
+      }
+    }
+  }
+
+  updateDates(changedTydzien: number) {
+    const changedDate = this.daty[changedTydzien];
+
+    if (changedDate) {
+      let currentDate: Date = new Date(changedDate);
+
+      for (const tydzien of this.tygodnie) {
+        if (tydzien !== changedTydzien) {
+          currentDate = new Date(currentDate);
+          currentDate.setDate(currentDate.getDate() + 7);
+          this.daty[tydzien] = currentDate.toISOString().split('T')[0];
+        }
+      }
+    }
+  }
 }

@@ -5,6 +5,7 @@ import { SchemeService } from '../scheme.service';
 interface WorkTime {
   starttime: string;
   endtime: string;
+  daty: [];
 }
 
 export interface ScheduleData {
@@ -14,6 +15,8 @@ export interface ScheduleData {
     [key: string]: WorkTime[] | null;
   };
   czaswizyty: number;
+  startdataharmonogramu: string;
+  enddataharmonogramu: string;
 }
 
 @Component({
@@ -75,7 +78,6 @@ export class SchemeDisplayComponent implements OnInit {
             }
           });
         } else {
-          // If there are no work times defined for the day, add it to the schedule
           const scheduleEntry = this.schedule.find(
             (entry) => entry.day === dayName
           );

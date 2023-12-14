@@ -41,6 +41,7 @@ import { SchemeDisplayComponent } from './scheme-display/scheme-display.componen
 import { WebbookingComponent } from './webbooking/webbooking.component';
 import { WebbookingInfoComponent } from './webbooking-info/webbooking-info.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
+import { Sandboxv2Component } from './sandboxv2/sandboxv2.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { PatientFormComponent } from './patient-form/patient-form.component';
     WebbookingComponent,
     WebbookingInfoComponent,
     PatientFormComponent,
+    Sandboxv2Component,
   ],
   imports: [
     BrowserModule,
