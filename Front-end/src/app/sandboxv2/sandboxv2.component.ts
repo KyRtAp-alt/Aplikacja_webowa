@@ -28,8 +28,9 @@ interface WygenerowanyHarmonogram {
 })
 export class Sandboxv2Component implements OnInit {
   @Input() scheduleId: string = '';
-
   harmonogramy: Harmonogram[] = [];
+  widoczneDni: WygenerowanyHarmonogram[] = [];
+  pokazaneDni: number = 6; // Ilość wyświetlanych dni naraz
 
   // dniZData1: WygenerowanyHarmonogram[] = [];
   // dniZData2: WygenerowanyHarmonogram[] = [];
@@ -43,6 +44,7 @@ export class Sandboxv2Component implements OnInit {
       (data: Harmonogram[]) => {
         this.harmonogramy = data.filter((item) => item._id === this.scheduleId);
         this.generujHarmonogram();
+        this.sortujHarmonogram();
       },
       (error) => {
         console.error('Error fetching schedule data:', error);
@@ -55,29 +57,57 @@ export class Sandboxv2Component implements OnInit {
       const { nazwaharmonogramu, czaspracy, czaswizyty } = wpis;
 
       for (const dzienTygodnia in czaspracy) {
-        if (czaspracy[dzienTygodnia] && czaspracy[dzienTygodnia][0]) {
-          for (const dataKey in czaspracy[dzienTygodnia][0].daty) {
-            const data = czaspracy[dzienTygodnia][0].daty[dataKey];
-            const startTime = czaspracy[dzienTygodnia][0].starttime;
-            const endTime = czaspracy[dzienTygodnia][0].endtime;
-            const godziny: string[] = [];
+        if (czaspracy[dzienTygodnia] && czaspracy[dzienTygodnia].length > 0) {
+          czaspracy[dzienTygodnia].forEach((harmonogramDlaDnia) => {
+            if (harmonogramDlaDnia.daty) {
+              Object.entries(harmonogramDlaDnia.daty).forEach(
+                ([dataKey, data]) => {
+                  const startTime = harmonogramDlaDnia.starttime;
+                  const endTime = harmonogramDlaDnia.endtime;
+                  const godziny: string[] = [];
 
-            let aktualnaGodzina = startTime;
-            while (aktualnaGodzina < endTime) {
-              godziny.push(aktualnaGodzina);
-              aktualnaGodzina = this.dodajCzas(aktualnaGodzina, czaswizyty);
+                  let aktualnaGodzina = startTime;
+                  while (aktualnaGodzina < endTime) {
+                    godziny.push(aktualnaGodzina);
+                    aktualnaGodzina = this.dodajCzas(
+                      aktualnaGodzina,
+                      czaswizyty
+                    );
+                  }
+
+                  this.wygenerowanyHarmonogram.push({
+                    nazwaHarmonogramu: nazwaharmonogramu,
+                    dzienTygodnia: dzienTygodnia,
+                    data: data,
+                    godziny: godziny,
+                  });
+                }
+              );
             }
-
-            this.wygenerowanyHarmonogram.push({
-              nazwaHarmonogramu: nazwaharmonogramu,
-              dzienTygodnia: dzienTygodnia,
-              data: data,
-              godziny: godziny,
-            });
-          }
+          });
         }
       }
     });
+  }
+
+  sortujHarmonogram() {
+    this.wygenerowanyHarmonogram.sort((a, b) => {
+      const dateA = this.getDateObject(a.data);
+      const dateB = this.getDateObject(b.data);
+
+      if (dateA.year !== dateB.year) {
+        return dateA.year - dateB.year;
+      } else if (dateA.month !== dateB.month) {
+        return dateA.month - dateB.month;
+      } else {
+        return dateA.day - dateB.day;
+      }
+    });
+  }
+
+  getDateObject(dateString: string) {
+    const [day, month, year] = dateString.split('-').map(Number);
+    return { day, month, year };
   }
 
   dodajCzas(start: string, czas: number): string {
