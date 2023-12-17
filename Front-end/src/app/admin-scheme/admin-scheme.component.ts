@@ -66,21 +66,33 @@ export class AdminSchemeComponent {
   srodaOd: string = '';
   srodaDo: string = '';
   srodaAktywny: boolean = true;
+  liczbaTygodni3: number = 0;
+  tygodnie3: number[] = [];
+  daty3: { [key: number]: string | null } = {};
 
   //czwartek
   czwartekOd: string = '';
   czwartekDo: string = '';
   czwartekAktywny: boolean = true;
+  liczbaTygodni4: number = 0;
+  tygodnie4: number[] = [];
+  daty4: { [key: number]: string | null } = {};
 
   //piatek
   piatekOd: string = '';
   piatekDo: string = '';
   piatekAktywny: boolean = true;
+  liczbaTygodni5: number = 0;
+  tygodnie5: number[] = [];
+  daty5: { [key: number]: string | null } = {};
 
   //sobota
   sobotaOd: string = '';
   sobotaDo: string = '';
   sobotaAktywny: boolean = true;
+  liczbaTygodni6: number = 0;
+  tygodnie6: number[] = [];
+  daty6: { [key: number]: string | null } = {};
 
   constructor(private schemeService: SchemeService) {}
 
@@ -97,7 +109,7 @@ export class AdminSchemeComponent {
               {
                 starttime: this.poniedzialekOd,
                 endtime: this.poniedzialekDo,
-                daty: this.daty1,
+                daty: this.formatDates(this.daty1),
               },
             ]
           : null,
@@ -106,22 +118,46 @@ export class AdminSchemeComponent {
               {
                 starttime: this.wtorekOd,
                 endtime: this.wtorekDo,
-                daty: this.daty2,
+                daty: this.formatDates(this.daty2),
               },
             ]
           : null,
-        // sroda: this.srodaAktywny
-        //   ? [{ starttime: this.srodaOd, endtime: this.srodaDo }]
-        //   : null,
-        // czwartek: this.czwartekAktywny
-        //   ? [{ starttime: this.czwartekOd, endtime: this.czwartekDo }]
-        //   : null,
-        // piatek: this.piatekAktywny
-        //   ? [{ starttime: this.piatekOd, endtime: this.piatekDo }]
-        //   : null,
-        // sobota: this.sobotaAktywny
-        //   ? [{ starttime: this.sobotaOd, endtime: this.sobotaDo }]
-        //   : null,
+        sroda: this.srodaAktywny
+          ? [
+              {
+                starttime: this.srodaOd,
+                endtime: this.srodaDo,
+                daty: this.formatDates(this.daty3),
+              },
+            ]
+          : null,
+        czwartek: this.czwartekAktywny
+          ? [
+              {
+                starttime: this.czwartekOd,
+                endtime: this.czwartekDo,
+                daty: this.formatDates(this.daty4),
+              },
+            ]
+          : null,
+        piatek: this.piatekAktywny
+          ? [
+              {
+                starttime: this.piatekOd,
+                endtime: this.piatekDo,
+                daty: this.formatDates(this.daty5),
+              },
+            ]
+          : null,
+        sobota: this.sobotaAktywny
+          ? [
+              {
+                starttime: this.sobotaOd,
+                endtime: this.sobotaDo,
+                daty: this.formatDates(this.daty6),
+              },
+            ]
+          : null,
       },
       czaswizyty: this.czasWizyty,
     };
@@ -135,6 +171,23 @@ export class AdminSchemeComponent {
         console.error(error);
       }
     );
+  }
+
+  formatDates(dates: { [key: number]: string | null }): {
+    [key: number]: string | null;
+  } {
+    const formattedDates: { [key: number]: string | null } = {};
+
+    for (const key in dates) {
+      if (dates[key] !== null) {
+        const dateParts = (dates[key] as string).split('-');
+        formattedDates[key] = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+      } else {
+        formattedDates[key] = null;
+      }
+    }
+
+    return formattedDates;
   }
 
   editScheme(scheme: any) {
@@ -159,12 +212,12 @@ export class AdminSchemeComponent {
       );
   }
 
-  private parseTime(timeString: string): number[] {
-    const [hours, minutes] = timeString
-      .split(':')
-      .map((part) => parseInt(part, 10));
-    return [hours, minutes];
-  }
+  // private parseTime(timeString: string): number[] {
+  //   const [hours, minutes] = timeString
+  //     .split(':')
+  //     .map((part) => parseInt(part, 10));
+  //   return [hours, minutes];
+  // }
   //Koniec formularza
 
   getSchemes() {
@@ -201,10 +254,10 @@ export class AdminSchemeComponent {
       { length: this.liczbaTygodni1 },
       (_, index) => index + 1
     );
-    this.initializeDates();
+    this.initializeDates1();
   }
 
-  initializeDates() {
+  initializeDates1() {
     let currentDate: Date | null = null;
 
     for (const tydzien of this.tygodnie1) {
@@ -240,7 +293,7 @@ export class AdminSchemeComponent {
       { length: this.liczbaTygodni2 },
       (_, index) => index + 1
     );
-    this.initializeDates();
+    this.initializeDates2();
   }
 
   initializeDates2() {
@@ -268,6 +321,162 @@ export class AdminSchemeComponent {
           currentDate = new Date(currentDate);
           currentDate.setDate(currentDate.getDate() + 7);
           this.daty2[tydzien] = currentDate.toISOString().split('T')[0];
+        }
+      }
+    }
+  }
+
+  //SRODA
+  generateTygodnie3() {
+    this.tygodnie3 = Array.from(
+      { length: this.liczbaTygodni3 },
+      (_, index) => index + 1
+    );
+    this.initializeDates3();
+  }
+
+  initializeDates3() {
+    let currentDate: Date | null = null;
+
+    for (const tydzien of this.tygodnie3) {
+      if (currentDate) {
+        currentDate = new Date(currentDate);
+        currentDate.setDate(currentDate.getDate() + 7);
+        this.daty3[tydzien] = currentDate.toISOString().split('T')[0];
+      } else {
+        this.daty3[tydzien] = null;
+      }
+    }
+  }
+
+  updateDates3(changedTydzien: number) {
+    const changedDate = this.daty3[changedTydzien];
+
+    if (changedDate) {
+      let currentDate: Date = new Date(changedDate);
+
+      for (const tydzien of this.tygodnie3) {
+        if (tydzien !== changedTydzien) {
+          currentDate = new Date(currentDate);
+          currentDate.setDate(currentDate.getDate() + 7);
+          this.daty3[tydzien] = currentDate.toISOString().split('T')[0];
+        }
+      }
+    }
+  }
+
+  //CZWARTEK
+  generateTygodnie4() {
+    this.tygodnie4 = Array.from(
+      { length: this.liczbaTygodni4 },
+      (_, index) => index + 1
+    );
+    this.initializeDates4();
+  }
+
+  initializeDates4() {
+    let currentDate: Date | null = null;
+
+    for (const tydzien of this.tygodnie4) {
+      if (currentDate) {
+        currentDate = new Date(currentDate);
+        currentDate.setDate(currentDate.getDate() + 7);
+        this.daty4[tydzien] = currentDate.toISOString().split('T')[0];
+      } else {
+        this.daty4[tydzien] = null;
+      }
+    }
+  }
+
+  updateDates4(changedTydzien: number) {
+    const changedDate = this.daty4[changedTydzien];
+
+    if (changedDate) {
+      let currentDate: Date = new Date(changedDate);
+
+      for (const tydzien of this.tygodnie4) {
+        if (tydzien !== changedTydzien) {
+          currentDate = new Date(currentDate);
+          currentDate.setDate(currentDate.getDate() + 7);
+          this.daty4[tydzien] = currentDate.toISOString().split('T')[0];
+        }
+      }
+    }
+  }
+
+  //PIATEK
+  generateTygodnie5() {
+    this.tygodnie5 = Array.from(
+      { length: this.liczbaTygodni5 },
+      (_, index) => index + 1
+    );
+    this.initializeDates5();
+  }
+
+  initializeDates5() {
+    let currentDate: Date | null = null;
+
+    for (const tydzien of this.tygodnie5) {
+      if (currentDate) {
+        currentDate = new Date(currentDate);
+        currentDate.setDate(currentDate.getDate() + 7);
+        this.daty5[tydzien] = currentDate.toISOString().split('T')[0];
+      } else {
+        this.daty5[tydzien] = null;
+      }
+    }
+  }
+
+  updateDates5(changedTydzien: number) {
+    const changedDate = this.daty5[changedTydzien];
+
+    if (changedDate) {
+      let currentDate: Date = new Date(changedDate);
+
+      for (const tydzien of this.tygodnie5) {
+        if (tydzien !== changedTydzien) {
+          currentDate = new Date(currentDate);
+          currentDate.setDate(currentDate.getDate() + 7);
+          this.daty5[tydzien] = currentDate.toISOString().split('T')[0];
+        }
+      }
+    }
+  }
+
+  //SOBOTA
+  generateTygodnie6() {
+    this.tygodnie6 = Array.from(
+      { length: this.liczbaTygodni6 },
+      (_, index) => index + 1
+    );
+    this.initializeDates6();
+  }
+
+  initializeDates6() {
+    let currentDate: Date | null = null;
+
+    for (const tydzien of this.tygodnie6) {
+      if (currentDate) {
+        currentDate = new Date(currentDate);
+        currentDate.setDate(currentDate.getDate() + 7);
+        this.daty6[tydzien] = currentDate.toISOString().split('T')[0];
+      } else {
+        this.daty6[tydzien] = null;
+      }
+    }
+  }
+
+  updateDates6(changedTydzien: number) {
+    const changedDate = this.daty6[changedTydzien];
+
+    if (changedDate) {
+      let currentDate: Date = new Date(changedDate);
+
+      for (const tydzien of this.tygodnie6) {
+        if (tydzien !== changedTydzien) {
+          currentDate = new Date(currentDate);
+          currentDate.setDate(currentDate.getDate() + 7);
+          this.daty6[tydzien] = currentDate.toISOString().split('T')[0];
         }
       }
     }

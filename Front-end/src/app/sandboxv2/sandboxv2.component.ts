@@ -55,24 +55,26 @@ export class Sandboxv2Component implements OnInit {
       const { nazwaharmonogramu, czaspracy, czaswizyty } = wpis;
 
       for (const dzienTygodnia in czaspracy) {
-        for (const dataKey in czaspracy[dzienTygodnia][0].daty) {
-          const data = czaspracy[dzienTygodnia][0].daty[dataKey];
-          const startTime = czaspracy[dzienTygodnia][0].starttime;
-          const endTime = czaspracy[dzienTygodnia][0].endtime;
-          const godziny: string[] = [];
+        if (czaspracy[dzienTygodnia] && czaspracy[dzienTygodnia][0]) {
+          for (const dataKey in czaspracy[dzienTygodnia][0].daty) {
+            const data = czaspracy[dzienTygodnia][0].daty[dataKey];
+            const startTime = czaspracy[dzienTygodnia][0].starttime;
+            const endTime = czaspracy[dzienTygodnia][0].endtime;
+            const godziny: string[] = [];
 
-          let aktualnaGodzina = startTime;
-          while (aktualnaGodzina < endTime) {
-            godziny.push(aktualnaGodzina);
-            aktualnaGodzina = this.dodajCzas(aktualnaGodzina, czaswizyty);
+            let aktualnaGodzina = startTime;
+            while (aktualnaGodzina < endTime) {
+              godziny.push(aktualnaGodzina);
+              aktualnaGodzina = this.dodajCzas(aktualnaGodzina, czaswizyty);
+            }
+
+            this.wygenerowanyHarmonogram.push({
+              nazwaHarmonogramu: nazwaharmonogramu,
+              dzienTygodnia: dzienTygodnia,
+              data: data,
+              godziny: godziny,
+            });
           }
-
-          this.wygenerowanyHarmonogram.push({
-            nazwaHarmonogramu: nazwaharmonogramu,
-            dzienTygodnia: dzienTygodnia,
-            data: data,
-            godziny: godziny,
-          });
         }
       }
     });
