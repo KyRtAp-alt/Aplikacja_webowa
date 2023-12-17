@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SchemeService } from '../scheme.service';
 
 interface Harmonogram {
+  _id: string;
   nazwaharmonogramu: string;
   czaspracy: {
     [dzienTygodnia: string]: {
@@ -25,42 +27,27 @@ interface WygenerowanyHarmonogram {
   styleUrls: ['./sandboxv2.component.scss'],
 })
 export class Sandboxv2Component implements OnInit {
-  harmonogramy: Harmonogram[] = [
-    {
-      nazwaharmonogramu: 'test2',
-      czaspracy: {
-        poniedzialek: [
-          {
-            starttime: '08:00',
-            endtime: '12:00',
-            daty: {
-              '1': '2023-12-18',
-              '2': '2023-12-25',
-            },
-          },
-        ],
-        wtorek: [
-          {
-            starttime: '09:00',
-            endtime: '13:00',
-            daty: {
-              '1': '2023-12-19',
-              '2': '2023-12-26',
-            },
-          },
-        ],
-      },
-      czaswizyty: 30,
-    },
-  ];
+  @Input() scheduleId: string = '';
 
-  dniZData1: WygenerowanyHarmonogram[] = [];
-  dniZData2: WygenerowanyHarmonogram[] = [];
+  harmonogramy: Harmonogram[] = [];
+
+  // dniZData1: WygenerowanyHarmonogram[] = [];
+  // dniZData2: WygenerowanyHarmonogram[] = [];
 
   wygenerowanyHarmonogram: WygenerowanyHarmonogram[] = [];
 
+  constructor(private schemeService: SchemeService) {}
+
   ngOnInit() {
-    this.generujHarmonogram();
+    this.schemeService.getScheduleData().subscribe(
+      (data: Harmonogram[]) => {
+        this.harmonogramy = data.filter((item) => item._id === this.scheduleId);
+        this.generujHarmonogram();
+      },
+      (error) => {
+        console.error('Error fetching schedule data:', error);
+      }
+    );
   }
 
   generujHarmonogram() {
@@ -72,10 +59,8 @@ export class Sandboxv2Component implements OnInit {
           const data = czaspracy[dzienTygodnia][0].daty[dataKey];
           const startTime = czaspracy[dzienTygodnia][0].starttime;
           const endTime = czaspracy[dzienTygodnia][0].endtime;
-
           const godziny: string[] = [];
 
-          // Generowanie godzin na podstawie czasu wizyty
           let aktualnaGodzina = startTime;
           while (aktualnaGodzina < endTime) {
             godziny.push(aktualnaGodzina);
@@ -93,7 +78,6 @@ export class Sandboxv2Component implements OnInit {
     });
   }
 
-  // Funkcja do dodawania czasu w minutach
   dodajCzas(start: string, czas: number): string {
     const [godziny, minuty] = start.split(':').map(Number);
     const czasWMinutach = godziny * 60 + minuty + czas;
