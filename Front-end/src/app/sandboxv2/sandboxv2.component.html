@@ -1,15 +1,20 @@
 <div class="ms">
     <div class="ms-outer">
-        <div class="ms-inner">
-            <div *ngFor="let wpis of wygenerowanyHarmonogram" class="day-container">
-                <div *ngIf="!wpis.godziny[0].startsWith('00:00')" class="day">
-                    <h3 class="days">{{ wpis.dzienTygodnia }}</h3>
-                    <p class="date">{{ wpis.data }}</p>
-                    <ul>
-                        <li class="hours" *ngFor="let godzina of wpis.godziny">{{ godzina }}</li>
-                    </ul>
+        <div class="ms-inner" [ngClass]="{'slide-animation': animacja}">
+            <button class="clickme" (click)="przewinDni(-1)">&lt;</button>
+            <div class="slider-container">
+                <div *ngFor="let wpis of wygenerowanyHarmonogram.slice(sliderIndex, sliderIndex + pokazaneDni)"
+                    class="day-container">
+                    <div *ngIf="!wpis.godziny[0].startsWith('00:00')" class="day">
+                        <h3 class="days">{{ wpis.dzienTygodnia }}</h3>
+                        <p class="date">{{ wpis.data }}</p>
+                        <ul>
+                            <li class="hours" *ngFor="let godzina of wpis.godziny">{{ godzina }}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+            <button class="clickme" (click)="przewinDni(1)">&gt;</button>
         </div>
     </div>
 </div>

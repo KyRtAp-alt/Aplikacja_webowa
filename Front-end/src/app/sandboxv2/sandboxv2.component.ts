@@ -30,7 +30,9 @@ export class Sandboxv2Component implements OnInit {
   @Input() scheduleId: string = '';
   harmonogramy: Harmonogram[] = [];
   widoczneDni: WygenerowanyHarmonogram[] = [];
-  pokazaneDni: number = 6; // Ilość wyświetlanych dni naraz
+  pokazaneDni: number = 6;
+  sliderIndex: number = 0;
+  animacja: boolean = false;
 
   // dniZData1: WygenerowanyHarmonogram[] = [];
   // dniZData2: WygenerowanyHarmonogram[] = [];
@@ -118,5 +120,24 @@ export class Sandboxv2Component implements OnInit {
     return `${String(noweGodziny).padStart(2, '0')}:${String(
       noweMinuty
     ).padStart(2, '0')}`;
+  }
+
+  przewinDni(ileDni: number) {
+    this.animacja = true;
+    this.sliderIndex += ileDni;
+
+    // Sprawdź czy nie wykracza poza granice
+    if (this.sliderIndex < 0) {
+      this.sliderIndex = 0;
+    } else if (
+      this.sliderIndex >
+      this.wygenerowanyHarmonogram.length - this.pokazaneDni
+    ) {
+      this.sliderIndex = this.wygenerowanyHarmonogram.length - this.pokazaneDni;
+    }
+
+    setTimeout(() => {
+      this.animacja = false;
+    }, 300);
   }
 }
