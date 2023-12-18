@@ -1,8 +1,5 @@
 <div class="ms">
     <div class="ms-outer">
-        <!-- <div class="main-title-border">
-            <h2 class="title-box">Umów wizytę</h2>
-        </div> -->
         <div class="ms_inner">
             <div class="loop-box" *ngFor="let doctor of doctors">
                 <div class="z">
@@ -24,88 +21,72 @@
                     </div>
                     <div>
                         <div *ngIf="doctor.showMore">
-                            <!-- <app-scheme-display [scheduleId]="selectedDoctor?.harmonogram"></app-scheme-display> -->
-                            <app-sandboxv2 [scheduleId]="selectedDoctor?.harmonogram"></app-sandboxv2>
+                            <app-sandboxv2 [scheduleId]="selectedDoctor?.harmonogram" [doctorId]="selectedDoctor?._id"
+                                (selectedInfo)="onHourSelected($event)"></app-sandboxv2>
                         </div>
-                        <div class="main-box-2" *ngIf="doctor.showMore">
-                            <div class="q">
-                                <div class="category2">
-                                    <div class="data-list">
-                                        <div class="">
-                                            <div class="" *ngIf="visits.length >0"></div>
-                                            <ul class="rabarbar">
-                                                <li class="" *ngFor="let visits of visits">
-                                                    <span (click)="openModal()"
-                                                        *ngFor="let hour of visits.wybranegodziny; let i = index">
-                                                        {{ hour }}
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div *ngIf="showForm" class="modal-background">
-                                            <div class="modal-content">
-                                                <div class="close-button-border">
-                                                    <button class="close-button" (click)="closeModal()">&times;</button>
+                        <div *ngIf="showModal" class="modal-background">
+                            <div class="modal-content">
+                                <div class="close-button-border">
+                                    <button class="close-button" (click)="closeModal()">&times;</button>
+                                </div>
+                                <div class="forms">
+                                    <div class="forms-outer">
+                                        <div class="forms-inner">
+                                            <div class="s">
+                                                <div class="img-border2">
+                                                    <img class="img2" src="../../assets/doctor-g2cd220903_1920.png">
                                                 </div>
-                                                <div class="forms">
-                                                    <div class="forms-outer">
-                                                        <div class="forms-inner">
-                                                            <div class="s">
-                                                                <div class="img-border2">
-                                                                    <img class="img2"
-                                                                        src="../../assets/doctor-g2cd220903_1920.png">
-                                                                </div>
-                                                                <span class="title">Rezerwacja wizyty</span>
-                                                                <span class="title">data - czas</span>
-                                                                <span class="title-m">Przychodnia medyczna
-                                                                    MedLife</span>
-                                                                <div class="form-name">
-                                                                    <span class="fn">{{doctor.kategoria}}</span>
-                                                                    <span class="fn">{{doctor.imie}}</span>
-                                                                    <span class="fn">{{doctor.nazwisko}}</span>
-                                                                </div>
-                                                                <div class="contact-form">
-                                                                    <div class="form2">
-                                                                        <div class="form-group">
-                                                                            <input class="border2" placeholder="Imie *"
-                                                                                [(ngModel)]="clientfirstname">
-                                                                            <input class="border2"
-                                                                                placeholder="Nazwisko *"
-                                                                                [(ngModel)]="clientlastname">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form2">
-                                                                        <div class="form-group">
-                                                                            <input class="border2"
-                                                                                placeholder="Telefon komórkowy *"
-                                                                                [(ngModel)]="clientcontact">
-                                                                            <input class="border2"
-                                                                                placeholder="E-mail *"
-                                                                                [(ngModel)]="clientmail">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form2">
-                                                                        <textarea class="name-2" name="content"
-                                                                            placeholder="Wpisz objawy, problemy, dodatkowe informacje (opcionalnie)"
-                                                                            [(ngModel)]="clientcontent"></textarea>
-                                                                    </div>
-                                                                    <div class="controls">
-                                                                        <div class="button-border-controls">
-                                                                            <button (click)="closeModal()"
-                                                                                class="button-close">REZYGNUJE</button>
-                                                                        </div>
-                                                                        <div class="button-border-controls">
-                                                                            <button class="button"
-                                                                                (click)="registerVisit()"
-                                                                                [disabled]="isEmptyFields()">
-                                                                                REJESTRUJE
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                <span class="title-m">Rezerwacja wizyty</span>
+                                                <p class="title">Dzien: {{selectedVisit.dzienTygodnia}}</p>
+                                                <p class="title">Data: {{ selectedVisit.data }}</p>
+                                                <p class="title">Godzina: {{ selectedVisit.godzina }}</p>
+                                                <!-- <span class="title-m">Przychodnia medyczna
+                                                    MedLife</span> -->
+                                                <!-- <div class="form-name">
+                                                    <span class="fn">{{doctor.kategoria}}</span>
+                                                    <span class="fn">{{doctor.imie}}</span>
+                                                    <span class="fn">{{doctor.nazwisko}}</span>
+                                                </div> -->
+                                                <div class="contact-form">
+                                                    <div class="form2">
+                                                        <div class="form-group">
+                                                            <input class="border2" placeholder="Imie *"
+                                                                [(ngModel)]="clientfirstname">
+                                                            <input class="border2" placeholder="Nazwisko *"
+                                                                [(ngModel)]="clientlastname">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form2">
+                                                        <div class="form-group">
+                                                            <input class="border2" placeholder="Telefon komórkowy *"
+                                                                [(ngModel)]="clientcontact">
+                                                            <input class="border2" placeholder="E-mail *"
+                                                                [(ngModel)]="clientmail">
+                                                        </div>
+                                                    </div>
+                                                    <div></div>
+                                                    <div style="display: none;">
+                                                        <input [(ngModel)]="selectedVisit.lekarz">
+                                                    </div>
+                                                    <div style="display: none;">
+                                                        <input [(ngModel)]="selectedVisit.dzienTygodnia">
+                                                    </div>
+                                                    <div style="display: none;">
+                                                        <input [(ngModel)]="selectedVisit.data">
+                                                    </div>
+                                                    <div style="display: none;">
+                                                        <input [(ngModel)]="selectedVisit.godzina">
+                                                    </div>
+                                                    <div class="controls">
+                                                        <div class="button-border-controls">
+                                                            <button (click)="closeModal()"
+                                                                class="button-close">Anuluj</button>
+                                                        </div>
+                                                        <div class="button-border-controls">
+                                                            <button class="button" (click)="registerVisit()"
+                                                                [disabled]="isEmptyFields()">
+                                                                Rezerwuj
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -124,87 +105,3 @@
 <a *ngIf="showScrollButton" class="scroll-to-top" (click)="scrollToTop()">
     <i class="fas fa-chevron-up">&#8593; </i>
 </a>
-
-<!-- pod scheme-display -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <span (click)="openModal()">8:35</span> -->
-<!-- <app-sandbox [starttime]="'08:00'" [endtime]="'10:00'"></app-sandbox> -->
-<!-- <div *ngIf="doctor.showMore">
-    <div *ngFor="let visit of visits">
-        <span>{{visit.nazwaharmonogramu}}</span>
-    </div>
-</div> -->
-
-
-
-<!-- <div *ngFor="let visit of visits">
-                                    <div (click)="openModal()">
-                                        {{visit.czaspracy}}
-                                    </div>
-                                </div> -->
-
-
-
-
-
-<!--Formularz -->
-
-<!-- <div class="schedule">
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th *ngFor="let day of daysOfWeek">{{ day }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let hour of availableHours">
-                <td>{{ hour }}</td>
-                <td (click)="openModal()" *ngFor="let day of daysOfWeek"
-                    [ngClass]="{'reserved': isHourReserved(day, hour)}"></td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
-
-
-<!-- <span>
-                                                {{visits.nazwa}}
-                                            </span> -->
-<!-- <div class="groszekborder">
-                                                <span class="groszek" *ngFor="let day of visits.dnitygodnia | keyvalue">
-                                                    {{ day.key }}
-                                                </span>
-                                            </div>
-                                            <div class="ccv-border">
-                                                <span class="ccv" *ngFor="let hour of visits.wybranegodziny | keyvalue"
-                                                    (click)="openModal()">
-                                                    {{ hour.key }}
-                                                </span>
-                                            </div> -->

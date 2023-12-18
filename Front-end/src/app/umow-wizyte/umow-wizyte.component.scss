@@ -51,8 +51,8 @@
   display: flex;
   justify-content: center;
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   left: 50%;
   top: 0%;
   transform: translate(-50%, -50%);
@@ -74,7 +74,7 @@
 .box-border {
   background-color: #55b8b2;
   width: 1300px;
-  height: 150px;
+  height: 130px;
   display: grid;
   justify-content: center;
   align-items: center;
@@ -230,7 +230,7 @@
 }
 
 .clickme {
-  width: 150px;
+  width: 100px;
   height: 34px;
   background-color: #bbeefc;
   border: 0px;
@@ -261,7 +261,7 @@
 
 .forms {
   width: 800px;
-  height: 450px;
+  // height: 450px;
 }
 
 .forms-outer {
@@ -288,6 +288,11 @@
 .title-m {
   color: #01a3a4;
   font-size: 20px;
+}
+
+.title {
+  font-size: 16px;
+  text-transform: capitalize;
 }
 
 .title,
@@ -344,6 +349,10 @@
   color: white;
 }
 
+.button:hover {
+  background-color: #22a6b3;
+}
+
 .close-button-border {
   display: flex;
   justify-content: flex-end;
@@ -355,6 +364,7 @@
   border: 1px solid #01a3a4;
   background-color: white;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .button-close {

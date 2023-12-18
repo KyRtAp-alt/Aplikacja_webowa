@@ -1,7 +1,7 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { VisitService } from '../visit.service';
-import { SchemeService } from '../scheme.service';
+// import { SchemeService } from '../scheme.service';
 
 @Component({
   selector: 'app-umow-wizyte',
@@ -11,10 +11,17 @@ import { SchemeService } from '../scheme.service';
 export class UmowWizyteComponent {
   selectedScheduleId: string | null = null;
   selectedDoctor: any;
-
   scheduleId: string = '';
   currentDoctorSchedule: any[] = [];
-
+  showForm: boolean = false;
+  workname: any[] = [];
+  schemes: any[] = [];
+  dnitygodnia: any[] = [];
+  wybranegodziny: any[] = [];
+  showModal: boolean = false;
+  selectedVisit: any = {};
+  showScrollButton = false;
+  //doctor
   doctors: any[] = [];
   firstname: string = '';
   lastname: string = '';
@@ -24,14 +31,6 @@ export class UmowWizyteComponent {
   currentDoctorIndex: number = 0;
   currentDoctor: any;
   expandedDoctor: any;
-  //ros
-  ross: any[] = [];
-  name: string = '';
-  currentRosIndex: number = 0;
-  currentRos: any;
-  selectedRos: any;
-  specializations: string[] = [];
-  showForm: boolean = false;
   //visit
   visits: any[] = [];
   clientfirstname: string = '';
@@ -39,34 +38,28 @@ export class UmowWizyteComponent {
   clientcontact: string = '';
   clientmail: string = '';
   clientcontent: string = '';
-
-  workname: any[] = [];
-
-  schemes: any[] = [];
-  dnitygodnia: any[] = [];
-  wybranegodziny: any[] = [];
+  data: string = '';
 
   constructor(
     private doctorService: DoctorService,
-    private visitService: VisitService,
-    private schemeService: SchemeService
+    private visitService: VisitService // private schemeService: SchemeService
   ) {}
 
   ngOnInit() {
     this.getDoctors();
   }
 
-  getDoctorSchedule(doctorId: string) {
-    this.schemeService.getHarmonogramData(doctorId).subscribe(
-      (schedule: any) => {
-        console.log('Harmonogram:', schedule);
-        this.currentDoctorSchedule = schedule;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
+  // getDoctorSchedule(doctorId: string) {
+  //   this.schemeService.getHarmonogramData(doctorId).subscribe(
+  //     (schedule: any) => {
+  //       console.log('Harmonogram:', schedule);
+  //       this.currentDoctorSchedule = schedule;
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 
   getDoctors() {
     this.doctorService.getDoctors().subscribe(
@@ -80,31 +73,21 @@ export class UmowWizyteComponent {
     );
   }
 
-  // getSchemes() {
-  //   this.schemeService.getScheme().subscribe(
-  //     (schemes: any) => {
-  //       console.log(schemes);
-  //       this.schemes = schemes;
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-
   addVisit() {
     const newVisit = {
       imieklienta: this.clientfirstname,
       nazwiskoklienta: this.clientlastname,
       kontaktklienta: this.clientcontact,
       mailklient: this.clientmail,
-      opisklienta: this.clientcontent,
+      lekarz: this.selectedVisit.lekarz,
+      dzienTygodnia: this.selectedVisit.dzienTygodnia,
+      dzien: this.selectedVisit.data,
+      godzina: this.selectedVisit.godzina,
     };
 
     this.visitService.addVisit(newVisit).subscribe(
       () => {
         console.log('Dodano wizyte');
-        // this.clearForm();
         this.closeModal();
       },
       (error) => {
@@ -131,8 +114,6 @@ export class UmowWizyteComponent {
     );
   }
 
-  showScrollButton = false;
-
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.showScrollButton = window.scrollY > 400;
@@ -144,10 +125,6 @@ export class UmowWizyteComponent {
 
   openModal() {
     this.showForm = true;
-  }
-
-  closeModal() {
-    this.showForm = false;
   }
 
   closeModalVis() {
@@ -164,63 +141,13 @@ export class UmowWizyteComponent {
     doctor.showMore = false;
   }
 
-  // selectedDoctor: any;
+  onHourSelected(info: any) {
+    console.log('Wybrano godzinę:', info);
+    this.selectedVisit = info;
+    this.showModal = true;
+  }
 
-  // onShowMore(doctor: any) {
-  //   doctor.showMore = true;
-  //   this.selectedDoctor = doctor;
-  //   this.getSchemes(doctor);
-  // }
-
-  // onShowLess(doctor: any) {
-  //   doctor.showMore = false;
-  // }
+  closeModal() {
+    this.showModal = false;
+  }
 }
-
-// daysOfWeek: string[] = [
-//   'Poniedzialek',
-//   'Wtorek',
-//   'Sroda',
-//   'Czwartek',
-//   'Piatek',
-// ];
-// availableHours: string[] = [
-//   '8:00',
-//   '8:30',
-//   '9:00',
-//   '9:30',
-//   '10:00',
-//   '10:30',
-//   '11:00',
-//   '11:30',
-//   '12:00',
-//   '12:30',
-//   '13:00',
-//   '13:30',
-//   '14:00',
-// ];
-
-// isHourReserved(day: string, hour: string): boolean {
-//   return this.reservedAppointments.some(
-//     (appointment) => appointment.day === day && appointment.hour === hour
-//   );
-// }
-
-// reservedAppointments: any[] = [
-//   { day: 'Wtorek', hour: '8:00' },
-//   { day: 'Wtorek', hour: '8:30' },
-//   { day: 'Sroda', hour: '9:30' },
-// ];
-
-// getRoss() {
-//   this.rosService.getRoss().subscribe(
-//     (ross: any) => {
-//       console.log(ross);
-//       this.ross = ross;
-//       this.specializations = ross.map((ros: any) => ros.nazwa);
-//     },
-//     (error) => {
-//       console.error(error);
-//     }
-//   );
-// }

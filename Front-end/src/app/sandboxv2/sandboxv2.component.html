@@ -9,7 +9,10 @@
                         <h3 class="days">{{ wpis.dzienTygodnia }}</h3>
                         <p class="date">{{ wpis.data }}</p>
                         <ul>
-                            <li class="hours" *ngFor="let godzina of wpis.godziny">{{ godzina }}</li>
+                            <li class="hours" *ngFor="let godzina of wpis.godziny"
+                                (click)="onHourSelected(wpis.dzienTygodnia, wpis.data, godzina)">
+                                {{ godzina }}
+                            </li>
                         </ul>
                     </div>
                 </div>

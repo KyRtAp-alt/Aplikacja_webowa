@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SchemeService } from '../scheme.service';
 
 interface Harmonogram {
@@ -28,6 +28,21 @@ interface WygenerowanyHarmonogram {
 })
 export class Sandboxv2Component implements OnInit {
   @Input() scheduleId: string = '';
+  @Input() doctorId: string = '';
+  @Output() selectedInfo = new EventEmitter<any>();
+  selectedDoctor: any;
+  selectedTimeInfo: any = null;
+
+  onHourSelected(dzienTygodnia: string, data: string, godzina: string) {
+    // Przekazujemy informacje do rodzica, łącznie z id lekarza
+    this.selectedInfo.emit({
+      lekarz: this.doctorId,
+      dzienTygodnia,
+      data,
+      godzina,
+    });
+  }
+
   harmonogramy: Harmonogram[] = [];
   widoczneDni: WygenerowanyHarmonogram[] = [];
   pokazaneDni: number = 6;
