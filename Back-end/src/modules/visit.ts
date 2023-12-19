@@ -32,6 +32,23 @@ router.post("/", async (req: Request, res: Response) => {
     .then(() => res.status(200).send("Dodano wizyte"));
 });
 
+router.get("/:lekarzId", async (req: Request, res: Response) => {
+  try {
+    const lekarzId = req.params.lekarzId;
+    const db = client.db();
+    const collection = db.collection("visit");
+
+    // Znajdź wizyty dla danego lekarza
+    const result = await collection.find({ lekarz: lekarzId }).toArray();
+
+    // Odpowiedz z wynikami
+    res.status(200).send(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Wystąpił błąd serwera");
+  }
+});
+
 router.delete("/:id", async (req: Request, res: Response) => {
   try {
     await client.connect();

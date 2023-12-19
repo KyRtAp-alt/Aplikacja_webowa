@@ -141,7 +141,6 @@ export class SchemeDisplayComponent implements OnInit {
     this.animacja = true;
     this.sliderIndex += ileDni;
 
-    // Sprawdź czy nie wykracza poza granice
     if (this.sliderIndex < 0) {
       this.sliderIndex = 0;
     } else if (

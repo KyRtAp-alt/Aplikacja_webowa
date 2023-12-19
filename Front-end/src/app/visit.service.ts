@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +35,19 @@ export class VisitService {
   getDoctorDate(pracownikID: string): Observable<any> {
     const url = `http://localhost:3000/scheme/${pracownikID}`;
     return this.http.get(url);
+  }
+
+  getReservedHoursForDoctor(doctorId: string): Observable<string[]> {
+    const url = `${this.apiUrl}/visit/${doctorId}`; // Utworzenie pełnego URL
+    return this.http.get(url).pipe(
+      map((data: any) => {
+        console.log('Reserved hours data:', data);
+        return data.map((visit: any) => visit.godzina);
+      }),
+      catchError((error: any) => {
+        console.error('Error fetching reserved hours:', error);
+        return [];
+      })
+    );
   }
 }
