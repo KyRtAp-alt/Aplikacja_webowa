@@ -1,20 +1,22 @@
-// .name {
-//   display: flex;
-//   justify-content: center;
-//   font-size: 16px;
-//   margin-bottom: 5px;
-//   font-family: sans-serif;
-// }
-
 .ms {
   display: flex;
   justify-content: center;
-  // margin-top: 40px;
 }
 
 .ms-outer {
   width: 100%;
   max-width: 1440px;
+}
+
+.ms-inner {
+}
+
+.loop-box {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 140px; //180px
 }
 
 .main-title-border {
@@ -37,14 +39,6 @@
   font-family: sans-serif;
   font-size: 30px;
   font-weight: 300;
-}
-
-.loop-box {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  margin-top: 140px; //180px
 }
 
 .img-border {
@@ -291,7 +285,7 @@
 }
 
 .title {
-  font-size: 16px;
+  font-size: 14px;
   text-transform: capitalize;
 }
 
@@ -299,7 +293,7 @@
 .title-m {
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .q {
@@ -308,19 +302,18 @@
 
 .border2 {
   width: 200px;
-  height: 25px;
+  height: 30px;
   border-radius: 5px;
-  border: 2px solid #01a3a4;
+  border: 1px solid #01a3a4;
 }
 
 .form2 {
-  // display: flex;
   margin-top: 20px;
 }
 
 .form-group {
-  display: flex;
-  justify-content: space-between;
+  // display: block;
+  // justify-content: space-between;
 }
 
 .name-2 {
@@ -339,6 +332,14 @@
   margin-top: 15px;
 }
 
+.contact-form {
+  padding-top: 20px;
+  padding-bottom: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 20px 20px;
+}
+
 .button-border-controls {
   border: 0px;
 }
@@ -347,10 +348,11 @@
   border: 0px;
   background-color: #01a3a4;
   color: white;
+  transition: background-color 1s ease;
 }
 
 .button:hover {
-  background-color: #22a6b3;
+  background-color: #55b8b2;
 }
 
 .close-button-border {
@@ -375,9 +377,10 @@
 
 .button-close,
 .button {
-  width: 150px;
-  height: 50px;
+  width: 130px;
+  height: 35px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .scroll-to-top {

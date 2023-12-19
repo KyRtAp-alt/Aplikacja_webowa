@@ -1,8 +1,8 @@
 <div class="ms">
     <div class="ms-outer">
-        <div class="ms_inner">
+        <div class="ms-inner">
             <div class="loop-box" *ngFor="let doctor of doctors">
-                <div class="z">
+                <div>
                     <div class="img-border">
                         <img class="img" src="../../assets/doctor-g2cd220903_1920.png">
                     </div>
@@ -24,8 +24,6 @@
                             <app-scheme-display [scheduleId]="selectedDoctor?.harmonogram"
                                 [doctorId]="selectedDoctor?._id"
                                 (selectedInfo)="onHourSelected($event)"></app-scheme-display>
-                            <!-- <app-sandboxv2 [scheduleId]="selectedDoctor?.harmonogram" [doctorId]="selectedDoctor?._id"
-                                (selectedInfo)="onHourSelected($event)"></app-sandboxv2> -->
                         </div>
                         <div *ngIf="showModal" class="modal-background">
                             <div class="modal-content">
@@ -43,31 +41,23 @@
                                                 <p class="title">Dzien: {{selectedVisit.dzienTygodnia}}</p>
                                                 <p class="title">Data: {{ selectedVisit.data }}</p>
                                                 <p class="title">Godzina: {{ selectedVisit.godzina }}</p>
-                                                <!-- <span class="title-m">Przychodnia medyczna
-                                                    MedLife</span> -->
-                                                <!-- <div class="form-name">
-                                                    <span class="fn">{{doctor.kategoria}}</span>
-                                                    <span class="fn">{{doctor.imie}}</span>
-                                                    <span class="fn">{{doctor.nazwisko}}</span>
-                                                </div> -->
                                                 <div class="contact-form">
-                                                    <div class="form2">
-                                                        <div class="form-group">
-                                                            <input class="border2" placeholder="Imie *"
-                                                                [(ngModel)]="clientfirstname">
-                                                            <input class="border2" placeholder="Nazwisko *"
-                                                                [(ngModel)]="clientlastname">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <input class="border2" placeholder="Imie *"
+                                                            [(ngModel)]="clientfirstname">
                                                     </div>
-                                                    <div class="form2">
-                                                        <div class="form-group">
-                                                            <input class="border2" placeholder="Telefon komórkowy *"
-                                                                [(ngModel)]="clientcontact">
-                                                            <input class="border2" placeholder="E-mail *"
-                                                                [(ngModel)]="clientmail">
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <input class="border2" placeholder="Nazwisko *"
+                                                            [(ngModel)]="clientlastname">
                                                     </div>
-                                                    <div></div>
+                                                    <div class="form-group">
+                                                        <input class="border2" placeholder="Telefon komórkowy *"
+                                                            [(ngModel)]="clientcontact">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="border2" placeholder="E-mail *"
+                                                            [(ngModel)]="clientmail">
+                                                    </div>
                                                     <div style="display: none;">
                                                         <input [(ngModel)]="selectedVisit.lekarz">
                                                     </div>
@@ -80,17 +70,17 @@
                                                     <div style="display: none;">
                                                         <input [(ngModel)]="selectedVisit.godzina">
                                                     </div>
-                                                    <div class="controls">
-                                                        <div class="button-border-controls">
-                                                            <button (click)="closeModal()"
-                                                                class="button-close">Anuluj</button>
-                                                        </div>
-                                                        <div class="button-border-controls">
-                                                            <button class="button" (click)="registerVisit()"
-                                                                [disabled]="isEmptyFields()">
-                                                                Rezerwuj
-                                                            </button>
-                                                        </div>
+                                                </div>
+                                                <div class="controls">
+                                                    <div class="button-border-controls">
+                                                        <button (click)="closeModal()"
+                                                            class="button-close">Anuluj</button>
+                                                    </div>
+                                                    <div class="button-border-controls">
+                                                        <button class="button" (click)="registerVisit()"
+                                                            [disabled]="isEmptyFields()">
+                                                            Rezerwuj
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
