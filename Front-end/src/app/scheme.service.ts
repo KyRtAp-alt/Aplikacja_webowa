@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ScheduleData } from '../app/shceme-display/shceme-display.component';
 
 @Injectable({
   providedIn: 'root',
@@ -33,17 +32,6 @@ export class SchemeService {
 
   getHarmonogramData(harmonogramId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/doctor/${harmonogramId}`);
-  }
-
-  getScheduleDataByDoctorId(doctorId: string): Observable<ScheduleData> {
-    return this.http.get<ScheduleData>(
-      `http://localhost:3000/schedule/${doctorId}`
-    );
-  }
-
-  getScheduleForDoctor(doctorId: string): Observable<ScheduleData[]> {
-    const url = `${this.apiUrl}/doctor/${doctorId}`;
-    return this.http.get<ScheduleData[]>(url);
   }
 }
 

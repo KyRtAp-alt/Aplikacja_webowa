@@ -34,7 +34,6 @@ import { ReceptionReservationComponent } from './reception-reservation/reception
 // import { AdminSchemeComponent } from './admin-scheme/AdminSchemeComponent';
 import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
 import { AppointmentGeneratorService } from './appointment-generator.service';
-import { ShcemeDisplayComponent } from './shceme-display/shceme-display.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuardService } from './auth-guard.service';
 import { SchemeDisplayComponent } from './scheme-display/scheme-display.component';
@@ -74,7 +73,6 @@ import { Sandboxv2Component } from './sandboxv2/sandboxv2.component';
     HeaderReceptionComponent,
     ReceptionReservationComponent,
     AdminSchemeComponent,
-    ShcemeDisplayComponent,
     SchemeDisplayComponent,
     WebbookingComponent,
     WebbookingInfoComponent,

@@ -22,7 +22,6 @@ import { ReceptionReservationComponent } from './reception-reservation/reception
 // import { AdminSchemeComponent } from './admin-scheme/AdminSchemeComponent';
 import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
-import { ShcemeDisplayComponent } from './shceme-display/shceme-display.component';
 import { WebbookingComponent } from './webbooking/webbooking.component';
 
 const routes: Routes = [
@@ -45,7 +44,6 @@ const routes: Routes = [
   { path: 'admin', component: AdminLoginComponent },
   { path: 'admin-homepage', component: AdminHomepageComponent },
   { path: 'add-doctor', component: DoctorAddComponent },
-  { path: 'lekarze/:id', component: ShcemeDisplayComponent },
   { path: 'admin-blog', component: AdminBlogComponent },
   { path: 'ros', component: AdminRosComponent },
   { path: 'admin-harmonogram', component: AdminSchemeComponent },

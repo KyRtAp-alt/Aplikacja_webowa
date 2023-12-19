@@ -1,22 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
-import * as moment from 'moment';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SchemeService } from '../scheme.service';
 
-interface WorkTime {
-  starttime: string;
-  endtime: string;
-  daty: [];
-}
-
-export interface ScheduleData {
+interface Harmonogram {
   _id: string;
   nazwaharmonogramu: string;
   czaspracy: {
-    [key: string]: WorkTime[] | null;
+    [dzienTygodnia: string]: {
+      starttime: string;
+      endtime: string;
+      daty: { [data: string]: string };
+    }[];
   };
   czaswizyty: number;
-  startdataharmonogramu: string;
-  enddataharmonogramu: string;
+}
+
+interface WygenerowanyHarmonogram {
+  nazwaHarmonogramu: string;
+  dzienTygodnia: string;
+  data: string;
+  godziny: string[];
 }
 
 @Component({
@@ -26,21 +28,40 @@ export interface ScheduleData {
 })
 export class SchemeDisplayComponent implements OnInit {
   @Input() scheduleId: string = '';
-  // @Input() doctorId: string = '';
+  @Input() doctorId: string = '';
+  @Output() selectedInfo = new EventEmitter<any>();
+  selectedDoctor: any;
+  selectedTimeInfo: any = null;
 
-  showForm: boolean = false;
+  onHourSelected(dzienTygodnia: string, data: string, godzina: string) {
+    // Przekazujemy informacje do rodzica, łącznie z id lekarza
+    this.selectedInfo.emit({
+      lekarz: this.doctorId,
+      dzienTygodnia,
+      data,
+      godzina,
+    });
+  }
 
-  scheduleData: ScheduleData[] = [];
-  schedule: { day: string; hours: string[] }[] = [];
-  selectedDateTime: moment.Moment | null = null;
+  harmonogramy: Harmonogram[] = [];
+  widoczneDni: WygenerowanyHarmonogram[] = [];
+  pokazaneDni: number = 6;
+  sliderIndex: number = 0;
+  animacja: boolean = false;
+
+  // dniZData1: WygenerowanyHarmonogram[] = [];
+  // dniZData2: WygenerowanyHarmonogram[] = [];
+
+  wygenerowanyHarmonogram: WygenerowanyHarmonogram[] = [];
 
   constructor(private schemeService: SchemeService) {}
 
   ngOnInit() {
     this.schemeService.getScheduleData().subscribe(
-      (data: ScheduleData[]) => {
-        this.scheduleData = data.filter((item) => item._id === this.scheduleId);
-        this.generateSchedule();
+      (data: Harmonogram[]) => {
+        this.harmonogramy = data.filter((item) => item._id === this.scheduleId);
+        this.generujHarmonogram();
+        this.sortujHarmonogram();
       },
       (error) => {
         console.error('Error fetching schedule data:', error);
@@ -48,77 +69,90 @@ export class SchemeDisplayComponent implements OnInit {
     );
   }
 
-  generateSchedule() {
-    this.scheduleData.forEach((data) => {
-      Object.keys(data.czaspracy).forEach((day) => {
-        const dayName = this.mapDayName(day);
-        const workTimes: WorkTime[] | null = data.czaspracy[day];
+  generujHarmonogram() {
+    this.harmonogramy.forEach((wpis) => {
+      const { nazwaharmonogramu, czaspracy, czaswizyty } = wpis;
 
-        if (workTimes) {
-          workTimes.forEach((time) => {
-            const startTime = moment(time.starttime, 'HH:mm');
-            const endTime = moment(time.endtime, 'HH:mm');
-            const visitDuration = moment.duration(data.czaswizyty, 'minutes');
-            let currentDateTime = startTime.clone();
+      for (const dzienTygodnia in czaspracy) {
+        if (czaspracy[dzienTygodnia] && czaspracy[dzienTygodnia].length > 0) {
+          czaspracy[dzienTygodnia].forEach((harmonogramDlaDnia) => {
+            if (harmonogramDlaDnia.daty) {
+              Object.entries(harmonogramDlaDnia.daty).forEach(
+                ([dataKey, data]) => {
+                  const startTime = harmonogramDlaDnia.starttime;
+                  const endTime = harmonogramDlaDnia.endtime;
+                  const godziny: string[] = [];
 
-            while (currentDateTime.isBefore(endTime)) {
-              const timeString = currentDateTime.format('HH:mm');
-              const dateTime = currentDateTime.clone();
-              const scheduleEntry = this.schedule.find(
-                (entry) => entry.day === dayName
+                  let aktualnaGodzina = startTime;
+                  while (aktualnaGodzina < endTime) {
+                    godziny.push(aktualnaGodzina);
+                    aktualnaGodzina = this.dodajCzas(
+                      aktualnaGodzina,
+                      czaswizyty
+                    );
+                  }
+
+                  this.wygenerowanyHarmonogram.push({
+                    nazwaHarmonogramu: nazwaharmonogramu,
+                    dzienTygodnia: dzienTygodnia,
+                    data: data,
+                    godziny: godziny,
+                  });
+                }
               );
-
-              if (scheduleEntry) {
-                scheduleEntry.hours.push(timeString);
-              } else {
-                this.schedule.push({ day: dayName, hours: [timeString] });
-              }
-
-              currentDateTime.add(visitDuration);
             }
           });
-        } else {
-          const scheduleEntry = this.schedule.find(
-            (entry) => entry.day === dayName
-          );
-          if (!scheduleEntry) {
-            this.schedule.push({ day: dayName, hours: [] });
-          }
         }
-      });
+      }
     });
   }
 
-  private mapDayName(day: string): string {
-    switch (day) {
-      case 'poniedzialek':
-        return 'Poniedziałek';
-      case 'wtorek':
-        return 'Wtorek';
-      case 'sroda':
-        return 'Środa';
-      case 'czwartek':
-        return 'Czwartek';
-      case 'piatek':
-        return 'Piątek';
-      case 'sobota':
-        return 'Sobota';
-      case 'niedziela':
-        return 'Niedziela';
-      default:
-        return day;
+  sortujHarmonogram() {
+    this.wygenerowanyHarmonogram.sort((a, b) => {
+      const dateA = this.getDateObject(a.data);
+      const dateB = this.getDateObject(b.data);
+
+      if (dateA.year !== dateB.year) {
+        return dateA.year - dateB.year;
+      } else if (dateA.month !== dateB.month) {
+        return dateA.month - dateB.month;
+      } else {
+        return dateA.day - dateB.day;
+      }
+    });
+  }
+
+  getDateObject(dateString: string) {
+    const [day, month, year] = dateString.split('-').map(Number);
+    return { day, month, year };
+  }
+
+  dodajCzas(start: string, czas: number): string {
+    const [godziny, minuty] = start.split(':').map(Number);
+    const czasWMinutach = godziny * 60 + minuty + czas;
+    const noweGodziny = Math.floor(czasWMinutach / 60);
+    const noweMinuty = czasWMinutach % 60;
+    return `${String(noweGodziny).padStart(2, '0')}:${String(
+      noweMinuty
+    ).padStart(2, '0')}`;
+  }
+
+  przewinDni(ileDni: number) {
+    this.animacja = true;
+    this.sliderIndex += ileDni;
+
+    // Sprawdź czy nie wykracza poza granice
+    if (this.sliderIndex < 0) {
+      this.sliderIndex = 0;
+    } else if (
+      this.sliderIndex >
+      this.wygenerowanyHarmonogram.length - this.pokazaneDni
+    ) {
+      this.sliderIndex = this.wygenerowanyHarmonogram.length - this.pokazaneDni;
     }
-  }
 
-  openModal() {
-    this.showForm = true;
-  }
-
-  closeModal() {
-    this.showForm = false;
-  }
-
-  closeModalVis() {
-    this.showForm = false;
+    setTimeout(() => {
+      this.animacja = false;
+    }, 300);
   }
 }

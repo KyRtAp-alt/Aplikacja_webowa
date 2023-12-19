@@ -21,8 +21,11 @@
                     </div>
                     <div>
                         <div *ngIf="doctor.showMore">
-                            <app-sandboxv2 [scheduleId]="selectedDoctor?.harmonogram" [doctorId]="selectedDoctor?._id"
-                                (selectedInfo)="onHourSelected($event)"></app-sandboxv2>
+                            <app-scheme-display [scheduleId]="selectedDoctor?.harmonogram"
+                                [doctorId]="selectedDoctor?._id"
+                                (selectedInfo)="onHourSelected($event)"></app-scheme-display>
+                            <!-- <app-sandboxv2 [scheduleId]="selectedDoctor?.harmonogram" [doctorId]="selectedDoctor?._id"
+                                (selectedInfo)="onHourSelected($event)"></app-sandboxv2> -->
                         </div>
                         <div *ngIf="showModal" class="modal-background">
                             <div class="modal-content">
