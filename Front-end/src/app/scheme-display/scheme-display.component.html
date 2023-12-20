@@ -10,7 +10,9 @@
                         <p class="date">{{ wpis.data }}</p>
                         <ul>
                             <li class="hours" *ngFor="let godzina of wpis.godziny"
-                                (click)="onHourSelected(wpis.dzienTygodnia, wpis.data, godzina)">
+                                (click)="onHourSelected(wpis.dzienTygodnia, wpis.data, godzina)"
+                                [class.zarezerwowana]="zarezerwowaneGodziny.includes(godzina)"
+                                [class.niemozliwa-do-klikniecia]="zarezerwowaneGodziny.includes(godzina)">
                                 {{ godzina }}
                             </li>
                         </ul>

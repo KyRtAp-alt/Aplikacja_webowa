@@ -1,7 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { VisitService } from '../visit.service';
-// import { SchemeService } from '../scheme.service';
 
 @Component({
   selector: 'app-umow-wizyte',
@@ -40,9 +39,11 @@ export class UmowWizyteComponent {
   clientcontent: string = '';
   data: string = '';
 
+  zarezerwowaneGodziny: Array<string> = ['08:00', '08:30', '09:00'];
+
   constructor(
     private doctorService: DoctorService,
-    private visitService: VisitService // private schemeService: SchemeService
+    private visitService: VisitService
   ) {}
 
   ngOnInit() {

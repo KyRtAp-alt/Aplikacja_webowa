@@ -22,7 +22,7 @@
                     <div>
                         <div *ngIf="doctor.showMore">
                             <app-scheme-display [scheduleId]="selectedDoctor?.harmonogram"
-                                [doctorId]="selectedDoctor?._id"
+                                [doctorId]="selectedDoctor?._id" [zarezerwowaneGodziny]="zarezerwowaneGodziny"
                                 (selectedInfo)="onHourSelected($event)"></app-scheme-display>
                         </div>
                         <div *ngIf="showModal" class="modal-background">

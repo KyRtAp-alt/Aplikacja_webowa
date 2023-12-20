@@ -30,11 +30,12 @@ export class SchemeDisplayComponent implements OnInit {
   @Input() scheduleId: string = '';
   @Input() doctorId: string = '';
   @Output() selectedInfo = new EventEmitter<any>();
+  @Input() zarezerwowaneGodziny: Array<string> = [];
+
   selectedDoctor: any;
   selectedTimeInfo: any = null;
 
   onHourSelected(dzienTygodnia: string, data: string, godzina: string) {
-    // Przekazujemy informacje do rodzica, łącznie z id lekarza
     this.selectedInfo.emit({
       lekarz: this.doctorId,
       dzienTygodnia,
