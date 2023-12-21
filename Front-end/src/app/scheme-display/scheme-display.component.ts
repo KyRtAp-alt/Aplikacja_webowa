@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SchemeService } from '../scheme.service';
+import { VisitService } from '../visit.service';
 
 interface Harmonogram {
   _id: string;
@@ -27,35 +28,30 @@ interface WygenerowanyHarmonogram {
   styleUrls: ['./scheme-display.component.scss'],
 })
 export class SchemeDisplayComponent implements OnInit {
+  wygenerowanyHarmonogram: WygenerowanyHarmonogram[] = [];
+
   @Input() scheduleId: string = '';
   @Input() doctorId: string = '';
   @Output() selectedInfo = new EventEmitter<any>();
-  @Input() zarezerwowaneGodziny: Array<string> = [];
-
-  selectedDoctor: any;
-  selectedTimeInfo: any = null;
-
-  onHourSelected(dzienTygodnia: string, data: string, godzina: string) {
-    this.selectedInfo.emit({
-      lekarz: this.doctorId,
-      dzienTygodnia,
-      data,
-      godzina,
-    });
-  }
-
   harmonogramy: Harmonogram[] = [];
   widoczneDni: WygenerowanyHarmonogram[] = [];
   pokazaneDni: number = 6;
   sliderIndex: number = 0;
   animacja: boolean = false;
+  // @Input() zarezerwowaneGodziny: Array<string> = [];
+  // selectedDoctor: any;
+  // selectedTimeInfo: any = null;
 
-  // dniZData1: WygenerowanyHarmonogram[] = [];
-  // dniZData2: WygenerowanyHarmonogram[] = [];
+  visits: any[] = [];
+  lekarz: string = '';
+  dzienTygodnia: string = '';
+  dzien: string = '';
+  godzina: string = '';
 
-  wygenerowanyHarmonogram: WygenerowanyHarmonogram[] = [];
-
-  constructor(private schemeService: SchemeService) {}
+  constructor(
+    private schemeService: SchemeService,
+    private visitService: VisitService
+  ) {}
 
   ngOnInit() {
     this.schemeService.getScheduleData().subscribe(
@@ -63,11 +59,45 @@ export class SchemeDisplayComponent implements OnInit {
         this.harmonogramy = data.filter((item) => item._id === this.scheduleId);
         this.generujHarmonogram();
         this.sortujHarmonogram();
+        this.getVisit();
       },
       (error) => {
         console.error('Error fetching schedule data:', error);
       }
     );
+  }
+
+  getVisit() {
+    this.visitService.getVisit().subscribe(
+      (visits: any) => {
+        console.log(visits);
+        this.visits = visits;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  czyGodzinaZajeta(
+    lekarzId: string,
+    dzienTygodnia: string,
+    data: string,
+    godzina: string
+  ): boolean {
+    return this.visits.some(
+      (visit) =>
+        visit.lekarz === lekarzId &&
+        visit.dzienTygodnia === dzienTygodnia &&
+        this.formatujDate(visit.dzien) === this.formatujDate(data) &&
+        visit.godzina === godzina
+    );
+  }
+
+  formatujDate(date: string): string {
+    // Zamień format daty z "DD-MM-YYYY" na "YYYY-MM-DD" dla poprawnego porównywania
+    const [day, month, year] = date.split('-');
+    return `${year}-${month}-${day}`;
   }
 
   generujHarmonogram() {
@@ -86,7 +116,17 @@ export class SchemeDisplayComponent implements OnInit {
 
                   let aktualnaGodzina = startTime;
                   while (aktualnaGodzina < endTime) {
-                    godziny.push(aktualnaGodzina);
+                    const godzinaZajeta = this.czyGodzinaZajeta(
+                      this.doctorId,
+                      dzienTygodnia,
+                      data,
+                      aktualnaGodzina
+                    );
+
+                    if (!godzinaZajeta) {
+                      godziny.push(aktualnaGodzina);
+                    }
+
                     aktualnaGodzina = this.dodajCzas(
                       aktualnaGodzina,
                       czaswizyty
@@ -126,6 +166,24 @@ export class SchemeDisplayComponent implements OnInit {
   getDateObject(dateString: string) {
     const [day, month, year] = dateString.split('-').map(Number);
     return { day, month, year };
+  }
+
+  onHourSelected(dzienTygodnia: string, data: string, godzina: string) {
+    const isReserved = this.czyGodzinaZajeta(
+      this.doctorId,
+      dzienTygodnia,
+      data,
+      godzina
+    );
+
+    if (!isReserved) {
+      this.selectedInfo.emit({
+        lekarz: this.doctorId,
+        dzienTygodnia,
+        data,
+        godzina,
+      });
+    }
   }
 
   dodajCzas(start: string, czas: number): string {

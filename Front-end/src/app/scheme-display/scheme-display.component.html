@@ -11,8 +11,8 @@
                         <ul>
                             <li class="hours" *ngFor="let godzina of wpis.godziny"
                                 (click)="onHourSelected(wpis.dzienTygodnia, wpis.data, godzina)"
-                                [class.zarezerwowana]="zarezerwowaneGodziny.includes(godzina)"
-                                [class.niemozliwa-do-klikniecia]="zarezerwowaneGodziny.includes(godzina)">
+                                [ngClass]="{'reserved': czyGodzinaZajeta(doctorId, wpis.dzienTygodnia, wpis.data, godzina)}"
+                                [attr.disabled]="czyGodzinaZajeta(doctorId, wpis.dzienTygodnia, wpis.data, godzina) ? true : null">
                                 {{ godzina }}
                             </li>
                         </ul>
