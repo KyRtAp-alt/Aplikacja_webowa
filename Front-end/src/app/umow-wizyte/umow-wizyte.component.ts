@@ -136,18 +136,14 @@ export class UmowWizyteComponent {
   }
 
   onShowMore(doctor: any) {
-    // Zamknij aktualnie otwartego lekarza (jeśli istnieje)
     if (this.selectedDoctor) {
       this.selectedDoctor.showMore = false;
     }
-
-    // Otwórz nowego lekarza
     this.selectedDoctor = doctor;
     doctor.showMore = true;
   }
 
   onShowLess(doctor: any) {
-    // Zamknij aktualnie otwartego lekarza
     if (this.selectedDoctor) {
       this.selectedDoctor.showMore = false;
       this.selectedDoctor = null;

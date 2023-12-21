@@ -95,7 +95,6 @@ export class SchemeDisplayComponent implements OnInit {
   }
 
   formatujDate(date: string): string {
-    // Zamień format daty z "DD-MM-YYYY" na "YYYY-MM-DD" dla poprawnego porównywania
     const [day, month, year] = date.split('-');
     return `${year}-${month}-${day}`;
   }
