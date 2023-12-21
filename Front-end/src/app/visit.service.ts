@@ -16,6 +16,10 @@ export class VisitService {
     return this.http.get('http://localhost:3000/visit');
   }
 
+  // getVisits(): Observable<any[]> {
+  //   return this.http.get<any[]>(`${this.apiUrl}/visit`);
+  // }
+
   addVisit(visits: any) {
     return this.http.post(`http://localhost:3000/visit`, visits);
   }

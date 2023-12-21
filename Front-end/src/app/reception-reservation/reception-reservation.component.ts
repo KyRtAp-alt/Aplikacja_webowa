@@ -18,20 +18,20 @@ export class ReceptionReservationComponent {
   constructor(private visitService: VisitService) {}
 
   ngOnInit() {
-    this.getVisit();
+    // this.getVisit();
   }
 
-  getVisit() {
-    this.visitService.getVisit().subscribe(
-      (visits: any) => {
-        console.log(visits);
-        this.visits = visits;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
+  // getVisit() {
+  //   this.visitService.getVisit().subscribe(
+  //     (visits: any) => {
+  //       console.log(visits);
+  //       this.visits = visits;
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 
   addVisit() {
     const newVisit = {

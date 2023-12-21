@@ -39,7 +39,8 @@ export class UmowWizyteComponent {
   clientcontent: string = '';
   data: string = '';
 
-  zarezerwowaneGodziny: Array<string> = ['08:00', '08:30', '09:00'];
+  zarezerwowaneGodziny: Array<string> = [];
+  //'08:00', '08:30', '09:00'
 
   constructor(
     private doctorService: DoctorService,
