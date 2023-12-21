@@ -77,7 +77,7 @@
                                                             class="button-close">Anuluj</button>
                                                     </div>
                                                     <div class="button-border-controls">
-                                                        <button class="button" (click)="registerVisit()"
+                                                        <button class="button" (click)="registerVisit(); closeModal()"
                                                             [disabled]="isEmptyFields()">
                                                             Rezerwuj
                                                         </button>

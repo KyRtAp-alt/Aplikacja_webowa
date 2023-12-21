@@ -39,6 +39,8 @@ export class UmowWizyteComponent {
   clientcontent: string = '';
   data: string = '';
 
+  opened?: boolean;
+
   zarezerwowaneGodziny: Array<string> = [];
   //'08:00', '08:30', '09:00'
 
@@ -134,13 +136,30 @@ export class UmowWizyteComponent {
   }
 
   onShowMore(doctor: any) {
+    // Zamknij aktualnie otwartego lekarza (jeśli istnieje)
+    if (this.selectedDoctor) {
+      this.selectedDoctor.showMore = false;
+    }
+
+    // Otwórz nowego lekarza
     this.selectedDoctor = doctor;
     doctor.showMore = true;
   }
 
   onShowLess(doctor: any) {
-    this.selectedDoctor = null;
-    doctor.showMore = false;
+    // Zamknij aktualnie otwartego lekarza
+    if (this.selectedDoctor) {
+      this.selectedDoctor.showMore = false;
+      this.selectedDoctor = null;
+    }
+  }
+
+  closeOpenedDoctor() {
+    const openedDoctor = this.doctors.find((doctor) => doctor.opened);
+    if (openedDoctor) {
+      openedDoctor.showMore = false;
+      openedDoctor.opened = false;
+    }
   }
 
   onHourSelected(info: any) {
