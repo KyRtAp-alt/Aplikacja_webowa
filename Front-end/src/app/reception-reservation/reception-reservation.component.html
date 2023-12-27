@@ -29,18 +29,23 @@
                             E-mail:
                             {{visit.mailklient}}
                         </span>
-                        <span class="clientcontent">
+                        <!-- <span class="clientcontent">
                             Lekarz
                             {{visit.lekarz}}
-                        </span>
-                        <span>
+                        </span> -->
+                        <span class="clientmail">
                             Dzień:
-                            {{visit.dzienTygodnia}}{{visit.dzien}}
+                            {{visit.dzienTygodnia}}:
+                            {{visit.dzien}}
                         </span>
-                        <span>
+                        <span class="clientmail">
                             Godzina:
                             {{visit.godzina}}
                         </span>
+                        <div class="buttons">
+                            <button class="doctor-delete" (click)="confirmDelete(visit._id)">Anuluj rezerwacje</button>
+                            <!-- <button>Potwierdz rezerwacje</button> -->
+                        </div>
                     </li>
                 </ul>
             </div>

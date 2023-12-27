@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { VisitService } from '../visit.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-reception-reservation',
@@ -51,6 +52,25 @@ export class ReceptionReservationComponent {
         console.error(error);
       }
     );
+  }
+
+  deleteVisit(id: string) {
+    this.visitService.deleteVisit(id).subscribe(
+      () => {
+        this.getVisit();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  confirmDelete(visitId: string) {
+    const confirmation = confirm('1');
+    if (confirmation) {
+      this.deleteVisit(visitId);
+      alert('2');
+    }
   }
 
   clearForm() {}

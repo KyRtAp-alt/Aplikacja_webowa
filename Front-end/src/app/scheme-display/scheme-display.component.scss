@@ -97,6 +97,12 @@
   color: #01a3a4;
   background-color: #bbeefc;
   font-size: 30px;
+  cursor: pointer;
+}
+
+.clickme:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .centered-form {

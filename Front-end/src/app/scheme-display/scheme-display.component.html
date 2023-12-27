@@ -1,7 +1,9 @@
 <div class="ms">
     <div class="ms-outer">
         <div class="ms-inner" [ngClass]="{'slide-animation': animacja}">
-            <button class="clickme" (click)="przewinDni(-1)">&lt;</button>
+            <button class="clickme" (click)="przewinDni(-1)" [disabled]="pierwszaData">
+                &lt;
+            </button>
             <div class="slider-container">
                 <div *ngFor="let wpis of wygenerowanyHarmonogram.slice(sliderIndex, sliderIndex + pokazaneDni)"
                     class="day-container">
@@ -19,7 +21,9 @@
                     </div>
                 </div>
             </div>
-            <button class="clickme" (click)="przewinDni(1)">&gt;</button>
+            <button class="clickme" (click)="przewinDni(1)" [disabled]="ostatniaData">
+                &gt;
+            </button>
         </div>
     </div>
 </div>

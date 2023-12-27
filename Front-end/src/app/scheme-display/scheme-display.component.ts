@@ -38,6 +38,8 @@ export class SchemeDisplayComponent implements OnInit {
   pokazaneDni: number = 6;
   sliderIndex: number = 0;
   animacja: boolean = false;
+  pierwszaData: boolean = true;
+  ostatniaData: boolean = false;
   // @Input() zarezerwowaneGodziny: Array<string> = [];
   // selectedDoctor: any;
   // selectedTimeInfo: any = null;
@@ -60,6 +62,27 @@ export class SchemeDisplayComponent implements OnInit {
         this.generujHarmonogram();
         this.sortujHarmonogram();
         this.getVisit();
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const todayIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
+          const itemDate = new Date(item.data);
+          itemDate.setHours(0, 0, 0, 0);
+          return itemDate >= today;
+        });
+
+        if (todayIndex !== -1) {
+          this.sliderIndex = Math.min(
+            todayIndex,
+            this.wygenerowanyHarmonogram.length - this.pokazaneDni
+          );
+        }
+
+        this.animacja = true;
+        setTimeout(() => {
+          this.animacja = false;
+        }, 300);
       },
       (error) => {
         console.error('Error fetching schedule data:', error);
@@ -199,17 +222,58 @@ export class SchemeDisplayComponent implements OnInit {
     this.animacja = true;
     this.sliderIndex += ileDni;
 
-    if (this.sliderIndex < 0) {
-      this.sliderIndex = 0;
-    } else if (
-      this.sliderIndex >
-      this.wygenerowanyHarmonogram.length - this.pokazaneDni
-    ) {
-      this.sliderIndex = this.wygenerowanyHarmonogram.length - this.pokazaneDni;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let todayIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
+      const itemDate = new Date(item.data);
+      itemDate.setHours(0, 0, 0, 0);
+      return itemDate >= today;
+    });
+
+    if (todayIndex === -1) {
+      todayIndex = 0;
     }
+
+    this.sliderIndex = Math.max(todayIndex, this.sliderIndex);
+
+    this.sliderIndex = Math.min(
+      this.sliderIndex,
+      this.wygenerowanyHarmonogram.length - this.pokazaneDni
+    );
+
+    const currentDateIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
+      const itemDate = new Date(item.data);
+      itemDate.setHours(0, 0, 0, 0);
+      return itemDate.getTime() === today.getTime();
+    });
+
+    if (currentDateIndex !== -1) {
+      this.sliderIndex = Math.min(this.sliderIndex, currentDateIndex);
+    }
+
+    this.pierwszaData = this.sliderIndex === 0;
+    this.ostatniaData =
+      this.sliderIndex >=
+      this.wygenerowanyHarmonogram.length - this.pokazaneDni;
 
     setTimeout(() => {
       this.animacja = false;
     }, 300);
+  }
+
+  schowajPrzeszleDaty() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const todayIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
+      const itemDate = new Date(item.data);
+      itemDate.setHours(0, 0, 0, 0);
+      return itemDate >= today;
+    });
+
+    if (todayIndex !== -1) {
+      this.sliderIndex = Math.min(this.sliderIndex, todayIndex);
+    }
   }
 }
