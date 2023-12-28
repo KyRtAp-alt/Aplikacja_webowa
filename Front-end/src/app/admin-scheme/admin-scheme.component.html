@@ -2,184 +2,226 @@
 <div class="title-box">
     <h2 class="title">Dodawanie harmonogramu</h2>
 </div>
-<div class="main-container">
-    <div class="">
-        <div class="">
-            <label class="">Nazwa harmonogramu</label>
-            <input name="nazwaharmonogramu" [(ngModel)]="nazwaharmonogramu">
-        </div>
-    </div>
-    <div class="time-select">
-        <label class="">Czas wizyty</label>
-        <input type="number" [(ngModel)]="czasWizyty">
-        <span>minut</span>
-    </div>
-    <div class="day-border">
-        <div class="day-info">
-            <span class="day">Poniedziałek</span>
-            <label>
-                <input type="checkbox" [(ngModel)]="poniedzialekAktywny"> Aktywny
-            </label>
-        </div>
-        <div class="worktime-border">
-            <div class="worktime">
-                <label class="work-start">Od:</label>
-                <input type="time" [(ngModel)]="poniedzialekOd">
+<div class="ms">
+    <div class="main-container">
+        <div class="main">
+            <div class="main-name">
+                <label class="main-name-title">Nazwa harmonogramu</label>
+                <input class="main-name-input" name="nazwaharmonogramu" [(ngModel)]="nazwaharmonogramu">
             </div>
-            <div class="worktime">
-                <label class="work-end">Do:</label>
-                <input type="time" [(ngModel)]="poniedzialekDo">
+            <div class="time-select">
+                <label class="time-select-title">Czas wizyty</label>
+                <input class="time-select-number" type="number" [(ngModel)]="czasWizyty">
+                <span>minut</span>
             </div>
         </div>
-        <div class="">
-            <div>
-                <div>
-                    <label>Określ liczbę tygodni</label>
-                    <input [(ngModel)]="liczbaTygodni1" type="number" (change)="generateTygodnie1()">
+        <div class="day-border">
+            <div class="mak">
+                <div class="day-info">
+                    <span class="day">Poniedziałek</span>
+                    <label class="checkbox-border">
+                        <input class="checkbox" type="checkbox" [(ngModel)]="poniedzialekAktywny">
+                        <span class="checkbox-name">Aktywny</span>
+                    </label>
                 </div>
-                <div *ngFor="let tydzien1 of tygodnie1">
-                    <span>{{ tydzien1 }} tydzień</span>
-                    <input type="date" [(ngModel)]="daty1[tydzien1]" (change)="updateDates1(tydzien1)">
+                <div class="worktime-border">
+                    <div class="worktime">
+                        <label class="work-start">Pracuje od:</label>
+                        <input type="time" [(ngModel)]="poniedzialekOd">
+                    </div>
+                    <div class="worktime">
+                        <label class="work-end">Pracuje do:</label>
+                        <input type="time" [(ngModel)]="poniedzialekDo">
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="all">
-        <div class="worktime">
-            <div class="name">
-                <span class="day">Wtorek</span>
-                <label>
-                    <input type="checkbox" [(ngModel)]="wtorekAktywny"> Aktywny
-                </label>
             </div>
             <div class="">
-                <label>Od</label>
-                <input type="time" [(ngModel)]="wtorekOd">
-            </div>
-            <div>
-                <label>Do</label>
-                <input type="time" [(ngModel)]="wtorekDo">
-            </div>
-            <div>
-                <div>
-                    <label>Określ liczbę tygodni</label>
-                    <input [(ngModel)]="liczbaTygodni2" type="number" (change)="generateTygodnie2()">
-                </div>
-                <div *ngFor="let tydzien2 of tygodnie2">
-                    <span>{{ tydzien2 }} tydzień</span>
-                    <input type="date" [(ngModel)]="daty2[tydzien2]" (change)="updateDates2(tydzien2)">
+                <div class="data-list">
+                    <div>
+                        <label>Określ liczbę tygodni</label>
+                        <input class="data-number" [(ngModel)]="liczbaTygodni1" type="number"
+                            (change)="generateTygodnie1()">
+                    </div>
+                    <div *ngFor="let tydzien1 of tygodnie1" class="list">
+                        <span class="date-week">{{ tydzien1 }} tydzień</span>
+                        <input class="date-input" type="date" [(ngModel)]="daty1[tydzien1]"
+                            (change)="updateDates1(tydzien1)">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="all">
-        <div class="worktime">
-            <div class="name">
-                <span class="day">Środa</span>
-                <label>
-                    <input type="checkbox" [(ngModel)]="srodaAktywny"> Aktywny
-                </label>
+        <div class="day-border">
+            <div class="mak">
+                <div class="day-info">
+                    <span class="day">Wtorek</span>
+                    <label class="checkbox-border">
+                        <input class="checkbox" type="checkbox" [(ngModel)]="wtorekAktywny">
+                        <span class="checkbox-name">Aktywny</span>
+                    </label>
+                </div>
+                <div class="worktime-border">
+                    <div class="worktime">
+                        <label class="work-start">Pracuje od:</label>
+                        <input type="time" [(ngModel)]="wtorekOd">
+                    </div>
+                    <div class="worktime">
+                        <label class="work-end">Pracuje do:</label>
+                        <input type="time" [(ngModel)]="wtorekDo">
+                    </div>
+                </div>
             </div>
             <div class="">
-                <label>Od</label>
-                <input type="time" [(ngModel)]="srodaOd">
-            </div>
-            <div>
-                <label>Do</label>
-                <input type="time" [(ngModel)]="srodaDo">
-            </div>
-            <div>
-                <div>
-                    <label>Określ liczbę tygodni</label>
-                    <input [(ngModel)]="liczbaTygodni3" type="number" (change)="generateTygodnie3()">
-                </div>
-                <div *ngFor="let tydzien3 of tygodnie3">
-                    <span>{{ tydzien3 }} tydzień</span>
-                    <input type="date" [(ngModel)]="daty3[tydzien3]" (change)="updateDates3(tydzien3)">
+                <div class="data-list">
+                    <div>
+                        <label>Określ liczbę tygodni</label>
+                        <input class="data-number" [(ngModel)]="liczbaTygodni2" type="number"
+                            (change)="generateTygodnie2()">
+                    </div>
+                    <div *ngFor="let tydzien2 of tygodnie2" class="list">
+                        <span class="date-week">{{ tydzien2 }} tydzień</span>
+                        <input class="date-input" type="date" [(ngModel)]="daty2[tydzien2]"
+                            (change)="updateDates2(tydzien2)">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="all">
-        <div class="worktime">
-            <div class="name">
-                <span class="day">Czwartek</span>
-                <label>
-                    <input type="checkbox" [(ngModel)]="czwartekAktywny"> Aktywny
-                </label>
+        <div class="day-border">
+            <div class="mak">
+                <div class="day-info">
+                    <span class="day">Środa</span>
+                    <label class="checkbox-border">
+                        <input class="checkbox" type="checkbox" [(ngModel)]="srodaAktywny">
+                        <span class="checkbox-name">Aktywny</span>
+                    </label>
+                </div>
+                <div class="worktime-border">
+                    <div class="worktime">
+                        <label class="work-start">Pracuje od:</label>
+                        <input type="time" [(ngModel)]="srodaOd">
+                    </div>
+                    <div class="worktime">
+                        <label class="work-end">Pracuje do:</label>
+                        <input type="time" [(ngModel)]="srodaDo">
+                    </div>
+                </div>
             </div>
             <div class="">
-                <label>Od</label>
-                <input type="time" [(ngModel)]="czwartekOd">
-            </div>
-            <div>
-                <label>Do</label>
-                <input type="time" [(ngModel)]="czwartekDo">
-            </div>
-            <div>
-                <div>
-                    <label>Określ liczbę tygodni</label>
-                    <input [(ngModel)]="liczbaTygodni4" type="number" (change)="generateTygodnie4()">
-                </div>
-                <div *ngFor="let tydzien4 of tygodnie4">
-                    <span>{{ tydzien4 }} tydzień</span>
-                    <input type="date" [(ngModel)]="daty4[tydzien4]" (change)="updateDates4(tydzien4)">
+                <div class="data-list">
+                    <div>
+                        <label>Określ liczbę tygodni</label>
+                        <input class="data-number" [(ngModel)]="liczbaTygodni3" type="number"
+                            (change)="generateTygodnie3()">
+                    </div>
+                    <div *ngFor="let tydzien3 of tygodnie3" class="list">
+                        <span class="date-week">{{ tydzien3 }} tydzień</span>
+                        <input class="date-input" type="date" [(ngModel)]="daty3[tydzien3]"
+                            (change)="updateDates3(tydzien3)">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="all">
-        <div class="worktime">
-            <div class="name">
-                <span class="day">Piątek</span>
-                <label>
-                    <input type="checkbox" [(ngModel)]="piatekAktywny"> Aktywny
-                </label>
+        <div class="day-border">
+            <div class="mak">
+                <div class="day-info">
+                    <span class="day">Czwartek</span>
+                    <label class="checkbox-border">
+                        <input class="checkbox" type="checkbox" [(ngModel)]="czwartekAktywny">
+                        <span class="checkbox-name">Aktywny</span>
+                    </label>
+                </div>
+                <div class="worktime-border">
+                    <div class="worktime">
+                        <label class="work-start">Pracuje od:</label>
+                        <input type="time" [(ngModel)]="czwartekOd">
+                    </div>
+                    <div class="worktime">
+                        <label class="work-end">Pracuje do:</label>
+                        <input type="time" [(ngModel)]="czwartekDo">
+                    </div>
+                </div>
             </div>
             <div class="">
-                <label>Od</label>
-                <input type="time" [(ngModel)]="piatekOd">
-            </div>
-            <div>
-                <label>Do</label>
-                <input type="time" [(ngModel)]="piatekDo">
-            </div>
-            <div>
-                <div>
-                    <label>Określ liczbę tygodni</label>
-                    <input [(ngModel)]="liczbaTygodni5" type="number" (change)="generateTygodnie5()">
-                </div>
-                <div *ngFor="let tydzien5 of tygodnie5">
-                    <span>{{ tydzien5 }} tydzień</span>
-                    <input type="date" [(ngModel)]="daty5[tydzien5]" (change)="updateDates5(tydzien5)">
+                <div class="data-list">
+                    <div>
+                        <label>Określ liczbę tygodni</label>
+                        <input class="data-number" [(ngModel)]="liczbaTygodni4" type="number"
+                            (change)="generateTygodnie4()">
+                    </div>
+                    <div *ngFor="let tydzien4 of tygodnie4" class="list">
+                        <span class="date-week">{{ tydzien4 }} tydzień</span>
+                        <input class="date-input" type="date" [(ngModel)]="daty4[tydzien4]"
+                            (change)="updateDates4(tydzien4)">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="all">
-        <div class="worktime">
-            <div class="name">
-                <span class="day">Sobota</span>
-                <label>
-                    <input type="checkbox" [(ngModel)]="sobotaAktywny"> Aktywny
-                </label>
+        <div class="day-border">
+            <div class="mak">
+                <div class="day-info">
+                    <span class="day">Piątek</span>
+                    <label class="checkbox-border">
+                        <input class="checkbox" type="checkbox" [(ngModel)]="piatekAktywny">
+                        <span class="checkbox-name">Aktywny</span>
+                    </label>
+                </div>
+                <div class="worktime-border">
+                    <div class="worktime">
+                        <label class="work-start">Pracuje od:</label>
+                        <input type="time" [(ngModel)]="piatekOd">
+                    </div>
+                    <div class="worktime">
+                        <label class="work-end">Pracuje do:</label>
+                        <input type="time" [(ngModel)]="piatekDo">
+                    </div>
+                </div>
             </div>
             <div class="">
-                <label>Od</label>
-                <input type="time" [(ngModel)]="sobotaOd">
-            </div>
-            <div>
-                <label>Do</label>
-                <input type="time" [(ngModel)]="sobotaDo">
-            </div>
-            <div>
-                <div>
-                    <label>Określ liczbę tygodni</label>
-                    <input [(ngModel)]="liczbaTygodni6" type="number" (change)="generateTygodnie6()">
+                <div class="data-list">
+                    <div>
+                        <label>Określ liczbę tygodni</label>
+                        <input class="data-number" [(ngModel)]="liczbaTygodni5" type="number"
+                            (change)="generateTygodnie5()">
+                    </div>
+                    <div *ngFor="let tydzien5 of tygodnie5" class="list">
+                        <span class="date-week">{{ tydzien5 }} tydzień</span>
+                        <input class="date-input" type="date" [(ngModel)]="daty5[tydzien5]"
+                            (change)="updateDates5(tydzien5)">
+                    </div>
                 </div>
-                <div *ngFor="let tydzien6 of tygodnie6">
-                    <span>{{ tydzien6 }} tydzień</span>
-                    <input type="date" [(ngModel)]="daty6[tydzien6]" (change)="updateDates6(tydzien6)">
+            </div>
+        </div>
+        <div class="day-border">
+            <div class="mak">
+                <div class="day-info">
+                    <span class="day">Sobota</span>
+                    <label class="checkbox-border">
+                        <input class="checkbox" type="checkbox" [(ngModel)]="sobotaAktywny">
+                        <span class="checkbox-name">Aktywny</span>
+                    </label>
+                </div>
+                <div class="worktime-border">
+                    <div class="worktime">
+                        <label class="work-start">Pracuje od:</label>
+                        <input type="time" [(ngModel)]="sobotaOd">
+                    </div>
+                    <div class="worktime">
+                        <label class="work-end">Pracuje do:</label>
+                        <input type="time" [(ngModel)]="sobotaDo">
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="data-list">
+                    <div>
+                        <label>Określ liczbę tygodni</label>
+                        <input class="data-number" [(ngModel)]="liczbaTygodni6" type="number"
+                            (change)="generateTygodnie6()">
+                    </div>
+                    <div *ngFor="let tydzien6 of tygodnie6" class="list">
+                        <span class="date-week">{{ tydzien6 }} tydzień</span>
+                        <input class="date-input" type="date" [(ngModel)]="daty6[tydzien6]"
+                            (change)="updateDates6 (tydzien6)">
+                    </div>
                 </div>
             </div>
         </div>

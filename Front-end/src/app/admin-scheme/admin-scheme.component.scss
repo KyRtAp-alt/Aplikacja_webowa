@@ -1,9 +1,14 @@
+.ms {
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px 100px;
 }
 
 .title-box {
@@ -40,7 +45,17 @@
 }
 
 .time-select {
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.time-select-name {
+}
+
+.time-select-number {
+  border: 2px solid #01a3a4;
+  border-radius: 10px;
+  width: 50px;
 }
 
 input[type="time"] {
@@ -63,29 +78,32 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .day {
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 50px;
 }
 
 .day-info {
   margin-bottom: 20px;
   display: flex;
+  flex-direction: column;
   // justify-content: center;
   // align-items: center;
 }
 
 .day-border {
-  background-color: #01a3a4;
+  background-color: #bbeefc;
   padding: 30px 60px;
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .work-start,
 .work-end {
   margin-right: 20px;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .worktime {
@@ -98,6 +116,29 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 
+.data-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  margin-top: 10px;
+}
+
+.date-input {
+  border: 0px;
+  border-radius: 15px;
+  margin-left: 10px;
+  height: 25px;
+}
+
+.date-week {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
 .name {
   display: block;
 }
@@ -106,62 +147,55 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   margin-top: 200px;
 }
 
-.hours {
-  color: green;
-  cursor: pointer;
+.checkbox {
+  height: 20px;
+  width: 20px;
 }
 
-.reserved {
-  color: red;
-  cursor: not-allowed; // Możesz dostosować styl kursora
+.checkbox-border {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
 }
 
-// .main-container-scheme {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   margin-top: 50px;
-// }
+.checkbox-name {
+  font-size: 16px;
+  font-family: sans-serif;
+}
 
-// .main-title-scheme {
-//   font-size: 30px;
-//   margin-bottom: 20px;
-// }
+.mak {
+  display: flex;
+}
 
-// .main-column {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin-top: 100px;
-// }
+.data-number {
+  border: 0px;
+  border-radius: 15px;
+  margin-left: 10px;
+  padding-left: 5px;
+  width: 60px;
+  height: 30px;
+}
 
-// .main-list {
-// }
+.main {
+  background-color: #bbeefc;
+  padding: 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-// list {
-// }
+.main-name {
+  display: flex;
+  flex-direction: column;
+}
 
-// .qq {
-//   margin-top: 10px;
-// }
+.main-name-title {
+  font-size: 16px;
+  font-family: serif;
+  display: flex;
+  justify-content: center;
+}
 
-// .q {
-//   margin-top: 150px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .b {
-//   font-size: 20px;
-//   margin-bottom: 25px;
-// }
-
-// .form-group {
-//   display: block;
-// }
-
-// .scheme-form {
-//   display: block;
-//   margin-top: 100px;
-// }
+.main-name-input {
+  border: 2px solid #01a3a4;
+  border-radius: 10px;
+}
