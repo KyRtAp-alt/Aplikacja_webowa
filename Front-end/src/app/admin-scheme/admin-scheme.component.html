@@ -1,5 +1,8 @@
 <app-header-admin></app-header-admin>
-<div class="boss">
+<div class="title-box">
+    <h2 class="title">Dodawanie harmonogramu</h2>
+</div>
+<div class="main-container">
     <div class="">
         <div class="">
             <label class="">Nazwa harmonogramu</label>
@@ -11,22 +14,24 @@
         <input type="number" [(ngModel)]="czasWizyty">
         <span>minut</span>
     </div>
-    <div class="all">
-        <div class="worktime">
-            <div class="name">
-                <span class="day">Poniedziałek</span>
-                <label>
-                    <input type="checkbox" [(ngModel)]="poniedzialekAktywny"> Aktywny
-                </label>
-            </div>
-            <div class="">
-                <label>Od</label>
+    <div class="day-border">
+        <div class="day-info">
+            <span class="day">Poniedziałek</span>
+            <label>
+                <input type="checkbox" [(ngModel)]="poniedzialekAktywny"> Aktywny
+            </label>
+        </div>
+        <div class="worktime-border">
+            <div class="worktime">
+                <label class="work-start">Od:</label>
                 <input type="time" [(ngModel)]="poniedzialekOd">
             </div>
-            <div>
-                <label>Do</label>
+            <div class="worktime">
+                <label class="work-end">Do:</label>
                 <input type="time" [(ngModel)]="poniedzialekDo">
             </div>
+        </div>
+        <div class="">
             <div>
                 <div>
                     <label>Określ liczbę tygodni</label>

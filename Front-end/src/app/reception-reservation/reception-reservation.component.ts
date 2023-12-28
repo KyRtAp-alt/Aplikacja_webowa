@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { VisitService } from '../visit.service';
-import { error } from 'console';
 
 @Component({
   selector: 'app-reception-reservation',
