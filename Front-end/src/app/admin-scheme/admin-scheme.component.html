@@ -225,9 +225,13 @@
                 </div>
             </div>
         </div>
+        <div class="button-border">
+            <button class="button"
+                (click)="(!isEmptyFields()) && (editingScheme ? updateScheme() : addScheme())">Dodaj</button>
+        </div>
     </div>
 </div>
-<button (click)="(!isEmptyFields()) && (editingScheme ? updateScheme() : addScheme())">Dodaj</button>
+
 <div>
     <div>
         <h2>Lista harmonogramow</h2>

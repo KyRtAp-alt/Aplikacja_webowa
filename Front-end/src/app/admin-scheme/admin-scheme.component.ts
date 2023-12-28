@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { SchemeService } from '../scheme.service';
-import { error } from 'console';
 
 interface Schedule {
   _id: string;
@@ -245,7 +244,7 @@ export class AdminSchemeComponent {
   }
 
   isEmptyFields(): boolean {
-    return !this.name;
+    return !this.nazwaharmonogramu || !this.czasWizyty;
   }
 
   //PONIEDZIALEK

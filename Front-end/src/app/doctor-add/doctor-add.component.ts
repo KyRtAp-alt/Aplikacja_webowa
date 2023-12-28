@@ -168,7 +168,7 @@ export class DoctorAddComponent implements OnInit {
   }
 
   isEmptyFields(): boolean {
-    return !this.firstname;
+    return !this.firstname || !this.lastname;
   }
 
   scrollToTop(): void {
