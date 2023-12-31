@@ -115,6 +115,23 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+
+  i {
+    font-size: 30px;
+    color: #01a3a4;
+  }
+
+  p {
+    margin-top: 10px;
+  }
+}
+
 // @keyframes slideAnimation {
 //   from {
 //     transform: translateX(0);

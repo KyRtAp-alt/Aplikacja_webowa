@@ -1,29 +1,40 @@
-<div class="ms">
-    <div class="ms-outer">
-        <div class="ms-inner" [ngClass]="{'slide-animation': animacja}">
-            <button class="clickme" (click)="przewinDni(-1)" [disabled]="pierwszaData">
-                &lt;
-            </button>
-            <div class="slider-container">
-                <div *ngFor="let wpis of wygenerowanyHarmonogram.slice(sliderIndex, sliderIndex + pokazaneDni)"
-                    class="day-container">
-                    <div *ngIf="!wpis.godziny[0].startsWith('00:00')" class="day">
-                        <h3 class="days">{{ wpis.dzienTygodnia }}</h3>
-                        <p class="date">{{ wpis.data }}</p>
-                        <ul>
-                            <li class="hours" *ngFor="let godzina of wpis.godziny"
-                                (click)="onHourSelected(wpis.dzienTygodnia, wpis.data, godzina)"
-                                [ngClass]="{'reserved': czyGodzinaZajeta(doctorId, wpis.dzienTygodnia, wpis.data, godzina)}"
-                                [attr.disabled]="czyGodzinaZajeta(doctorId, wpis.dzienTygodnia, wpis.data, godzina) ? true : null">
-                                {{ godzina }}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <button class="clickme" (click)="przewinDni(1)" [disabled]="ostatniaData">
-                &gt;
-            </button>
-        </div>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<div *ngIf="loading; else content">
+    <div class="loading-spinner">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <p>Wczytywanie wizyt...</p>
     </div>
 </div>
+<ng-template #content>
+    <div class="ms">
+        <div class="ms-outer">
+            <div class="ms-inner" [ngClass]="{'slide-animation': animacja}">
+                <button class="clickme" (click)="przewinDni(-1)" [disabled]="pierwszaData">
+                    &lt;
+                </button>
+                <div class="slider-container">
+                    <div *ngFor="let wpis of wygenerowanyHarmonogram.slice(sliderIndex, sliderIndex + pokazaneDni)"
+                        class="day-container">
+                        <div *ngIf="!wpis.godziny[0].startsWith('00:00')" class="day">
+                            <h3 class="days">{{ wpis.dzienTygodnia }}</h3>
+                            <p class="date">{{ wpis.data }}</p>
+                            <ul>
+                                <li class="hours" *ngFor="let godzina of wpis.godziny"
+                                    (click)="onHourSelected(wpis.dzienTygodnia, wpis.data, godzina)"
+                                    [ngClass]="{'reserved': czyGodzinaZajeta(doctorId, wpis.dzienTygodnia, wpis.data, godzina)}"
+                                    [attr.disabled]="czyGodzinaZajeta(doctorId, wpis.dzienTygodnia, wpis.data, godzina) ? true : null">
+                                    {{ godzina }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <button class="clickme" (click)="przewinDni(1)" [disabled]="ostatniaData">
+                    &gt;
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-template>

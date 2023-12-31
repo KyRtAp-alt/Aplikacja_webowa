@@ -40,6 +40,7 @@ export class SchemeDisplayComponent implements OnInit {
   animacja: boolean = false;
   pierwszaData: boolean = true;
   ostatniaData: boolean = false;
+  loading: boolean = true;
   // @Input() zarezerwowaneGodziny: Array<string> = [];
   // selectedDoctor: any;
   // selectedTimeInfo: any = null;
@@ -81,11 +82,16 @@ export class SchemeDisplayComponent implements OnInit {
 
         this.animacja = true;
         setTimeout(() => {
-          this.animacja = false;
-        }, 300);
+          this.loading = false;
+          this.animacja = true;
+          setTimeout(() => {
+            this.animacja = false;
+          }, 300);
+        }, 1000);
       },
       (error) => {
         console.error('Error fetching schedule data:', error);
+        this.loading = false;
       }
     );
   }
