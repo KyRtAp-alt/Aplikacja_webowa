@@ -1,0 +1,4 @@
+# Ignoruj plik konfiguracyjny
+config.ts
+# Ignoruj katalog node_modules
+node_modules/

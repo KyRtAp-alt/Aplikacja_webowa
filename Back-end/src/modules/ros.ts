@@ -1,12 +1,12 @@
+import { databaseUrl } from "../config";
+
 import express from "express";
 import { Request, Response } from "express";
 import { MongoClient, ObjectId } from "mongodb";
 
 const router = express.Router();
 router.use(express.json());
-const client = new MongoClient(
-  "mongodb+srv://admin:Book54321@cluster0.qxenmyc.mongodb.net/Restauracja"
-);
+const client = new MongoClient(databaseUrl);
 
 router.get("/", async (req: Request, res: Response) => {
   await client.connect();
