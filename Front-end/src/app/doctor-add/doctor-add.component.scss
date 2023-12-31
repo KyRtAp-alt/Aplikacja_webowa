@@ -194,9 +194,17 @@
   font-family: sans-serif;
 }
 
+.q-title {
+  color: #01a3a4;
+  font-size: 20px;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
 .content {
   height: auto;
   text-overflow: ellipsis;
+  width: 600px;
 }
 
 .doctor-edit,
@@ -208,7 +216,7 @@
   display: inline-block;
   margin-right: 5px;
   width: 80px;
-  height: 30px;
+  height: 40px;
   border-radius: 20px;
   transition: transform 0.2s;
   margin-top: 30px;
