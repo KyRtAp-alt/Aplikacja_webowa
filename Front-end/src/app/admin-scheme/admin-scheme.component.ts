@@ -217,7 +217,6 @@ export class AdminSchemeComponent {
   //     .map((part) => parseInt(part, 10));
   //   return [hours, minutes];
   // }
-  //Koniec formularza
 
   getSchemes() {
     this.schemeService.getScheme().subscribe(

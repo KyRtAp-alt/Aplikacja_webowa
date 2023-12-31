@@ -15,7 +15,7 @@
                 <span>minut</span>
             </div>
         </div>
-        <div class="day-border">
+        <div class="day-border" [ngClass]="{ 'inactive-day': !poniedzialekAktywny }">
             <div class="mak">
                 <div class="day-info">
                     <span class="day">Poniedziałek</span>
@@ -24,7 +24,7 @@
                         <span class="checkbox-name">Aktywny</span>
                     </label>
                 </div>
-                <div class="worktime-border">
+                <div class="worktime-border" [ngClass]="{ 'inactive-day': !poniedzialekAktywny }">
                     <div class="worktime">
                         <label class="work-start">Pracuje od:</label>
                         <input type="time" [(ngModel)]="poniedzialekOd">
@@ -36,13 +36,13 @@
                 </div>
             </div>
             <div class="">
-                <div class="data-list">
+                <div class="data-list" [ngClass]="{ 'inactive-day': !poniedzialekAktywny }">
                     <div>
                         <label>Określ liczbę tygodni</label>
                         <input class="data-number" [(ngModel)]="liczbaTygodni1" type="number"
                             (change)="generateTygodnie1()">
                     </div>
-                    <div *ngFor="let tydzien1 of tygodnie1" class="list">
+                    <div *ngFor="let tydzien1 of tygodnie1.slice(0, 1).concat(tygodnie1.slice(-1))" class="list">
                         <span class="date-week">{{ tydzien1 }} tydzień</span>
                         <input class="date-input" type="date" [(ngModel)]="daty1[tydzien1]"
                             (change)="updateDates1(tydzien1)">
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="day-border">
+        <div class="day-border" [ngClass]="{ 'inactive-day': !wtorekAktywny }">
             <div class="mak">
                 <div class="day-info">
                     <span class="day">Wtorek</span>
@@ -59,7 +59,7 @@
                         <span class="checkbox-name">Aktywny</span>
                     </label>
                 </div>
-                <div class="worktime-border">
+                <div class="worktime-border" [ngClass]="{ 'inactive-day': !wtorekAktywny }">
                     <div class="worktime">
                         <label class="work-start">Pracuje od:</label>
                         <input type="time" [(ngModel)]="wtorekOd">
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="data-list">
+                <div class="data-list" [ngClass]="{ 'inactive-day': !wtorekAktywny }">
                     <div>
                         <label>Określ liczbę tygodni</label>
                         <input class="data-number" [(ngModel)]="liczbaTygodni2" type="number"
@@ -85,7 +85,7 @@
                 </div>
             </div>
         </div>
-        <div class="day-border">
+        <div class="day-border" [ngClass]="{ 'inactive-day': !srodaAktywny }">
             <div class="mak">
                 <div class="day-info">
                     <span class="day">Środa</span>
@@ -94,7 +94,7 @@
                         <span class="checkbox-name">Aktywny</span>
                     </label>
                 </div>
-                <div class="worktime-border">
+                <div class="worktime-border" [ngClass]="{ 'inactive-day': !srodaAktywny }">
                     <div class="worktime">
                         <label class="work-start">Pracuje od:</label>
                         <input type="time" [(ngModel)]="srodaOd">
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="data-list">
+                <div class="data-list" [ngClass]="{ 'inactive-day': !srodaAktywny }">
                     <div>
                         <label>Określ liczbę tygodni</label>
                         <input class="data-number" [(ngModel)]="liczbaTygodni3" type="number"
@@ -120,7 +120,7 @@
                 </div>
             </div>
         </div>
-        <div class="day-border">
+        <div class="day-border" [ngClass]="{ 'inactive-day': !czwartekAktywny }">
             <div class="mak">
                 <div class="day-info">
                     <span class="day">Czwartek</span>
@@ -129,7 +129,7 @@
                         <span class="checkbox-name">Aktywny</span>
                     </label>
                 </div>
-                <div class="worktime-border">
+                <div class="worktime-border" [ngClass]="{ 'inactive-day': !czwartekAktywny }">
                     <div class="worktime">
                         <label class="work-start">Pracuje od:</label>
                         <input type="time" [(ngModel)]="czwartekOd">
@@ -141,7 +141,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="data-list">
+                <div class="data-list" [ngClass]="{ 'inactive-day': !czwartekAktywny }">
                     <div>
                         <label>Określ liczbę tygodni</label>
                         <input class="data-number" [(ngModel)]="liczbaTygodni4" type="number"
@@ -155,7 +155,7 @@
                 </div>
             </div>
         </div>
-        <div class="day-border">
+        <div class="day-border" [ngClass]="{ 'inactive-day': !piatekAktywny }">
             <div class="mak">
                 <div class="day-info">
                     <span class="day">Piątek</span>
@@ -164,7 +164,7 @@
                         <span class="checkbox-name">Aktywny</span>
                     </label>
                 </div>
-                <div class="worktime-border">
+                <div class="worktime-border" [ngClass]="{ 'inactive-day': !piatekAktywny }">
                     <div class="worktime">
                         <label class="work-start">Pracuje od:</label>
                         <input type="time" [(ngModel)]="piatekOd">
@@ -176,7 +176,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="data-list">
+                <div class="data-list" [ngClass]="{ 'inactive-day': !piatekAktywny }">
                     <div>
                         <label>Określ liczbę tygodni</label>
                         <input class="data-number" [(ngModel)]="liczbaTygodni5" type="number"
@@ -190,7 +190,7 @@
                 </div>
             </div>
         </div>
-        <div class="day-border">
+        <div class="day-border" [ngClass]="{ 'inactive-day': !sobotaAktywny }">
             <div class="mak">
                 <div class="day-info">
                     <span class="day">Sobota</span>
@@ -199,7 +199,7 @@
                         <span class="checkbox-name">Aktywny</span>
                     </label>
                 </div>
-                <div class="worktime-border">
+                <div class="worktime-border" [ngClass]="{ 'inactive-day': !sobotaAktywny }">
                     <div class="worktime">
                         <label class="work-start">Pracuje od:</label>
                         <input type="time" [(ngModel)]="sobotaOd">
@@ -211,7 +211,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="data-list">
+                <div class="data-list" [ngClass]="{ 'inactive-day': !sobotaAktywny }">
                     <div>
                         <label>Określ liczbę tygodni</label>
                         <input class="data-number" [(ngModel)]="liczbaTygodni6" type="number"

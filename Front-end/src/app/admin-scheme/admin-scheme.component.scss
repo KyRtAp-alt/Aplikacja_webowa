@@ -97,6 +97,14 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-top: 15px;
   margin-bottom: 15px;
+  width: 350px;
+  position: relative;
+
+  &.inactive-day {
+    background-color: #ccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
 }
 
 .work-start,
@@ -114,6 +122,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   display: grid;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  position: relative;
+
+  &.inactive-day {
+    pointer-events: none;
+  }
 }
 
 .data-list {
@@ -121,6 +135,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  &.inactive-day {
+    pointer-events: none;
+  }
 }
 
 .list {
@@ -150,6 +169,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .checkbox {
   height: 20px;
   width: 20px;
+  cursor: pointer;
 }
 
 .checkbox-border {
@@ -161,10 +181,13 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .checkbox-name {
   font-size: 16px;
   font-family: sans-serif;
+  cursor: pointer;
 }
 
 .mak {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .data-number {
