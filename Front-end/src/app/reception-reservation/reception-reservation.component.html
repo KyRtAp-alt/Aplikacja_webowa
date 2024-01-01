@@ -1,60 +1,114 @@
 <app-header-reception></app-header-reception>
-<div class="right-container">
-    <div class="title-column-border">
-        <h2 class="title-column">Lista Rezerwacji</h2>
-    </div>
-    <div class="main-box-list">
-        <div class="main-doctor-list" *ngIf="visits.length > 0">
-            <div class="main-list">
-                <div class="dbl-border">
-                    <!-- <button class="doctor-button-list" (click)="getVisit()">
-                        <p class="title-doctor-button-list">Odśwież listę</p>
-                    </button> -->
+<div class="ms">
+    <div class="right-container">
+        <button class="doctor-button-list" (click)="refreshList()">
+            <p class="title-doctor-button-list">Odśwież listę</p>
+        </button>
+        <div class="title-column-border">
+            <h2 class="title-column">Nowe rezerwacje ({{ newVisitsCount }})</h2>
+        </div>
+        <div class="main-box-list">
+            <div class="main-doctor-list" *ngIf="newVisits.length > 0">
+                <div class="main-list">
+                    <a class="more">
+                        <button class="clickme" (click)="toggleDescription1()">
+                            <span *ngIf="!showArrow1">&darr;</span>
+                            <span *ngIf="showArrow1">&uarr;</span>
+                        </button>
+                    </a>
+                    <ul class="q" *ngIf="onshowdescription1">
+                        <li *ngFor="let visit of newVisits" class="list">
+                            <span class="clientfirstname">
+                                Imię: {{visit.imieklienta}}
+                            </span>
+                            <span class="clientlastname">
+                                Nazwisko: {{visit.nazwiskoklienta}}
+                            </span>
+                            <span class="clientcontact">
+                                Telefon: {{visit.kontaktklienta}}
+                            </span>
+                            <span class="clientmail">
+                                E-mail: {{visit.mailklient}}
+                            </span>
+                            <span class="clientmail">
+                                Dzień: {{visit.dzienTygodnia}}: {{visit.dzien}}
+                            </span>
+                            <span class="clientmail">
+                                Godzina: {{visit.godzina}}
+                            </span>
+                            <div class="buttons">
+                                <button class="doctor-edit" (click)="confirmConfirmation(visit._id)">Potwierdź
+                                    rezerwację</button>
+                            </div>
+                        </li>
+                        <a class="more">
+                            <button class="clickme" (click)="toggleDescription1()">
+                                <span *ngIf="!showArrow1">&darr;</span>
+                                <span *ngIf="showArrow1">&uarr;</span>
+                            </button>
+                        </a>
+                    </ul>
                 </div>
-                <ul class="q">
-                    <li *ngFor="let visit of visits" class="list">
-                        <span class="clientfirstname">
-                            Imię:
-                            {{visit.imieklienta}}
-                        </span>
-                        <span class="clientlastname">
-                            Nazwisko:
-                            {{visit.nazwiskoklienta}}
-                        </span>
-                        <span class="clientcontact">
-                            Telefon:
-                            {{visit.kontaktklienta}}
-                        </span>
-                        <span class="clientmail">
-                            E-mail:
-                            {{visit.mailklient}}
-                        </span>
-                        <!-- <span class="clientcontent">
-                            Lekarz
-                            {{visit.lekarz}}
-                        </span> -->
-                        <span class="clientmail">
-                            Dzień:
-                            {{visit.dzienTygodnia}}:
-                            {{visit.dzien}}
-                        </span>
-                        <span class="clientmail">
-                            Godzina:
-                            {{visit.godzina}}
-                        </span>
-                        <div class="buttons">
-                            <button class="doctor-delete" (click)="confirmDelete(visit._id)">Anuluj rezerwacje</button>
-                            <button class="doctor-edit">Potwierdz rezerwacje</button>
-                        </div>
-                    </li>
-                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="right-container" *ngIf="confirmedVisits.length > 0">
+        <div class="title-column-border">
+            <h2 class="title-column">Lista potwierdzonych rezerwacji</h2>
+        </div>
+        <div class="main-box-list">
+            <div class="main-doctor-list">
+                <div class="main-list">
+                    <a class="more">
+                        <button class="clickme" (click)="toggleDescription2()">
+                            <span *ngIf="!showArrow1">&darr;</span>
+                            <span *ngIf="showArrow1">&uarr;</span>
+                        </button>
+                    </a>
+                    <ul class="q" *ngIf="onshowdescription2">
+                        <li *ngFor="let confirmedVisit of confirmedVisits" class="list">
+                            <span class="clientfirstname">
+                                Imię:
+                                {{confirmedVisit.imieklienta}}
+                            </span>
+                            <span class="clientlastname">
+                                Nazwisko:
+                                {{confirmedVisit.nazwiskoklienta}}
+                            </span>
+                            <span class="clientcontact">
+                                Telefon:
+                                {{confirmedVisit.kontaktklienta}}
+                            </span>
+                            <span class="clientmail">
+                                E-mail:
+                                {{confirmedVisit.mailklient}}
+                            </span>
+                            <span class="clientmail">
+                                Dzień:
+                                {{confirmedVisit.dzienTygodnia}}:
+                                {{confirmedVisit.dzien}}
+                            </span>
+                            <span class="clientmail">
+                                Godzina:
+                                {{confirmedVisit.godzina}}
+                            </span>
+                            <div class="buttons">
+                                <button class="doctor-delete" (click)="confirmDelete(confirmedVisit._id)">Anuluj
+                                    rezerwacje</button>
+                            </div>
+                        </li>
+                        <a class="more">
+                            <button class="clickme" (click)="toggleDescription1()">
+                                <span *ngIf="!showArrow1">&darr;</span>
+                                <span *ngIf="showArrow1">&uarr;</span>
+                            </button>
+                        </a>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<button class="doctor-button-list" (click)="refreshList()">
-    <p class="title-doctor-button-list">Odśwież listę</p>
-</button>
 <button class="doctor-button-list" (click)="removeExpiredVisits(visits)">
     <p class="title-doctor-button-list">Usuń przeterminowane wizyty</p>
 </button>

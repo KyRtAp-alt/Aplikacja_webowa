@@ -1,6 +1,7 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { VisitService } from '../visit.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-umow-wizyte',
@@ -38,6 +39,7 @@ export class UmowWizyteComponent {
   clientmail: string = '';
   clientcontent: string = '';
   data: string = '';
+  visitdata = false;
 
   opened?: boolean;
 
@@ -46,7 +48,8 @@ export class UmowWizyteComponent {
 
   constructor(
     private doctorService: DoctorService,
-    private visitService: VisitService
+    private visitService: VisitService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -87,6 +90,7 @@ export class UmowWizyteComponent {
       dzienTygodnia: this.selectedVisit.dzienTygodnia,
       dzien: this.selectedVisit.data,
       godzina: this.selectedVisit.godzina,
+      visitdata: this.visitdata,
     };
 
     this.visitService.addVisit(newVisit).subscribe(
@@ -104,6 +108,12 @@ export class UmowWizyteComponent {
     if (!this.isEmptyFields()) {
       this.addVisit();
       this.closeModalVis();
+
+      alert('Zarezerwowano pomyślnie!');
+
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/umow-wizyte']);
+      });
     }
   }
 

@@ -15,10 +15,6 @@ export class VisitService {
     return this.http.get('http://localhost:3000/visit');
   }
 
-  // getVisits(): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.apiUrl}/visit`);
-  // }
-
   addVisit(visits: any) {
     return this.http.post(`http://localhost:3000/visit`, visits);
   }
@@ -31,17 +27,13 @@ export class VisitService {
     return this.http.put(`http://localhost:3000/visit/${id}`, visit);
   }
 
-  // reserveHour(hour: string): Observable<any> {
-  //   return this.http.post<any>(`${this.apiUrl}/reservations`, { hour });
-  // }
-
   getDoctorDate(pracownikID: string): Observable<any> {
     const url = `http://localhost:3000/scheme/${pracownikID}`;
     return this.http.get(url);
   }
 
   getReservedHoursForDoctor(doctorId: string): Observable<string[]> {
-    const url = `${this.apiUrl}/visit/${doctorId}`; // Utworzenie pełnego URL
+    const url = `${this.apiUrl}/visit/${doctorId}`;
     return this.http.get(url).pipe(
       map((data: any) => {
         console.log('Reserved hours data:', data);

@@ -17,24 +17,20 @@ export class ReceptionReservationComponent {
   clientmail: string = '';
   clientcontent: string = '';
   showExpiredVisits: boolean = false;
+  visitdata: boolean = false;
+  newVisits: any[] = [];
+  confirmedVisits: any[] = [];
+  onshowdescription1: boolean = false;
+  showArrow1: boolean = false;
+  onshowdescription2: boolean = false;
+  showArrow2: boolean = false;
+  newVisitsCount: number = 0;
 
   constructor(private visitService: VisitService) {}
 
   ngOnInit() {
     this.getVisit();
   }
-
-  // getVisit() {
-  //   this.visitService.getVisit().subscribe(
-  //     (visits: any) => {
-  //       console.log(visits);
-  //       this.visits = visits;
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
 
   getVisit() {
     this.visitService
@@ -43,6 +39,13 @@ export class ReceptionReservationComponent {
         tap((visits: any) => {
           console.log(visits);
           this.visits = this.removeExpiredVisits(visits);
+          this.confirmedVisits = this.visits.filter(
+            (visit) => visit.visitdata === true
+          );
+          this.newVisits = this.visits.filter(
+            (visit) => visit.visitdata === false
+          );
+          this.newVisitsCount = this.newVisits.length;
         })
       )
       .subscribe(
@@ -51,6 +54,38 @@ export class ReceptionReservationComponent {
           console.error(error);
         }
       );
+  }
+
+  confirmConfirmation(visitId: string) {
+    const confirmation = confirm('Czy na pewno chcesz potwierdzić wizytę?');
+    if (confirmation) {
+      const selectedVisit = this.visits.find((visit) => visit._id === visitId);
+
+      if (selectedVisit) {
+        selectedVisit.visitdata = true;
+
+        this.visitService.updateVisit(visitId, { visitdata: true }).subscribe(
+          (response: any) => {
+            if (response.status === 200) {
+              console.log(`Wizyta o ID ${visitId} została potwierdzona.`);
+              this.getVisit();
+            } else {
+              console.error(
+                'Błąd podczas potwierdzania wizyty:',
+                response.statusText
+              );
+            }
+          },
+          (error: any) => {
+            console.error('Błąd podczas potwierdzania wizyty:', error);
+          }
+        );
+      } else {
+        console.error('Nie znaleziono wizyty o podanym ID.');
+      }
+    } else {
+      alert('Anulowano potwierdzanie wizyty.');
+    }
   }
 
   removeExpiredVisits(visits: any[]): any[] {
@@ -74,23 +109,15 @@ export class ReceptionReservationComponent {
 
   deleteExpiredVisitsFromDatabase(expiredVisits: any[]) {
     expiredVisits.forEach((visit) => {
-      // Stworzenie obiektu Date dla przeterminowanej wizyty
       const visitDate = new Date(visit.dzien);
       visitDate.setHours(0, 0, 0, 0);
-
-      // Stworzenie obiektu Date dla dzisiejszej daty
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-
-      // Obliczenie różnicy w milisekundach między datami
       const timeDifference = visitDate.getTime() - today.getTime();
 
-      // Sprawdzenie, czy data przeterminowanej wizyty jest przyszła
       if (timeDifference > 0) {
-        // Obliczenie ilości milisekund do opóźnienia
-        const delayMilliseconds = timeDifference + 24 * 60 * 60 * 1000; // Dodanie dodatkowego dnia
+        const delayMilliseconds = timeDifference + 24 * 60 * 60 * 1000;
 
-        // Użycie timer i switchMap do opóźnienia usunięcia wizyty
         timer(delayMilliseconds)
           .pipe(switchMap(() => this.visitService.deleteVisit(visit._id)))
           .subscribe(
@@ -148,4 +175,14 @@ export class ReceptionReservationComponent {
   }
 
   clearForm() {}
+
+  toggleDescription1() {
+    this.onshowdescription1 = !this.onshowdescription1;
+    this.showArrow1 = !this.showArrow1;
+  }
+
+  toggleDescription2() {
+    this.onshowdescription2 = !this.onshowdescription2;
+    this.showArrow2 = !this.showArrow2;
+  }
 }
