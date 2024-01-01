@@ -144,6 +144,11 @@ h2 {
   margin-top: 30px;
   margin-bottom: 30px;
   cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.button:hover {
+  transform: scale(1.1);
 }
 
 .ms {
