@@ -1,20 +1,24 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 <app-img-navbar-other></app-img-navbar-other>
-<div class="main-container">
-    <div class="left-container" *ngFor="let ros of ross">
-        <h2 class="title">{{ros.nazwa}}</h2>
-        <p class="text">{{ros.opis}}</p>
+<div class="ms">
+    <div class="main-container">
+        <div class="left-container" *ngFor="let ros of ross">
+            <h2 class="title">{{ros.nazwa}}</h2>
+            <div class="text-border">
+                <p class="text">{{ros.opis}}</p>
+            </div>
+        </div>
+        <div class="left-container">
+            <img class="img" src="../../assets/img-lekarze/344540849_215135477934257_3815023216493170523_n.jpg">
+        </div>
     </div>
-    <!-- <div class="left-container">
-        <img class="img" src="../../assets/img-lekarze/344287967_174481875561966_412174642921280558_n.jpg">
-    </div> -->
-</div>
-<div class="bar-2">
-    <a class="border">
-        <a class="border-name">
-            <span class="name" routerLink="/zakres-uslug">Lista usług</span>
+    <div class="bar-2">
+        <a class="border">
+            <a class="border-name">
+                <span class="name" routerLink="/zakres-uslug">Lista usług</span>
+            </a>
         </a>
-    </a>
+    </div>
 </div>
 <app-footer></app-footer>

@@ -1,35 +1,37 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
-<div class="bar"></div>
-<div class="main-container" *ngFor="let blog of blogs">
-    <div class="left-container">
-        <h2>{{blog.tytul}}</h2>
-    </div>
-    <div class="center-container">
-        <img class="img" src=" ../../assets/AdobeStock_119605372_Easy-Resize.com(1).jpg">
-    </div>
-    <div class="right-container">
-        <a>
-            <p class="text">{{blog.tresc}}</p>
-        </a>
-        <a>
-            <p class="main-title">{{blog.naglowek1}}</p>
-        </a>
-        <a>
-            <p class="text">{{blog.trescopisu1}}</p>
-        </a>
-        <a>
-            <p class="main-title">{{blog.naglowek2}}</p>
-        </a>
-        <a>
-            <p class="text">{{blog.trescopisu2}}</p>
-        </a>
-        <a>
-            <p class="main-title">{{blog.naglowek3}}</p>
-        </a>
-        <a>
-            <p class="text">{{blog.trescopisu3}}</p>
-        </a>
+<app-img-navbar-other></app-img-navbar-other>
+<div class="ms">
+    <div class="main-container" *ngFor="let blog of blogs">
+        <div class="left-container">
+            <h2>{{blog.tytul}}</h2>
+        </div>
+        <div class="center-container">
+            <img class="img" src=" ../../assets/AdobeStock_119605372_Easy-Resize.com(1).jpg">
+        </div>
+        <div class="right-container">
+            <a>
+                <p class="text">{{blog.tresc}}</p>
+            </a>
+            <a>
+                <p class="main-title">{{blog.naglowek1}}</p>
+            </a>
+            <a>
+                <p class="text">{{blog.trescopisu1}}</p>
+            </a>
+            <a>
+                <p class="main-title">{{blog.naglowek2}}</p>
+            </a>
+            <a>
+                <p class="text">{{blog.trescopisu2}}</p>
+            </a>
+            <a>
+                <p class="main-title">{{blog.naglowek3}}</p>
+            </a>
+            <a>
+                <p class="text">{{blog.trescopisu3}}</p>
+            </a>
+        </div>
     </div>
 </div>
 <div class="bar-2">
