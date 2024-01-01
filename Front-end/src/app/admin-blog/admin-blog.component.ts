@@ -82,12 +82,10 @@ export class AdminBlogComponent {
   }
 
   confirmDelete(blogId: string) {
-    const confirmation = confirm(
-      'Czy na pewno chcesz usunąć tego lekarza, specialistę?'
-    );
+    const confirmation = confirm('Czy na pewno chcesz usunąć ten wpis?');
     if (confirmation) {
       this.deleteBlog(blogId);
-      alert('Usunięto lekarza, specialistę');
+      alert('Usunięto wpis');
     }
   }
 
@@ -166,27 +164,3 @@ export class AdminBlogComponent {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
-
-// showdescription1() {
-//   this.onshowdescription1 = true;
-// }
-
-// closedescription1() {
-//   this.onshowdescription1 = false;
-// }
-
-// showdescription2() {
-//   this.onshowdescription2 = true;
-// }
-
-// closedescription2() {
-//   this.onshowdescription2 = false;
-// }
-
-// showdescription3() {
-//   this.onshowdescription3 = true;
-// }
-
-// closedescription3() {
-//   this.onshowdescription3 = false;
-// }

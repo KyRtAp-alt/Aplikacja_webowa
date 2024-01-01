@@ -17,8 +17,11 @@
                     </a>
                     <a class="form-group">
                         <label class="name">Opis zapoznawczy</label>
-                        <textarea class="name-3" name="content" placeholder="" [(ngModel)]="content">
+                        <textarea class="name-3" name="content" placeholder="" [(ngModel)]="content" maxlength="500">
                         </textarea>
+                        <a class="character-count">
+                            Pozostało znaków: {{ 500 - content.length }}
+                        </a>
                     </a>
                     <a class="form-group">
                         <label class="name">Pierwszy nagłówek</label>
@@ -68,10 +71,7 @@
                     <a class=" form-group">
                         <label class="name">Streszczenie opisu</label>
                         <textarea class="name-2" name="endcontent" placeholder="Strzeszczenie opisu"
-                            [(ngModel)]="endcontent" maxlength="500"></textarea>
-                        <a class="character-count">
-                            Pozostało znaków: {{ 500 - content.length }}
-                        </a>
+                            [(ngModel)]="endcontent"></textarea>
                     </a>
                     <a class="border-but">
                         <button class="button-border"

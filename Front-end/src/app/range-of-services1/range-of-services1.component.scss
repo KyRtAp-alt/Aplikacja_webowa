@@ -21,12 +21,21 @@
   @media (min-width: 1445px) {
     border-radius: 10px;
   }
+
+  @media (max-width: 476px) {
+    margin-bottom: 10px;
+  }
 }
 
 .name-bar {
   font-family: sans-serif;
   font-size: 30px;
   font-weight: 300;
+
+  @media (max-width: 1024px) {
+    font-size: 30px;
+    font-weight: 300;
+  }
 }
 
 .img {
@@ -39,7 +48,6 @@
 }
 
 .left-left {
-  // margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,6 +61,12 @@
   cursor: pointer;
   transform: scale(1);
   transition: transform 0.5s;
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    height: 90px;
+    width: 200px;
+  }
 }
 
 .left-left:hover {
@@ -63,39 +77,25 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  // margin-top: 10px;
   grid-template-columns: repeat(4, auto);
   gap: 30px;
-}
 
-.title {
-  font-size: 14px;
-  // font-weight: 300;
-  font-family: sans-serif;
-}
+  @media (max-width: 769px) {
+    grid-template-columns: repeat(3, auto);
+  }
 
-@media (max-width: 1024px) {
-  .main-box {
+  @media (max-width: 668px) {
     grid-template-columns: repeat(1, auto);
     gap: 0px;
   }
+}
 
-  .name-bar {
-    font-size: 30px;
-    font-weight: 300;
-  }
-
-  .left-left {
-    margin-top: 20px;
-    height: 90px;
-    width: 200px;
-  }
-
-  .title {
+.title {
+  color: #00010d;
+  font-size: 14px;
+  font-family: sans-serif;
+  @media (max-width: 1024px) {
     font-size: 14px;
-  }
-
-  .bar {
   }
 }
 

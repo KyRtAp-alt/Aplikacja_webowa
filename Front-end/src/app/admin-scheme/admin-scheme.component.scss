@@ -1,4 +1,6 @@
 .ms {
+  padding-top: 60px;
+  background-color: #f2f2f2;
 }
 
 .main-container {
@@ -12,7 +14,6 @@
 }
 
 .title-box {
-  margin-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,7 +50,10 @@
   margin-bottom: 10px;
 }
 
-.time-select-name {
+.time-select-title {
+  font-family: sans-serif;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .time-select-number {
@@ -78,8 +82,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .day {
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
   margin-right: 50px;
+  color: #01a3a4;
 }
 
 .day-info {
@@ -212,10 +218,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .main-name-title {
-  font-size: 16px;
-  font-family: serif;
+  font-size: 18px;
+  font-family: sans-serif;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .main-name-input {
@@ -252,4 +259,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .list-wroktime {
   margin-left: 20px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
 }

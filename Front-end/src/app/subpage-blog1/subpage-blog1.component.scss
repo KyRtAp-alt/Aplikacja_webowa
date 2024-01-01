@@ -90,8 +90,9 @@
 
 .bar-2 {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  margin-right: 60px;
 }
 
 .border {
@@ -103,7 +104,6 @@
   height: 60px;
   width: 190px;
   border-radius: 15px;
-  cursor: pointer;
   transition: transform 0.5s;
 }
 
@@ -123,6 +123,7 @@
   padding: 15px;
   color: #00010d;
   transform: color 0.5s;
+  cursor: pointer;
 }
 
 .name:hover {

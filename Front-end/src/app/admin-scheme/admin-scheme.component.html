@@ -1,8 +1,8 @@
 <app-header-admin></app-header-admin>
-<div class="title-box">
-    <h2 class="title">Dodawanie harmonogramu</h2>
-</div>
 <div class="ms">
+    <div class="title-box">
+        <h2 class="title">Dodawanie harmonogramu</h2>
+    </div>
     <div class="main-container">
         <div class="main">
             <div class="main-name">
@@ -12,7 +12,7 @@
             <div class="time-select">
                 <label class="time-select-title">Czas wizyty</label>
                 <input class="time-select-number" type="number" [(ngModel)]="czasWizyty">
-                <span>minut</span>
+                <span class="time-select-title">minut</span>
             </div>
         </div>
         <div class="day-border" [ngClass]="{ 'inactive-day': !poniedzialekAktywny }">

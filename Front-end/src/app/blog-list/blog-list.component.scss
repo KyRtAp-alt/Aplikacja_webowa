@@ -144,6 +144,12 @@
   background-color: #01a3a4;
   margin-bottom: 20px;
   cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.4s;
+}
+
+.button:hover {
+  transform: scale(1.1);
 }
 
 .title-blog-border {

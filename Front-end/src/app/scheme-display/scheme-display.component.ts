@@ -83,6 +83,7 @@ export class SchemeDisplayComponent implements OnInit {
 
         this.animacja = true;
         setTimeout(() => {
+          this.aktualizujLiczbeWidocznychDni();
           this.loading = false;
           this.animacja = true;
           setTimeout(() => {
