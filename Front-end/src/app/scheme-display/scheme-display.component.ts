@@ -36,6 +36,7 @@ export class SchemeDisplayComponent implements OnInit {
   harmonogramy: Harmonogram[] = [];
   widoczneDni: WygenerowanyHarmonogram[] = [];
   pokazaneDni: number = 6;
+  // pokazaneDniMobile: number = 3;
   sliderIndex: number = 0;
   animacja: boolean = false;
   pierwszaData: boolean = true;
@@ -93,6 +94,10 @@ export class SchemeDisplayComponent implements OnInit {
         console.error('Error fetching schedule data:', error);
         this.loading = false;
       }
+    );
+
+    window.addEventListener('resize', () =>
+      this.aktualizujLiczbeWidocznychDni()
     );
   }
 
@@ -222,6 +227,18 @@ export class SchemeDisplayComponent implements OnInit {
     return `${String(noweGodziny).padStart(2, '0')}:${String(
       noweMinuty
     ).padStart(2, '0')}`;
+  }
+
+  aktualizujLiczbeWidocznychDni() {
+    if (window.innerWidth < 426) {
+      this.pokazaneDni = 1;
+    } else if (window.innerWidth < 769) {
+      this.pokazaneDni = 2;
+    } else if (window.innerWidth < 1440) {
+      this.pokazaneDni = 4;
+    } else {
+      this.pokazaneDni = 6;
+    }
   }
 
   przewinDni(ileDni: number) {

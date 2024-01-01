@@ -9,7 +9,7 @@
   justify-content: space-between;
   transition: transform 0.3s ease-in-out;
   background-color: #bbeefc;
-  width: 1100px;
+  width: auto;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -60,7 +60,6 @@
 }
 
 .hours-border {
-  //   border-top: 1px solid black;
   width: 100px;
   padding: 0px;
 }
@@ -135,6 +134,11 @@
     color: #21395d;
   }
 }
+
+// .mobi-list {
+//   display: grid;
+//   justify-content: center;
+// }
 
 // @keyframes slideAnimation {
 //   from {

@@ -75,7 +75,7 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
 
-  @media (max-width: 1025px) {
+  @media (max-width: 1225px) {
     width: 960px;
   }
 
@@ -251,10 +251,24 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
+  width: 800px;
+
+  @media (max-width: 1040px) {
+    width: 700px;
+  }
+
+  @media (max-width: 769px) {
+    width: 550px;
+  }
+
+  @media (max-width: 426px) {
+    width: 250px;
+  }
 }
 
 .forms {
-  width: 800px;
+  // width: 800px;
+  width: auto;
   // height: 450px;
 }
 
@@ -338,6 +352,12 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 20px 20px;
+
+  @media (max-width: 426px) {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, auto);
+  }
 }
 
 .button-border-controls {
@@ -381,6 +401,10 @@
   height: 35px;
   cursor: pointer;
   border-radius: 5px;
+
+  @media (max-width: 426px) {
+    width: 100px;
+  }
 }
 
 .scroll-to-top {
