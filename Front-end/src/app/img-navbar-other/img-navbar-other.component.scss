@@ -13,6 +13,7 @@
   position: relative;
   margin-bottom: -30px;
 }
+
 .img {
   width: 100%;
   // max-width: 1440px;
@@ -26,5 +27,13 @@
 
   @media (min-width: 1445px) {
     border-radius: 10px;
+  }
+
+  @media (max-width: 1025px) {
+    transform: translateY(-30px);
+  }
+
+  @media (max-width: 769px) {
+    transform: translateY(-10px);
   }
 }

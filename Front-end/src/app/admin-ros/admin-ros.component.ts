@@ -110,6 +110,7 @@ export class AdminRosComponent {
     this.selectedRosId = '';
     this.name = '';
     this.description = '';
+    this.price = '';
   }
 
   isEmptyFields(): boolean {
