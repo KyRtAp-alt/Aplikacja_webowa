@@ -226,39 +226,30 @@ export class SchemeDisplayComponent implements OnInit {
 
   przewinDni(ileDni: number) {
     this.animacja = true;
-    this.sliderIndex += ileDni;
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    let todayIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
+    const todayIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
       const itemDate = new Date(item.data);
       itemDate.setHours(0, 0, 0, 0);
       return itemDate >= today;
     });
 
-    if (todayIndex === -1) {
-      todayIndex = 0;
-    }
+    const startIndexOfSlider = todayIndex === -1 ? 0 : todayIndex;
 
-    this.sliderIndex = Math.max(todayIndex, this.sliderIndex);
+    this.sliderIndex += ileDni;
 
-    this.sliderIndex = Math.min(
-      this.sliderIndex,
-      this.wygenerowanyHarmonogram.length - this.pokazaneDni
+    this.sliderIndex = Math.max(
+      startIndexOfSlider,
+      Math.min(
+        this.sliderIndex,
+        this.wygenerowanyHarmonogram.length - this.pokazaneDni
+      )
     );
 
-    const currentDateIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
-      const itemDate = new Date(item.data);
-      itemDate.setHours(0, 0, 0, 0);
-      return itemDate.getTime() === today.getTime();
-    });
+    this.pierwszaData = this.sliderIndex === startIndexOfSlider;
 
-    if (currentDateIndex !== -1) {
-      this.sliderIndex = Math.min(this.sliderIndex, currentDateIndex);
-    }
-
-    this.pierwszaData = this.sliderIndex === 0;
     this.ostatniaData =
       this.sliderIndex >=
       this.wygenerowanyHarmonogram.length - this.pokazaneDni;
