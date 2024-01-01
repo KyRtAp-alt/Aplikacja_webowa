@@ -305,14 +305,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 6px solid #f0f0f0;
+  border-radius: 10px;
 }
 
 .text-border {
-  width: 100px;
-  border: 1px solid #01a3a4;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 130px;
+  height: 25px;
+  border: 2px solid #01a3a4;
+  border-radius: 10px;
+}
+
+.search-title {
+  font-size: 20px;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .search-button {
   margin-top: 20px;
-  border: 0px;
+  border: 2px solid #01a3a4;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: sans-serif;
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
