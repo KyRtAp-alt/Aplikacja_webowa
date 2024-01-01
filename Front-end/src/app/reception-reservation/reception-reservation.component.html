@@ -39,6 +39,7 @@
                             <div class="buttons">
                                 <button class="doctor-edit" (click)="confirmConfirmation(visit._id)">Potwierdź
                                     rezerwację</button>
+
                             </div>
                         </li>
                         <a class="more">
@@ -61,11 +62,20 @@
                 <div class="main-list">
                     <a class="more">
                         <button class="clickme" (click)="toggleDescription2()">
-                            <span *ngIf="!showArrow1">&darr;</span>
-                            <span *ngIf="showArrow1">&uarr;</span>
+                            <span *ngIf="!showArrow2">&darr;</span>
+                            <span *ngIf="showArrow2">&uarr;</span>
                         </button>
                     </a>
                     <ul class="q" *ngIf="onshowdescription2">
+                        <div class="search-container">
+                            <input class="text-border" type="text" placeholder="Imię"
+                                [(ngModel)]="clientSearchFirstName">
+                            <input class="text-border" type="text" placeholder="Nazwisko"
+                                [(ngModel)]="clientSearchLastName">
+                            <input class="text-border" type="text" placeholder="nr. telefonu"
+                                [(ngModel)]="clientSearchContact">
+                            <button class="search-button" (click)="searchConfirmedVisits()">Szukaj</button>
+                        </div>
                         <li *ngFor="let confirmedVisit of confirmedVisits" class="list">
                             <span class="clientfirstname">
                                 Imię:
@@ -98,9 +108,9 @@
                             </div>
                         </li>
                         <a class="more">
-                            <button class="clickme" (click)="toggleDescription1()">
-                                <span *ngIf="!showArrow1">&darr;</span>
-                                <span *ngIf="showArrow1">&uarr;</span>
+                            <button class="clickme" (click)="toggleDescription2()">
+                                <span *ngIf="!showArrow2">&darr;</span>
+                                <span *ngIf="showArrow2">&uarr;</span>
                             </button>
                         </a>
                     </ul>

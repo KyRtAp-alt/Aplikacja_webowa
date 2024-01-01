@@ -298,3 +298,21 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.search-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-border {
+  width: 100px;
+  border: 1px solid #01a3a4;
+}
+
+.search-button {
+  margin-top: 20px;
+  border: 0px;
+}

@@ -25,11 +25,35 @@ export class ReceptionReservationComponent {
   onshowdescription2: boolean = false;
   showArrow2: boolean = false;
   newVisitsCount: number = 0;
+  searchFirstName: string = '';
+  searchLastName: string = '';
+  searchContact: string = '';
+  searchMail: string = '';
+  clientSearchFirstName: string = '';
+  clientSearchLastName: string = '';
+  clientSearchContact: string = '';
+  clientSearchMail: string = '';
 
   constructor(private visitService: VisitService) {}
 
   ngOnInit() {
     this.getVisit();
+  }
+
+  searchConfirmedVisits() {
+    this.confirmedVisits = this.visits.filter((visit) => {
+      const firstNameMatch = visit.imieklienta
+        .toLowerCase()
+        .includes(this.clientSearchFirstName.toLowerCase());
+      const lastNameMatch = visit.nazwiskoklienta
+        .toLowerCase()
+        .includes(this.clientSearchLastName.toLowerCase());
+      const Contact = visit.kontaktklienta
+        .toLowerCase()
+        .includes(this.clientSearchContact.toLowerCase());
+
+      return firstNameMatch && lastNameMatch && Contact;
+    });
   }
 
   getVisit() {
@@ -86,6 +110,8 @@ export class ReceptionReservationComponent {
     } else {
       alert('Anulowano potwierdzanie wizyty.');
     }
+    this.getVisit();
+    this.searchConfirmedVisits();
   }
 
   removeExpiredVisits(visits: any[]): any[] {
