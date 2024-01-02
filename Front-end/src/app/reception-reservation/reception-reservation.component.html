@@ -1,15 +1,15 @@
 <app-header-reception></app-header-reception>
 <div class="ms">
     <div class="right-container">
-        <div>
+        <div class="contorls">
             <button class="doctor-button-list" (click)="removeExpiredVisits(visits)">
                 <p class="title-doctor-button-list">Usuń przeterminowane wizyty</p>
             </button>
-        </div>
-        <div>
-            <button class="doctor-button-list" (click)="refreshList()">
-                <p class="title-doctor-button-list">Odśwież listę</p>
-            </button>
+            <a>
+                <button class="doctor-button-list" (click)="refreshList()">
+                    <p class="title-doctor-button-list">Odśwież listę</p>
+                </button>
+            </a>
         </div>
         <div class="title-column-border">
             <h2 class="title-column">Nowe rezerwacje ({{ newVisitsCount }})</h2>

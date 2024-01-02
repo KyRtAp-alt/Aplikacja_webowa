@@ -127,7 +127,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .title-column {
@@ -160,7 +160,7 @@
   background-color: #3a5470;
   color: #fff;
   border: none;
-  padding: 15px 25px;
+  padding: 5px 10px;
   // margin-top: 10px;
   // margin-left: 10px;
   cursor: pointer;
@@ -365,4 +365,15 @@
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+}
+
+.contorls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    margin-top: 10px;
+  }
 }
