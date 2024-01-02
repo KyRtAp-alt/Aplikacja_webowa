@@ -23,6 +23,7 @@ import { ReceptionReservationComponent } from './reception-reservation/reception
 import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { WebbookingComponent } from './webbooking/webbooking.component';
+import { AuthGuard } from 'src/app/auth.guard';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -42,11 +43,27 @@ const routes: Routes = [
 
   //Admin
   { path: 'admin', component: AdminLoginComponent },
-  { path: 'admin-homepage', component: AdminHomepageComponent },
-  { path: 'add-doctor', component: DoctorAddComponent },
-  { path: 'admin-blog', component: AdminBlogComponent },
-  { path: 'ros', component: AdminRosComponent },
-  { path: 'admin-harmonogram', component: AdminSchemeComponent },
+  {
+    path: 'admin-homepage',
+    component: AdminHomepageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'add-doctor',
+    component: DoctorAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin-blog',
+    component: AdminBlogComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'ros', component: AdminRosComponent, canActivate: [AuthGuard] },
+  {
+    path: 'admin-harmonogram',
+    component: AdminSchemeComponent,
+    canActivate: [AuthGuard],
+  },
 
   //Recepcja
   { path: 'recepcja-stronaglowna', component: ReceptionHomepageComponent },

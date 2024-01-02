@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-admin-homepage',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-homepage.component.scss'],
 })
 export class AdminHomepageComponent implements OnInit {
+  constructor(private authService: AuthService) {}
+
   schedule: any[] = [];
 
   currentTime: Date = new Date();
@@ -18,5 +21,9 @@ export class AdminHomepageComponent implements OnInit {
     setInterval(() => {
       this.currentTime = new Date();
     }, 1000);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

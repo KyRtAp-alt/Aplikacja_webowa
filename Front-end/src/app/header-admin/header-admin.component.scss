@@ -62,7 +62,8 @@
   font-family: sans-serif;
 }
 
-.link {
+.link,
+.logout {
   font-size: 20px;
   margin-right: 20px;
   border: 1px;
@@ -73,5 +74,16 @@
 }
 
 .link:hover {
+  transform: scale(1.05);
+}
+
+.logout-border {
+}
+
+.logout {
+  color: #22a6b3;
+}
+
+.logout:hover {
   transform: scale(1.1);
 }

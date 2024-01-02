@@ -1,9 +1,24 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label for="username">Login:</label>
-    <input type="text" id="username" formControlName="username" required>
+<div class="ms">
+    <div class="ms-outer">
+        <div class="info">
+            <img src="../../assets/343958848_562057416008897_96267590959828_n.png">
+            <span class="title">
+                MedLife
+            </span>
+            <span class="info-title">
+                Logowanie administrator
+            </span>
+        </div>
+        <div class="ms-inner">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <label for="username">Login:</label>
+                <input type="text" id="username" formControlName="username" required>
 
-    <label for="password">Hasło:</label>
-    <input type="password" id="password" formControlName="password" required>
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" formControlName="password" required>
 
-    <button type="submit">Zaloguj się</button>
-</form>
+                <button type="submit">Zaloguj się</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000';
+  private isLoggedIn: boolean = localStorage.getItem('isLoggedIn') === 'true';
 
-  constructor(private http: HttpClient) {}
+  constructor(private router: Router) {}
 
-  login(username: string, password: string): Observable<any> {
-    const body = { username, password };
-    return this.http.post(`${this.apiUrl}/login`, body);
+  login(username: string, password: string) {
+    if (username === '123' && password === '123') {
+      this.isLoggedIn = true;
+      localStorage.setItem('isLoggedIn', 'true');
+      this.router.navigate(['/admin-homepage']);
+    } else {
+      console.log('Błędne dane logowania');
+    }
   }
 
-  logout(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/logout`, {});
+  logout() {
+    this.isLoggedIn = false;
+    localStorage.removeItem('isLoggedIn');
+    this.router.navigate(['/admin']);
+  }
+
+  isAuthenticated() {
+    return this.isLoggedIn;
   }
 }
