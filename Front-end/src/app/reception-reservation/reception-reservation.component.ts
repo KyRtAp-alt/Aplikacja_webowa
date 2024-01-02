@@ -3,6 +3,7 @@ import { VisitService } from '../visit.service';
 import { tap } from 'rxjs';
 import { timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-reception-reservation',
@@ -34,7 +35,7 @@ export class ReceptionReservationComponent {
   clientSearchContact: string = '';
   clientSearchMail: string = '';
 
-  constructor(private visitService: VisitService) {}
+  constructor(private visitService: VisitService, private zone: NgZone) {}
 
   ngOnInit() {
     this.getVisit();
@@ -135,23 +136,10 @@ export class ReceptionReservationComponent {
 
   deleteExpiredVisitsFromDatabase(expiredVisits: any[]) {
     expiredVisits.forEach((visit) => {
-      const visitDate = new Date(visit.dzien);
-      visitDate.setHours(0, 0, 0, 0);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const timeDifference = visitDate.getTime() - today.getTime();
-
-      if (timeDifference > 0) {
-        const delayMilliseconds = timeDifference + 24 * 60 * 60 * 1000;
-
-        timer(delayMilliseconds)
-          .pipe(switchMap(() => this.visitService.deleteVisit(visit._id)))
-          .subscribe(
-            () =>
-              console.log(`Usunięto przeterminowaną wizytę o ID ${visit._id}`),
-            (error) => console.error('Błąd podczas usuwania wizyty:', error)
-          );
-      }
+      this.visitService.deleteVisit(visit._id).subscribe(
+        () => console.log(`Usunięto przeterminowaną wizytę o ID ${visit._id}`),
+        (error) => console.error('Błąd podczas usuwania wizyty:', error)
+      );
     });
   }
 
