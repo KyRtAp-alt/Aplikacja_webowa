@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { VisitService } from '../visit.service';
 import { tap } from 'rxjs';
-import { timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { NgZone } from '@angular/core';
 
 @Component({
@@ -48,7 +46,6 @@ export class ReceptionReservationComponent {
   }
 
   formatujNumerTel(value: string): string {
-    // Zakładam, że wartość to ciąg cyfr bez żadnych dodatkowych znaków.
     return `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6)}`;
   }
 
