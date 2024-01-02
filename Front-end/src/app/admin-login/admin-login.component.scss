@@ -77,3 +77,12 @@ img {
   color: #244160;
   font-weight: 400;
 }
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 21px;
+}

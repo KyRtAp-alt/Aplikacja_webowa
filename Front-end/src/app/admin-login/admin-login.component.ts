@@ -11,6 +11,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AdminLoginComponent implements OnInit {
   loginForm!: FormGroup;
+  showErrorMessage = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,6 +37,10 @@ export class AdminLoginComponent implements OnInit {
       this.authService.login(username, password);
       this.router.navigate(['/admin-homepage']);
     } else {
+      this.showErrorMessage = true;
+      setTimeout(() => {
+        this.showErrorMessage = false;
+      }, 10000);
       console.log('Błędne dane logowania');
     }
   }

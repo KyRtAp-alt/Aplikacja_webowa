@@ -13,10 +13,11 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <label for="username">Login:</label>
                 <input type="text" id="username" formControlName="username" required>
-
                 <label for="password">Hasło:</label>
                 <input type="password" id="password" formControlName="password" required>
-
+                <div *ngIf="showErrorMessage">
+                    <span class="error-message">Błędny login lub hasło</span>
+                </div>
                 <button type="submit">Zaloguj się</button>
             </form>
         </div>
