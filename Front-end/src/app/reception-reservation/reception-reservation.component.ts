@@ -23,6 +23,8 @@ export class ReceptionReservationComponent {
   confirmedVisits: any[] = [];
   onshowdescription1: boolean = false;
   showArrow1: boolean = false;
+  onshowdescription11: boolean = false;
+  showArrow11: boolean = false;
   onshowdescription2: boolean = false;
   showArrow2: boolean = false;
   newVisitsCount: number = 0;
@@ -34,11 +36,20 @@ export class ReceptionReservationComponent {
   clientSearchLastName: string = '';
   clientSearchContact: string = '';
   clientSearchMail: string = '';
+  showHelloBox: boolean = false;
+  newVisitsSearchFirstName: string = '';
+  newVisitsSearchLastName: string = '';
+  newVisitsSearchContact: string = '';
 
   constructor(private visitService: VisitService, private zone: NgZone) {}
 
   ngOnInit() {
     this.getVisit();
+  }
+
+  formatujNumerTel(value: string): string {
+    // Zakładam, że wartość to ciąg cyfr bez żadnych dodatkowych znaków.
+    return `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6)}`;
   }
 
   searchConfirmedVisits() {
@@ -54,6 +65,24 @@ export class ReceptionReservationComponent {
         .includes(this.clientSearchContact.toLowerCase());
 
       return firstNameMatch && lastNameMatch && Contact;
+    });
+  }
+
+  searchNewVisits() {
+    const originalNewVisits = [...this.newVisits];
+
+    this.newVisits = originalNewVisits.filter((visit) => {
+      const firstNameMatch = visit.imieklienta
+        .toLowerCase()
+        .includes(this.newVisitsSearchFirstName.toLowerCase());
+      const lastNameMatch = visit.nazwiskoklienta
+        .toLowerCase()
+        .includes(this.newVisitsSearchLastName.toLowerCase());
+      const contactMatch = visit.kontaktklienta.includes(
+        this.newVisitsSearchContact
+      );
+
+      return firstNameMatch && lastNameMatch && contactMatch;
     });
   }
 
@@ -193,6 +222,11 @@ export class ReceptionReservationComponent {
   toggleDescription1() {
     this.onshowdescription1 = !this.onshowdescription1;
     this.showArrow1 = !this.showArrow1;
+  }
+
+  toggleDescription11() {
+    this.onshowdescription11 = !this.onshowdescription11;
+    this.showArrow11 = !this.showArrow11;
   }
 
   toggleDescription2() {

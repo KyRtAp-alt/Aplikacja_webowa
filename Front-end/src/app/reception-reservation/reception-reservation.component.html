@@ -24,6 +24,12 @@
                         </button>
                     </a>
                     <ul class="q" *ngIf="onshowdescription1">
+                        <div class="search-container">
+                            <h2 class="search-title">Wyszukaj nową wizytę:</h2>
+                            <input class="text-border" type="text" placeholder="nr. telefonu"
+                                [(ngModel)]="newVisitsSearchContact">
+                            <button class="search-button" (click)="searchNewVisits()">Szukaj</button>
+                        </div>
                         <li *ngFor="let visit of newVisits" class="list">
                             <span class="clientfirstname">
                                 Imię: {{visit.imieklienta}}
@@ -40,14 +46,23 @@
                             <span class="clientmail">
                                 Dzień: {{visit.dzienTygodnia}}: {{visit.dzien}}
                             </span>
-                            <span class="clientmail">
+                            <span class="clientmail-last">
                                 Godzina: {{visit.godzina}}
                             </span>
+                            <div class="info-border">
+                                <span class="info-title">Wyślij SMS na numer: {{ formatujNumerTel(visit.kontaktklienta)
+                                    }}</span>
+                                <div class="info-text-border">
+                                    <span class="info-text">MedLife zaprasza na umowiona wizyte {{visit.dzien}} o
+                                        godzine
+                                        {{visit.godzina}}. Prosze o potwierdzenie wizyty sms.</span>
+                                </div>
+                            </div>
                             <div class="buttons">
                                 <button class="doctor-edit" (click)="confirmConfirmation(visit._id)">Potwierdź
-                                    rezerwację</button>
+                                </button>
                                 <button class="doctor-delete" (click)="confirmDelete(visit._id)">Anuluj
-                                    rezerwacje</button>
+                                </button>
                             </div>
                         </li>
                         <a class="more">
@@ -75,7 +90,6 @@
                         </button>
                     </a>
                     <ul class="q" *ngIf="onshowdescription2">
-
                         <div class="search-container">
                             <h2 class="search-title">Wyszukaj wizytę:</h2>
                             <input class="text-border" type="text" placeholder="Imię"
