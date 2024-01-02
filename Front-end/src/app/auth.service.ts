@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private router: Router) {}
 
   login(username: string, password: string) {
-    if (username === '123' && password === '123') {
+    if (username === 'admin' && password === '123') {
       this.isLoggedIn = true;
       localStorage.setItem('isLoggedIn', 'true');
       this.router.navigate(['/admin-homepage']);

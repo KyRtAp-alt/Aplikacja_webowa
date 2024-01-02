@@ -32,7 +32,7 @@ export class AdminLoginComponent implements OnInit {
     const username = this.loginForm?.get('username')?.value ?? '';
     const password = this.loginForm?.get('password')?.value ?? '';
 
-    if (username === '123' && password === '123') {
+    if (username === 'admin' && password === '123') {
       this.authService.login(username, password);
       this.router.navigate(['/admin-homepage']);
     } else {
