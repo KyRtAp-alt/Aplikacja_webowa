@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-homepage',
@@ -7,7 +8,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./admin-homepage.component.scss'],
 })
 export class AdminHomepageComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private titleService: Title) {
+    this.titleService.setTitle('Admin strona główna');
+  }
 
   schedule: any[] = [];
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { RosService } from '../ros.service';
 import { SchemeService } from '../scheme.service';
+import { Title } from '@angular/platform-browser';
 import { ObjectId } from 'mongodb';
 
 @Component({
@@ -32,8 +33,11 @@ export class DoctorAddComponent implements OnInit {
   constructor(
     private doctorService: DoctorService,
     private rosService: RosService,
-    private schemeService: SchemeService
-  ) {}
+    private schemeService: SchemeService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Admin pracacownik');
+  }
 
   ngOnInit(): void {
     this.getDoctors();

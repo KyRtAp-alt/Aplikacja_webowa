@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RosService } from '../ros.service';
 import { tap } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-ros',
@@ -15,7 +16,9 @@ export class AdminRosComponent {
   selectedRosId: string = '';
   editingRos: boolean = false;
 
-  constructor(private rosService: RosService) {}
+  constructor(private rosService: RosService, private titleService: Title) {
+    this.titleService.setTitle('Admin zakres usług');
+  }
 
   ngOnInit() {
     this.getRoss();

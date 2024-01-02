@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SchemeService } from '../scheme.service';
+import { Title } from '@angular/platform-browser';
 
 interface Schedule {
   _id: string;
@@ -93,7 +94,12 @@ export class AdminSchemeComponent {
   tygodnie6: number[] = [];
   daty6: { [key: number]: string | null } = {};
 
-  constructor(private schemeService: SchemeService) {}
+  constructor(
+    private schemeService: SchemeService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Admin harmonogram pracy');
+  }
 
   ngOnInit() {
     this.getSchemes();
@@ -478,5 +484,9 @@ export class AdminSchemeComponent {
         }
       }
     }
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

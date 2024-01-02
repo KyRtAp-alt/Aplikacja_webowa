@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BlogService } from '../blog.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin-blog',
@@ -27,7 +28,9 @@ export class AdminBlogComponent {
   description2: string = '';
   description3: string = '';
 
-  constructor(private blogService: BlogService) {}
+  constructor(private blogService: BlogService, private titleService: Title) {
+    this.titleService.setTitle('Admin blog');
+  }
 
   ngOnInit() {
     this.getBlogs();
