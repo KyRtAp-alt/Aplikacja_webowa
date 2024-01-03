@@ -101,6 +101,7 @@ export class DoctorAddComponent implements OnInit {
         console.error(error);
       }
     );
+    location.reload();
   }
 
   confirmDelete(doctorId: string) {
@@ -123,6 +124,7 @@ export class DoctorAddComponent implements OnInit {
         console.error(error);
       }
     );
+    location.reload();
   }
 
   editDoctor(doctor: any) {
@@ -159,6 +161,7 @@ export class DoctorAddComponent implements OnInit {
           console.error(error);
         }
       );
+    location.reload();
   }
 
   clearForm() {
