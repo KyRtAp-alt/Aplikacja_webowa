@@ -28,19 +28,19 @@ interface WygenerowanyHarmonogram {
   styleUrls: ['./scheme-display.component.scss'],
 })
 export class SchemeDisplayComponent implements OnInit {
-  wygenerowanyHarmonogram: WygenerowanyHarmonogram[] = [];
+  generatedSchedule: WygenerowanyHarmonogram[] = [];
 
   @Input() scheduleId: string = '';
   @Input() doctorId: string = '';
   @Output() selectedInfo = new EventEmitter<any>();
   harmonogramy: Harmonogram[] = [];
   widoczneDni: WygenerowanyHarmonogram[] = [];
-  pokazaneDni: number = 6;
+  shownDays: number = 6;
   // pokazaneDniMobile: number = 3;
   sliderIndex: number = 0;
-  animacja: boolean = false;
-  pierwszaData: boolean = true;
-  ostatniaData: boolean = false;
+  animation: boolean = false;
+  firstDate: boolean = true;
+  lastDate: boolean = false;
   loading: boolean = true;
   // @Input() zarezerwowaneGodziny: Array<string> = [];
   // selectedDoctor: any;
@@ -61,14 +61,14 @@ export class SchemeDisplayComponent implements OnInit {
     this.schemeService.getScheduleData().subscribe(
       (data: Harmonogram[]) => {
         this.harmonogramy = data.filter((item) => item._id === this.scheduleId);
-        this.generujHarmonogram();
-        this.sortujHarmonogram();
+        this.generateSchedule();
+        this.sortSchedule();
         this.getVisit();
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
-        const todayIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
+        const todayIndex = this.generatedSchedule.findIndex((item) => {
           const itemDate = new Date(item.data);
           itemDate.setHours(0, 0, 0, 0);
           return itemDate >= today;
@@ -77,17 +77,17 @@ export class SchemeDisplayComponent implements OnInit {
         if (todayIndex !== -1) {
           this.sliderIndex = Math.min(
             todayIndex,
-            this.wygenerowanyHarmonogram.length - this.pokazaneDni
+            this.generatedSchedule.length - this.shownDays
           );
         }
-
-        this.animacja = true;
+        this.scrollDays(1);
+        this.animation = true;
         setTimeout(() => {
-          this.aktualizujLiczbeWidocznychDni();
+          this.updateNumberofVisibleDays();
           this.loading = false;
-          this.animacja = true;
+          this.animation = true;
           setTimeout(() => {
-            this.animacja = false;
+            this.animation = false;
           }, 300);
         }, 1000);
       },
@@ -97,9 +97,7 @@ export class SchemeDisplayComponent implements OnInit {
       }
     );
 
-    window.addEventListener('resize', () =>
-      this.aktualizujLiczbeWidocznychDni()
-    );
+    window.addEventListener('resize', () => this.updateNumberofVisibleDays());
   }
 
   getVisit() {
@@ -114,7 +112,7 @@ export class SchemeDisplayComponent implements OnInit {
     );
   }
 
-  czyGodzinaZajeta(
+  whetherTimeBusy(
     lekarzId: string,
     dzienTygodnia: string,
     data: string,
@@ -124,17 +122,17 @@ export class SchemeDisplayComponent implements OnInit {
       (visit) =>
         visit.lekarz === lekarzId &&
         visit.dzienTygodnia === dzienTygodnia &&
-        this.formatujDate(visit.dzien) === this.formatujDate(data) &&
+        this.formatDate(visit.dzien) === this.formatDate(data) &&
         visit.godzina === godzina
     );
   }
 
-  formatujDate(date: string): string {
+  formatDate(date: string): string {
     const [day, month, year] = date.split('-');
     return `${year}-${month}-${day}`;
   }
 
-  generujHarmonogram() {
+  generateSchedule() {
     this.harmonogramy.forEach((wpis) => {
       const { nazwaharmonogramu, czaspracy, czaswizyty } = wpis;
 
@@ -150,7 +148,7 @@ export class SchemeDisplayComponent implements OnInit {
 
                   let aktualnaGodzina = startTime;
                   while (aktualnaGodzina < endTime) {
-                    const godzinaZajeta = this.czyGodzinaZajeta(
+                    const godzinaZajeta = this.whetherTimeBusy(
                       this.doctorId,
                       dzienTygodnia,
                       data,
@@ -161,13 +159,10 @@ export class SchemeDisplayComponent implements OnInit {
                       godziny.push(aktualnaGodzina);
                     }
 
-                    aktualnaGodzina = this.dodajCzas(
-                      aktualnaGodzina,
-                      czaswizyty
-                    );
+                    aktualnaGodzina = this.addTime(aktualnaGodzina, czaswizyty);
                   }
 
-                  this.wygenerowanyHarmonogram.push({
+                  this.generatedSchedule.push({
                     nazwaHarmonogramu: nazwaharmonogramu,
                     dzienTygodnia: dzienTygodnia,
                     data: data,
@@ -182,8 +177,8 @@ export class SchemeDisplayComponent implements OnInit {
     });
   }
 
-  sortujHarmonogram() {
-    this.wygenerowanyHarmonogram.sort((a, b) => {
+  sortSchedule() {
+    this.generatedSchedule.sort((a, b) => {
       const dateA = this.getDateObject(a.data);
       const dateB = this.getDateObject(b.data);
 
@@ -203,7 +198,7 @@ export class SchemeDisplayComponent implements OnInit {
   }
 
   onHourSelected(dzienTygodnia: string, data: string, godzina: string) {
-    const isReserved = this.czyGodzinaZajeta(
+    const isReserved = this.whetherTimeBusy(
       this.doctorId,
       dzienTygodnia,
       data,
@@ -220,7 +215,7 @@ export class SchemeDisplayComponent implements OnInit {
     }
   }
 
-  dodajCzas(start: string, czas: number): string {
+  addTime(start: string, czas: number): string {
     const [godziny, minuty] = start.split(':').map(Number);
     const czasWMinutach = godziny * 60 + minuty + czas;
     const noweGodziny = Math.floor(czasWMinutach / 60);
@@ -230,25 +225,25 @@ export class SchemeDisplayComponent implements OnInit {
     ).padStart(2, '0')}`;
   }
 
-  aktualizujLiczbeWidocznychDni() {
+  updateNumberofVisibleDays() {
     if (window.innerWidth < 426) {
-      this.pokazaneDni = 1;
+      this.shownDays = 1;
     } else if (window.innerWidth < 769) {
-      this.pokazaneDni = 2;
+      this.shownDays = 2;
     } else if (window.innerWidth < 1440) {
-      this.pokazaneDni = 4;
+      this.shownDays = 4;
     } else {
-      this.pokazaneDni = 6;
+      this.shownDays = 6;
     }
   }
 
-  przewinDni(ileDni: number) {
-    this.animacja = true;
+  scrollDays(howManyDays: number) {
+    this.animation = true;
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const todayIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
+    const todayIndex = this.generatedSchedule.findIndex((item) => {
       const itemDate = new Date(item.data);
       itemDate.setHours(0, 0, 0, 0);
       return itemDate >= today;
@@ -256,39 +251,20 @@ export class SchemeDisplayComponent implements OnInit {
 
     const startIndexOfSlider = todayIndex === -1 ? 0 : todayIndex;
 
-    this.sliderIndex += ileDni;
+    this.sliderIndex += howManyDays;
 
     this.sliderIndex = Math.max(
       startIndexOfSlider,
-      Math.min(
-        this.sliderIndex,
-        this.wygenerowanyHarmonogram.length - this.pokazaneDni
-      )
+      Math.min(this.sliderIndex, this.generatedSchedule.length - this.shownDays)
     );
 
-    this.pierwszaData = this.sliderIndex === startIndexOfSlider;
+    this.firstDate = this.sliderIndex === startIndexOfSlider;
 
-    this.ostatniaData =
-      this.sliderIndex >=
-      this.wygenerowanyHarmonogram.length - this.pokazaneDni;
+    this.lastDate =
+      this.sliderIndex >= this.generatedSchedule.length - this.shownDays;
 
     setTimeout(() => {
-      this.animacja = false;
+      this.animation = false;
     }, 300);
-  }
-
-  schowajPrzeszleDaty() {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const todayIndex = this.wygenerowanyHarmonogram.findIndex((item) => {
-      const itemDate = new Date(item.data);
-      itemDate.setHours(0, 0, 0, 0);
-      return itemDate >= today;
-    });
-
-    if (todayIndex !== -1) {
-      this.sliderIndex = Math.min(this.sliderIndex, todayIndex);
-    }
   }
 }
