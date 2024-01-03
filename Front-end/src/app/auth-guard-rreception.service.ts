@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthGuardRreceptionService {
-  private isLoggedIn: boolean = localStorage.getItem('isLoggedIn') === 'true';
+  private isLoggedInR: boolean = localStorage.getItem('isLoggedInR') === 'true';
 
   constructor(private router: Router) {}
 
   login(username: string, password: string) {
     if (username === 'admin' && password === '321') {
-      this.isLoggedIn = true;
-      localStorage.setItem('isLoggedIn', 'true');
+      this.isLoggedInR = true;
+      localStorage.setItem('isLoggedInR', 'true');
       this.router.navigate(['/recepcja-stronaglowna']);
     } else {
       console.log('Błędne dane logowania');
@@ -20,12 +20,12 @@ export class AuthGuardRreceptionService {
   }
 
   logout() {
-    this.isLoggedIn = false;
-    localStorage.removeItem('isLoggedIn');
+    this.isLoggedInR = false;
+    localStorage.removeItem('isLoggedInR');
     this.router.navigate(['/recepcja']);
   }
 
   isAuthenticated() {
-    return this.isLoggedIn;
+    return this.isLoggedInR;
   }
 }

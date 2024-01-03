@@ -145,9 +145,13 @@ export class ReceptionReservationComponent {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    console.log('Today Date:', today);
+
     const validVisits = visits.filter((visit) => {
       const visitDate = new Date(visit.dzien);
       visitDate.setHours(0, 0, 0, 0);
+
+      console.log('Visit Date:', visitDate);
 
       return visitDate >= today;
     });

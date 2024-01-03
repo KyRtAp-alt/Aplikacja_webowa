@@ -114,7 +114,7 @@ export class AdminSchemeComponent {
               {
                 starttime: this.poniedzialekOd,
                 endtime: this.poniedzialekDo,
-                daty: this.formatDates(this.daty1),
+                daty: this.daty1,
               },
             ]
           : null,
@@ -123,7 +123,7 @@ export class AdminSchemeComponent {
               {
                 starttime: this.wtorekOd,
                 endtime: this.wtorekDo,
-                daty: this.formatDates(this.daty2),
+                daty: this.daty2,
               },
             ]
           : null,
@@ -132,7 +132,7 @@ export class AdminSchemeComponent {
               {
                 starttime: this.srodaOd,
                 endtime: this.srodaDo,
-                daty: this.formatDates(this.daty3),
+                daty: this.daty3,
               },
             ]
           : null,
@@ -141,7 +141,7 @@ export class AdminSchemeComponent {
               {
                 starttime: this.czwartekOd,
                 endtime: this.czwartekDo,
-                daty: this.formatDates(this.daty4),
+                daty: this.daty4,
               },
             ]
           : null,
@@ -150,7 +150,7 @@ export class AdminSchemeComponent {
               {
                 starttime: this.piatekOd,
                 endtime: this.piatekDo,
-                daty: this.formatDates(this.daty5),
+                daty: this.daty5,
               },
             ]
           : null,
@@ -159,7 +159,7 @@ export class AdminSchemeComponent {
               {
                 starttime: this.sobotaOd,
                 endtime: this.sobotaDo,
-                daty: this.formatDates(this.daty6),
+                daty: this.daty6,
               },
             ]
           : null,
@@ -178,22 +178,22 @@ export class AdminSchemeComponent {
     );
   }
 
-  formatDates(dates: { [key: number]: string | null }): {
-    [key: number]: string | null;
-  } {
-    const formattedDates: { [key: number]: string | null } = {};
+  // formatDates(dates: { [key: number]: string | null }): {
+  //   [key: number]: string | null;
+  // } {
+  //   const formattedDates: { [key: number]: string | null } = {};
 
-    for (const key in dates) {
-      if (dates[key] !== null) {
-        const dateParts = (dates[key] as string).split('-');
-        formattedDates[key] = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
-      } else {
-        formattedDates[key] = null;
-      }
-    }
+  //   for (const key in dates) {
+  //     if (dates[key] !== null) {
+  //       const dateParts = (dates[key] as string).split('-');
+  //       formattedDates[key] = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+  //     } else {
+  //       formattedDates[key] = null;
+  //     }
+  //   }
 
-    return formattedDates;
-  }
+  //   return formattedDates;
+  // }
 
   editScheme(scheme: any) {
     this.czasWizyty = scheme.czasWizyty;
