@@ -42,6 +42,8 @@ import { WebbookingInfoComponent } from './webbooking-info/webbooking-info.compo
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import { Sandboxv2Component } from './sandboxv2/sandboxv2.component';
 import { AuthService } from './auth.service';
+import { ReceptionLoginComponent } from './reception-login/reception-login.component';
+import { AuthGuardRreceptionService } from './auth-guard-rreception.service';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,7 @@ import { AuthService } from './auth.service';
     WebbookingInfoComponent,
     PatientFormComponent,
     Sandboxv2Component,
+    ReceptionLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,14 @@ import { AuthService } from './auth.service';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [AppointmentGeneratorService, AuthGuardService, AuthService],
+  providers: [
+    AppointmentGeneratorService,
+    //
+    // AuthGuardService,
+    AuthGuardRreceptionService,
+    //
+    AuthService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

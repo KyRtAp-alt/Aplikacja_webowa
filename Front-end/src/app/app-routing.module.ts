@@ -24,6 +24,9 @@ import { AdminSchemeComponent } from './admin-scheme/admin-scheme.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { WebbookingComponent } from './webbooking/webbooking.component';
 import { AuthGuard } from 'src/app/auth.guard';
+import { AuthGuardReception } from './auth.guardReception';
+import { ReceptionLoginComponent } from './reception-login/reception-login.component';
+import { AuthGuardRreceptionService } from './auth-guard-rreception.service';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -66,9 +69,22 @@ const routes: Routes = [
   },
 
   //Recepcja
-  { path: 'recepcja-stronaglowna', component: ReceptionHomepageComponent },
-  { path: 'recepcja-harmonogram', component: ReceptionSchemeComponent },
-  { path: 'recepcja-rezerwacja', component: ReceptionReservationComponent },
+  { path: 'recepcja', component: ReceptionLoginComponent },
+  {
+    path: 'recepcja-stronaglowna',
+    component: ReceptionHomepageComponent,
+    canActivate: [AuthGuardReception],
+  },
+  {
+    path: 'recepcja-harmonogram',
+    component: ReceptionSchemeComponent,
+    canActivate: [AuthGuardReception],
+  },
+  {
+    path: 'recepcja-rezerwacja',
+    component: ReceptionReservationComponent,
+    canActivate: [AuthGuardReception],
+  },
 
   //Inne
   { path: 'rezerwacja', component: AdminReservationComponent },

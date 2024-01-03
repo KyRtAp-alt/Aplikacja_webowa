@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DoctorService } from '../doctor.service';
 import { VisitService } from '../visit.service';
 import { Router } from '@angular/router';
@@ -40,11 +40,8 @@ export class UmowWizyteComponent {
   clientcontent: string = '';
   data: string = '';
   visitdata = false;
-
   opened?: boolean;
-
   zarezerwowaneGodziny: Array<string> = [];
-  //'08:00', '08:30', '09:00'
 
   constructor(
     private doctorService: DoctorService,
@@ -55,18 +52,6 @@ export class UmowWizyteComponent {
   ngOnInit() {
     this.getDoctors();
   }
-
-  // getDoctorSchedule(doctorId: string) {
-  //   this.schemeService.getHarmonogramData(doctorId).subscribe(
-  //     (schedule: any) => {
-  //       console.log('Harmonogram:', schedule);
-  //       this.currentDoctorSchedule = schedule;
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
-  // }
 
   getDoctors() {
     this.doctorService.getDoctors().subscribe(
@@ -111,9 +96,7 @@ export class UmowWizyteComponent {
 
       alert('Zarezerwowano pomyślnie!');
 
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/umow-wizyte']);
-      });
+      location.reload();
     }
   }
 

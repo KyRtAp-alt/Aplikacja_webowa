@@ -77,7 +77,7 @@
                         <input class="data-number" [(ngModel)]="liczbaTygodni2" type="number"
                             (change)="generateTygodnie2()">
                     </div>
-                    <div *ngFor="let tydzien2 of tygodnie2" class="list">
+                    <div *ngFor="let tydzien2 of tygodnie2.slice(0, 1).concat(tygodnie2.slice(-1))" class="list">
                         <span class="date-week">{{ tydzien2 }} tydzień</span>
                         <input class="date-input" type="date" [(ngModel)]="daty2[tydzien2]"
                             (change)="updateDates2(tydzien2)">
@@ -112,7 +112,7 @@
                         <input class="data-number" [(ngModel)]="liczbaTygodni3" type="number"
                             (change)="generateTygodnie3()">
                     </div>
-                    <div *ngFor="let tydzien3 of tygodnie3" class="list">
+                    <div *ngFor="let tydzien3 of tygodnie3.slice(0, 1).concat(tygodnie3.slice(-1))" class="list">
                         <span class="date-week">{{ tydzien3 }} tydzień</span>
                         <input class="date-input" type="date" [(ngModel)]="daty3[tydzien3]"
                             (change)="updateDates3(tydzien3)">
@@ -147,7 +147,7 @@
                         <input class="data-number" [(ngModel)]="liczbaTygodni4" type="number"
                             (change)="generateTygodnie4()">
                     </div>
-                    <div *ngFor="let tydzien4 of tygodnie4" class="list">
+                    <div *ngFor="let tydzien4 of tygodnie4.slice(0, 1).concat(tygodnie4.slice(-1))" class="list">
                         <span class="date-week">{{ tydzien4 }} tydzień</span>
                         <input class="date-input" type="date" [(ngModel)]="daty4[tydzien4]"
                             (change)="updateDates4(tydzien4)">
@@ -182,7 +182,7 @@
                         <input class="data-number" [(ngModel)]="liczbaTygodni5" type="number"
                             (change)="generateTygodnie5()">
                     </div>
-                    <div *ngFor="let tydzien5 of tygodnie5" class="list">
+                    <div *ngFor="let tydzien5 of tygodnie5.slice(0, 1).concat(tygodnie5.slice(-1))" class="list">
                         <span class="date-week">{{ tydzien5 }} tydzień</span>
                         <input class="date-input" type="date" [(ngModel)]="daty5[tydzien5]"
                             (change)="updateDates5(tydzien5)">
@@ -217,7 +217,7 @@
                         <input class="data-number" [(ngModel)]="liczbaTygodni6" type="number"
                             (change)="generateTygodnie6()">
                     </div>
-                    <div *ngFor="let tydzien6 of tygodnie6" class="list">
+                    <div *ngFor="let tydzien6 of tygodnie6.slice(0, 1).concat(tygodnie6.slice(-1))" class="list">
                         <span class="date-week">{{ tydzien6 }} tydzień</span>
                         <input class="date-input" type="date" [(ngModel)]="daty6[tydzien6]"
                             (change)="updateDates6 (tydzien6)">
@@ -231,27 +231,35 @@
         </div>
     </div>
 </div>
-
-<div>
-    <div>
-        <h2>Lista harmonogramow</h2>
-    </div>
-    <div>
-        <button class="doctor-button-list" (click)="getSchemes()">
-            <p class="title-doctor-button-list">Odśwież listę</p>
-        </button>
+<div class="ms-list">
+    <div class="scheme-list-border">
+        <div class="title-box">
+            <h2 class="title">Lista harmonogramow</h2>
+        </div>
         <div>
-            <ul *ngFor="let scheme of schemes">
-                <div>
-                    <a>
-                        <span>{{scheme.nazwaharmonogramu}}</span>
-                    </a>
-                    <a class="list-wroktime ">
-                        <span>{{scheme.czaswizyty}}</span>
-                    </a>
-                    <button (click)="editScheme">Edytuj</button>
-                </div>
-            </ul>
+            <div class="list-button-border">
+                <button class="doctor-button-list" (click)="getSchemes()">
+                    <p class="title-doctor-button-list">Odśwież listę</p>
+                </button>
+            </div>
+            <div>
+                <ul *ngFor="let scheme of schemes">
+                    <div class="scheme-list">
+                        <a class="list-border">
+                            <span class="list-title">Nazwa:</span>
+                            <span class="list-name">{{scheme.nazwaharmonogramu}}</span>
+                        </a>
+                        <a class="list-border">
+                            <span class="list-title">Czas pracy:</span>
+                            <span class="list-name">{{scheme.czaswizyty}}</span>
+                        </a>
+                        <!-- <a class="list-wroktime ">
+                            <span>{{scheme.czaswizyty}}</span>
+                        </a> -->
+                        <button (click)="editScheme">Edytuj</button>
+                    </div>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
