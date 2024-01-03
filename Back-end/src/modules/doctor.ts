@@ -8,6 +8,7 @@ const doctorService = require("../service/doctorService");
 
 const router = express.Router();
 router.use(express.json());
+
 const client = new MongoClient(databaseUrl);
 
 router.get("/", async (req: Request, res: Response) => {
@@ -74,8 +75,6 @@ router.get("/schedule/:doctorId", async (req: Request, res: Response) => {
 router.post("/", async (req: Request, res: Response) => {
   await client.connect();
   const db = client.db();
-  // req.body.harmonogram = new ObjectId(req.body.harmonogram);
-  // console.log(req.body);
   const collection = db.collection("doctor");
   await collection
     .insertOne(req.body)
@@ -102,7 +101,6 @@ router.delete("/:id", async (req: Request, res: Response) => {
 router.put("/:id", async (req: Request, res: Response) => {
   await client.connect();
   const db = client.db();
-  // req.body.harmonogram = new ObjectId(req.body.harmonogram);
   const collection = db.collection("doctor");
   const id = new ObjectId(req.params.id);
   await collection.updateOne({ _id: id }, { $set: req.body });
@@ -117,60 +115,3 @@ router.post("/doctor/:doctorId/assign-schedule", (req, res) => {
   console.log(`Przypisano harmonogram do lekarza o ID: ${doctorId}`, schedule);
   res.status(200).json({ message: "Harmonogram przypisany pomyślnie" });
 });
-
-// router.post("/doctor/:doctorId/assign-schedule", (req, res) => {
-//   const doctorId = req.params.doctorId;
-//   const schedule = req.body;
-//   console.log(`Przypisano harmonogram do lekarza o ID: ${doctorId}`, schedule);
-//   res.status(200).json({ message: "Harmonogram przypisany pomyślnie" });
-// });
-
-// router.get("/", async (req, res) => {
-//   try {
-//     const doctors = await doctorService.getAllDoctors();
-//     res.status(200).send(doctors);
-//   } catch (error) {
-//     console.error("Error while fetching doctors", error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// });
-
-// export interface Doctor {
-//   schedule: schedule;
-// }
-
-// router.post("/", async (req: Request, res: Response) => {
-//   try {
-//     const result = await doctorService.addDoctor(req.body);
-//     res.status(200).send("Dodano Lekarza");
-//   } catch (error) {
-//     console.error("Error while adding doctor", error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// });
-
-// router.delete("/:id", async (req: Request, res: Response) => {
-//   try {
-//     const doctorId = req.params.id;
-//     const deletedCount = await doctorService.deleteDoctor(doctorId);
-//     if (deletedCount > 0) {
-//       res.status(200).send("Usunięto Lekarza");
-//     } else {
-//       res.status(404).send("Brak Lekarza do usunięcia");
-//     }
-//   } catch (error) {
-//     console.error("Error while deleting doctor", error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// });
-
-// router.put("/:id", async (req: Request, res: Response) => {
-//   try {
-//     const doctorId = req.params.id;
-//     await doctorService.updateDoctor(doctorId, req.body);
-//     res.status(200).send("Zmieniono dane Lekarza");
-//   } catch (error) {
-//     console.error("Error while updating doctor", error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// });
