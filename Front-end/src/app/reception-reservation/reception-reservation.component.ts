@@ -45,7 +45,7 @@ export class ReceptionReservationComponent {
     this.getVisit();
   }
 
-  formatujNumerTel(value: string): string {
+  formatPhoneNumber(value: string): string {
     return `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6)}`;
   }
 
@@ -144,21 +144,19 @@ export class ReceptionReservationComponent {
   removeExpiredVisits(visits: any[]): any[] {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-
     console.log('Today Date:', today);
-
     const validVisits = visits.filter((visit) => {
       const visitDate = new Date(visit.dzien);
       visitDate.setHours(0, 0, 0, 0);
-
       console.log('Visit Date:', visitDate);
-
       return visitDate >= today;
     });
 
     const expiredVisits = visits.filter(
       (visit) => !validVisits.includes(visit)
     );
+    console.log('Valid Visits:', validVisits);
+    console.log('Expired Visits:', expiredVisits);
     this.deleteExpiredVisitsFromDatabase(expiredVisits);
 
     return validVisits;
