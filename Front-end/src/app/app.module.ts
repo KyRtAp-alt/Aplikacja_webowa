@@ -44,6 +44,7 @@ import { Sandboxv2Component } from './sandboxv2/sandboxv2.component';
 import { AuthService } from './auth.service';
 import { ReceptionLoginComponent } from './reception-login/reception-login.component';
 import { AuthGuardRreceptionService } from './auth-guard-rreception.service';
+import { PdfviewComponent } from './pdfview/pdfview.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { AuthGuardRreceptionService } from './auth-guard-rreception.service';
     PatientFormComponent,
     Sandboxv2Component,
     ReceptionLoginComponent,
+    PdfviewComponent,
   ],
   imports: [
     BrowserModule,
