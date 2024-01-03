@@ -29,23 +29,17 @@ interface WygenerowanyHarmonogram {
 })
 export class SchemeDisplayComponent implements OnInit {
   generatedSchedule: WygenerowanyHarmonogram[] = [];
-
   @Input() scheduleId: string = '';
   @Input() doctorId: string = '';
   @Output() selectedInfo = new EventEmitter<any>();
   harmonogramy: Harmonogram[] = [];
   widoczneDni: WygenerowanyHarmonogram[] = [];
   shownDays: number = 6;
-  // pokazaneDniMobile: number = 3;
   sliderIndex: number = 0;
   animation: boolean = false;
   firstDate: boolean = true;
   lastDate: boolean = false;
   loading: boolean = true;
-  // @Input() zarezerwowaneGodziny: Array<string> = [];
-  // selectedDoctor: any;
-  // selectedTimeInfo: any = null;
-
   visits: any[] = [];
   lekarz: string = '';
   dzienTygodnia: string = '';
@@ -80,7 +74,7 @@ export class SchemeDisplayComponent implements OnInit {
             this.generatedSchedule.length - this.shownDays
           );
         }
-        this.scrollDays(1);
+        this.scrollDays(0); //1
         this.animation = true;
         setTimeout(() => {
           this.updateNumberofVisibleDays();
