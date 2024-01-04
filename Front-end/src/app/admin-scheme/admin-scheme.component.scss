@@ -46,7 +46,11 @@
 }
 
 .time-select {
-  margin-top: 10px;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -54,6 +58,7 @@
   font-family: sans-serif;
   margin-left: 5px;
   margin-right: 5px;
+  font-size: 20px;
 }
 
 .time-select-number {
@@ -215,14 +220,16 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .main-name {
   display: flex;
   flex-direction: column;
+  border-bottom: 6px solid #01a3a4;
+  padding-bottom: 20px;
 }
 
 .main-name-title {
-  font-size: 18px;
+  font-size: 20px;
   font-family: sans-serif;
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .main-name-input {
