@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RosService } from '../ros.service';
 import { tap } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-ros',
@@ -16,7 +17,11 @@ export class AdminRosComponent {
   selectedRosId: string = '';
   editingRos: boolean = false;
 
-  constructor(private rosService: RosService, private titleService: Title) {
+  constructor(
+    private rosService: RosService,
+    private titleService: Title,
+    private router: Router
+  ) {
     this.titleService.setTitle('Admin zakres usług');
   }
 
@@ -57,6 +62,7 @@ export class AdminRosComponent {
         console.error(error);
       }
     );
+    location.reload();
   }
 
   deleteRos(id: string) {
@@ -118,6 +124,10 @@ export class AdminRosComponent {
 
   isEmptyFields(): boolean {
     return !this.name;
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   scrollToTop(): void {

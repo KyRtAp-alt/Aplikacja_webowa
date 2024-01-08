@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../blog.service';
 import { Title } from '@angular/platform-browser';
 
@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './admin-blog.component.html',
   styleUrls: ['./admin-blog.component.scss'],
 })
-export class AdminBlogComponent {
+export class AdminBlogComponent implements OnInit {
   blogs: any[] = [];
   selectedBlogId: string = '';
   editingBlog: boolean = false;
@@ -17,6 +17,8 @@ export class AdminBlogComponent {
   showArrow1: boolean = false;
   showArrow2: boolean = false;
   showArrow3: boolean = false;
+  refreshPage: boolean = false;
+
   //
   title: string = '';
   content: string = '';
@@ -65,11 +67,13 @@ export class AdminBlogComponent {
       () => {
         console.log('Dodano blog');
         this.clearForm();
+        this.getBlogs();
       },
       (error) => {
         console.error(error);
       }
     );
+    location.reload();
   }
 
   deleteBlog(id: string) {
@@ -82,6 +86,7 @@ export class AdminBlogComponent {
         console.error(error);
       }
     );
+    location.reload();
   }
 
   confirmDelete(blogId: string) {
@@ -130,6 +135,7 @@ export class AdminBlogComponent {
         console.error(error);
       }
     );
+    location.reload();
   }
 
   toggleDescription1() {
@@ -161,6 +167,10 @@ export class AdminBlogComponent {
 
   isEmptyFields(): boolean {
     return !this.title;
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   scrollToTop(): void {

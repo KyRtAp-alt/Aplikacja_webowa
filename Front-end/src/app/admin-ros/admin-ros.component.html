@@ -21,7 +21,7 @@
                     </div>
                     <div class="border-but">
                         <button class="button-border"
-                            (click)="(!isEmptyFields()) && (editingRos ? updateRos() : addRos())">
+                            (click)="(!isEmptyFields()) && (editingRos ? updateRos() : addRos())" (click)="refresh()">
                             {{ editingRos ? 'Zapisz' : 'Dodaj' }}
                         </button>
                     </div>

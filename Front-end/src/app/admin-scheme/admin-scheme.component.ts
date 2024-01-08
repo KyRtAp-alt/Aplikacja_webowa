@@ -236,6 +236,18 @@ export class AdminSchemeComponent {
     );
   }
 
+  deleteScheme(id: string) {
+    this.schemeService.deleteScheme(id).subscribe(
+      () => {
+        console.log;
+        this.getSchemes();
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
   onShowMore(doctor: any) {
     doctor.showMore = true;
   }

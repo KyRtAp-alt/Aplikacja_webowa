@@ -18,7 +18,7 @@
                     <a class="form-group">
                         <label class="name">Opis zapoznawczy</label>
                         <textarea class="name-3" name="content" placeholder="" [(ngModel)]="content" maxlength="500">
-                        </textarea>
+                            </textarea>
                         <a class="character-count">
                             Pozostało znaków: {{ 500 - content.length }}
                         </a>
@@ -75,7 +75,8 @@
                     </a>
                     <a class="border-but">
                         <button class="button-border"
-                            (click)="(!isEmptyFields()) && (editingBlog ? updateBlog() : addBlog())">
+                            (click)="(!isEmptyFields()) && (editingBlog ? updateBlog() : addBlog())"
+                            (click)="refresh()">
                             {{ editingBlog ? 'Zapisz' : 'Dodaj' }}
                         </button>
                     </a>
@@ -110,6 +111,7 @@
         </div>
     </div>
 </div>
+
 <a class="scroll-to-top" (click)="scrollToTop()">
     <i class="fas fa-chevron-up">&#8593; </i>
 </a>

@@ -42,10 +42,12 @@
                         <input class="data-number" [(ngModel)]="liczbaTygodni1" type="number"
                             (change)="generateTygodnie1()">
                     </div>
-                    <div *ngFor="let tydzien1 of tygodnie1.slice(0, 1).concat(tygodnie1.slice(-1))" class="list">
+                    <div *ngFor="let tydzien1 of tygodnie1.slice(0, 1).concat(tygodnie1.slice(-1))" class="list"
+                        [ngClass]="{ 'last-week': tydzien1 === tygodnie1[tygodnie1.length - 1] }">
                         <span class="date-week">{{ tydzien1 }} tydzień</span>
                         <input class="date-input" type="date" [(ngModel)]="daty1[tydzien1]"
-                            (change)="updateDates1(tydzien1)">
+                            (change)="updateDates1(tydzien1)"
+                            [ngClass]="{ 'disabled-cursor': tydzien1 === tygodnie1[tygodnie1.length - 1] }">
                     </div>
                 </div>
             </div>
@@ -256,7 +258,10 @@
                         <!-- <a class="list-wroktime ">
                             <span>{{scheme.czaswizyty}}</span>
                         </a> -->
-                        <button (click)="editScheme">Edytuj</button>
+                        <div class="controls">
+                            <button (click)="editScheme">Edytuj</button>
+                            <button (click)="deleteScheme(scheme._id)">Usuń</button>
+                        </div>
                     </div>
                 </ul>
             </div>
