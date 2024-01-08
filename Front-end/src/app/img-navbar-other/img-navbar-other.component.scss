@@ -72,6 +72,10 @@
 }
 
 @media (max-width: 669px) {
+  .ms-inner {
+    height: 0px;
+  }
+
   .img-navbar-other {
     visibility: hidden;
   }
