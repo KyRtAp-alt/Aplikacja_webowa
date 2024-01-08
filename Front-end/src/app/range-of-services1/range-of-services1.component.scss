@@ -67,6 +67,11 @@
     height: 90px;
     width: 200px;
   }
+
+  @media (max-width: 426px) {
+    width: auto;
+    padding: 30px;
+  }
 }
 
 .left-left:hover {
