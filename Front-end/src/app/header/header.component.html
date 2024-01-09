@@ -2,18 +2,18 @@
     <div class="ms_outer">
         <div class="ms_inner">
             <div class="header">
-                <a class="tel">
-                    <span class="bold-text">Telefon:</span>
-                    <span class="normal-text">123 123 123</span>
-                </a>
-                <a class="ul">
-                    <span class="bold-text">Ul.</span>
-                    <span class="normal-text">Krasnoludek 3, xx-xxx Kraków</span>
-                </a>
-                <a class="em">
+                <div class="em">
                     <span class="bold-text">E-mail:</span>
-                    <span class="normal-text">recepcja.medlife&commat;gmail.com</span>
-                </a>
+                    <span class="normal-text" (click)="sendEmail()">recepcja.medlife&commat;gmail.com</span>
+                </div>
+                <div class="tel">
+                    <span class="bold-text">Telefon:</span>
+                    <span class="normal-text" (click)="callPhoneNumber(phoneNumber)">123 123 123</span>
+                </div>
+                <div class="ul">
+                    <span class="bold-text">Ul.</span>
+                    <span class="normal-text" (click)="openGoogleMaps()">Krasnoludek 3, xx-xxx Kraków</span>
+                </div>
             </div>
         </div>
     </div>
