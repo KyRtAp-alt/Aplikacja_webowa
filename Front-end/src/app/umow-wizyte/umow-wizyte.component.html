@@ -71,6 +71,23 @@
                                                         <input [(ngModel)]="selectedVisit.godzina">
                                                     </div>
                                                 </div>
+                                                <div class="rodo-border">
+                                                    <input class="rodo-click" type="checkbox"
+                                                        [(ngModel)]="isCheckboxChecked">
+                                                    <span class="rodo-info"
+                                                        [ngClass]="{'red-text': !isCheckboxChecked}">
+                                                        Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych
+                                                        w
+                                                        formularzu dla potrzeb niezbędnych do rezerwacji terminu wizyty
+                                                        (zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE)
+                                                        2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób
+                                                        fizycznych w związku z przetwarzaniem danych osobowych i w
+                                                        sprawie
+                                                        swobodnego przepływu takich danych oraz uchylenia dyrektywy
+                                                        95/46/WE)
+                                                        (ogólne rozporządzenie o ochronie danych)
+                                                    </span>
+                                                </div>
                                                 <div class="controls">
                                                     <div class="button-border-controls">
                                                         <button (click)="closeModal()"
@@ -78,7 +95,7 @@
                                                     </div>
                                                     <div class="button-border-controls">
                                                         <button class="button" (click)="registerVisit(); closeModal()"
-                                                            [disabled]="isEmptyFields()">
+                                                            [disabled]="!isCheckboxChecked || isEmptyFields()">
                                                             Rezerwuj
                                                         </button>
                                                     </div>

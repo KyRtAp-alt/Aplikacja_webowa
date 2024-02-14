@@ -467,36 +467,23 @@ ul {
   justify-content: space-between;
 }
 
-///////// Formularz
+.rodo-border {
+  display: flex;
+}
 
-// .fn {
-//   margin-left: 5px;
-// }
+.rodo-info {
+  max-width: 400px;
+  font-size: 10px;
+  font-family: sans-serif;
+  padding: 5px;
+}
 
-// .schedule {
-//   margin: 20px;
-// }
+.rodo-click {
+  width: 15px;
+  height: 15px;
+  margin-right: 4px;
+}
 
-// table {
-//   border-collapse: collapse;
-// }
-
-// th,
-// td {
-//   border: 2px solid #55b8b2;
-//   padding: 10px;
-//   text-align: center;
-// }
-
-// th {
-//   background-color: #55b8b2;
-//   width: 100px;
-//   color: white;
-//   font-family: sans-serif;
-//   font-weight: 600;
-// }
-
-// td.reserved {
-//   background-color: red;
-//   width: 10px;
-// }
+.red-text {
+  color: red;
+}

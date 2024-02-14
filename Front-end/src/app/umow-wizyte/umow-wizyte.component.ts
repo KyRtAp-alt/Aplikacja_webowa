@@ -42,6 +42,7 @@ export class UmowWizyteComponent {
   visitdata = false;
   opened?: boolean;
   zarezerwowaneGodziny: Array<string> = [];
+  isCheckboxChecked: boolean = false;
 
   constructor(
     private doctorService: DoctorService,
