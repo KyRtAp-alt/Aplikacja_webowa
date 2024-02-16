@@ -8,15 +8,12 @@
   max-width: 1440px;
 }
 
-.ms-inner {
-}
-
 .loop-box {
   display: grid;
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 140px; //180px
+  margin-top: 140px;
 
   @media (max-width: 426px) {
     margin-top: 60px;
@@ -140,7 +137,6 @@
 
 .category2 {
   width: 1050px;
-  // height: 630px;
   height: auto + 20px;
   background-color: #bbeefc;
   border-bottom-right-radius: 20px;
