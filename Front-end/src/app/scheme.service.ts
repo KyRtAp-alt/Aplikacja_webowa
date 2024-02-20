@@ -11,19 +11,19 @@ export class SchemeService {
   constructor(private http: HttpClient) {}
 
   getScheme() {
-    return this.http.get('http://localhost:3000/scheme');
+    return this.http.get(`${this.apiUrl}/scheme`);
   }
 
   addScheme(schemes: any) {
-    return this.http.post(`http://localhost:3000/scheme`, schemes);
+    return this.http.post(`${this.apiUrl}/scheme`, schemes);
   }
 
   deleteScheme(id: string) {
-    return this.http.delete(`http://localhost:3000/scheme/${id}`);
+    return this.http.delete(`${this.apiUrl}/scheme/${id}`);
   }
 
   updateScheme(id: string, schemes: any) {
-    return this.http.put(`http://localhost:3000/scheme/${id}`, schemes);
+    return this.http.put(`${this.apiUrl}/scheme/${id}`, schemes);
   }
 
   getScheduleData(): Observable<any> {
@@ -34,16 +34,3 @@ export class SchemeService {
     return this.http.get<any>(`${this.apiUrl}/doctor/${harmonogramId}`);
   }
 }
-
-// getHarmonogramData(harmonogramId: string) {
-//   throw new Error('Method not implemented.');
-// }
-
-// getSchemeForDoctor(id: string): Observable<any> {
-//   const url = `${this.apiUrl}/scheme/${id}`;
-//   return this.http.get(url);
-// }
-
-// getDoctorSchedule(doctorId: string): Observable<any> {
-//   return this.http.get(`/api/doctors/${doctorId}/schedule`);
-// }

@@ -10,18 +10,18 @@ export class RosService {
   constructor(private http: HttpClient) {}
 
   getRoss() {
-    return this.http.get('http://localhost:3000/ros');
+    return this.http.get(`${this.apiUrl}/ros`);
   }
 
   addRos(ros: any) {
-    return this.http.post('http://localhost:3000/ros', ros);
+    return this.http.post(`${this.apiUrl}/ros`, ros);
   }
 
   deletRos(id: string) {
-    return this.http.delete(`http://localhost:3000/ros/${id}`);
+    return this.http.delete(`${this.apiUrl}/ros/${id}`);
   }
 
   updateRos(id: string, ros: any) {
-    return this.http.put(`http://localhost:3000/ros/${id}`, ros);
+    return this.http.put(`${this.apiUrl}/ros/${id}`, ros);
   }
 }

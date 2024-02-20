@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { SchemeService } from './scheme.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,19 +12,19 @@ export class DoctorService {
   constructor(private http: HttpClient) {}
 
   getDoctors() {
-    return this.http.get('http://localhost:3000/doctor');
+    return this.http.get(`${this.apiUrl}/doctor`);
   }
 
   addDoctor(doctor: any) {
-    return this.http.post('http://localhost:3000/doctor', doctor);
+    return this.http.post(`${this.apiUrl}/doctor`, doctor);
   }
 
   deleteDoctor(id: string) {
-    return this.http.delete(`http://localhost:3000/doctor/${id}`);
+    return this.http.delete(`${this.apiUrl}/doctor/${id}`);
   }
 
   updateDoctor(id: string, doctor: any) {
-    return this.http.put(`http://localhost:3000/doctor/${id}`, doctor);
+    return this.http.put(`${this.apiUrl}/doctor/${id}`, doctor);
   }
 
   assignDoctorSchedule(doctorId: string, scheduleId: string) {

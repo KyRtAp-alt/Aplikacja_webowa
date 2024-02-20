@@ -12,23 +12,23 @@ export class VisitService {
   constructor(private http: HttpClient) {}
 
   getVisit() {
-    return this.http.get('http://localhost:3000/visit');
+    return this.http.get(`${this.apiUrl}/visit`);
   }
 
   addVisit(visits: any) {
-    return this.http.post(`http://localhost:3000/visit`, visits);
+    return this.http.post(`${this.apiUrl}/visit`, visits);
   }
 
   deleteVisit(id: string) {
-    return this.http.delete(`http://localhost:3000/visit/${id}`);
+    return this.http.delete(`${this.apiUrl}/visit/${id}`);
   }
 
   updateVisit(id: string, visit: any) {
-    return this.http.put(`http://localhost:3000/visit/${id}`, visit);
+    return this.http.put(`${this.apiUrl}/visit/${id}`, visit);
   }
 
   getDoctorDate(pracownikID: string): Observable<any> {
-    const url = `http://localhost:3000/scheme/${pracownikID}`;
+    const url = `${this.apiUrl}/scheme/${pracownikID}`;
     return this.http.get(url);
   }
 

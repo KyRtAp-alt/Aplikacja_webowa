@@ -10,22 +10,22 @@ export class BlogService {
   constructor(private http: HttpClient) {}
 
   getBlogs() {
-    return this.http.get('http://localhost:3000/blog');
+    return this.http.get(`${this.apiUrl}/blog`);
   }
 
   addBlogs(blog: any) {
-    return this.http.post('http://localhost:3000/blog', blog);
+    return this.http.post(`${this.apiUrl}/blog`, blog);
   }
 
   deleteBlog(id: string) {
-    return this.http.delete(`http://localhost:3000/blog/${id}`);
+    return this.http.delete(`${this.apiUrl}/blog/${id}`);
   }
 
   updateBlog(id: string, blog: any) {
-    return this.http.put(`http://localhost:3000/blog/${id}`, blog);
+    return this.http.put(`${this.apiUrl}/blog/${id}`, blog);
   }
 
   getBlogById(id: string) {
-    return this.http.get(`http://localhost:3000/blog/${id}`);
+    return this.http.get(`${this.apiUrl}/blog/${id}`);
   }
 }
