@@ -178,23 +178,6 @@ export class AdminSchemeComponent {
     );
   }
 
-  // formatDates(dates: { [key: number]: string | null }): {
-  //   [key: number]: string | null;
-  // } {
-  //   const formattedDates: { [key: number]: string | null } = {};
-
-  //   for (const key in dates) {
-  //     if (dates[key] !== null) {
-  //       const dateParts = (dates[key] as string).split('-');
-  //       formattedDates[key] = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
-  //     } else {
-  //       formattedDates[key] = null;
-  //     }
-  //   }
-
-  //   return formattedDates;
-  // }
-
   editScheme(scheme: any) {
     this.czasWizyty = scheme.czasWizyty;
   }
@@ -216,13 +199,6 @@ export class AdminSchemeComponent {
         }
       );
   }
-
-  // private parseTime(timeString: string): number[] {
-  //   const [hours, minutes] = timeString
-  //     .split(':')
-  //     .map((part) => parseInt(part, 10));
-  //   return [hours, minutes];
-  // }
 
   getSchemes() {
     this.schemeService.getScheme().subscribe(
